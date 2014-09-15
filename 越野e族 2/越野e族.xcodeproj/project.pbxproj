@@ -1397,6 +1397,7 @@
 		56E986A4197A6B540093048F /* GscanfViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56E986A3197A6B540093048F /* GscanfViewController.m */; };
 		56E986A5197A6B540093048F /* GscanfViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56E986A3197A6B540093048F /* GscanfViewController.m */; };
 		D1053AF35B494E72808A6A62 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C0FBDFDAFFD248A5BC23061A /* libPods.a */; };
+		E38C349D19C6884500060DB2 /* GmapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E38C349C19C6884500060DB2 /* GmapViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -2988,6 +2989,8 @@
 		56E986A3197A6B540093048F /* GscanfViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GscanfViewController.m; sourceTree = "<group>"; };
 		5C1EA72A18914F7EAC3FE954 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		C0FBDFDAFFD248A5BC23061A /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E38C349B19C6884500060DB2 /* GmapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GmapViewController.h; sourceTree = "<group>"; };
+		E38C349C19C6884500060DB2 /* GmapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GmapViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -3119,6 +3122,8 @@
 				190F0347197769D500EC6C47 /* XTSideMenuManager.m */,
 				190F03491977AB0300EC6C47 /* GuanggaoViewController.h */,
 				190F034A1977AB0300EC6C47 /* GuanggaoViewController.m */,
+				E38C349B19C6884500060DB2 /* GmapViewController.h */,
+				E38C349C19C6884500060DB2 /* GmapViewController.m */,
 			);
 			path = ComprehensiveControl;
 			sourceTree = "<group>";
@@ -7212,6 +7217,7 @@
 				566E7980185EE75D00BB88C5 /* SDWebImageDecoder.m in Sources */,
 				566E7BE0185EE88400BB88C5 /* FBNotificationViewController.m in Sources */,
 				566E7A53185EE80100BB88C5 /* loadingview.m in Sources */,
+				E38C349D19C6884500060DB2 /* GmapViewController.m in Sources */,
 				5675DE20196D2E8F001926E1 /* SliderRankingListViewController.m in Sources */,
 				56C9557D185EEE3E00763E69 /* FbNewsFeed.m in Sources */,
 				19F93651197F9BAE00288E6C /* ZkingAlert.m in Sources */,

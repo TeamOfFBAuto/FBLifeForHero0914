@@ -41,6 +41,8 @@
 
 #import <CommonCrypto/CommonDigest.h> // Need to import for CC_MD5 access
 
+#import "GmapViewController.h"//地图
+
 ///浮动层开始显示的时间
 #define SHOW_TIME @"2014-09-11 19:10:00"
 ///浮动层消失的时间
@@ -301,6 +303,10 @@
 - (void)awesomeMenu:(AwesomeMenu *)menu didSelectIndex:(NSInteger)idx
 {
     NSLog(@"Select the index : %d",idx);
+    if (idx == 4) {//跳转到离线地图
+        GmapViewController *mapvc = [[GmapViewController alloc]init];
+        [self.navigationController pushViewController:mapvc animated:YES];
+    }
 }
 #pragma mark - 关闭
 - (void)awesomeMenuDidFinishAnimationClose:(AwesomeMenu *)menu {
