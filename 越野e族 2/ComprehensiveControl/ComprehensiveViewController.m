@@ -349,6 +349,7 @@
 - (void)awesomeMenu:(AwesomeMenu *)menu didSelectIndex:(NSInteger)idx
 {
     NSLog(@"Select the index : %d",idx);
+    [awesomeMenu setBackgroundColor:[UIColor clearColor]];
     if (idx == 4) {//跳转到离线地图
         //添加离线地图包资源 并显示地图
         GmapViewController *mapvc = [[GmapViewController alloc]init];
