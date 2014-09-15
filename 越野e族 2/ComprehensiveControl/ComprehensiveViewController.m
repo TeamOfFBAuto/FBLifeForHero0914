@@ -59,7 +59,7 @@
     NSMutableArray *com_link_array;//幻灯的外链
     NSMutableArray *com_title_array;//幻灯的标题
 
-
+    AwesomeMenu * awesomeMenu;
 }
 
 @end
@@ -277,14 +277,10 @@
     
     if (normalinfoAllArray.count==0||huandengDic.count==0) {
         
-        
         [self loadHuandeng];
         
         [self loadNomalData];
     }
-    
-    
-    
 }
 
 
@@ -330,16 +326,16 @@
                                                                ContentImage:[UIImage imageNamed:@"icon-plus.png"]
                                                     highlightedContentImage:[UIImage imageNamed:@"icon-plus-highlighted.png"]];
         
-        AwesomeMenu *menu = [[AwesomeMenu alloc] initWithFrame:self.view.bounds startItem:startItem optionMenus:menus];
-        menu.delegate = self;
+        awesomeMenu = [[AwesomeMenu alloc] initWithFrame:self.navigationController.view.bounds startItem:startItem optionMenus:menus];
+        awesomeMenu.delegate = self;
         
-        menu.menuWholeAngle = M_PI_2;
-        menu.farRadius = 110.0f;
-        menu.endRadius = 100.0f;
-        menu.nearRadius = 90.0f;
-        menu.animationDuration = 0.4f;
-        menu.startPoint = CGPointMake(50.0,450.0);
-        [self.view addSubview:menu];
+        awesomeMenu.menuWholeAngle = -M_PI_2;
+        awesomeMenu.farRadius = 110.0f;
+        awesomeMenu.endRadius = 100.0f;
+        awesomeMenu.nearRadius = 90.0f;
+        awesomeMenu.animationDuration = 0.4f;
+        awesomeMenu.startPoint = CGPointMake(280,iPhone5?500.0:412.0);
+        [self.navigationController.view addSubview:awesomeMenu];
     }
 }
 
@@ -356,13 +352,24 @@
     }
 }
 #pragma mark - 关闭
+- (void)awesomeMenuWillAnimateClose:(AwesomeMenu *)menu
+{
+}
 - (void)awesomeMenuDidFinishAnimationClose:(AwesomeMenu *)menu {
     NSLog(@"Menu was closed!");
+    awesomeMenu.backgroundColor = [UIColor clearColor];
 }
 #pragma mark - 打开
 - (void)awesomeMenuDidFinishAnimationOpen:(AwesomeMenu *)menu {
     NSLog(@"Menu is open!");
+    
 }
+
+- (void)awesomeMenuWillAnimateOpen:(AwesomeMenu *)menu
+{
+    awesomeMenu.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.3];
+}
+
 
 #pragma mark-跳到fb页面
 -(void)ssTurntoFbWebview:(NSNotification*)sender{

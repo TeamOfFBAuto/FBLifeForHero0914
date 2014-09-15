@@ -7488,7 +7488,6 @@
 			baseConfigurationReference = 5C1EA72A18914F7EAC3FE954 /* Pods.xcconfig */;
 			buildSettings = {
 				ARCHS = armv7;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_IDENTITY = "iPhone Developer: Bing Jin (KMZ2AD5LZY)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Bing Jin (KMZ2AD5LZY)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -7522,7 +7521,6 @@
 			baseConfigurationReference = 5C1EA72A18914F7EAC3FE954 /* Pods.xcconfig */;
 			buildSettings = {
 				ARCHS = armv7;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_IDENTITY = "iPhone Developer: Bing Jin (KMZ2AD5LZY)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Bing Jin (KMZ2AD5LZY)";
 				FRAMEWORK_SEARCH_PATHS = (
