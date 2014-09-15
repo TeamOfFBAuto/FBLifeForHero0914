@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>10C66BDD-D88E-453B-AC87-4CB0D597A5F6</string>
+	<key>IDESourceControlProjectName</key>
+	<string>越野e族</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>A834CB1A-594F-42A4-B5AC-439AD846BBF2</key>
+		<string>https://github.com/FBLife/FBLife2.2.7.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>终极版 226/越野e族 2/越野e族.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>A834CB1A-594F-42A4-B5AC-439AD846BBF2</key>
+		<string>../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/FBLife/FBLife2.2.7.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>A834CB1A-594F-42A4-B5AC-439AD846BBF2</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>A834CB1A-594F-42A4-B5AC-439AD846BBF2</string>
+			<key>IDESourceControlWCCName</key>
+			<string>FBLife2.2</string>
+		</dict>
+	</array>
+</dict>
+</plist>

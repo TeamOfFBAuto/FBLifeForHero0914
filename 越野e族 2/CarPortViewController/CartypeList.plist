@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>3</key>
+	<array>
+		<string>全部</string>
+		<string>全尺寸</string>
+		<string>重型</string>
+		<string>大型</string>
+		<string>中型</string>
+		<string>小型</string>
+		<string>微型</string>
+	</array>
+	<key>2</key>
+	<array>
+		<string>全部国家</string>
+		<string>中国</string>
+		<string>德国</string>
+		<string>日本</string>
+		<string>美国</string>
+		<string>韩国</string>
+		<string>法国</string>
+		<string>英国</string>
+		<string>意大利</string>
+		<string>瑞典</string>
+		<string>其他</string>
+	</array>
+	<key>0</key>
+	<array>
+		<string>全部级别</string>
+		<string>全领域SUV</string>
+		<string>城市SUV</string>
+		<string>硬派SUV</string>
+		<string>跨界SUV</string>
+		<string>皮卡</string>
+	</array>
+	<key>1</key>
+	<array>
+		<string>全部价格</string>
+		<string>10万以下</string>
+		<string>10-20万</string>
+		<string>20-30万</string>
+		<string>30-50万</string>
+		<string>50-100万</string>
+		<string>100万以上</string>
+	</array>
+</dict>
+</plist>

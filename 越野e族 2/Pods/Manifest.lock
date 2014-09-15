@@ -1,0 +1,24 @@
+PODS:
+  - LBBlurredImage (0.2.0)
+  - MMDrawerController (0.5.6):
+    - MMDrawerController/Core
+    - MMDrawerController/MMDrawerBarButtonItem
+    - MMDrawerController/MMDrawerVisualStates
+    - MMDrawerController/Subclass
+  - MMDrawerController/Core (0.5.6)
+  - MMDrawerController/MMDrawerBarButtonItem (0.5.6):
+    - MMDrawerController/Core
+  - MMDrawerController/MMDrawerVisualStates (0.5.6):
+    - MMDrawerController/Core
+  - MMDrawerController/Subclass (0.5.6):
+    - MMDrawerController/Core
+
+DEPENDENCIES:
+  - LBBlurredImage (~> 0.2.0)
+  - MMDrawerController (~> 0.5.5)
+
+SPEC CHECKSUMS:
+  LBBlurredImage: 30cc42be977bbcece286d26d2d9c08b8be7f05e8
+  MMDrawerController: 4bae84535ca7a5f4cb55a66a001e6035c3571677
+
+COCOAPODS: 0.32.1

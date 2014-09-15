@@ -1,0 +1,59 @@
+//
+// Prefix header for all source files of the 'FbLife' target in the 'FbLife' project
+//
+
+#import <Availability.h>
+#ifndef __IPHONE_3_0
+#warning "This project uses features only available in iOS SDK 3.0 and later."
+#endif
+
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import <QuartzCore/QuartzCore.h>
+#import "personal.h"
+#import "zsnApi.h"
+#import "DefaultConstant.h"
+#import <QuartzCore/QuartzCore.h>
+
+#import "AsyncImageView.h"
+#import "JSONKit.h"
+#import "ASIHTTPRequest.h"
+#import"ATMHud.h"
+#import"LeveyTabBarController.h"
+#import"GrayPageControl.h"
+#import"AlertRePlaceView.h"
+#import"DraftDatabase.h"
+#import "MobClick.h"
+#import "AdvertisingModel.h"
+#import "MyViewController.h"
+
+#import "XTSideMenuManager.h"
+
+#import "SzkLoadData.h"
+
+
+#import "AppDelegate.h"
+#import "MyNavigationController.h"
+
+#import "ZkingAlert.h"
+
+
+#define iPhone5 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size) : NO)
+#define isHaveNetWork [[Reachability checkNetWork ]isEqualToString:@"NONetWork"]?YES:NO
+#define MY_MACRO_NAME ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0)
+#define IOS7DAOHANGLANBEIJING @"sliderBBSNavigationBarImage.png"
+#define IOS6DAOHANGLANBEIJING @"sliderBBSNavigationBarImage_ios6.png"
+#define TheNavigationBarBackgroundImg MY_MACRO_NAME?[UIImage imageNamed:IOS7DAOHANGLANBEIJING]:[UIImage imageNamed:@"ios7eva320_44.png"]
+
+#define BACK_DEFAULT_IMAGE @"fanhui_image"
+
+#define WRITE_DEFAULT_IMAGE @"default_write_pen_image.png"
+
+#define TITLEFONT [UIFont fontWithName:@"Helvetica" size:20]
+#endif
+
+
+
+
+
