@@ -36,6 +36,8 @@
 
 #import "ShareView.h"
 
+//百度地图
+#import "BMapKit.h"
 
 
 
@@ -67,6 +69,9 @@
     CTCallCenter *center;
     UIImageView *img_TEST;
     
+    
+    //百度地图
+    BMKMapManager* _mapManager;
 }
 
 @property (strong, nonatomic) UIWindow *window;

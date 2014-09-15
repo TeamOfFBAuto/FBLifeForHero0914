@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BMapKit.h"
 
-@interface GmapViewController : UIViewController
+@interface GmapViewController : MyViewController<BMKOfflineMapDelegate,NSFileManagerDelegate,BMKMapViewDelegate,BMKLocationServiceDelegate,UIAlertViewDelegate>
 
 @end

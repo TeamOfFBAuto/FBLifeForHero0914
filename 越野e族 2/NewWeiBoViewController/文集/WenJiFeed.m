@@ -14,9 +14,9 @@
 @synthesize title;
 @synthesize tags;
 @synthesize sortid;
-@synthesize public;
+@synthesize wpublic;
 @synthesize photo;
-@synthesize id;
+@synthesize wid;
 @synthesize face_small;
 @synthesize face_original;
 @synthesize dateline;
@@ -35,9 +35,9 @@
         self.dateline = [personal timechange:[conentJson objectForKey:@"dateline"]];
         self.face_original = [conentJson objectForKey:@"face_original"];
         self.face_small = [conentJson objectForKey:@"face_small"];
-        self.id = [conentJson objectForKey:@"id"];
+        self.wid = [conentJson objectForKey:@"id"];
         self.photo = [conentJson objectForKey:@"photo"];
-        self.public = [conentJson objectForKey:@"public"];
+        self.wpublic = [conentJson objectForKey:@"public"];
         self.sortid = [conentJson objectForKey:@"sortid"];
         self.tags = [conentJson objectForKey:@"tags"];
         self.title = [conentJson objectForKey:@"title"];

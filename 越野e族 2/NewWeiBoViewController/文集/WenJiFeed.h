@@ -19,9 +19,9 @@
 @property(nonatomic,strong)NSString * dateline;
 @property(nonatomic,strong)NSString * face_original;
 @property(nonatomic,strong)NSString * face_small;
-@property(nonatomic,strong)NSString * id;
+@property(nonatomic,strong)NSString * wid;
 @property(nonatomic,strong)NSString * photo;
-@property(nonatomic,strong)NSString * public;
+@property(nonatomic,strong)NSString * wpublic;
 @property(nonatomic,strong)NSString * sortid;
 @property(nonatomic,strong)NSString * tags;
 @property(nonatomic,strong)NSString * title;

@@ -183,6 +183,20 @@
     
     // Required
     
+    
+    
+    //百度地图
+    _mapManager = [[BMKMapManager alloc]init];
+    // 如果要关注网络及授权验证事件，请设定     generalDelegate参数
+    BOOL ret = [_mapManager start:@"CMjcQLZ5Ww7DNm60aTaqB4s3"  generalDelegate:nil];
+    
+    if (!ret) {
+        
+        NSLog(@"manager start failed!");
+    }
+    
+    
+    
     return YES;
 }
 #pragma mark - 创建本地推送
