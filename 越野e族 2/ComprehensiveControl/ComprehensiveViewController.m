@@ -524,7 +524,15 @@
     [[UIApplication sharedApplication]setStatusBarStyle:UIStatusBarStyleDefault animated:NO];
     
 //    self.navigationController.navigationBarHidden=YES;
+    awesomeMenu.hidden = NO;
+    [awesomeMenu setBackgroundColor:[UIColor clearColor]];
     
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    awesomeMenu.hidden = YES;
 }
 
 -(void)viewDidDisappear:(BOOL)animated{
@@ -532,8 +540,6 @@
     [super viewDidDisappear:YES];
     
     [XTSideMenuManager resetSideMenuRecognizerEnable:NO];
-
-
 }
 
 
