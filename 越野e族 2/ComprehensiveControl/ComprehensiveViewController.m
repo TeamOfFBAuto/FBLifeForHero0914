@@ -227,6 +227,18 @@
      addObserver:self selector:@selector(ssTurntoFbWebview:) name:@"TouchGuanggao" object:nil];
     
     
+    //refreshcompre
+    
+    [[NSNotificationCenter defaultCenter]
+     
+     addObserver:self selector:@selector(jiaSshuaxin) name:@"refreshcompre" object:nil];//点击了广告
+    
+    
+
+    
+    
+    
+    
     [self turnToguanggao];
 
     
@@ -241,6 +253,40 @@
     
     [self isShowAwesomeMenu];
 }
+
+#pragma mark-从广告页面回来刷新一下
+
+-(void)jiaSshuaxin{
+    
+    
+    
+    
+    [UIView animateWithDuration:0.6 animations:^{
+        mainTabView.contentOffset=CGPointMake(0, -60);
+        
+        mainTabView.contentOffset=CGPointMake(0, 0);
+        
+        
+    } completion:^(BOOL finished) {
+        
+        
+        
+    }
+     ];
+    
+    
+    if (normalinfoAllArray.count==0||huandengDic.count==0) {
+        
+        
+        [self loadHuandeng];
+        
+        [self loadNomalData];
+    }
+    
+    
+    
+}
+
 
 #pragma mark - 判断是否显示浮动框
 -(void)isShowAwesomeMenu

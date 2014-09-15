@@ -27,13 +27,13 @@
 
 
 -(void)viewWillAppear:(BOOL)animated{
-
+    
     [super viewWillAppear:YES];
     
     [[UIApplication sharedApplication] setStatusBarHidden:YES];
-
     
-
+    
+    
 }
 - (void)viewDidLoad
 {
@@ -43,7 +43,7 @@
     //1
     bigimageview=[[UIImageView alloc]initWithFrame:[UIScreen mainScreen].bounds];
     
-     bigimageview.backgroundColor=[UIColor colorWithRed:245/255.f green:244/255.f blue:242/255.f alpha:1];
+    bigimageview.backgroundColor=[UIColor colorWithRed:245/255.f green:244/255.f blue:242/255.f alpha:1];
     [self.view addSubview:bigimageview];
     //2
     iMagelogo=[[UIImageView alloc]init];
@@ -51,12 +51,12 @@
     iMagelogo.frame=CGRectMake(0,iPhone5? 568-217/2:480-217/2, 320, 217/2);
     
     iMagelogo.image=[UIImage imageNamed:@"ios7_fengmianlogo2.png"];
-
+    
     //3
     
     guanggao_image=[[AsyncImageView alloc]init];
     guanggao_image.alpha=0;
-
+    
     guanggao_image.delegate = self;
     
     [bigimageview addSubview:guanggao_image];
@@ -72,7 +72,7 @@
     [redview addSubview:img_TEST];
     NSTimer *theTimer;
     theTimer = [NSTimer scheduledTimerWithTimeInterval:0.5f target:self selector:@selector(changepic) userInfo:nil repeats:YES];
-
+    
     //加手势
     
     bigimageview.userInteractionEnabled=YES;
@@ -101,7 +101,7 @@
     
     
     [self loadGuanggaoData];
-
+    
     
     // Do any additional setup after loading the view.
 }
@@ -120,16 +120,16 @@
         NSDictionary *dic_userinfo=@{@"link": string_url};
         
         [[NSNotificationCenter defaultCenter]postNotificationName:@"TouchGuanggao" object:self userInfo:dic_userinfo];
-
+        
         
         
         [self back];
         
     }
-
-
     
-
+    
+    
+    
 }
 
 #pragma mark--请求数据的动画
@@ -190,16 +190,32 @@
     
     SzkLoadData *loaddata=[[SzkLoadData alloc]init];
     
-    NSString *str_search=[NSString stringWithFormat:@"http://cmsweb.fblife.com/data/app.ad.txt"];
+    
+    
+    int mytime=arc4random()%10000;
+    
+    NSString *str_search=[NSString stringWithFormat:@"http://cmsweb.fblife.com/data/app.ad.txt?updatetime=%d",mytime];
+    
+    
+    NSLog(@"在读。。。===%@",str_search);
+    
+    
+    
     
     [loaddata SeturlStr:str_search mytest:^(NSDictionary *dicinfo, int errcode) {
         
-        NSLog(@"xxx广告的数据===%@",dicinfo);
         
         
-            [wself refreshNormalWithDic:dicinfo];
-            
-            
+        
+        NSLog(@"在读。。。数据=%@",dicinfo);
+        
+        
+        
+        
+        
+        [wself refreshNormalWithDic:dicinfo];
+        
+        
         
     }];
     
@@ -215,7 +231,7 @@
      imgsrc = "http://img10.fblife.com/attachments/20140717/1405565006.jpg";
      url = "http://www.fblife.com";
      }
-
+     
      */
     string_url=[NSString stringWithFormat:@"%@",[dicc objectForKey:@"url"]];
     
@@ -232,20 +248,20 @@
 {
     
     
-        
-        
-        [img_TEST removeFromSuperview];
-        guanggao_image.image=iPhone5?guanggao_image.image:[self getSubImage:CGRectMake(0, (568-480)*2, 640,guanggao_image.image.size.height)];
-        
-        guanggao_image.frame=CGRectMake(0, 0, guanggao_image.image.size.width/2, guanggao_image.image.size.height/2+2);
-        
-        NSLog(@"appdelegate===仔仔到了图片");
-        [UIView beginAnimations:nil context:nil];
-        [UIView setAnimationDuration:1.0];
-        guanggao_image.alpha=1;
-        // iMagelogo.frame=CGRectMake(43/2,iPhone5? 413+44+40:413, 566/2, 85/2);
-        [UIView commitAnimations];
-        [self performSelector:@selector(back) withObject:nil afterDelay:4];
+    
+    
+    [img_TEST removeFromSuperview];
+    guanggao_image.image=iPhone5?guanggao_image.image:[self getSubImage:CGRectMake(0, (568-480)*2, 640,guanggao_image.image.size.height)];
+    
+    guanggao_image.frame=CGRectMake(0, 0, guanggao_image.image.size.width/2, guanggao_image.image.size.height/2+2);
+    
+    NSLog(@"appdelegate===仔仔到了图片");
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:1.0];
+    guanggao_image.alpha=1;
+    // iMagelogo.frame=CGRectMake(43/2,iPhone5? 413+44+40:413, 566/2, 85/2);
+    [UIView commitAnimations];
+    [self performSelector:@selector(back) withObject:nil afterDelay:4];
 }
 
 
@@ -269,10 +285,21 @@
 #pragma mark-返回
 
 -(void)back{
-  
-        [self dismissViewControllerAnimated: NO  completion:NULL];
-        [[UIApplication sharedApplication] setStatusBarHidden:NO];
-
+    
+    
+    
+    
+    [self dismissViewControllerAnimated: NO  completion:NULL];
+    [[UIApplication sharedApplication] setStatusBarHidden:NO];
+    
+    if (!isBack) {
+        isBack=!isBack;
+        
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"refreshcompre" object:self userInfo:nil];
+        
+    }
+    
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -284,21 +311,27 @@
 
 
 
+-(void)dealloc{
+    
+    
+    NSLog(@"");
+}
+
 -(void)seccesDownLoad:(UIImage *)image{
-
-
+    
+    
 }
 
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+ {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

@@ -20,6 +20,9 @@
     int flagofpage;
     
     NSString *string_url;
+    
+    BOOL isBack;
+
 
 }
 
