@@ -304,6 +304,7 @@
 {
     NSLog(@"Select the index : %d",idx);
     if (idx == 4) {//跳转到离线地图
+        //添加离线地图包资源 并显示地图
         GmapViewController *mapvc = [[GmapViewController alloc]init];
         [self.navigationController pushViewController:mapvc animated:YES];
     }
