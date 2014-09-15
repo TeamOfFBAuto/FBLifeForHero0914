@@ -287,6 +287,10 @@
 #pragma mark - 判断是否显示浮动框
 -(void)isShowAwesomeMenu
 {
+    
+    
+    
+    
     NSDate * now = [NSDate date];
     NSDate * begin_time = [zsnApi dateFromString:SHOW_TIME];
     NSDate * end_time = [zsnApi dateFromString:HIDDEN_TIME];
