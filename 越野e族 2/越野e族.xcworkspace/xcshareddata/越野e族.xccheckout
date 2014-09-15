@@ -5,36 +5,36 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>1D2D6BE4-EC1A-45C9-A562-4EA1976B7B7E</string>
+	<string>6CBA8D1A-D090-4B89-A47F-2FB9B172C037</string>
 	<key>IDESourceControlProjectName</key>
 	<string>越野e族</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>3FBA2ACA-E7FE-4C0A-9C63-EFB04B873FE0</key>
-		<string>https://github.com/TeamOfFBAuto/NewFinalFblife.git</string>
+		<key>20DD6999-467A-4CFB-91B4-A4B29C71113E</key>
+		<string>https://github.com/TeamOfFBAuto/FBLifeForHero0914.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>越野e族 2/越野e族.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>3FBA2ACA-E7FE-4C0A-9C63-EFB04B873FE0</key>
+		<key>20DD6999-467A-4CFB-91B4-A4B29C71113E</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/TeamOfFBAuto/NewFinalFblife.git</string>
+	<string>https://github.com/TeamOfFBAuto/FBLifeForHero0914.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>3FBA2ACA-E7FE-4C0A-9C63-EFB04B873FE0</string>
+	<string>20DD6999-467A-4CFB-91B4-A4B29C71113E</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>3FBA2ACA-E7FE-4C0A-9C63-EFB04B873FE0</string>
+			<string>20DD6999-467A-4CFB-91B4-A4B29C71113E</string>
 			<key>IDESourceControlWCCName</key>
-			<string>NewFinalFblife</string>
+			<string>FBLifeForHero0914</string>
 		</dict>
 	</array>
 </dict>
