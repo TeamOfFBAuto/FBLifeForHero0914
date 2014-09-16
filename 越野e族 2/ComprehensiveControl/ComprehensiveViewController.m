@@ -303,12 +303,11 @@
         
         for (int i = 0;i < images_array.count;i++)
         {
-            UIImage * image = [UIImage imageNamed:[images_array objectAtIndex:i]];
+            UIImage * image = [UIImage imageNamed:[images_array objectAtIndex:(images_array.count - 1) - i]];
             AwesomeMenuItem *starMenuItem1 = [[AwesomeMenuItem alloc] initWithImage:image
                                                                    highlightedImage:nil
                                                                        ContentImage:nil
                                                             highlightedContentImage:nil];
-
             
             [menus addObject:starMenuItem1];
             
