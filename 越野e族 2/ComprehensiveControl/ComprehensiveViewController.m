@@ -287,58 +287,76 @@
 #pragma mark - 判断是否显示浮动框
 -(void)isShowAwesomeMenu
 {
-    
-    
-    
-    
     NSDate * now = [NSDate date];
     NSDate * begin_time = [zsnApi dateFromString:SHOW_TIME];
     NSDate * end_time = [zsnApi dateFromString:HIDDEN_TIME];
     
     
+    
+    
     if ([now timeIntervalSinceDate:begin_time] > 0 && [now timeIntervalSinceDate:end_time]<0)
     {
-        UIImage *storyMenuItemImage = [UIImage imageNamed:@"bg-menuitem.png"];
-        UIImage *storyMenuItemImagePressed = [UIImage imageNamed:@"bg-menuitem-highlighted.png"];
-        UIImage *starImage = [UIImage imageNamed:@"icon-star.png"];
         
-        AwesomeMenuItem *starMenuItem1 = [[AwesomeMenuItem alloc] initWithImage:storyMenuItemImage
-                                                               highlightedImage:storyMenuItemImagePressed
-                                                                   ContentImage:starImage
-                                                        highlightedContentImage:nil];
-        AwesomeMenuItem *starMenuItem2 = [[AwesomeMenuItem alloc] initWithImage:storyMenuItemImage
-                                                               highlightedImage:storyMenuItemImagePressed
-                                                                   ContentImage:starImage
-                                                        highlightedContentImage:nil];
-        AwesomeMenuItem *starMenuItem3 = [[AwesomeMenuItem alloc] initWithImage:storyMenuItemImage
-                                                               highlightedImage:storyMenuItemImagePressed
-                                                                   ContentImage:starImage
-                                                        highlightedContentImage:nil];
-        AwesomeMenuItem *starMenuItem4 = [[AwesomeMenuItem alloc] initWithImage:storyMenuItemImage
-                                                               highlightedImage:storyMenuItemImagePressed
-                                                                   ContentImage:starImage
-                                                        highlightedContentImage:nil];
-        AwesomeMenuItem *starMenuItem5 = [[AwesomeMenuItem alloc] initWithImage:storyMenuItemImage
-                                                               highlightedImage:storyMenuItemImagePressed
-                                                                   ContentImage:starImage
-                                                        highlightedContentImage:nil];
+        NSArray * images_array = [NSArray arrayWithObjects:@"AwesomeMenu_zixun",@"AwesomeMenu_ditu",@"AwesomeMenu_richeng",@"AwesomeMenu_renwen",@"AwesomeMenu_shouce",nil];
         
-        NSArray *menus = [NSArray arrayWithObjects:starMenuItem1, starMenuItem2, starMenuItem3, starMenuItem4, starMenuItem5, nil];
+         NSMutableArray *menus = [NSMutableArray array];
         
-        AwesomeMenuItem *startItem = [[AwesomeMenuItem alloc] initWithImage:[UIImage imageNamed:@"bg-addbutton.png"]
-                                                           highlightedImage:[UIImage imageNamed:@"bg-addbutton-highlighted.png"]
-                                                               ContentImage:[UIImage imageNamed:@"icon-plus.png"]
-                                                    highlightedContentImage:[UIImage imageNamed:@"icon-plus-highlighted.png"]];
+        for (int i = 0;i < images_array.count;i++)
+        {
+            UIImage * image = [UIImage imageNamed:[images_array objectAtIndex:i]];
+            AwesomeMenuItem *starMenuItem1 = [[AwesomeMenuItem alloc] initWithImage:image
+                                                                   highlightedImage:nil
+                                                                       ContentImage:nil
+                                                            highlightedContentImage:nil];
+
+            
+            [menus addObject:starMenuItem1];
+            
+        }
+        
+        
+        
+//        UIImage *storyMenuItemImage = [UIImage imageNamed:@"bg-menuitem.png"];
+//        UIImage *storyMenuItemImagePressed = [UIImage imageNamed:@"bg-menuitem-highlighted.png"];
+//        UIImage *starImage = [UIImage imageNamed:@"icon-star.png"];
+//        
+//        AwesomeMenuItem *starMenuItem1 = [[AwesomeMenuItem alloc] initWithImage:storyMenuItemImage
+//                                                               highlightedImage:storyMenuItemImagePressed
+//                                                                   ContentImage:starImage
+//                                                        highlightedContentImage:nil];
+//        AwesomeMenuItem *starMenuItem2 = [[AwesomeMenuItem alloc] initWithImage:storyMenuItemImage
+//                                                               highlightedImage:storyMenuItemImagePressed
+//                                                                   ContentImage:starImage
+//                                                        highlightedContentImage:nil];
+//        AwesomeMenuItem *starMenuItem3 = [[AwesomeMenuItem alloc] initWithImage:storyMenuItemImage
+//                                                               highlightedImage:storyMenuItemImagePressed
+//                                                                   ContentImage:starImage
+//                                                        highlightedContentImage:nil];
+//        AwesomeMenuItem *starMenuItem4 = [[AwesomeMenuItem alloc] initWithImage:storyMenuItemImage
+//                                                               highlightedImage:storyMenuItemImagePressed
+//                                                                   ContentImage:starImage
+//                                                        highlightedContentImage:nil];
+//        AwesomeMenuItem *starMenuItem5 = [[AwesomeMenuItem alloc] initWithImage:storyMenuItemImage
+//                                                               highlightedImage:storyMenuItemImagePressed
+//                                                                   ContentImage:starImage
+//                                                        highlightedContentImage:nil];
+        
+//        NSArray *menus = [NSArray arrayWithObjects:starMenuItem1, starMenuItem2, starMenuItem3, starMenuItem4, starMenuItem5, nil];
+        
+        AwesomeMenuItem *startItem = [[AwesomeMenuItem alloc] initWithImage:[UIImage imageNamed:@"AwesomeMenu_addbutton"]
+                                                           highlightedImage:nil
+                                                               ContentImage:nil
+                                                    highlightedContentImage:nil];
         
         awesomeMenu = [[AwesomeMenu alloc] initWithFrame:self.navigationController.view.bounds startItem:startItem optionMenus:menus];
         awesomeMenu.delegate = self;
-        
-        awesomeMenu.menuWholeAngle = -M_PI_2;
+        awesomeMenu.menuWholeAngle = M_PI;
         awesomeMenu.farRadius = 110.0f;
         awesomeMenu.endRadius = 100.0f;
         awesomeMenu.nearRadius = 90.0f;
         awesomeMenu.animationDuration = 0.4f;
-        awesomeMenu.startPoint = CGPointMake(280,iPhone5?500.0:412.0);
+        awesomeMenu.rotateAddButton = NO;
+        awesomeMenu.startPoint = CGPointMake(160,iPhone5?500.0:412.0);
         [self.navigationController.view addSubview:awesomeMenu];
     }
 }
