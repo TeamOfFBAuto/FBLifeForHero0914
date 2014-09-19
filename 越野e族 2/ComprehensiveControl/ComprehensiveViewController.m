@@ -46,14 +46,13 @@
 ///浮动层开始显示的时间
 #define SHOW_TIME @"2014-09-11 19:10:00"
 ///浮动层消失的时间
-#define HIDDEN_TIME @"2014-09-19 11:32:00"
+#define HIDDEN_TIME @"2014-10-07 23:00:00"
 
 
 
 @interface ComprehensiveViewController (){
 
     UIBarButtonItem * spaceButton;
-    
     NSMutableArray *com_id_array;//幻灯的id
     NSMutableArray *com_type_array;//幻灯的type
     NSMutableArray *com_link_array;//幻灯的外链
@@ -284,20 +283,24 @@
 }
 
 
-#pragma mark - 判断是否显示浮动框
+#pragma mark - 判断是否显示浮动框(英雄会期间展示)
 -(void)isShowAwesomeMenu
 {
     NSDate * now = [NSDate date];
     NSDate * begin_time = [zsnApi dateFromString:SHOW_TIME];
     NSDate * end_time = [zsnApi dateFromString:HIDDEN_TIME];
+    
+    
+    if ([now timeIntervalSinceDate:begin_time] < 0)
+    {
+        return;
+    }
         
     if ([now timeIntervalSinceDate:begin_time] > 0 && [now timeIntervalSinceDate:end_time]<0)
     {
         
         NSArray * images_array = [NSArray arrayWithObjects:@"AwesomeMenu_gonggao",@"AwesomeMenu_ditu",@"AwesomeMenu_zhinan",nil];
-        
          NSMutableArray *menus = [NSMutableArray array];
-        
         for (int i = 0;i < images_array.count;i++)
         {
             UIImage * image = [UIImage imageNamed:[images_array objectAtIndex:(images_array.count - 1) - i]];
@@ -307,37 +310,7 @@
                                                             highlightedContentImage:nil];
             
             [menus addObject:starMenuItem1];
-            
         }
-        
-        
-        
-//        UIImage *storyMenuItemImage = [UIImage imageNamed:@"bg-menuitem.png"];
-//        UIImage *storyMenuItemImagePressed = [UIImage imageNamed:@"bg-menuitem-highlighted.png"];
-//        UIImage *starImage = [UIImage imageNamed:@"icon-star.png"];
-//        
-//        AwesomeMenuItem *starMenuItem1 = [[AwesomeMenuItem alloc] initWithImage:storyMenuItemImage
-//                                                               highlightedImage:storyMenuItemImagePressed
-//                                                                   ContentImage:starImage
-//                                                        highlightedContentImage:nil];
-//        AwesomeMenuItem *starMenuItem2 = [[AwesomeMenuItem alloc] initWithImage:storyMenuItemImage
-//                                                               highlightedImage:storyMenuItemImagePressed
-//                                                                   ContentImage:starImage
-//                                                        highlightedContentImage:nil];
-//        AwesomeMenuItem *starMenuItem3 = [[AwesomeMenuItem alloc] initWithImage:storyMenuItemImage
-//                                                               highlightedImage:storyMenuItemImagePressed
-//                                                                   ContentImage:starImage
-//                                                        highlightedContentImage:nil];
-//        AwesomeMenuItem *starMenuItem4 = [[AwesomeMenuItem alloc] initWithImage:storyMenuItemImage
-//                                                               highlightedImage:storyMenuItemImagePressed
-//                                                                   ContentImage:starImage
-//                                                        highlightedContentImage:nil];
-//        AwesomeMenuItem *starMenuItem5 = [[AwesomeMenuItem alloc] initWithImage:storyMenuItemImage
-//                                                               highlightedImage:storyMenuItemImagePressed
-//                                                                   ContentImage:starImage
-//                                                        highlightedContentImage:nil];
-        
-//        NSArray *menus = [NSArray arrayWithObjects:starMenuItem1, starMenuItem2, starMenuItem3, starMenuItem4, starMenuItem5, nil];
         
         AwesomeMenuItem *startItem = [[AwesomeMenuItem alloc] initWithImage:[UIImage imageNamed:@"AwesomeMenu_addbutton"]
                                                            highlightedImage:nil
@@ -354,9 +327,27 @@
         awesomeMenu.rotateAddButton = NO;
         awesomeMenu.startPoint = CGPointMake(160,iPhone5?520.0:432.0);
         [self.navigationController.view addSubview:awesomeMenu];
+        
     }
 }
 
+#pragma mark - 计时器，到预定时间，消失浮动框
+-(void)timeCount:(NSTimer *)sender
+{
+    NSDate * now = [NSDate date];
+    NSDate * end_time = [zsnApi dateFromString:HIDDEN_TIME];
+    if ([now timeIntervalSinceDate:end_time]>0)
+    {
+        if (awesomeMenu) {
+            for (int i = 0;i < awesomeMenu.subviews.count;i++) {
+                UIView * view = [awesomeMenu.subviews objectAtIndex:i];
+                [view removeFromSuperview];
+            }
+            [awesomeMenu removeFromSuperview];
+        }
+//        [timer invalidate];
+    }
+}
 
 #pragma mark - AWeSomeMenuDelegate
 #pragma mark - 点击的第几个

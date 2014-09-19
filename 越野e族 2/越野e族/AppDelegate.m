@@ -69,6 +69,13 @@
            // [alert show];
             dic_push =[[NSDictionary alloc]initWithDictionary:pushNotificationKey];
         }
+        
+        NSDictionary * locationNotificationKey = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
+        if (locationNotificationKey)
+        {
+            UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"%@",locationNotificationKey] message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+            [alertView show];
+        }
     }
     
     
@@ -180,7 +187,7 @@
     [self.window makeKeyAndVisible];
     
     [application cancelAllLocalNotifications];
-    [self createLocationNotificationWith:[NSArray arrayWithObjects:@"活动安排1",@"2014感受城市脉搏",nil] WithDate:[NSArray arrayWithObjects:@"2014-09-14 16:47:00",@"2014-09-16 16:09:00",nil]];
+    [self createLocationNotificationWith:[NSArray arrayWithObjects:@"活动安排1",@"2014感受城市脉搏",nil] WithDate:[NSArray arrayWithObjects:@"2014-09-19 16:26:00",@"2014-09-19 16:09:00",nil]];
     
     // Required
     
@@ -232,7 +239,7 @@
                 // 推送内容
                 notification.alertBody = aValue;
                 //显示在icon上的红色圈中的数子
-                notification.applicationIconBadgeNumber += 1;
+                notification.applicationIconBadgeNumber = 1;
                 //设置userinfo 方便在之后需要撤销的时候使用
                 NSDictionary *info = [NSDictionary dictionaryWithObject:aValue forKey:@"key"];
                 notification.userInfo = info;
