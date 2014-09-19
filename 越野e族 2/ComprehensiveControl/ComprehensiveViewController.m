@@ -196,7 +196,143 @@
     }
 }
 
+#pragma mark-外部来了推送走这里
 
+-(void) showOutput:(NSNotification *)note
+{
+    NSLog(@"%@",note);
+    
+    //    pushinfo===={
+    //        aps =     {
+    //            alert = "\U60a8\U6709[1]\U6761\U5f15\U7528\U56de\U590d\U901a\U77e5";
+    //            badge = 2;
+    //            sound = default;
+    //            tid = 3004018;
+    //            type = 21;
+    //        };
+    //    }
+    /*
+     有关消息推送的相关说明：
+     2 ：文集评论
+     3 ：画廊评论
+     4 ：微博评论
+     5 ：微博@
+     6 ：私信
+     7 ：文集@
+     9 ：关注
+     20 ：主贴回复
+     21 ：引用回复
+     */
+    NSDictionary *dic_pushinfo=(NSDictionary *)note.object;
+    
+    
+    int type=[[[dic_pushinfo objectForKey:@"aps"] objectForKey:@"type"] integerValue];
+    NSLog(@"dic===%@=======type====%d",dic_pushinfo,type);
+    switch (type) {
+        case 2:
+        {
+            [self pushtoxitongmessage];
+        }
+            break;
+        case 3:
+        {
+            [self pushtoxitongmessage];
+            
+        }
+            break;
+        case 4:
+        {
+            [self pushtoxitongmessage];
+            
+        }
+            break;
+        case 5:
+        {
+            [self pushtoxitongmessage];
+            
+        }
+            break;
+        case 6:
+        {
+            [self pushtopersonalmessage];
+        }
+            break;
+        case 7:
+        {
+            [self pushtoxitongmessage];
+            
+        }
+            break;
+        case 9:
+        {
+            [self pushtoxitongmessage];
+            
+        }
+            break;
+        case 20:
+        {
+            NSString *string_tid=[NSString stringWithFormat:@"%@",[[dic_pushinfo objectForKey:@"aps"] objectForKey:@"tid"]];
+            [self pushtobbsdetailwithid:string_tid];
+        }
+            break;
+        case 21:
+        {
+            NSString *string_tid=[NSString stringWithFormat:@"%@",[[dic_pushinfo objectForKey:@"aps"] objectForKey:@"tid"]];
+            [self pushtobbsdetailwithid:string_tid];
+            
+        }
+            break;
+            
+        case 30:
+        {
+            NSString *string_tid=[NSString stringWithFormat:@"%@",[[dic_pushinfo objectForKey:@"aps"] objectForKey:@"nid"]];
+            [self pushNewsdetailWithnid:string_tid];
+            
+            
+        }
+            break;
+            
+            
+        default:
+            break;
+    }
+    
+    
+    NSLog(@"==note==%@",dic_pushinfo);
+    
+}
+
+-(void)pushNewsdetailWithnid:(NSString *)string_nid{
+
+    newsdetailViewController *detail=[[newsdetailViewController alloc]init];
+    detail.string_Id=string_nid;
+    [self.navigationController pushViewController:detail animated:YES];
+
+}
+-(void)pushtobbsdetailwithid:(NSString *)string_id{
+    
+    
+    bbsdetailViewController *detaibbsvc=[[bbsdetailViewController alloc]init];
+    detaibbsvc.bbsdetail_tid=string_id;
+    [self.navigationController pushViewController:detaibbsvc animated:YES];
+    
+}
+
+-(void)pushtopersonalmessage{
+    
+    NSLog(@"跳到私信");
+    MessageViewController *_messageVc=[[MessageViewController alloc]init];
+    [self.navigationController pushViewController:_messageVc animated:YES];
+    
+    
+}
+
+-(void)pushtoxitongmessage{
+    NSLog(@"跳到fb通知");
+    FBNotificationViewController *_fbnotificVc=[[FBNotificationViewController alloc]init];
+    [self.navigationController pushViewController:_fbnotificVc animated:YES];
+    
+}
 
 
 - (void)viewDidLoad
@@ -204,6 +340,13 @@
     [super viewDidLoad];
     
 
+    //外部来了推送之后，会走这里
+    
+[[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(showOutput:) name:@"testpush" object:nil];
+
+    //判断新版本
+    
+    
     [self panduanIsNewVersion];
   NSLog(@"shizhongkun转化成MD5加密后的字符串为=%@",[self md5:@"shizhongkun"])  ;
     
@@ -284,7 +427,7 @@
 }
 
 
-#pragma mark - 判断是否显示浮动框
+#pragma mark - 判断是否显示浮动框,英雄会专题
 -(void)isShowAwesomeMenu
 {
     NSDate * now = [NSDate date];
@@ -1074,7 +1217,6 @@
     }
     
 
-
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -1100,9 +1242,9 @@
             }
             
             
-    
 
 }
+
 //NSString *thebuttontype,NSDictionary *dic,NSString * theWhateverid
 
 
