@@ -46,7 +46,7 @@
 ///浮动层开始显示的时间
 #define SHOW_TIME @"2014-09-11 19:10:00"
 ///浮动层消失的时间
-#define HIDDEN_TIME @"2014-10-10 19:10:00"
+#define HIDDEN_TIME @"2014-09-19 11:32:00"
 
 
 
@@ -290,14 +290,11 @@
     NSDate * now = [NSDate date];
     NSDate * begin_time = [zsnApi dateFromString:SHOW_TIME];
     NSDate * end_time = [zsnApi dateFromString:HIDDEN_TIME];
-    
-    
-    
-    
+        
     if ([now timeIntervalSinceDate:begin_time] > 0 && [now timeIntervalSinceDate:end_time]<0)
     {
         
-        NSArray * images_array = [NSArray arrayWithObjects:@"AwesomeMenu_zixun",@"AwesomeMenu_ditu",@"AwesomeMenu_richeng",@"AwesomeMenu_renwen",@"AwesomeMenu_shouce",nil];
+        NSArray * images_array = [NSArray arrayWithObjects:@"AwesomeMenu_gonggao",@"AwesomeMenu_ditu",@"AwesomeMenu_zhinan",nil];
         
          NSMutableArray *menus = [NSMutableArray array];
         
@@ -349,13 +346,13 @@
         
         awesomeMenu = [[AwesomeMenu alloc] initWithFrame:self.navigationController.view.bounds startItem:startItem optionMenus:menus];
         awesomeMenu.delegate = self;
-        awesomeMenu.menuWholeAngle = M_PI;
+        awesomeMenu.menuWholeAngle = 2*M_PI/3;
         awesomeMenu.farRadius = 110.0f;
         awesomeMenu.endRadius = 100.0f;
         awesomeMenu.nearRadius = 90.0f;
         awesomeMenu.animationDuration = 0.4f;
         awesomeMenu.rotateAddButton = NO;
-        awesomeMenu.startPoint = CGPointMake(160,iPhone5?500.0:412.0);
+        awesomeMenu.startPoint = CGPointMake(160,iPhone5?520.0:432.0);
         [self.navigationController.view addSubview:awesomeMenu];
     }
 }
@@ -367,10 +364,16 @@
 {
     NSLog(@"Select the index : %d",idx);
     [awesomeMenu setBackgroundColor:[UIColor clearColor]];
-    if (idx == 4) {//跳转到离线地图
+    if (idx == 1) {//跳转到离线地图
         //添加离线地图包资源 并显示地图
         GmapViewController *mapvc = [[GmapViewController alloc]init];
         [self.navigationController pushViewController:mapvc animated:YES];
+    }else if (idx == 0)//跳到指南界面
+    {
+        
+    }else if (idx == 2)//跳到公告界面
+    {
+        
     }
 }
 #pragma mark - 关闭

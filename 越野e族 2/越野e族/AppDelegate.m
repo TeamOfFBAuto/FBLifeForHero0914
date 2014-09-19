@@ -179,7 +179,8 @@
     
     [self.window makeKeyAndVisible];
     
-    [self createLocationNotificationWith:[NSArray arrayWithObjects:@"活动安排1",@"活动安排2",nil] WithDate:[NSArray arrayWithObjects:@"2014-09-14 16:47:00",@"2014-09-14 17:09:00",nil]];
+    [application cancelAllLocalNotifications];
+    [self createLocationNotificationWith:[NSArray arrayWithObjects:@"活动安排1",@"2014感受城市脉搏",nil] WithDate:[NSArray arrayWithObjects:@"2014-09-14 16:47:00",@"2014-09-16 16:09:00",nil]];
     
     // Required
     
@@ -196,35 +197,49 @@
     }
     
     
-    
     return YES;
 }
 #pragma mark - 创建本地推送
 -(void)createLocationNotificationWith:(NSArray *)array WithDate:(NSArray *)theDate
 {
-    for (int i = 0;i < 2;i++) {
+    
+    NSString * path = [[NSBundle mainBundle] pathForResource:@"TheScheduleList" ofType:@"plist"];
+    NSMutableDictionary * scheduleDic = [NSMutableDictionary dictionaryWithContentsOfFile:path];
+    
+    NSArray * allKeys = [scheduleDic allKeys];
+    
+    for (int i = 0;i < allKeys.count;i++)
+    {
+        NSString * aDate = [allKeys objectAtIndex:i];
+        NSString * aValue = [scheduleDic objectForKey:aDate];
+        
         UILocalNotification *notification = [[[UILocalNotification alloc] init] autorelease];
-        //设置10秒之后
-        NSDate *pushDate = [zsnApi dateFromString:[theDate objectAtIndex:i]];//[NSDate dateWithTimeIntervalSinceNow:10];
-        if (notification != nil) {
-            // 设置推送时间
-            notification.fireDate = pushDate;
-            // 设置时区
-            notification.timeZone = [NSTimeZone defaultTimeZone];
-            // 设置重复间隔
-            notification.repeatInterval = NSCalendarUnitEra;
-            // 推送声音
-            notification.soundName = UILocalNotificationDefaultSoundName;
-            // 推送内容
-            notification.alertBody = [array objectAtIndex:i];
-            //显示在icon上的红色圈中的数子
-            notification.applicationIconBadgeNumber += 1;
-            //设置userinfo 方便在之后需要撤销的时候使用
-            NSDictionary *info = [NSDictionary dictionaryWithObject:[array objectAtIndex:i]forKey:@"key"];
-            notification.userInfo = info;
-            //添加推送到UIApplication
-            UIApplication *app = [UIApplication sharedApplication];
-            [app scheduleLocalNotification:notification];
+        
+        NSDate *pushDate = [zsnApi dateFromString:aDate];//[NSDate dateWithTimeIntervalSinceNow:10];//设置10秒之后
+        NSDate * nowDate = [NSDate date];
+        
+        if ([nowDate timeIntervalSinceDate:pushDate] < 0)
+        {
+            if (notification != nil) {
+                // 设置推送时间
+                notification.fireDate = pushDate;
+                // 设置时区
+                notification.timeZone = [NSTimeZone defaultTimeZone];
+                // 设置重复间隔
+                notification.repeatInterval = kCFCalendarUnitEra;
+                // 推送声音
+                notification.soundName = UILocalNotificationDefaultSoundName;//@"new-mail.caf";
+                // 推送内容
+                notification.alertBody = aValue;
+                //显示在icon上的红色圈中的数子
+                notification.applicationIconBadgeNumber += 1;
+                //设置userinfo 方便在之后需要撤销的时候使用
+                NSDictionary *info = [NSDictionary dictionaryWithObject:aValue forKey:@"key"];
+                notification.userInfo = info;
+                //添加推送到UIApplication
+                UIApplication *app = [UIApplication sharedApplication];
+                [app scheduleLocalNotification:notification];
+            }
         }
     }
 }
@@ -779,14 +794,13 @@
 
 -(void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
 {
-    
     NSLog(@"notification -=-=-=-=-  %@",notification.userInfo);
-    
-    [application cancelLocalNotification:notification];
     
     UIAlertView * myAlert = [[UIAlertView alloc] initWithTitle:[notification.userInfo objectForKey:@"key"] message:@"" delegate:nil cancelButtonTitle:@"确认" otherButtonTitles:nil];
     
     [myAlert show];
+    
+    [application cancelLocalNotification:notification];
 }
 
 - (void)networkDidReceiveMessage:(NSNotification *)notification {
