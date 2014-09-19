@@ -1,5 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict/>
+<dict>
+	<key>2014-09-29 22:00:00</key>
+	<string>明日活动预告:英雄会大本营开营</string>
+	<key>2014-09-30 22:00:00</key>
+	<string>明日活动预告:与会人员集结、报到</string>
+	<key>2014-10-01 22:00:00</key>
+	<string>明日活动预告:与会人员集结、报到</string>
+	<key>2014-10-01 22:00:30</key>
+	<string>明日活动预告:英雄会环城大巡游</string>
+	<key>2014-10-01 22:01:00</key>
+	<string>明日活动预告:赛手及领队会议</string>
+	<key>2014-10-02 22:00:00</key>
+	<string>明日活动预告:2104阿拉善英雄会开幕式</string>
+	<key>2014-10-02 22:00:30</key>
+	<string>明日活动预告:首届腾格里沙漠挑战赛 预赛</string>
+	<key>2014-10-02 22:01:00</key>
+	<string>明日活动预告:第九届T3沙漠挑战赛 预赛</string>
+	<key>2014-10-02 22:01:30</key>
+	<string>明日活动预告:FB-Max 乌兰牧骑歌舞晚会</string>
+	<key>2014-10-03 22:00:00</key>
+	<string>明日活动预告:e族沙漠婚礼</string>
+	<key>2014-10-03 22:00:30</key>
+	<string>明日活动预告:舞林大会</string>
+	<key>2014-10-03 22:01:00</key>
+	<string>明日活动预告:帕杰罗英雄大会主题活动</string>
+	<key>2014-10-03 22:01:30</key>
+	<string>明日活动预告:中国牧马人大会主题活动</string>
+	<key>2014-10-03 22:02:00</key>
+	<string>明日活动预告:沙漠足球争霸赛／沙漠排球对抗赛／力大无穷拔河赛</string>
+	<key>2014-10-03 22:02:30</key>
+	<string>明日活动预告:赛手及领队会议</string>
+	<key>2014-10-03 22:03:00</key>
+	<string>明日活动预告:FB-Max会员晚会</string>
+	<key>2014-10-04 22:00:00</key>
+	<string>明日活动预告:首届腾格里沙漠挑战赛 决赛</string>
+	<key>2014-10-04 22:00:30</key>
+	<string>明日活动预告:武林大会</string>
+	<key>2014-10-04 22:01:00</key>
+	<string>明日活动预告:沙漠足球争霸赛／沙漠排球对抗赛／力大无穷拔河赛</string>
+	<key>2014-10-04 22:01:30</key>
+	<string>明日活动预告:赛手及领队会议</string>
+	<key>2014-10-04 22:02:00</key>
+	<string>明日活动预告:FB-Max慈善晚会</string>
+	<key>2014-10-05 22:00:00</key>
+	<string>明日活动预告:T3沙漠挑战赛决赛</string>
+	<key>2014-10-05 22:00:30</key>
+	<string>明日活动预告:FB-Max 颁奖／电音晚会</string>
+	<key>2014-10-06 22:00:00</key>
+	<string>明日活动预告:阿拉善左旗－右旗秘境穿越之旅</string>
+	<key>2014-10-06 22:00:30</key>
+	<string>明日活动预告:英雄会大本营闭营</string>
+	<key>2014-9-19 16:20:00</key>
+	<string>明日活动预告:英雄会大本营开营</string>
+</dict>
 </plist>
