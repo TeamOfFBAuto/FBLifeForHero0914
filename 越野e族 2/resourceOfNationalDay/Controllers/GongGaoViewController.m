@@ -13,12 +13,13 @@
 @end
 
 @implementation GongGaoViewController
-
+@synthesize myWebView = _myWebView;
+@synthesize html_name = _html_name;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        
     }
     return self;
 }
@@ -26,8 +27,46 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    _myWebView = [[UIWebView alloc] initWithFrame:CGRectMake(0,0,320,(iPhone5?568:480)-64)];
+    _myWebView.delegate = self;
+    [self.view addSubview:_myWebView];
+    
+    NSString* path = [[NSBundle mainBundle] pathForResource:_html_name ofType:@"html" inDirectory:@"notice_wap1"];
+    NSURL* url = [NSURL fileURLWithPath:path];
+    NSURLRequest* request = [NSURLRequest requestWithURL:url] ;
+    [_myWebView loadRequest:request];
+    
+    
+    
+    
+//    NSString *filePath = [[NSBundle mainBundle]pathForResource:@"index" ofType:@"html"];
+//    NSString *htmlString = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
+//    [_myWebView loadHTMLString:htmlString baseURL:[NSURL URLWithString:filePath]];
+    
 }
+#pragma mark - UIWebViewDelegate
+-(void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    NSString *height_str= [webView stringByEvaluatingJavaScriptFromString: @"document.body.scrollHeight"];
+    float height = [height_str floatValue];
+    _myWebView.scrollView.contentSize = CGSizeMake(320,height);
+    
+}
+
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+{
+    
+//    if (![[request.URL absoluteString] hasPrefix:@"file:///"] && navigationType == UIWebViewNavigationTypeLinkClicked)
+//    {
+//        NSLog(@"request ----  %@  ---%@",request,[request.URL absoluteString]);
+//        [webView loadRequest:request];
+//        
+//    }
+    
+    return YES;
+}
+
 
 - (void)didReceiveMemoryWarning
 {

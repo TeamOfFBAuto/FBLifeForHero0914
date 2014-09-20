@@ -9,5 +9,13 @@
 #import <UIKit/UIKit.h>
 
 @interface GongGaoViewController : UIViewController<UIWebViewDelegate>
+{
+    
+}
+
+
+@property(nonatomic,strong)UIWebView * myWebView;
+
+@property(nonatomic,strong)NSString * html_name;
 
 @end

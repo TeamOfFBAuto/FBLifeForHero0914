@@ -42,6 +42,7 @@
 #import <CommonCrypto/CommonDigest.h> // Need to import for CC_MD5 access
 
 #import "GmapViewController.h"//地图
+#import "GongGaoViewController.h"
 
 ///浮动层开始显示的时间
 #define SHOW_TIME @"2014-09-11 19:10:00"
@@ -532,10 +533,14 @@
         [self.navigationController pushViewController:mapvc animated:YES];
     }else if (idx == 0)//跳到指南界面
     {
-        
+        GongGaoViewController * gongGao = [[GongGaoViewController alloc] init];
+        gongGao.html_name = @"guide";
+        [self.navigationController pushViewController:gongGao animated:YES];
     }else if (idx == 2)//跳到公告界面
     {
-        
+        GongGaoViewController * gongGao = [[GongGaoViewController alloc] init];
+        gongGao.html_name = @"index";
+        [self.navigationController pushViewController:gongGao animated:YES];
     }
 }
 #pragma mark - 关闭
