@@ -70,11 +70,17 @@
             dic_push =[[NSDictionary alloc]initWithDictionary:pushNotificationKey];
         }
         
-        NSDictionary * locationNotificationKey = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
-        if (locationNotificationKey)
+        UILocalNotification * localNotification = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
+    
+        
+        
+        if (localNotification)
         {
-            UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"%@",locationNotificationKey] message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
-            [alertView show];
+            UIAlertView * myAlert = [[UIAlertView alloc] initWithTitle:[localNotification.userInfo objectForKey:@"key"] message:@"" delegate:nil cancelButtonTitle:@"确认" otherButtonTitles:nil];
+            
+            [myAlert show];
+            
+            [application cancelLocalNotification:localNotification];
         }
     }
     
