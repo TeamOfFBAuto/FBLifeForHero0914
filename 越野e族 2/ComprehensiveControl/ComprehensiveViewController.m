@@ -201,6 +201,11 @@
 {
     NSLog(@"%@",note);
     
+//    
+//    UIAlertView *alertV=[[UIAlertView alloc]initWithTitle:@"waibu" message:[NSString stringWithFormat:@"%@",note] delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil, nil];
+//    [alertV show];
+   
+    
     //    pushinfo===={
     //        aps =     {
     //            alert = "\U60a8\U6709[1]\U6761\U5f15\U7528\U56de\U590d\U901a\U77e5";
@@ -284,6 +289,10 @@
             
         case 30:
         {
+            
+            
+        
+            
             NSString *string_tid=[NSString stringWithFormat:@"%@",[[dic_pushinfo objectForKey:@"aps"] objectForKey:@"nid"]];
             [self pushNewsdetailWithnid:string_tid];
             
@@ -306,6 +315,8 @@
     newsdetailViewController *detail=[[newsdetailViewController alloc]init];
     detail.string_Id=string_nid;
     [self.navigationController pushViewController:detail animated:YES];
+    awesomeMenu.hidden = YES;
+
 
 }
 -(void)pushtobbsdetailwithid:(NSString *)string_id{
@@ -339,9 +350,6 @@
     [super viewDidLoad];
     
 
-    //外部来了推送之后，会走这里
-    
-[[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(showOutput:) name:@"testpush" object:nil];
 
     //判断新版本
     
@@ -349,7 +357,7 @@
     [self panduanIsNewVersion];
   NSLog(@"shizhongkun转化成MD5加密后的字符串为=%@",[self md5:@"shizhongkun"])  ;
     
-    
+
     
     isloadsuccess = YES;
     
@@ -384,6 +392,9 @@
     [self turnToguanggao];
 
     
+    
+    
+    
     self.view.backgroundColor=[UIColor whiteColor];
     
     huandengDic=[NSDictionary dictionary];
@@ -393,7 +404,15 @@
     
     
     
-    [self isShowAwesomeMenu];
+    
+    
+    //外部来了推送之后，会走这里
+    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(showOutput:) name:@"testpush" object:nil];
+
+    
+    
+    
 }
 
 #pragma mark-从广告页面回来刷新一下
@@ -426,13 +445,18 @@
 }
 
 
-<<<<<<< HEAD
 #pragma mark - 判断是否显示浮动框,英雄会专题
-=======
 #pragma mark - 判断是否显示浮动框(英雄会期间展示)
->>>>>>> FETCH_HEAD
 -(void)isShowAwesomeMenu
 {
+    
+    if (awesomeMenu)
+    {
+        awesomeMenu.hidden = NO;
+        [awesomeMenu setBackgroundColor:[UIColor clearColor]];
+        return;
+    }
+    
     NSDate * now = [NSDate date];
     NSDate * begin_time = [zsnApi dateFromString:SHOW_TIME];
     NSDate * end_time = [zsnApi dateFromString:HIDDEN_TIME];
@@ -558,7 +582,6 @@
 
 
     GuanggaoViewController *_guanggaoVC=[[GuanggaoViewController alloc]init];
-    [[UIApplication sharedApplication] setStatusBarHidden:NO ];
 
     [self presentViewController:_guanggaoVC animated:NO completion:NULL];
 
@@ -616,7 +639,7 @@
     UIImageView *imgLogo=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"logonewz113_46.png"]];
     
     self.navigationItem.titleView=imgLogo;
-    
+
 
 
 }
@@ -678,13 +701,11 @@
     [XTSideMenuManager resetSideMenuRecognizerEnable:YES];
     
     
-    [[UIApplication sharedApplication] setStatusBarHidden:NO];
     
     [[UIApplication sharedApplication]setStatusBarStyle:UIStatusBarStyleDefault animated:NO];
     
 //    self.navigationController.navigationBarHidden=YES;
-    awesomeMenu.hidden = NO;
-    [awesomeMenu setBackgroundColor:[UIColor clearColor]];
+    [self isShowAwesomeMenu];
     
 }
 

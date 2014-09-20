@@ -57,18 +57,31 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [self judgeversionandclean];
-    
+    [[UIApplication sharedApplication] setStatusBarHidden:NO];
+
     //友盟分享平台
     
     if (launchOptions) {
         
         
+        
+        
+        
         NSDictionary* pushNotificationKey = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
         if (pushNotificationKey) {
             
+            
+          
             // [alert show];
             dic_push =[[NSDictionary alloc]initWithDictionary:pushNotificationKey];
+            
+            
+            
+//            UIAlertView *myalert=[[UIAlertView alloc]initWithTitle:nil message:[NSString stringWithFormat:@"%@",dic_push] delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil, nil];
+//            
+//            [myalert show];
         }
+        
         
         NSDictionary * locationNotificationKey = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
         if (locationNotificationKey)
@@ -185,6 +198,16 @@
     //    [self keepAlive:[[NSNumber alloc] initWithInt:100]];
     
     [self.window makeKeyAndVisible];
+    
+    
+    
+    //推送不烦你 apns
+    
+    [[NSNotificationCenter defaultCenter]
+     postNotificationName:@"testpush" object:dic_push];
+    
+    //内部推送
+    
     
     [application cancelAllLocalNotifications];
     [self createLocationNotificationWith:[NSArray arrayWithObjects:@"活动安排1",@"2014感受城市脉搏",nil] WithDate:[NSArray arrayWithObjects:@"2014-09-19 16:26:00",@"2014-09-19 16:09:00",nil]];
@@ -568,8 +591,7 @@
         //  [_leveyTabBarController setSelectedIndex:4];
         
         self.window.rootViewController=_leveyTabBarController;
-        [[NSNotificationCenter defaultCenter]
-         postNotificationName:@"testpush" object:dic_push];
+      
         
         
         
@@ -1262,6 +1284,11 @@ static int numberof = 0;
     UINavigationController * pushNav = [[UINavigationController alloc] initWithRootViewController:_pushViewController];
     
     pushNav.view.frame = CGRectMake(320,0,320,iPhone5?568:480);
+    
+    
+    [[NSNotificationCenter defaultCenter]
+     postNotificationName:@"testpush" object:dic_push];
+
     
     //  [self.window.rootViewController.view addSubview:pushNav.view];
     

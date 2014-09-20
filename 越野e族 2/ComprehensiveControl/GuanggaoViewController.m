@@ -30,7 +30,7 @@
     
     [super viewWillAppear:YES];
     
-    [[UIApplication sharedApplication] setStatusBarHidden:YES];
+    [[UIApplication sharedApplication] setStatusBarHidden:NO];
     
     
     
