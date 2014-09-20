@@ -30,7 +30,7 @@
     
     [super viewWillAppear:YES];
     
-    [[UIApplication sharedApplication] setStatusBarHidden:YES];
+    [[UIApplication sharedApplication] setStatusBarHidden:NO];
     
     
     
@@ -201,7 +201,6 @@
     
     
     
-    
     [loaddata SeturlStr:str_search mytest:^(NSDictionary *dicinfo, int errcode) {
         
         
@@ -209,17 +208,32 @@
         
         NSLog(@"在读。。。数据=%@",dicinfo);
         
+        if (errcode==0&&dicinfo.count!=0) {
+            
+            
+            
+            [wself refreshNormalWithDic:dicinfo];
+
+        }else{
+        
+        
+            sleep(1);
+            
+            [wself loadGuanggaoData];
+        
+        }
         
         
         
-        
-        [wself refreshNormalWithDic:dicinfo];
         
         
         
     }];
     
+    
     NSLog(@"广告的接口=。。=%@",str_search);
+    
+    
     
     
 }
@@ -298,7 +312,6 @@
         [[NSNotificationCenter defaultCenter]postNotificationName:@"refreshcompre" object:self userInfo:nil];
         
     }
-    
     
 }
 

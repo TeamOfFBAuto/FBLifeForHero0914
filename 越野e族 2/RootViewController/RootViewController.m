@@ -482,7 +482,7 @@
     
     self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
     
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(showOutput:) name:@"testpush" object:nil];
+  //  [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(showOutput:) name:@"testpush" object:nil];
     
     
     

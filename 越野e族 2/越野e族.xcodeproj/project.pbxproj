@@ -1246,6 +1246,7 @@
 		56A834E019860951005EE42F /* star_unselected_image-1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56A834D919860951005EE42F /* star_unselected_image-1@2x.png */; };
 		56A834E119860951005EE42F /* zhuanfa_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56A834DA19860951005EE42F /* zhuanfa_image@2x.png */; };
 		56A834E219860951005EE42F /* zhuanfa_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56A834DA19860951005EE42F /* zhuanfa_image@2x.png */; };
+		56AE4B1E19CD67FF004AA0BA /* GongGaoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56AE4B1D19CD67FF004AA0BA /* GongGaoViewController.m */; };
 		56AE78D6199875AC00FE869E /* bottom_fenye_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56AE78D5199875AC00FE869E /* bottom_fenye_image@2x.png */; };
 		56AE78D7199875AC00FE869E /* bottom_fenye_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56AE78D5199875AC00FE869E /* bottom_fenye_image@2x.png */; };
 		56AE78E51998E37000FE869E /* SliderSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56AE78E41998E37000FE869E /* SliderSearchViewController.m */; };
@@ -2810,6 +2811,8 @@
 		56A834D819860951005EE42F /* love_unselected_image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "love_unselected_image@2x.png"; sourceTree = "<group>"; };
 		56A834D919860951005EE42F /* star_unselected_image-1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star_unselected_image-1@2x.png"; sourceTree = "<group>"; };
 		56A834DA19860951005EE42F /* zhuanfa_image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zhuanfa_image@2x.png"; sourceTree = "<group>"; };
+		56AE4B1C19CD67FF004AA0BA /* GongGaoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GongGaoViewController.h; sourceTree = "<group>"; };
+		56AE4B1D19CD67FF004AA0BA /* GongGaoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GongGaoViewController.m; sourceTree = "<group>"; };
 		56AE78D5199875AC00FE869E /* bottom_fenye_image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bottom_fenye_image@2x.png"; sourceTree = "<group>"; };
 		56AE78E31998E37000FE869E /* SliderSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SliderSearchViewController.h; sourceTree = "<group>"; };
 		56AE78E41998E37000FE869E /* SliderSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SliderSearchViewController.m; sourceTree = "<group>"; };
@@ -5682,6 +5685,8 @@
 		56AE4B1B19CD6774004AA0BA /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				56AE4B1C19CD67FF004AA0BA /* GongGaoViewController.h */,
+				56AE4B1D19CD67FF004AA0BA /* GongGaoViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -7281,6 +7286,7 @@
 				19E29912197145A3007B36E0 /* ShoucangSeg.m in Sources */,
 				566E7776185EE71100BB88C5 /* carinfoViewController.m in Sources */,
 				566E7971185EE75D00BB88C5 /* QBImagePickerVideoInfoView.m in Sources */,
+				56AE4B1E19CD67FF004AA0BA /* GongGaoViewController.m in Sources */,
 				563364851862E7490069F838 /* BBSViewController.m in Sources */,
 				563365461862E7510069F838 /* QrcodeViewController.m in Sources */,
 				566E78D8185EE75D00BB88C5 /* ASINetworkQueue.m in Sources */,
@@ -7604,7 +7610,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/越野e族/社会化分享/UMSocial_";
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "663bce84-31f1-462e-a50d-ebbe7bacfbf5";
+				PROVISIONING_PROFILE = "db5d35fa-89e9-42b3-ad18-97734e7f3484";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -7639,7 +7645,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/越野e族/社会化分享/UMSocial_";
-				PROVISIONING_PROFILE = "663bce84-31f1-462e-a50d-ebbe7bacfbf5";
+				PROVISIONING_PROFILE = "db5d35fa-89e9-42b3-ad18-97734e7f3484";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -7672,7 +7678,7 @@
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "663bce84-31f1-462e-a50d-ebbe7bacfbf5";
+				PROVISIONING_PROFILE = "db5d35fa-89e9-42b3-ad18-97734e7f3484";
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 				VALID_ARCHS = "armv7s armv7 arm64";
 				WRAPPER_EXTENSION = app;
@@ -7706,7 +7712,7 @@
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "663bce84-31f1-462e-a50d-ebbe7bacfbf5";
+				PROVISIONING_PROFILE = "db5d35fa-89e9-42b3-ad18-97734e7f3484";
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 				VALID_ARCHS = "armv7s armv7 arm64";
 				WRAPPER_EXTENSION = app;
