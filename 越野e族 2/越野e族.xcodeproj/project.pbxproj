@@ -1403,14 +1403,16 @@
 		56E986A4197A6B540093048F /* GscanfViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56E986A3197A6B540093048F /* GscanfViewController.m */; };
 		56E986A5197A6B540093048F /* GscanfViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56E986A3197A6B540093048F /* GscanfViewController.m */; };
 		D1053AF35B494E72808A6A62 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C0FBDFDAFFD248A5BC23061A /* libPods.a */; };
-		E313114819C7059F00D9ECB2 /* beijing_131.dat in Resources */ = {isa = PBXBuildFile; fileRef = E313114519C7059F00D9ECB2 /* beijing_131.dat */; };
-		E313114919C7059F00D9ECB2 /* DVUserdat.cfg in Resources */ = {isa = PBXBuildFile; fileRef = E313114619C7059F00D9ECB2 /* DVUserdat.cfg */; };
-		E313114C19C705B600D9ECB2 /* test.png in Resources */ = {isa = PBXBuildFile; fileRef = E313114B19C705B600D9ECB2 /* test.png */; };
 		E313118C19C705D400D9ECB2 /* libbaidumapapi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E313118A19C705D400D9ECB2 /* libbaidumapapi.a */; };
 		E313118D19C705D400D9ECB2 /* mapapi.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E313118B19C705D400D9ECB2 /* mapapi.bundle */; };
 		E313118F19C70F7A00D9ECB2 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E313118E19C70F7900D9ECB2 /* OpenGLES.framework */; };
 		E313119119C70F9B00D9ECB2 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E313119019C70F9B00D9ECB2 /* Security.framework */; };
-		E38C349D19C6884500060DB2 /* GmapViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = E38C349C19C6884500060DB2 /* GmapViewController.mm */; };
+		E31D80E719CEC55A00C6D8A8 /* GScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = E31D80E619CEC55A00C6D8A8 /* GScrollView.m */; };
+		E33DF92719CEEE070043D3A3 /* big5s.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E33DF92619CEEE070043D3A3 /* big5s.jpg */; };
+		E33DF92919CEEE440043D3A3 /* big4s.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E33DF92819CEEE440043D3A3 /* big4s.jpg */; };
+		E33DF92F19CF05170043D3A3 /* center_point@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E33DF92E19CF05170043D3A3 /* center_point@2x.png */; };
+		E38C349D19C6884500060DB2 /* GmapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E38C349C19C6884500060DB2 /* GmapViewController.m */; };
+		E3C231AD19C7E97900624C0C /* GtttsetViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = E3C231AC19C7E97900624C0C /* GtttsetViewController.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -3008,9 +3010,6 @@
 		56E986A3197A6B540093048F /* GscanfViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GscanfViewController.m; sourceTree = "<group>"; };
 		5C1EA72A18914F7EAC3FE954 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		C0FBDFDAFFD248A5BC23061A /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		E313114519C7059F00D9ECB2 /* beijing_131.dat */ = {isa = PBXFileReference; lastKnownFileType = file; path = beijing_131.dat; sourceTree = "<group>"; };
-		E313114619C7059F00D9ECB2 /* DVUserdat.cfg */ = {isa = PBXFileReference; lastKnownFileType = file; path = DVUserdat.cfg; sourceTree = "<group>"; };
-		E313114B19C705B600D9ECB2 /* test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test.png; sourceTree = "<group>"; };
 		E313114F19C705D400D9ECB2 /* BMapKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMapKit.h; sourceTree = "<group>"; };
 		E313115019C705D400D9ECB2 /* BMKActionPaopaoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMKActionPaopaoView.h; sourceTree = "<group>"; };
 		E313115119C705D400D9ECB2 /* BMKAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMKAnnotation.h; sourceTree = "<group>"; };
@@ -3074,8 +3073,15 @@
 		E313118B19C705D400D9ECB2 /* mapapi.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = mapapi.bundle; sourceTree = "<group>"; };
 		E313118E19C70F7900D9ECB2 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		E313119019C70F9B00D9ECB2 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		E31D80E519CEC55A00C6D8A8 /* GScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GScrollView.h; sourceTree = "<group>"; };
+		E31D80E619CEC55A00C6D8A8 /* GScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GScrollView.m; sourceTree = "<group>"; };
+		E33DF92619CEEE070043D3A3 /* big5s.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = big5s.jpg; sourceTree = "<group>"; };
+		E33DF92819CEEE440043D3A3 /* big4s.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = big4s.jpg; sourceTree = "<group>"; };
+		E33DF92E19CF05170043D3A3 /* center_point@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "center_point@2x.png"; sourceTree = "<group>"; };
 		E38C349B19C6884500060DB2 /* GmapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GmapViewController.h; sourceTree = "<group>"; };
-		E38C349C19C6884500060DB2 /* GmapViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GmapViewController.mm; sourceTree = "<group>"; };
+		E38C349C19C6884500060DB2 /* GmapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GmapViewController.m; sourceTree = "<group>"; };
+		E3C231AB19C7E97900624C0C /* GtttsetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GtttsetViewController.h; sourceTree = "<group>"; };
+		E3C231AC19C7E97900624C0C /* GtttsetViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GtttsetViewController.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -3211,8 +3217,12 @@
 				190F03491977AB0300EC6C47 /* GuanggaoViewController.h */,
 				190F034A1977AB0300EC6C47 /* GuanggaoViewController.m */,
 				E38C349B19C6884500060DB2 /* GmapViewController.h */,
-				E38C349C19C6884500060DB2 /* GmapViewController.mm */,
-				E313114A19C705B600D9ECB2 /* mapImages */,
+				E38C349C19C6884500060DB2 /* GmapViewController.m */,
+				E31D80E519CEC55A00C6D8A8 /* GScrollView.h */,
+				E31D80E619CEC55A00C6D8A8 /* GScrollView.m */,
+				E3C231AB19C7E97900624C0C /* GtttsetViewController.h */,
+				E3C231AC19C7E97900624C0C /* GtttsetViewController.mm */,
+				E3CE859F19C98B2D006989AF /* imagesOfMap */,
 			);
 			path = ComprehensiveControl;
 			sourceTree = "<group>";
@@ -4567,7 +4577,6 @@
 			isa = PBXGroup;
 			children = (
 				E313114D19C705D400D9ECB2 /* BaiduMap */,
-				E313114319C7059F00D9ECB2 /* vmp */,
 				56A425BC19C589E000DBCFA3 /* resourceOfNationalDay */,
 				5643876F1963EAF800152B2D /* NewClassOfZSNControl */,
 				19B8117D19613A100083EEE3 /* ComprehensiveControl */,
@@ -5971,39 +5980,6 @@
 			path = "扫一扫";
 			sourceTree = "<group>";
 		};
-		E313114319C7059F00D9ECB2 /* vmp */ = {
-			isa = PBXGroup;
-			children = (
-				E313114419C7059F00D9ECB2 /* h */,
-			);
-			path = vmp;
-			sourceTree = "<group>";
-		};
-		E313114419C7059F00D9ECB2 /* h */ = {
-			isa = PBXGroup;
-			children = (
-				E313114519C7059F00D9ECB2 /* beijing_131.dat */,
-				E313114619C7059F00D9ECB2 /* DVUserdat.cfg */,
-				E313114719C7059F00D9ECB2 /* traffic */,
-			);
-			path = h;
-			sourceTree = "<group>";
-		};
-		E313114719C7059F00D9ECB2 /* traffic */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = traffic;
-			sourceTree = "<group>";
-		};
-		E313114A19C705B600D9ECB2 /* mapImages */ = {
-			isa = PBXGroup;
-			children = (
-				E313114B19C705B600D9ECB2 /* test.png */,
-			);
-			path = mapImages;
-			sourceTree = "<group>";
-		};
 		E313114D19C705D400D9ECB2 /* BaiduMap */ = {
 			isa = PBXGroup;
 			children = (
@@ -6078,6 +6054,16 @@
 				E313118919C705D400D9ECB2 /* BMKVersion.h */,
 			);
 			path = inc;
+			sourceTree = "<group>";
+		};
+		E3CE859F19C98B2D006989AF /* imagesOfMap */ = {
+			isa = PBXGroup;
+			children = (
+				E33DF92E19CF05170043D3A3 /* center_point@2x.png */,
+				E33DF92819CEEE440043D3A3 /* big4s.jpg */,
+				E33DF92619CEEE070043D3A3 /* big5s.jpg */,
+			);
+			path = imagesOfMap;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -6192,7 +6178,6 @@
 				566E7A4E185EE80100BB88C5 /* currentPageDot@2x.png in Resources */,
 				563022AA1979250C00F85B11 /* atlas_zan-2@2x.png in Resources */,
 				5633652B1862E7510069F838 /* 2-17-26@2x.png in Resources */,
-				E313114819C7059F00D9ECB2 /* beijing_131.dat in Resources */,
 				563364A61862E7490069F838 /* bbsshouye2-640-84.png in Resources */,
 				563364821862E7490069F838 /* zuijinliulan_s.png in Resources */,
 				5633635D1862E68D0069F838 /* ios7_erweima5959@2x.png in Resources */,
@@ -6283,6 +6268,7 @@
 				563365F31862E7590069F838 /* bbsselect@2x.png in Resources */,
 				566E77A4185EE71100BB88C5 /* carlineios7@2x.png in Resources */,
 				19ECDAB6186EDCE2002B2281 /* selectsearchbbsleft295_55@2x.png in Resources */,
+				E33DF92719CEEE070043D3A3 /* big5s.jpg in Resources */,
 				19EA04221962E1D20080C03E /* shouyes473_100@2x.png in Resources */,
 				566E78BE185EE75D00BB88C5 /* segmented-bg-pressed-center@2x.png in Resources */,
 				56C95561185EED9A00763E69 /* weiboDetail_zhuanfa_sel@2x.png in Resources */,
@@ -6438,7 +6424,7 @@
 				56607584188F5D1200C25ACE /* UMSnsAccountViewController.xib in Resources */,
 				566E7C61185EE8F100BB88C5 /* Default.png in Resources */,
 				566E7C26185EE88400BB88C5 /* mel.png in Resources */,
-				E313114C19C705B600D9ECB2 /* test.png in Resources */,
+				E33DF92F19CF05170043D3A3 /* center_point@2x.png in Resources */,
 				5633EEA419C685EE00B1237F /* bg-menuitem-highlighted@2x.png in Resources */,
 				566E7C2B185EE88400BB88C5 /* newlabel@2x.png in Resources */,
 				563362F71862C7350069F838 /* write_blog_at@2x.png in Resources */,
@@ -6499,7 +6485,6 @@
 				563364431862E7490069F838 /* horn_down24X24.png in Resources */,
 				563365C41862E7590069F838 /* pinglun_bg@2x.png in Resources */,
 				563365E61862E7590069F838 /* discuss3734@2x.png in Resources */,
-				E313114919C7059F00D9ECB2 /* DVUserdat.cfg in Resources */,
 				563364541862E7490069F838 /* top1_34-34.png in Resources */,
 				192AC1C91872CB1300319A7B /* weibo_detail_talk@2x.png in Resources */,
 				19ECDAAA186EA94E002B2281 /* ios7_tabbarchose@2x.png in Resources */,
@@ -6687,6 +6672,7 @@
 				19CF4179186D885400AA51A9 /* fans_plus_guanzhu@2x.png in Resources */,
 				19ECDABD186F1447002B2281 /* weibo_detail_shuaxin@2x.png in Resources */,
 				566E791D185EE75D00BB88C5 /* face35.png in Resources */,
+				E33DF92919CEEE440043D3A3 /* big4s.jpg in Resources */,
 				56C9554C185EED9A00763E69 /* menu_bg.png in Resources */,
 				563363931862E68D0069F838 /* ios7_newssearch@2x.png in Resources */,
 				56C9560A185EEEB700763E69 /* jiaguanzhu_sel.png in Resources */,
@@ -7315,6 +7301,7 @@
 				566E797E185EE75D00BB88C5 /* MWZoomingScrollView.m in Sources */,
 				566E7775185EE71100BB88C5 /* CarInfo.m in Sources */,
 				566E7979185EE75D00BB88C5 /* MWCaptionView.m in Sources */,
+				E31D80E719CEC55A00C6D8A8 /* GScrollView.m in Sources */,
 				566E7CDB185EEA4800BB88C5 /* WeiBoSpecialView.m in Sources */,
 				19B11856186865E800CA4C07 /* MerchantsInfoViewController.m in Sources */,
 				566E78DA185EE75D00BB88C5 /* ATMHud.m in Sources */,
@@ -7435,7 +7422,7 @@
 				566E7980185EE75D00BB88C5 /* SDWebImageDecoder.m in Sources */,
 				566E7BE0185EE88400BB88C5 /* FBNotificationViewController.m in Sources */,
 				566E7A53185EE80100BB88C5 /* loadingview.m in Sources */,
-				E38C349D19C6884500060DB2 /* GmapViewController.mm in Sources */,
+				E38C349D19C6884500060DB2 /* GmapViewController.m in Sources */,
 				5675DE20196D2E8F001926E1 /* SliderRankingListViewController.m in Sources */,
 				56C9557D185EEE3E00763E69 /* FbNewsFeed.m in Sources */,
 				19F93651197F9BAE00288E6C /* ZkingAlert.m in Sources */,
@@ -7525,6 +7512,7 @@
 				566E777E185EE71100BB88C5 /* summarycellview.m in Sources */,
 				566E7C1D185EE88400BB88C5 /* AllMessageModel.m in Sources */,
 				566E7A55185EE80100BB88C5 /* newsimage_scro.m in Sources */,
+				E3C231AD19C7E97900624C0C /* GtttsetViewController.mm in Sources */,
 				56C9557B185EEE3E00763E69 /* Extension.m in Sources */,
 				566E7A50185EE80100BB88C5 /* FaceView.m in Sources */,
 				563365451862E7510069F838 /* PersonalmoreViewController.m in Sources */,
@@ -7627,7 +7615,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				ARCHS = armv7;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -7669,7 +7657,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				ARCHS = armv7;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -7726,7 +7714,7 @@
 					"$(SRCROOT)/public/社会化分享/UMSocial_Sdk_2.2.1/frameworks/Wechat/**",
 					"$(PROJECT_DIR)/BaiduMap",
 				);
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "f2794893-6f40-4d34-b2ae-54d0f5e6cf98";
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
@@ -7760,7 +7748,7 @@
 					"$(SRCROOT)/public/社会化分享/UMSocial_Sdk_2.2.1/frameworks/Wechat/**",
 					"$(PROJECT_DIR)/BaiduMap",
 				);
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "f2794893-6f40-4d34-b2ae-54d0f5e6cf98";
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";

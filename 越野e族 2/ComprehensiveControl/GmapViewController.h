@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "BMapKit.h"
+#import "GScrollView.h"
+@interface GmapViewController : MyViewController<BMKLocationServiceDelegate>
 
-@interface GmapViewController : MyViewController<BMKOfflineMapDelegate,NSFileManagerDelegate,BMKMapViewDelegate,BMKLocationServiceDelegate,UIAlertViewDelegate>
+@property(nonatomic,strong)GScrollView *gscrollView;
 
 @end
