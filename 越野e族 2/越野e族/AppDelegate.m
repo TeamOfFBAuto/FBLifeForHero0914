@@ -57,17 +57,42 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [self judgeversionandclean];
+    [[UIApplication sharedApplication] setStatusBarHidden:NO];
 
     //友盟分享平台
     
     if (launchOptions) {
         
- 
+        
+        
+        
+        
         NSDictionary* pushNotificationKey = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
         if (pushNotificationKey) {
             
-           // [alert show];
+            
+          
+            // [alert show];
             dic_push =[[NSDictionary alloc]initWithDictionary:pushNotificationKey];
+            
+            
+            
+//            UIAlertView *myalert=[[UIAlertView alloc]initWithTitle:nil message:[NSString stringWithFormat:@"%@",dic_push] delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil, nil];
+//            
+//            [myalert show];
+        }
+        
+        UILocalNotification * localNotification = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
+    
+        
+        
+        if (localNotification)
+        {
+            UIAlertView * myAlert = [[UIAlertView alloc] initWithTitle:[localNotification.userInfo objectForKey:@"key"] message:@"" delegate:nil cancelButtonTitle:@"确认" otherButtonTitles:nil];
+            
+            [myAlert show];
+            
+            [application cancelLocalNotification:localNotification];
         }
     }
     
@@ -77,14 +102,14 @@
     
     flagofpage=0;
     bgCount=1;
-        
-//    UIDevice *device_=[[UIDevice alloc] init];
-//    NSLog(@"设备所有者的名称－－%@",device_.name);
-//    NSLog(@"设备的类别－－－－－%@",device_.model);
-//    NSLog(@"设备的的本地化版本－%@",device_.localizedModel);
-//    NSLog(@"设备运行的系统－－－%@",device_.systemName);
-//    NSLog(@"当前系统的版本－－－%@",device_.systemVersion);
-//    NSLog(@"设备识别码－－－－－%@",device_.identifierForVendor.UUIDString);
+    
+    //    UIDevice *device_=[[UIDevice alloc] init];
+    //    NSLog(@"设备所有者的名称－－%@",device_.name);
+    //    NSLog(@"设备的类别－－－－－%@",device_.model);
+    //    NSLog(@"设备的的本地化版本－%@",device_.localizedModel);
+    //    NSLog(@"设备运行的系统－－－%@",device_.systemName);
+    //    NSLog(@"当前系统的版本－－－%@",device_.systemVersion);
+    //    NSLog(@"设备识别码－－－－－%@",device_.identifierForVendor.UUIDString);
     
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
      UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert];
@@ -112,10 +137,10 @@
     self.window.backgroundColor = [UIColor whiteColor];
     
     
-//    if (IOS_VERSION<7.0)
-//    {
-//        self.window.frame = CGRectMake(0,-20,320,[[UIScreen mainScreen] bounds].size.height+20);
-//    }
+    //    if (IOS_VERSION<7.0)
+    //    {
+    //        self.window.frame = CGRectMake(0,-20,320,[[UIScreen mainScreen] bounds].size.height+20);
+    //    }
     
     
     if (!bigimageview) {
@@ -151,7 +176,7 @@
     
     if (string_img.length!=0) {
         NSLog(@"长度不等于0");
-
+        
         
     }else{
         
@@ -172,14 +197,25 @@
     theTimer = [NSTimer scheduledTimerWithTimeInterval:0.5f target:self selector:@selector(changepic) userInfo:nil repeats:YES];
     
     //[self usenewguanggao];
-
+    
     [self NewShowMainVC];
     
-//    [self keepAlive:[[NSNumber alloc] initWithInt:100]];
+    //    [self keepAlive:[[NSNumber alloc] initWithInt:100]];
     
     [self.window makeKeyAndVisible];
     
-    [self createLocationNotificationWith:[NSArray arrayWithObjects:@"活动安排1",@"活动安排2",nil] WithDate:[NSArray arrayWithObjects:@"2014-09-14 16:47:00",@"2014-09-14 17:09:00",nil]];
+    
+    
+    //推送不烦你 apns
+    
+    [[NSNotificationCenter defaultCenter]
+     postNotificationName:@"testpush" object:dic_push];
+    
+    //内部推送
+    
+    
+    [application cancelAllLocalNotifications];
+    [self createLocationNotificationWith:[NSArray arrayWithObjects:@"活动安排1",@"2014感受城市脉搏",nil] WithDate:[NSArray arrayWithObjects:@"2014-09-19 16:26:00",@"2014-09-19 16:09:00",nil]];
     
     // Required
     
@@ -196,35 +232,49 @@
     }
     
     
-    
     return YES;
 }
 #pragma mark - 创建本地推送
 -(void)createLocationNotificationWith:(NSArray *)array WithDate:(NSArray *)theDate
 {
-    for (int i = 0;i < 2;i++) {
+    
+    NSString * path = [[NSBundle mainBundle] pathForResource:@"TheScheduleList" ofType:@"plist"];
+    NSMutableDictionary * scheduleDic = [NSMutableDictionary dictionaryWithContentsOfFile:path];
+    
+    NSArray * allKeys = [scheduleDic allKeys];
+    
+    for (int i = 0;i < allKeys.count;i++)
+    {
+        NSString * aDate = [allKeys objectAtIndex:i];
+        NSString * aValue = [scheduleDic objectForKey:aDate];
+        
         UILocalNotification *notification = [[[UILocalNotification alloc] init] autorelease];
-        //设置10秒之后
-        NSDate *pushDate = [zsnApi dateFromString:[theDate objectAtIndex:i]];//[NSDate dateWithTimeIntervalSinceNow:10];
-        if (notification != nil) {
-            // 设置推送时间
-            notification.fireDate = pushDate;
-            // 设置时区
-            notification.timeZone = [NSTimeZone defaultTimeZone];
-            // 设置重复间隔
-            notification.repeatInterval = NSCalendarUnitEra;
-            // 推送声音
-            notification.soundName = UILocalNotificationDefaultSoundName;
-            // 推送内容
-            notification.alertBody = [array objectAtIndex:i];
-            //显示在icon上的红色圈中的数子
-            notification.applicationIconBadgeNumber += 1;
-            //设置userinfo 方便在之后需要撤销的时候使用
-            NSDictionary *info = [NSDictionary dictionaryWithObject:[array objectAtIndex:i]forKey:@"key"];
-            notification.userInfo = info;
-            //添加推送到UIApplication
-            UIApplication *app = [UIApplication sharedApplication];
-            [app scheduleLocalNotification:notification];
+        
+        NSDate *pushDate = [zsnApi dateFromString:aDate];//[NSDate dateWithTimeIntervalSinceNow:10];//设置10秒之后
+        NSDate * nowDate = [NSDate date];
+        
+        if ([nowDate timeIntervalSinceDate:pushDate] < 0)
+        {
+            if (notification != nil) {
+                // 设置推送时间
+                notification.fireDate = pushDate;
+                // 设置时区
+                notification.timeZone = [NSTimeZone defaultTimeZone];
+                // 设置重复间隔
+                notification.repeatInterval = kCFCalendarUnitEra;
+                // 推送声音
+                notification.soundName = UILocalNotificationDefaultSoundName;//@"new-mail.caf";
+                // 推送内容
+                notification.alertBody = aValue;
+                //显示在icon上的红色圈中的数子
+                notification.applicationIconBadgeNumber = 1;
+                //设置userinfo 方便在之后需要撤销的时候使用
+                NSDictionary *info = [NSDictionary dictionaryWithObject:aValue forKey:@"key"];
+                notification.userInfo = info;
+                //添加推送到UIApplication
+                UIApplication *app = [UIApplication sharedApplication];
+                [app scheduleLocalNotification:notification];
+            }
         }
     }
 }
@@ -281,12 +331,12 @@
     tool_.delegate=self;
     [tool_ start];
     
-//    timer=[NSTimer scheduledTimerWithTimeInterval:15
-//                                           target:self
-//                                         selector:@selector(NewShowMainVC)
-//                                         userInfo:nil
-//                                          repeats:NO];
-//    
+    //    timer=[NSTimer scheduledTimerWithTimeInterval:15
+    //                                           target:self
+    //                                         selector:@selector(NewShowMainVC)
+    //                                         userInfo:nil
+    //                                          repeats:NO];
+    //
     
     
 }
@@ -294,11 +344,11 @@
 -(void)handleImageLayout:(AsyncImageView *)tag
 {
     
-
+    
     NSLog(@"asyim====%@",tag);
     
     if (tag==nil) {
-
+        
         
         
         [self usenewguanggao];
@@ -328,9 +378,9 @@
 
 
 -(void)succesDownLoadWithImageView:(UIImageView *)imageView Image:(UIImage *)image{
-
     
-
+    
+    
 }
 -(void)downloadtool:(downloadtool *)tool didfinishdownloadwithdata:(NSData *)data{
     
@@ -463,8 +513,8 @@
     [guanggao_image cancelDownload];
     guanggao_image.delegate=nil;
     
-
-
+    
+    
     
     
     [[UIApplication sharedApplication] setStatusBarHidden:NO];
@@ -527,7 +577,7 @@
         
         
         
-   
+        
         
         
         _leveyTabBarController = [[LeveyTabBarController alloc] initWithViewControllers:array imageArray:imgArr];
@@ -543,25 +593,24 @@
         guanggao_image=nil;
         iMagelogo=nil;
         bigimageview=nil;
-      //  [_leveyTabBarController setSelectedIndex:4];
+        //  [_leveyTabBarController setSelectedIndex:4];
         
         self.window.rootViewController=_leveyTabBarController;
-        [[NSNotificationCenter defaultCenter]
-         postNotificationName:@"testpush" object:dic_push];
-        
-
+      
         
         
         
         
-//        
-//        CGRect frame = CGRectMake(0, 0, 320, 49);
-//        UIView *v = [[UIView alloc] initWithFrame:frame];
-//        UIImage *img = [UIImage imageNamed:@"menu_bg.png"];
-//        UIColor *color = [[UIColor alloc] initWithPatternImage:img];
-//        v.backgroundColor = color;
-//        [tabbar.tabBar insertSubview:v atIndex:0];
-//        tabbar.tabBar.opaque = NO;
+        
+        
+        //
+        //        CGRect frame = CGRectMake(0, 0, 320, 49);
+        //        UIView *v = [[UIView alloc] initWithFrame:frame];
+        //        UIImage *img = [UIImage imageNamed:@"menu_bg.png"];
+        //        UIColor *color = [[UIColor alloc] initWithPatternImage:img];
+        //        v.backgroundColor = color;
+        //        [tabbar.tabBar insertSubview:v atIndex:0];
+        //        tabbar.tabBar.opaque = NO;
     }
 }
 
@@ -671,14 +720,14 @@
         string_pushtoken=[string_pushtoken stringByReplacingOccurrencesOfString:@"<" withString:@""];
         string_pushtoken=[string_pushtoken stringByReplacingOccurrencesOfString:@">" withString:@""];
         string_pushtoken=[string_pushtoken stringByReplacingOccurrencesOfString:@" " withString:@""];
-
+        
     }
     
     [[NSUserDefaults standardUserDefaults]setObject:string_pushtoken forKey:DEVICETOKEN];
     
     NSLog(@"mystring_token==%@",string_pushtoken);
     
-//更新token
+    //更新token
     
     
     
@@ -727,9 +776,9 @@
         }];
         
         [_requset startAsynchronous];
-
+        
     }
-
+    
     
     
     NSLog(@"__");
@@ -747,26 +796,26 @@
     
     
     
-//    pushinfo===={
-//        aps =     {
-//            alert = "\U60a8\U6709[1]\U6761\U5f15\U7528\U56de\U590d\U901a\U77e5";
-//            badge = 2;
-//            sound = default;
-//            tid = 3004018;
-//            type = 21;
-//        };
-//    }
+    //    pushinfo===={
+    //        aps =     {
+    //            alert = "\U60a8\U6709[1]\U6761\U5f15\U7528\U56de\U590d\U901a\U77e5";
+    //            badge = 2;
+    //            sound = default;
+    //            tid = 3004018;
+    //            type = 21;
+    //        };
+    //    }
     
     NSDictionary *dic_pushinfo=userInfo;
-
+    
     
     int type=[[[dic_pushinfo objectForKey:@"aps"] objectForKey:@"type"] integerValue];
-
+    
     if (type<20&&[[NSUserDefaults standardUserDefaults] boolForKey:USER_IN]) {
         
         
         
-
+        
         
         _leveyTabBarController.tabBar.tixing_imageView.hidden = NO;
         
@@ -779,14 +828,13 @@
 
 -(void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
 {
-    
     NSLog(@"notification -=-=-=-=-  %@",notification.userInfo);
-    
-    [application cancelLocalNotification:notification];
     
     UIAlertView * myAlert = [[UIAlertView alloc] initWithTitle:[notification.userInfo objectForKey:@"key"] message:@"" delegate:nil cancelButtonTitle:@"确认" otherButtonTitles:nil];
     
     [myAlert show];
+    
+    [application cancelLocalNotification:notification];
 }
 
 - (void)networkDidReceiveMessage:(NSNotification *)notification {
@@ -935,7 +983,7 @@ static int numberof = 0;
     
     if (isSixTimes) {
         
-         [[UIApplication sharedApplication] setKeepAliveTimeout:600 handler:^{
+        [[UIApplication sharedApplication] setKeepAliveTimeout:600 handler:^{
             
             
             numberof++;
@@ -965,13 +1013,13 @@ static int numberof = 0;
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             while (1)
             {
-//                NSLog(@"%d",temptest);
+                //                NSLog(@"%d",temptest);
                 sleep(1);
                 temptest++;
             }
         });
         
-
+        
         
     }
     
@@ -982,91 +1030,91 @@ static int numberof = 0;
     
     
     
-//    szkTast = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
-//        
-//        
-//        [[UIApplication sharedApplication]  endBackgroundTask:szkTast];
-//        
-//        szkTast = UIBackgroundTaskInvalid;
-//        
-//        bgCount += 1;
-//        
-//    }];
-//    
-//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-//        
-//        while (1) {
-//            
-//            if (szkTast == UIBackgroundTaskInvalid) {
-//                
-//                break;
-//                
-//            }
-//            
-//            //运行的方法
-//            
-//            
-//            NSTimeInterval remainingTime = [UIApplication sharedApplication].backgroundTimeRemaining;
-//            
-//            if (remainingTime < 10) {
-//                
-//                
-//                NSLog(@"sszz");
-//
-//                break;
-//                
-//            }
-//            
-//            NSLog(@"BackgroundTaskWithExpiration:%f",remainingTime);
-//            
-//            sleep(1);
-//            
-//        }
-//        
-//        
-//        [[UIApplication sharedApplication]  endBackgroundTask:szkTast];
-//        
-//        szkTast = UIBackgroundTaskInvalid;
-//        
-//        bgCount += 1;
-//        
-//    });
-//    
-//    
-//    
-//    
-//    
-//    
-//    
-//    
-//    
-//    
-//    backgroundTask_ = [[UIApplication sharedApplication]     beginBackgroundTaskWithExpirationHandler:^{
-//        
-//        [[UIApplication sharedApplication] endBackgroundTask:backgroundTask_];
-//        backgroundTask_ = UIBackgroundTaskInvalid;
-//    }];
-//
-//    
-//    
-//    NSLog(@"十分钟了");
-//    UIBackgroundTaskIdentifier taskID = 0;
-//    
-//    taskID = [application beginBackgroundTaskWithExpirationHandler:^{
-//        //如果系统觉得我们还是运行了太久，将执行这个程序块，并停止运行应用程序
-//        [application endBackgroundTask:taskID];
-//    }];
-//    
-//    
-//    
-//    
-//    
+    //    szkTast = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
+    //
+    //
+    //        [[UIApplication sharedApplication]  endBackgroundTask:szkTast];
+    //
+    //        szkTast = UIBackgroundTaskInvalid;
+    //
+    //        bgCount += 1;
+    //
+    //    }];
+    //
+    //    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    //
+    //        while (1) {
+    //
+    //            if (szkTast == UIBackgroundTaskInvalid) {
+    //
+    //                break;
+    //
+    //            }
+    //
+    //            //运行的方法
+    //
+    //
+    //            NSTimeInterval remainingTime = [UIApplication sharedApplication].backgroundTimeRemaining;
+    //
+    //            if (remainingTime < 10) {
+    //
+    //
+    //                NSLog(@"sszz");
+    //
+    //                break;
+    //
+    //            }
+    //
+    //            NSLog(@"BackgroundTaskWithExpiration:%f",remainingTime);
+    //
+    //            sleep(1);
+    //
+    //        }
+    //
+    //
+    //        [[UIApplication sharedApplication]  endBackgroundTask:szkTast];
+    //
+    //        szkTast = UIBackgroundTaskInvalid;
+    //
+    //        bgCount += 1;
+    //
+    //    });
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //    backgroundTask_ = [[UIApplication sharedApplication]     beginBackgroundTaskWithExpirationHandler:^{
+    //
+    //        [[UIApplication sharedApplication] endBackgroundTask:backgroundTask_];
+    //        backgroundTask_ = UIBackgroundTaskInvalid;
+    //    }];
+    //
+    //
+    //
+    //    NSLog(@"十分钟了");
+    //    UIBackgroundTaskIdentifier taskID = 0;
+    //
+    //    taskID = [application beginBackgroundTaskWithExpirationHandler:^{
+    //        //如果系统觉得我们还是运行了太久，将执行这个程序块，并停止运行应用程序
+    //        [application endBackgroundTask:taskID];
+    //    }];
+    //
+    //
+    //
+    //
+    //
     
     
     
     //szk
     
-
+    
     
     
     
@@ -1076,25 +1124,25 @@ static int numberof = 0;
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
-//    
+    //
     center = [[CTCallCenter alloc ] init ];
-//    
-//    self._center=center;
+    //
+    //    self._center=center;
     
     
     
-   center.callEventHandler = ^(CTCall *call )
+    center.callEventHandler = ^(CTCall *call )
     {
- 
+        
         NSLog (@"call:%@" , call .callState);
     };
-
+    
     
     
     NSLog(@"ssss=====application====%@",application);
     
     NSLog(@"huilaile ");
-     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
     
     
     
@@ -1127,7 +1175,7 @@ static int numberof = 0;
         
         [allnotificationtool setUrl_string:[NSString stringWithFormat:@"http://fb.fblife.com/openapi/index.php?mod=alert&code=alertnumbytype&fromtype=b5eeec0b&authkey=%@&fbtype=json",string_code ]];
         
-//          NSLog(@"未读消息接口 ----   %@",[NSString stringWithFormat:@"http://fb.fblife.com/openapi/index.php?mod=alert&code=alertnumbytype&fromtype=b5eeec0b&authkey=%@&fbtype=json",string_code ]);
+        //          NSLog(@"未读消息接口 ----   %@",[NSString stringWithFormat:@"http://fb.fblife.com/openapi/index.php?mod=alert&code=alertnumbytype&fromtype=b5eeec0b&authkey=%@&fbtype=json",string_code ]);
         
         allnotificationtool.delegate=self;
         [allnotificationtool start];
@@ -1155,7 +1203,7 @@ static int numberof = 0;
     [UMSocialSnsService  applicationDidBecomeActive];
     
     
- 
+    
     
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 }
@@ -1164,7 +1212,7 @@ static int numberof = 0;
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     
-  
+    
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
@@ -1172,11 +1220,11 @@ static int numberof = 0;
 #pragma mark--新改版，幺西
 
 -(void)prepairShareView{
-
-
+    
+    
     self.halfBlackView=[[UIView alloc]initWithFrame:[UIScreen mainScreen].bounds];
-
-
+    
+    
 }
 
 -(void)NewShowMainVC{
@@ -1222,7 +1270,7 @@ static int numberof = 0;
     [_RootVC setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeNone];
     [_RootVC setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
     
-       _RootVC.showsShadow = YES;
+    _RootVC.showsShadow = YES;
     
     
     _root_nav = [[UINavigationController alloc] initWithRootViewController:_RootVC];
@@ -1241,6 +1289,11 @@ static int numberof = 0;
     UINavigationController * pushNav = [[UINavigationController alloc] initWithRootViewController:_pushViewController];
     
     pushNav.view.frame = CGRectMake(320,0,320,iPhone5?568:480);
+    
+    
+    [[NSNotificationCenter defaultCenter]
+     postNotificationName:@"testpush" object:dic_push];
+
     
     //  [self.window.rootViewController.view addSubview:pushNav.view];
     
@@ -1280,7 +1333,7 @@ static int numberof = 0;
     }
     NSURL* modelURL=[[NSBundle mainBundle] URLForResource:@"AtlasSavedPraAndCollModel" withExtension:@"momd"];
     _managedObjectModel=[[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
-//    _managedObjectModel=[[NSManagedObjectModel mergedModelFromBundles:nil] retain];
+    //    _managedObjectModel=[[NSManagedObjectModel mergedModelFromBundles:nil] retain];
     return _managedObjectModel;
 }
 //托管对象上下文
@@ -1380,7 +1433,7 @@ static int numberof = 0;
                 
             }
             
-//          NSLog(@"BackgroundTaskWithExpiration:%f",remainingTime);
+            //          NSLog(@"BackgroundTaskWithExpiration:%f",remainingTime);
             
             sleep(1);
             
@@ -1399,13 +1452,13 @@ static int numberof = 0;
 
 //-(void)application:(UIApplication *)application didChangeStatusBarFrame:(CGRect)oldStatusBarFrame{
 //    NSLog(@"statubar.....=========%f",oldStatusBarFrame.origin.y);
-//    
+//
 //    NSLog(@"stat=====ubar.....=========%f", _leveyTabBarController.view.frame.origin.y);
 //    NSLog(@"ssssss=====%f",_leveyTabBarController.tabBar.frame.origin.y);
-//    
+//
 ////    if (MY_MACRO_NAME) {
 //        if (_leveyTabBarController.view.frame.origin.y>0) {
-//            
+//
 ////            _leveyTabBarController.tabBar.frame=CGRectMake(_leveyTabBarController.tabBar.frame.origin.x, _leveyTabBarController.tabBar.frame.origin.y-20, _leveyTabBarController.tabBar.frame.size.width, _leveyTabBarController.tabBar.frame.size.height);
 //            _leveyTabBarController.view.frame=CGRectMake(0, 0, _leveyTabBarController.view.frame.size.width, _leveyTabBarController.view.frame.size.height);
 //            

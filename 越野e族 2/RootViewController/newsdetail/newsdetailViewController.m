@@ -82,7 +82,7 @@
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    
+
     [MobClick beginEvent:@"newsdetailViewController"];
     
     for (id aviewp in [UIApplication sharedApplication].keyWindow.subviews) {
@@ -128,6 +128,8 @@
     
     
     [super viewDidLoad];
+    [[UIApplication sharedApplication] setStatusBarHidden:NO];
+
     
     [XTSideMenuManager resetSideMenuRecognizerEnable:NO];
     //commentNumberaddandadd
@@ -1059,7 +1061,6 @@
     
     NSString * height = [webView stringByEvaluatingJavaScriptFromString: @"document.body.offsetHeight"];
     NSLog(@"height==%@",height);
-    
     
     //换了
     

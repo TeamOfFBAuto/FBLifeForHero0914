@@ -233,17 +233,20 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
         if (menuWholeAngle >= M_PI * 2) {
             menuWholeAngle = menuWholeAngle - menuWholeAngle / count;
         }
-        CGPoint endPoint = CGPointMake(startPoint.x + endRadius * cosf(i * menuWholeAngle / (count - 1)), startPoint.y - endRadius * sinf(i * menuWholeAngle / (count - 1)));
+        
+        float radian = (i * menuWholeAngle / (count - 1))+(M_PI/6);
+        
+        CGPoint endPoint = CGPointMake(startPoint.x + endRadius * cosf(radian), startPoint.y - endRadius * sinf(radian));
         item.endPoint = RotateCGPointAroundCenter(endPoint, startPoint, rotateAngle);
         
         
         
-        CGPoint nearPoint = CGPointMake(startPoint.x + nearRadius * cosf(i * menuWholeAngle / (count - 1)), startPoint.y - nearRadius * sinf(i * menuWholeAngle / (count - 1)));
+        CGPoint nearPoint = CGPointMake(startPoint.x + nearRadius * cosf(radian), startPoint.y - nearRadius * sinf(radian));
         item.nearPoint = RotateCGPointAroundCenter(nearPoint, startPoint, rotateAngle);
         
         
         
-        CGPoint farPoint = CGPointMake(startPoint.x + farRadius * cosf(i * menuWholeAngle / (count - 1)), startPoint.y - farRadius * sinf(i * menuWholeAngle / (count - 1)));
+        CGPoint farPoint = CGPointMake(startPoint.x + farRadius * cosf(radian), startPoint.y - farRadius * sinf(radian));
         item.farPoint = RotateCGPointAroundCenter(farPoint, startPoint, rotateAngle);
         
         

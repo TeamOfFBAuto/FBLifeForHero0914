@@ -869,7 +869,6 @@
 
 -(void)WriteBolg:(UIButton *)sender
 {//发微博
-    
     NSString *authkey=[[NSUserDefaults standardUserDefaults] objectForKey:USER_AUTHOD];
     if (authkey.length == 0)
     {

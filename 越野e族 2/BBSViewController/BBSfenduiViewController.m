@@ -20,7 +20,7 @@
     UIButton *button_collect;
     UIImageView *xialaView;
     AlertRePlaceView *_replaceAlertView;
-
+    
     UIButton *button_more;
     
     downloadtool *Collect_Tool;
@@ -57,7 +57,7 @@
     _isloadingIv.hidden=YES;
     
     [MobClick endEvent:@"BBSfenduiViewController"];
-
+    
     
     if (!isHidden)
     {
@@ -88,15 +88,15 @@
     currentpage=1;
     isLoadsuccess=NO;
     
-   // UIBarButtonItem *back_item=[[UIBarButtonItem alloc]initWithCustomView:button_back];
-  //  self.navigationItem.leftBarButtonItem=back_item;
+    // UIBarButtonItem *back_item=[[UIBarButtonItem alloc]initWithCustomView:button_back];
+    //  self.navigationItem.leftBarButtonItem=back_item;
     
-   
+    
     
     UIButton *button_back=[[UIButton alloc]initWithFrame: CGRectMake(MY_MACRO_NAME?5:15, (44-43/2)/2, 24, 43/2)];
     
     [button_back addTarget:self action:@selector(backto) forControlEvents:UIControlEventTouchUpInside];
-   // [button_back setBackgroundImage:[UIImage imageNamed:@"ios7_back.png"] forState:UIControlStateNormal];
+    // [button_back setBackgroundImage:[UIImage imageNamed:@"ios7_back.png"] forState:UIControlStateNormal];
     
     [button_back setImage:[UIImage imageNamed:BACK_DEFAULT_IMAGE] forState:UIControlStateNormal];
     
@@ -104,12 +104,12 @@
     backview.backgroundColor=[UIColor clearColor];
     [backview addTarget:self action:@selector(backto) forControlEvents:UIControlEventTouchUpInside];
     [backview addSubview:button_back];
-
+    
     
     
     UIButton *view_left=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, 50, 44)];
-  //  view_left.backgroundColor=[UIColor redColor];
-  //  [view_left addTarget:self action:@selector(backto) forControlEvents:UIControlEventTouchUpInside];
+    //  view_left.backgroundColor=[UIColor redColor];
+    //  [view_left addTarget:self action:@selector(backto) forControlEvents:UIControlEventTouchUpInside];
     [view_left addSubview:backview];
     
     button_more=[[UIButton alloc]initWithFrame:CGRectMake(MY_MACRO_NAME? 26+2:22+5, (44-16)/2, 43/2, 32/2)];
@@ -118,23 +118,23 @@
     [button_more setBackgroundImage:[UIImage imageNamed:@"ios7_more43_32.png"] forState:UIControlStateNormal];
     [view_left addSubview:button_more];
     button_more.hidden=YES;
-
+    
     
     self.navigationItem.leftBarButtonItem=[[UIBarButtonItem alloc]initWithCustomView:view_left];
-     
-     
-
     
-//    UIBarButtonItem * spaceButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-//    spaceButton.width = MY_MACRO_NAME?-8:5;
-//    
-//    
-//    UIButton *button_back=[[UIButton alloc]initWithFrame:CGRectMake(0,8,30,44)];
-//    [button_back addTarget:self action:@selector(backto) forControlEvents:UIControlEventTouchUpInside];
-//    [button_back setImage:[UIImage imageNamed:BACK_DEFAULT_IMAGE] forState:UIControlStateNormal];
-//    UIBarButtonItem *back_item=[[UIBarButtonItem alloc]initWithCustomView:button_back];
-//    self.navigationItem.leftBarButtonItems=@[spaceButton,back_item];
-
+    
+    
+    
+    //    UIBarButtonItem * spaceButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    //    spaceButton.width = MY_MACRO_NAME?-8:5;
+    //
+    //
+    //    UIButton *button_back=[[UIButton alloc]initWithFrame:CGRectMake(0,8,30,44)];
+    //    [button_back addTarget:self action:@selector(backto) forControlEvents:UIControlEventTouchUpInside];
+    //    [button_back setImage:[UIImage imageNamed:BACK_DEFAULT_IMAGE] forState:UIControlStateNormal];
+    //    UIBarButtonItem *back_item=[[UIBarButtonItem alloc]initWithCustomView:button_back];
+    //    self.navigationItem.leftBarButtonItems=@[spaceButton,back_item];
+    
     
     
     
@@ -158,7 +158,7 @@
     UIButton *button_send=[[UIButton alloc]initWithFrame:CGRectMake(MY_MACRO_NAME?5:2, 0,40, 44)];
     
     [button_send addTarget:self action:@selector(fatieyemian) forControlEvents:UIControlEventTouchUpInside];
-//    [button_send setBackgroundImage:[UIImage imageNamed:@"ios7_commit3839.png"] forState:UIControlStateNormal];
+    //    [button_send setBackgroundImage:[UIImage imageNamed:@"ios7_commit3839.png"] forState:UIControlStateNormal];
     
     [button_send setImage:[UIImage imageNamed:WRITE_DEFAULT_IMAGE] forState:UIControlStateNormal];
     
@@ -167,7 +167,7 @@
     viewsend.backgroundColor=[UIColor clearColor];
     
     [viewsend addTarget:self action:@selector(fatieyemian) forControlEvents:UIControlEventTouchUpInside];
- //   viewsend.backgroundColor=[UIColor redColor];
+    //   viewsend.backgroundColor=[UIColor redColor];
     [viewsend addSubview:button_send];
     
     //UIBarButtonItem *buttonitem_send=[[UIBarButtonItem alloc]initWithCustomView:button_send];
@@ -204,7 +204,7 @@
     tipView.highlightedImage = [personal getImageWithName:@""];
     [topView addSubview:tipView];
     self.navigationItem.titleView = topView;
-
+    
     //覆盖在label
     UIButton * topButton = [UIButton buttonWithType:UIButtonTypeCustom];
     topButton.frame = topView.bounds;
@@ -214,22 +214,22 @@
     
     [topView addSubview:topButton];
     
-//    UIBarButtonItem * spaceButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-//    spaceButton.width = MY_MACRO_NAME?-5:5;
+    //    UIBarButtonItem * spaceButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    //    spaceButton.width = MY_MACRO_NAME?-5:5;
     
     //self.navigationItem.rightBarButtonItems=[NSArray arrayWithObjects:buttonitem_collect,buttonitem_send, nil];
     UIBarButtonItem * right_spaceButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
     right_spaceButton.width = MY_MACRO_NAME?-15:5;
     self.navigationItem.rightBarButtonItems=@[right_spaceButton,[[UIBarButtonItem alloc]initWithCustomView:view_right]];
- 
+    
     if([self.navigationController.navigationBar respondsToSelector:@selector(setBackgroundImage:forBarMetrics:)] ) {
         //iOS 5 new UINavigationBar custom background
         
-            [self.navigationController.navigationBar setBackgroundImage:MY_MACRO_NAME?[UIImage imageNamed:IOS7DAOHANGLANBEIJING]:[UIImage imageNamed:@"ios7eva320_44.png"] forBarMetrics: UIBarMetricsDefault];
+        [self.navigationController.navigationBar setBackgroundImage:MY_MACRO_NAME?[UIImage imageNamed:IOS7DAOHANGLANBEIJING]:[UIImage imageNamed:@"ios7eva320_44.png"] forBarMetrics: UIBarMetricsDefault];
     }
-
     
-
+    
+    
     
     //    UIImageView * imageView = [[UIImageView alloc] initWithImage:[personal getImageWithName:@"jiantou"]];
     //    imageView.center = CGPointMake(50,22);
@@ -308,7 +308,7 @@
     tab_=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, 320, iPhone5?iphone5fram+49+37:iphone4fram+49+37)];
     tab_.delegate=self;
     //    tab_.separatorColor=[UIColor clearColor];
-   // tab_.backgroundColor=[UIColor redColor];
+    // tab_.backgroundColor=[UIColor redColor];
     tab_.dataSource=self;
     [self.view addSubview:tab_];
     
@@ -339,10 +339,10 @@
         
     }
     advImgV.delegate=self;
-
+    
     [self testguanggao];
     [self sendrequest];
-
+    
     
     
 }
@@ -424,23 +424,37 @@
 }
 -(void)salenumber:(int)numbersale locationnumber:(int)numberlocation{
     NSLog(@"点击了%d\n%d",numbersale,numberlocation);
-
+    
     currentpage=1;
     numberoftypeid = numbersale;
     numberofareaid = numberlocation;
     switch (numbersale) {
         case 0:
+            
             [tool_101 setUrl_string:[NSString stringWithFormat:@"http://bbs.fblife.com/bbsapinew/getforumthread.php?fid=%@&page=%d&orderby=2&areaid=%d&typeid=0&formattype=json&authcode=%@",self.string_id,currentpage,numberlocation,[[NSUserDefaults standardUserDefaults]objectForKey:USER_AUTHOD]]];
-            NSLog(@"url=====%@",[NSString stringWithFormat:@"http://bbs.fblife.com/bbsapinew/getforumthread.php?fid=%@&page=%d&orderby=2&areaid=%d&typeid=0&formattype=json&authcode=%@",self.string_id,currentpage,numberlocation,[[NSUserDefaults standardUserDefaults]objectForKey:USER_AUTHOD]]);
+            
+            NSLog(@"xxxx===%@",[NSString stringWithFormat:@"http://bbs.fblife.com/bbsapinew/getforumthread.php?fid=%@&page=%d&orderby=2&areaid=%d&typeid=0&formattype=json&authcode=%@",self.string_id,currentpage,numberlocation,[[NSUserDefaults standardUserDefaults]objectForKey:USER_AUTHOD]]);
+            
+            
             break;
         case 1:
+            
+            
             [tool_101 setUrl_string:[NSString stringWithFormat:@"http://bbs.fblife.com/bbsapinew/getforumthread.php?fid=%@&page=%d&orderby=2&areaid=%d&typeid=%d&formattype=json&authcode=%@",self.string_id,currentpage,numberlocation,saleID,[[NSUserDefaults standardUserDefaults]objectForKey:USER_AUTHOD]]];
+            
+            NSLog(@"xxxx1===%@",[NSString stringWithFormat:@"http://bbs.fblife.com/bbsapinew/getforumthread.php?fid=%@&page=%d&orderby=2&areaid=%d&typeid=%d&formattype=json&authcode=%@",self.string_id,currentpage,numberlocation,saleID,[[NSUserDefaults standardUserDefaults]objectForKey:USER_AUTHOD]]);
+            
+            
             break;
         case 2:
+            
+            
             [tool_101 setUrl_string:[NSString stringWithFormat:@"http://bbs.fblife.com/bbsapinew/getforumthread.php?fid=%@&page=%d&orderby=2&areaid=%d&typeid=%d&formattype=json&authcode=%@",self.string_id,currentpage,numberlocation,buyID,[[NSUserDefaults standardUserDefaults]objectForKey:USER_AUTHOD]]];
+            NSLog(@"xxxx2===%@",[NSString stringWithFormat:@"http://bbs.fblife.com/bbsapinew/getforumthread.php?fid=%@&page=%d&orderby=2&areaid=%d&typeid=%d&formattype=json&authcode=%@",self.string_id,currentpage,numberlocation,buyID,[[NSUserDefaults standardUserDefaults]objectForKey:USER_AUTHOD]]);
+            
+            
             break;
-
-
+            
             
         default:
             break;
@@ -449,7 +463,7 @@
     if (tool_101==nil) {
         tool_101=[[downloadtool alloc]init];
     }
-   
+    
     
     tool_101.tag=101;
     tool_101.delegate=self;
@@ -598,7 +612,7 @@
     [hud setShowSound:[[NSBundle mainBundle] pathForResource:@"pop" ofType:@"wav"]];
     [hud setCaption:@"收藏成功"];
     [hud setActivity:NO];
-//    [hud setImage:[UIImage imageNamed:@"19-check"]];
+    //    [hud setImage:[UIImage imageNamed:@"19-check"]];
     [hud show];
     [hud hideAfter:1.5];
 }
@@ -617,11 +631,11 @@
 }
 #pragma mark-请求数据
 -(void)showloadingview{
-  
+    
     
     
     _isloadingIv.hidden=NO;
-
+    
 }
 
 -(void)sendrequest{
@@ -664,7 +678,7 @@
     tool_101.delegate=self;
     [tool_101 start];
     
-   // NSLog(@"url[[[[====%@",[NSString stringWithFormat:@"http://bbs.fblife.com/bbsapinew/getforumdigest.php?fid=%@&page=%d&formattype=json&authcode=%@",self.string_id,currentpage,[[NSUserDefaults standardUserDefaults]objectForKey:USER_AUTHOD]]);
+    // NSLog(@"url[[[[====%@",[NSString stringWithFormat:@"http://bbs.fblife.com/bbsapinew/getforumdigest.php?fid=%@&page=%d&formattype=json&authcode=%@",self.string_id,currentpage,[[NSUserDefaults standardUserDefaults]objectForKey:USER_AUTHOD]]);
     
     
 }
@@ -931,7 +945,7 @@
         }
         else{
             return [_array_info count];
-
+            
         }
     }
 }
@@ -1043,10 +1057,10 @@
         button_more.hidden=NO;
         
         titleLabel.text=[NSString stringWithFormat:@"                      %@",[dic objectForKey:@"title"]];
-
         
-        trasactionstatelabel.frame=CGRectMake(1, 4, 65,20);
-        locationlabel.frame=CGRectMake(58, 3, 50, 20);
+        
+        trasactionstatelabel.frame=CGRectMake(1, 12, 65,20);
+        locationlabel.frame=CGRectMake(58, 11, 50, 20);
         trasactionstatelabel.text=[NSString stringWithFormat:@"【%@】",[dic objectForKey:@"typestate"]];
         NSString *string_location=[NSString stringWithFormat:@"%@",[dic objectForKey:@"areaidinfo"]];
         NSString *string_trasaction=[NSString stringWithFormat:@"%@",[dic objectForKey:@"typestate"]];
@@ -1079,7 +1093,7 @@
     
     CGSize constraintSize = CGSizeMake(290, MAXFLOAT);
     CGSize labelSize = [titleLabel.text sizeWithFont:titleLabel.font constrainedToSize:constraintSize lineBreakMode:UILineBreakModeWordWrap];
-    titleLabel.frame=CGRectMake(8, 14, 290, labelSize.height);
+    titleLabel.frame=CGRectMake(8, 12, 290, labelSize.height);
     
     
     authorLabel.text=[dic objectForKey:@"author"];
@@ -1108,7 +1122,7 @@
 //}
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     UILabel *label_title=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, 320, 68/2)];
-//    label_title.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"beijingtitle640x68.png"]];
+    //    label_title.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"beijingtitle640x68.png"]];
     label_title.backgroundColor=RGBCOLOR(245, 245, 245);
     if (self.string_name.length==0) {
         self.string_name=[NSString stringWithFormat:@" "];
@@ -1119,17 +1133,17 @@
     if (label_title.text.length==0) {
         label_title.text=[NSString stringWithFormat:@" "];
     }
-
+    
     
     if (isadvertisingImghiden) {
-         return  label_title;
+        return  label_title;
     }else{
         if (section==0) {
             return advImgV;
         }else
         {
-        return  label_title;
-
+            return  label_title;
+            
         }
     }
     
@@ -1182,26 +1196,26 @@
         [self showPopoverView:nil];
     }
     
-//    if (detail) {
-//        detail=nil;
-//    }
+    //    if (detail) {
+    //        detail=nil;
+    //    }
     selecttionofxialaview=1;
- bbsdetailViewController *   tempdetail=[[bbsdetailViewController alloc]init];
+    bbsdetailViewController *   tempdetail=[[bbsdetailViewController alloc]init];
     
-//    [self setHidesBottomBarWhenPushed:YES];
+    //    [self setHidesBottomBarWhenPushed:YES];
     NSDictionary *dic=[_array_info objectAtIndex:indexPath.row];
     
     tempdetail.bbsdetail_tid=[NSString stringWithFormat:@"%@",[dic objectForKey:@"tid"]];
     
-//    [self.leveyTabBarController hidesTabBar:YES animated:YES];
-   [self.navigationController pushViewController:tempdetail animated:YES];
+    //    [self.leveyTabBarController hidesTabBar:YES animated:YES];
+    [self.navigationController pushViewController:tempdetail animated:YES];
     
-//    [self.navigationController pushViewController:tempdetail animated:YES];
+    //    [self.navigationController pushViewController:tempdetail animated:YES];
     
     
     
     NSLog(@"self.navigati===%@",self.navigationController);
-//    
+    //
     
 }
 -(void)backto{
@@ -1221,7 +1235,7 @@
     tool_101.delegate=nil;
     [xialaView removeFromSuperview];
     hud.delegate=nil;
-
+    
     [self.navigationController popViewControllerAnimated:YES];
 }
 
