@@ -3,7 +3,7 @@
 //  越野e族
 //
 //  Created by soulnear on 14-7-3.
-//  Copyright (c) 2014年 soulnear. All rights reserved.
+//    Copyright (c) 2014年 soulnear. All rights reserved.
 //
 
 #import "SliderBBSViewController.h"
