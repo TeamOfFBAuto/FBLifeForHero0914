@@ -410,20 +410,6 @@
     //外部来了推送之后，会走这里
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(showOutput:) name:@"testpush" object:nil];
-    ///接收到本地推送，推送到活动日程界面
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(LocalNotificationPush:) name:@"localNotificationPush" object:nil];
-    
-    
-}
-
-#pragma mark - 跳转到活动日程界面
--(void)LocalNotificationPush:(NSNotification *)sender
-{
-    UIAlertView * myAlertView = [[UIAlertView alloc]  initWithTitle:@"提示" message:@"" delegate:nil cancelButtonTitle:@"确认" otherButtonTitles:nil,nil];
-    [myAlertView show];
-    GongGaoViewController * gongGao = [[GongGaoViewController alloc] init];
-    gongGao.html_name = @"index";
-    [self.navigationController pushViewController:gongGao animated:YES];
 }
 
 #pragma mark-从广告页面回来刷新一下

@@ -72,6 +72,9 @@
     
     //百度地图
     BMKMapManager* _mapManager;
+    
+    ///是否接收到本地通知
+    BOOL isHaveLocalNotification;
 }
 
 @property (strong, nonatomic) UIWindow *window;
