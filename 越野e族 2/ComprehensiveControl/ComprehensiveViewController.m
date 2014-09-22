@@ -419,7 +419,7 @@
 #pragma mark - 跳转到活动日程界面
 -(void)LocalNotificationPush:(NSNotification *)sender
 {
-    UIAlertView * myAlertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"" delegate:nil cancelButtonTitle:@"确认" otherButtonTitles:nil,nil];
+    UIAlertView * myAlertView = [[UIAlertView alloc]  initWithTitle:@"提示" message:@"" delegate:nil cancelButtonTitle:@"确认" otherButtonTitles:nil,nil];
     [myAlertView show];
     GongGaoViewController * gongGao = [[GongGaoViewController alloc] init];
     gongGao.html_name = @"index";
