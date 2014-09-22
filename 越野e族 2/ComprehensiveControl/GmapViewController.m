@@ -99,7 +99,7 @@
     
     
     //主席台测试数据
-    //[self.gscrollView dingweiViewWithX:105.382810 Y:38.807060];
+//    [self.gscrollView dingweiViewWithX:105.382810 Y:38.807060];
     
     //实际定位坐标  x:long   y:lat
     [self.gscrollView dingweiViewWithX:userLocation.location.coordinate.longitude Y:userLocation.location.coordinate.latitude];
