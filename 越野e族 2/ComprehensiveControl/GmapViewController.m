@@ -22,6 +22,8 @@
     
     NSLog(@"%s",__FUNCTION__);
     
+    [_locService stopUserLocationService];
+    
     _locService.delegate = nil;
     
 }
@@ -45,8 +47,23 @@
     
     
     //GScrollView
-    self.gscrollView = [[GScrollView alloc]initWithFrame:CGRectMake(0, 0, 320, iPhone5?568-64:480-64) WithLocation:iPhone5?[UIImage imageNamed:@"big5s.jpg"]:[UIImage imageNamed:@"big4s.jpg"]];
-    [self.view addSubview:self.gscrollView];
+    
+    UIActivityIndicatorView *testActivityIndicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    testActivityIndicator.center = CGPointMake(160, iPhone5?252:208);//只能设置中心，不能设置大小
+    [self.view addSubview:testActivityIndicator];
+    [testActivityIndicator startAnimating]; // 开始旋转
+
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.gscrollView = [[GScrollView alloc]initWithFrame:CGRectMake(0, 0, 320, iPhone5?568-64:480-64) WithLocation:iPhone5?[UIImage imageNamed:@"big5s.jpg"]:[UIImage imageNamed:@"big4s.jpg"]];
+        
+        [self.view addSubview:self.gscrollView];
+        
+        [testActivityIndicator stopAnimating];
+        [testActivityIndicator setHidesWhenStopped:YES]; //当旋转结束时隐藏
+    });
+    
+    
     
     //定位
     _locService = [[BMKLocationService alloc]init];
