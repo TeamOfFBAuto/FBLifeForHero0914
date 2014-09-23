@@ -3,7 +3,7 @@
 //  越野e族
 //
 //  Created by soulnear on 14-7-3.
-//  Copyright (c) 2014年 soulnear. All rights reserved.
+//    Copyright (c) 2014年 soulnear. All rights reserved.
 //
 
 #import "SliderBBSViewController.h"
@@ -21,7 +21,7 @@
 #import "CompreTableViewCell.h"
 #import "UIViewController+MMDrawerController.h"
 #import "PicShowViewController.h"
-
+#import "MBProgressHUD.h"
 
 
 @interface SliderBBSForumModel ()
@@ -96,6 +96,9 @@
     SliderBBSSectionView * sectionView;//订阅 最新浏览 排行榜 选择
     
     ASINetworkQueue * networkQueue;//加载全部版块队列
+    
+    ///计时器
+    NSTimer * timer;
 }
 
 @end
@@ -197,7 +200,6 @@
         
     }
 }
-
 
 - (void)viewDidLoad
 {
@@ -393,7 +395,6 @@
     //请求所有论坛板块数据
     
     [self loadAllForums];
-    
     
     
     //论坛版块收藏通知
@@ -769,6 +770,15 @@
 
 }
 
+#pragma mark - 检查网络
+-(void)checkTheNetWork
+{
+    if (![[Reachability checkNetWork] isEqualToString:@"NONetWork"])
+    {
+        [self loadAllForums];
+        [timer invalidate];
+    }
+}
 
 #pragma mark - 请求全部版块的数据
 
@@ -779,6 +789,13 @@
     if (!networkQueue) {
         networkQueue = [[ASINetworkQueue alloc] init];
     }
+    
+//    if ([[Reachability checkNetWork] isEqualToString:@"NONetWork"])
+//    {
+//        NSTimer * timer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(checkTheNetWork) userInfo:nil repeats:YES];
+//        
+//        return;
+//    }
     
     for (int i = 0;i < 4;i++)
     {

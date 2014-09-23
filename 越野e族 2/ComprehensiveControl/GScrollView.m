@@ -75,7 +75,7 @@
         //创建本地图片
         _locationImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,frame.size.width,frame.size.height)];
         _locationImageView.image = theImage;
-        _locationImageView.backgroundColor = [UIColor greenColor];
+        _locationImageView.backgroundColor = [UIColor whiteColor];
         _locationImageView.contentMode = UIViewContentModeScaleAspectFit;
         [self addSubview:_locationImageView];
         

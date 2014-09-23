@@ -22,7 +22,7 @@
 #import "MMDrawerController.h"
 
 #import "RightViewController.h"
-
+#import "GongGaoViewController.h"
 @implementation AppDelegate
 @synthesize rootVC;
 @synthesize bbsVC;
@@ -58,7 +58,7 @@
 {
     [self judgeversionandclean];
     [[UIApplication sharedApplication] setStatusBarHidden:NO];
-
+    isHaveLocalNotification = NO;
     //友盟分享平台
     
     if (launchOptions) {
@@ -88,10 +88,10 @@
         
         if (localNotification)
         {
-            UIAlertView * myAlert = [[UIAlertView alloc] initWithTitle:[localNotification.userInfo objectForKey:@"key"] message:@"" delegate:nil cancelButtonTitle:@"确认" otherButtonTitles:nil];
-            
-            [myAlert show];
-            
+//            UIAlertView * myAlert = [[UIAlertView alloc] initWithTitle:[localNotification.userInfo objectForKey:@"key"] message:@"" delegate:nil cancelButtonTitle:@"确认" otherButtonTitles:nil];
+//            
+//            [myAlert show];
+            isHaveLocalNotification = YES;
             [application cancelLocalNotification:localNotification];
         }
     }
@@ -199,7 +199,7 @@
     //[self usenewguanggao];
     
     [self NewShowMainVC];
-    
+
     //    [self keepAlive:[[NSNumber alloc] initWithInt:100]];
     
     [self.window makeKeyAndVisible];
@@ -208,9 +208,8 @@
     
     //推送不烦你 apns
     
-    [[NSNotificationCenter defaultCenter]
-     postNotificationName:@"testpush" object:dic_push];
-    
+//    [[NSNotificationCenter defaultCenter]
+//     postNotificationName:@"testpush" object:dic_push];
     //内部推送
     
     
@@ -233,6 +232,12 @@
     
     
     return YES;
+}
+-(void)reachabilityChanged:(NSNotification *)note
+{
+    
+    
+    
 }
 #pragma mark - 创建本地推送
 -(void)createLocationNotificationWith:(NSArray *)array WithDate:(NSArray *)theDate
@@ -832,7 +837,11 @@
     
     UIAlertView * myAlert = [[UIAlertView alloc] initWithTitle:[notification.userInfo objectForKey:@"key"] message:@"" delegate:nil cancelButtonTitle:@"确认" otherButtonTitles:nil];
     
-    [myAlert show];
+//    [myAlert show];
+    
+    GongGaoViewController * gonggao = [[GongGaoViewController alloc] init];
+    gonggao.html_name = @"index";
+    [_navigationController pushViewController:gonggao animated:YES];
     
     [application cancelLocalNotification:notification];
 }
@@ -1202,7 +1211,11 @@ static int numberof = 0;
 {
     [UMSocialSnsService  applicationDidBecomeActive];
     
-    
+    if (isHaveLocalNotification) {
+        GongGaoViewController * gonggao = [[GongGaoViewController alloc] init];
+        gonggao.html_name = @"index";
+        [_navigationController pushViewController:gonggao animated:YES];
+    }
     
     
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
@@ -1294,7 +1307,6 @@ static int numberof = 0;
     [[NSNotificationCenter defaultCenter]
      postNotificationName:@"testpush" object:dic_push];
 
-    
     //  [self.window.rootViewController.view addSubview:pushNav.view];
     
 }

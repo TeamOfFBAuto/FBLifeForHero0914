@@ -410,10 +410,6 @@
     //外部来了推送之后，会走这里
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(showOutput:) name:@"testpush" object:nil];
-
-    
-    
-    
 }
 
 #pragma mark-从广告页面回来刷新一下

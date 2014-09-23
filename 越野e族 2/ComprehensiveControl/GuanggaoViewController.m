@@ -11,6 +11,9 @@
 #import "SzkLoadData.h"
 
 @interface GuanggaoViewController ()
+{
+    BOOL isHidden;
+}
 
 @end
 
@@ -218,8 +221,10 @@
         
         
             sleep(1);
+            if (!isHidden) {
+                [wself loadGuanggaoData];
+            }
             
-            [wself loadGuanggaoData];
         
         }
         
@@ -301,7 +306,7 @@
 -(void)back{
     
     
-    
+    isHidden = YES;
     
     [self dismissViewControllerAnimated: NO  completion:NULL];
     [[UIApplication sharedApplication] setStatusBarHidden:NO];
