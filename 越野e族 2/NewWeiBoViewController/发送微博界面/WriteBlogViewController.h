@@ -15,6 +15,14 @@
 #import "QBImagePickerController.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "LoadImgFromImPicker.h"
+
+@protocol WriteBlogViewControllerDelegate <NSObject>
+
+-(void)pushToWeiBoViewController;
+
+@end
+
+
 @interface WriteBlogViewController : UIViewController<UINavigationControllerDelegate,UIImagePickerControllerDelegate,UITextViewDelegate,UIActionSheetDelegate,CLLocationManagerDelegate,expressionDelegate,FriendListViewControllerDelegate,ASIHTTPRequestDelegate,UIScrollViewDelegate,QBImagePickerControllerDelegate,AlertRePlaceViewDelegate,UIAlertViewDelegate,UIActionSheetDelegate>
 {
     UIView * options_view;
@@ -73,5 +81,6 @@
 
 @property(nonatomic,strong)NSString * allImageUrl;
 
+@property(nonatomic,weak)id<WriteBlogViewControllerDelegate>delegate;
 
 @end

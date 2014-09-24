@@ -78,6 +78,8 @@
 
 +(NSString *)exchangeStringForDeleteNULL:(id)sender;
 
+///裁剪图片
++(UIImage *)scaleToSizeWithImage:(UIImage *)img size:(CGSize)size;
 
 
 @end

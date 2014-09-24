@@ -35,6 +35,7 @@
 @synthesize allImageUrl;
 @synthesize allImageArray1;
 @synthesize allAssesters1;
+@synthesize delegate = _delegate;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -505,7 +506,8 @@
                 [imageV setImage:[UIImage imageNamed:@"write_blog_more.png"] forState:UIControlStateNormal];
                 if (j+i*5-1 < allImageArray.count)
                 {
-                    [imageV setImage:[allImageArray objectAtIndex:j+i*5-1]  forState:UIControlStateNormal];
+                    UIImage * image = [zsnApi scaleToSizeWithImage:[allImageArray objectAtIndex:j+i*5-1] size:CGSizeMake(119,119)];
+                    [imageV setImage:image  forState:UIControlStateNormal];
                 }
                 
                 
@@ -999,9 +1001,7 @@
         [request setPostFormat:ASIMultipartFormDataPostFormat];
         
         UIImage *image=[allImageArray objectAtIndex:i];
-        
-        
-        
+   /*
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,     NSUserDomainMask, YES);
         NSString *documentsDirectory = [paths objectAtIndex:0];
         NSString *savedImagePath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"savedImage%d.png",i]];
@@ -1010,7 +1010,7 @@
         //UIImageJPEGRepresentation(image)
         [imageData writeToFile:savedImagePath atomically:NO];
         
-        
+      */
         
         
         
@@ -1113,7 +1113,7 @@
             {
                 nav.userInteractionEnabled = YES;
                 [hud hide];
-                UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"温馨提示" message:@"图片上传失败,请重新上传" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil,nil];
+                UIAlertView * alert = [[UIAlertView alloc] initWithTitle:[dic objectForKey:@"data"] message:@"" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil,nil];
                 [alert show];
             }
             
@@ -1494,8 +1494,9 @@
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     UIImage *image1 = [info objectForKey:UIImagePickerControllerOriginalImage];
+    UIImage * newImage = [zsnApi scaleToSizeWithImage:image1 size:CGSizeMake(720,960)];
     ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
-    [library writeImageToSavedPhotosAlbum:image1.CGImage orientation:(ALAssetOrientation)image1.imageOrientation completionBlock:^(NSURL *assetURL, NSError *error )
+    [library writeImageToSavedPhotosAlbum:newImage.CGImage orientation:(ALAssetOrientation)newImage.imageOrientation completionBlock:^(NSURL *assetURL, NSError *error )
      {
          //here is your URL : assetURL
          

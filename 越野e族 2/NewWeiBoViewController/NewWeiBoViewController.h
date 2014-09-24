@@ -147,7 +147,8 @@
 
 
 @property(nonatomic,strong)NSString * selected_index;//跳到对应的微博列表
-
+///标示符，如果为YES左上角按钮改为返回按钮。默认为NO
+@property(nonatomic,assign)BOOL isGoBack;
 
 -(void)ClickWeiBoCustomSegmentWithIndex:(int)index;//点击切换按钮，加载当前选中数据
 
