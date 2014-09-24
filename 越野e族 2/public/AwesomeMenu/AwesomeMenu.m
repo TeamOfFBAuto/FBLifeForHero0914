@@ -234,7 +234,7 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
             menuWholeAngle = menuWholeAngle - menuWholeAngle / count;
         }
         
-        float radian = (i * menuWholeAngle / (count - 1))+(M_PI/6);
+        float radian = (i * menuWholeAngle / (count - 1))+(5*M_PI/60);
         
         CGPoint endPoint = CGPointMake(startPoint.x + endRadius * cosf(radian), startPoint.y - endRadius * sinf(radian));
         item.endPoint = RotateCGPointAroundCenter(endPoint, startPoint, rotateAngle);

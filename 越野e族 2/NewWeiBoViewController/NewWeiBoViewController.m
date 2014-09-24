@@ -50,7 +50,7 @@
 
 @synthesize selected_index = _selected_index;
 
-
+@synthesize isGoBack = _isGoBack;
 
 
 
@@ -591,12 +591,15 @@
 //    self.navigationItem.rightBarButtonItems=@[negativeSpacer,right_item];
     
     
-    self.leftImageName = @"slider_bbs_home";
-    
-    self.rightImageName = @"slider_bbs_me";
-    
-    [self setMyViewControllerLeftButtonType:MyViewControllerLeftbuttonTypeOther WithRightButtonType:MyViewControllerRightbuttonTypeOther];
-    
+    if (_isGoBack) {
+        self.rightImageName = @"slider_bbs_me";
+        [self setMyViewControllerLeftButtonType:MyViewControllerLeftbuttonTypeBack WithRightButtonType:MyViewControllerRightbuttonTypeOther];
+    }else
+    {
+        self.leftImageName = @"slider_bbs_home";
+        self.rightImageName = @"slider_bbs_me";
+        [self setMyViewControllerLeftButtonType:MyViewControllerLeftbuttonTypeOther WithRightButtonType:MyViewControllerRightbuttonTypeOther];
+    }
     
     
     _weibo_seg = [[WeiBoCustomSegmentView alloc] initWithFrame:CGRectMake(15,0,200,44)];
@@ -862,7 +865,13 @@
 
 -(void)leftButtonTap:(UIButton *)sender
 {
-    [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
+    if (_isGoBack)
+    {
+        [self.navigationController popViewControllerAnimated:YES];
+    }else
+    {
+        [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
+    }
 }
 
 

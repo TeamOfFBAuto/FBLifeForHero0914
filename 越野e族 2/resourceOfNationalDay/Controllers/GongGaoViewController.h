@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GongGaoViewController : UIViewController<UIWebViewDelegate>
+@interface GongGaoViewController : UIViewController<UIWebViewDelegate,UIScrollViewDelegate,UITableViewDataSource,UITableViewDelegate>
 {
     
 }
@@ -17,5 +17,9 @@
 @property(nonatomic,strong)UIWebView * myWebView;
 
 @property(nonatomic,strong)NSString * html_name;
+
+@property(nonatomic,strong)UITableView * myTableView;
+
+@property(nonatomic,strong)NSMutableArray * data_array;
 
 @end

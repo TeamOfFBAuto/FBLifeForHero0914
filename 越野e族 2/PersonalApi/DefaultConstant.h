@@ -264,7 +264,7 @@ alpha:(a)]
 
 
 //上传接口---start
-#define URLIMAGE @"http://fb.fblife.com/openapi/index.php?mod=doweibo&code=addpicmuliti&fromtype=b5eeec0b&authkey=%@fbtype=json"
+#define URLIMAGE @"http://fb.fblife.com/openapi/index.php?mod=doweibo&code=addpicmuliti&fromtype=b5eeec0b&authkey=%@&fbtype=json"
 #define URL_UPLOAD @"http://fb.fblife.com/openapi/index.php?mod=doweibo&code=add&content=%@&fromtype=b5eeec0b&authkey=%@&fbtype=json"
 #define URLIMAGEID @"http://fb.fblife.com/openapi/index.php?mod=doweibo&code=add&content=%@&imgid=%@&fromtype=b5eeec0b&authkey=%@&fbtype=json"
 #define URLJWD @"http://fb.fblife.com/openapi/index.php?mod=doweibo&code=add&content=%@&imgid=%@&fromtype=b5eeec0b&authkey=%@&jing_lng=%f&wei_lat=%f&locality=%@&map=google&fbtype=json"

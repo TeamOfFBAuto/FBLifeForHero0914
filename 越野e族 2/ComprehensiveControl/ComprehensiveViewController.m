@@ -45,9 +45,9 @@
 #import "GongGaoViewController.h"
 
 ///浮动层开始显示的时间
-#define SHOW_TIME @"2014-09-11 19:10:00"
+#define SHOW_TIME @"2014-09-3 02:00:00"
 ///浮动层消失的时间
-#define HIDDEN_TIME @"2014-10-07 23:00:00"
+#define HIDDEN_TIME @"2014-10-08 23:00:00"
 
 
 
@@ -58,8 +58,14 @@
     NSMutableArray *com_type_array;//幻灯的type
     NSMutableArray *com_link_array;//幻灯的外链
     NSMutableArray *com_title_array;//幻灯的标题
-
+    ///浮动框
     AwesomeMenu * awesomeMenu;
+    
+    ///存放所有活动内容及时间
+    NSMutableDictionary * my_dictionary;
+    
+    ///计时器，如果没有获取到线上日程表一直获取
+    NSTimer * timer;
 }
 
 @end
@@ -350,7 +356,7 @@
 {
     [super viewDidLoad];
     
-
+    self.navigationController.interactivePopGestureRecognizer.enabled = NO;
 
     //判断新版本
     
@@ -403,7 +409,15 @@
     [self loadHuandeng];
     [self loadNomalData];
     
+    NSDate * now = [NSDate date];
+    NSDate * end_time = [zsnApi dateFromString:HIDDEN_TIME];
     
+    if ([now timeIntervalSinceDate:end_time] < 0)
+    {
+        [self loadActivityData];
+        [self loadNewsData];
+        timer = [NSTimer scheduledTimerWithTimeInterval:20 target:self selector:@selector(checkTheNetWork) userInfo:nil repeats:YES];
+    }
     
     
     
@@ -467,7 +481,7 @@
     if ([now timeIntervalSinceDate:begin_time] > 0 && [now timeIntervalSinceDate:end_time]<0)
     {
         
-        NSArray * images_array = [NSArray arrayWithObjects:@"AwesomeMenu_gonggao",@"AwesomeMenu_ditu",@"AwesomeMenu_zhinan",nil];
+        NSArray * images_array = [NSArray arrayWithObjects:@"AwesomeMenu_gonggao",@"AwesomeMenu_ditu",@"AwesomeMenu_zhinan",@"AwesomeMenu_wenjuan",@"AwesomeMenu_weibo",nil];
          NSMutableArray *menus = [NSMutableArray array];
         for (int i = 0;i < images_array.count;i++)
         {
@@ -487,7 +501,7 @@
         
         awesomeMenu = [[AwesomeMenu alloc] initWithFrame:self.navigationController.view.bounds startItem:startItem optionMenus:menus];
         awesomeMenu.delegate = self;
-        awesomeMenu.menuWholeAngle = 2*M_PI/3;
+        awesomeMenu.menuWholeAngle = 5*M_PI/6;
         awesomeMenu.farRadius = 110.0f;
         awesomeMenu.endRadius = 100.0f;
         awesomeMenu.nearRadius = 90.0f;
@@ -499,44 +513,58 @@
     }
 }
 
-#pragma mark - 计时器，到预定时间，消失浮动框
--(void)timeCount:(NSTimer *)sender
-{
-    NSDate * now = [NSDate date];
-    NSDate * end_time = [zsnApi dateFromString:HIDDEN_TIME];
-    if ([now timeIntervalSinceDate:end_time]>0)
-    {
-        if (awesomeMenu) {
-            for (int i = 0;i < awesomeMenu.subviews.count;i++) {
-                UIView * view = [awesomeMenu.subviews objectAtIndex:i];
-                [view removeFromSuperview];
-            }
-            [awesomeMenu removeFromSuperview];
-        }
-//        [timer invalidate];
-    }
-}
-
 #pragma mark - AWeSomeMenuDelegate
 #pragma mark - 点击的第几个
 - (void)awesomeMenu:(AwesomeMenu *)menu didSelectIndex:(NSInteger)idx
 {
     NSLog(@"Select the index : %d",idx);
     [awesomeMenu setBackgroundColor:[UIColor clearColor]];
-    if (idx == 1) {//跳转到离线地图
+    if (idx == 3) {//跳转到离线地图
         //添加离线地图包资源 并显示地图
         GmapViewController *mapvc = [[GmapViewController alloc]init];
         [self.navigationController pushViewController:mapvc animated:YES];
-    }else if (idx == 0)//跳到指南界面
+    }else if (idx == 2)//跳到指南界面
     {
         GongGaoViewController * gongGao = [[GongGaoViewController alloc] init];
         gongGao.html_name = @"guide";
         [self.navigationController pushViewController:gongGao animated:YES];
-    }else if (idx == 2)//跳到公告界面
+    }else if (idx == 4)//跳到公告界面
     {
         GongGaoViewController * gongGao = [[GongGaoViewController alloc] init];
         gongGao.html_name = @"index";
         [self.navigationController pushViewController:gongGao animated:YES];
+    }else if (idx == 0)//跳转到发表微博界面
+    {
+        
+        BOOL isLogIn = [[NSUserDefaults standardUserDefaults] boolForKey:USER_IN];
+        if (!isLogIn)
+        {
+            LogInViewController * logIn = [LogInViewController sharedManager];
+            [self presentViewController:logIn animated:YES completion:NULL];
+            return;
+        }
+        
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(PushToWeiBoController) name:@"refreshmydata" object:nil];
+        
+        UIImagePickerControllerSourceType sourceType = UIImagePickerControllerSourceTypeCamera;
+        if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
+        {
+            UIImagePickerController * pickerC = [[UIImagePickerController alloc] init];
+            pickerC.delegate = self;
+            pickerC.allowsEditing = NO;
+            pickerC.sourceType = sourceType;
+            [self presentViewController:pickerC animated:YES completion:nil];
+        }
+        else
+        {
+            NSLog(@"模拟其中无法打开照相机,请在真机中使用");
+        }
+    }else if (idx == 1)//跳转到问卷调查界面
+    {
+        fbWebViewController * webView = [[fbWebViewController alloc] init];
+        webView.urlstring = @"http://www.wenjuan.com/s/yMJN7z";
+        [self.navigationController pushViewController:webView animated:YES];
     }
 }
 #pragma mark - 关闭
@@ -557,6 +585,253 @@
 {
     awesomeMenu.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.3];
 }
+
+#pragma mark - 网络测试计时器
+-(void)checkTheNetWork
+{
+    NSString * path = [self returnPath];
+    if (![[NSFileManager defaultManager] fileExistsAtPath:path])
+    {
+        [timer invalidate];
+    }else
+    {
+        NSString * netWork = [Reachability checkNetWork];
+        if (![netWork isEqualToString:@"NONetWork"])
+        {
+            [self loadActivityData];
+        }
+    }
+    
+    
+    NSUserDefaults * user = [NSUserDefaults standardUserDefaults];
+    NSDictionary * dic = [user objectForKey:@"gonggaoNewsData"];
+    
+    NSString * netWork = [Reachability checkNetWork];
+    if (![netWork isEqualToString:@"NONetWork"])
+    {
+        if (![[NSFileManager defaultManager] fileExistsAtPath:path])
+        {
+            [self loadActivityData];
+        }
+        
+        if ([[dic objectForKey:@"error"] intValue] == 0)
+        {
+            [self loadNewsData];
+        }
+    }
+    
+    if ([[NSFileManager defaultManager] fileExistsAtPath:path] && [[dic objectForKey:@"error"] intValue] == 1)
+    {
+        [timer invalidate];
+    }
+    
+    
+    
+}
+
+#pragma mark - 读取公告里边的新闻数据
+-(void)loadNewsData
+{
+    NSURL * url = [NSURL URLWithString:@"http://cmsweb.fblife.com/web.php?c=hero2014&a=getappnews&classid=353"];
+    
+    ASIHTTPRequest * request = [[ASIHTTPRequest alloc] initWithURL:url];
+    request.timeOutSeconds = 30;
+    
+    __block typeof(request)wrequest = request;
+    
+    [wrequest setCompletionBlock:^{
+        
+        NSDictionary * allDic = [request.responseString objectFromJSONString];
+        
+        if ([[allDic objectForKey:@"error"] intValue] == 0)
+        {
+            [[NSUserDefaults standardUserDefaults] setObject:allDic forKey:@"gonggaoNewsData"];
+        }
+    }];
+    
+    [wrequest setFailedBlock:^{
+        
+    }];
+    
+    [request startAsynchronous];
+}
+
+#pragma mark - 获取沙盒plist文件路径
+-(NSString *)returnPath
+{
+    //获取应用程序沙盒的Documents目录
+    NSArray *paths=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES);
+    NSString *plistPath1 = [paths objectAtIndex:0];
+    //得到完整的文件名
+    NSString *filename=[plistPath1 stringByAppendingPathComponent:@"schedueList.plist"];
+    return filename;
+}
+
+#pragma mark - 获取大会活动日程安排数据
+-(void)loadActivityData
+{
+    NSString *filename=[self returnPath];
+    
+    NSString * netWork = [Reachability checkNetWork];
+    if ([netWork isEqualToString:@"NONetWork"])
+    {
+        NSFileManager * manager = [NSFileManager defaultManager];
+        
+        if (![manager fileExistsAtPath:filename])
+        {
+            NSString * path = [[NSBundle mainBundle] pathForResource:@"TheScheduleList" ofType:@"plist"];
+            ///本地活动日程数据
+            NSMutableDictionary * localScheduleDic = [NSMutableDictionary dictionaryWithContentsOfFile:path];
+            [self createLocationNotificationWith:localScheduleDic];
+            return;
+        }else
+        {
+            NSString * path = [[NSBundle mainBundle] pathForResource:@"TheScheduleList" ofType:@"plist"];
+            ///本地活动日程数据
+            NSMutableDictionary * localScheduleDic = [NSMutableDictionary dictionaryWithContentsOfFile:path];
+            NSMutableDictionary * docDic = [NSMutableDictionary dictionaryWithContentsOfFile:filename];
+            [docDic addEntriesFromDictionary:localScheduleDic];
+            [self createLocationNotificationWith:docDic];
+        }
+    }
+    
+    NSString * fullUrl = @"http://cmsweb.fblife.com/remoteapi/hero2014_app.php";
+    ASIHTTPRequest * request = [[ASIHTTPRequest alloc] initWithURL:[NSURL URLWithString:fullUrl]];
+    request.timeOutSeconds = 30;
+    __block typeof(request) brequest = request;
+    __weak typeof(self)bself = self;
+    [brequest setCompletionBlock:^{
+        if (!my_dictionary)
+        {
+            my_dictionary = [NSMutableDictionary dictionary];
+        }
+        
+        NSDictionary * allDic = [request.responseString objectFromJSONString];
+        if ([[allDic objectForKey:@"isopen"] intValue] == 1)
+        {
+            NSString * updatetime = [[NSUserDefaults standardUserDefaults] objectForKey:@"updatetime"];
+            NSString * now_updatetime = [NSString stringWithFormat:@"%@",[allDic objectForKey:@"updatetime"]];
+            
+            if (![updatetime isEqualToString:now_updatetime])
+            {
+                NSDictionary * array = [allDic objectForKey:@"content"];
+                if ([array isKindOfClass:[NSDictionary class]])
+                {
+                    my_dictionary = [NSMutableDictionary dictionaryWithDictionary:[allDic objectForKey:@"content"]];
+                    NSString * path = [[NSBundle mainBundle] pathForResource:@"TheScheduleList" ofType:@"plist"];
+                    ///本地活动日程数据
+                    NSMutableDictionary * localScheduleDic = [NSMutableDictionary dictionaryWithContentsOfFile:path];
+                    [my_dictionary addEntriesFromDictionary:localScheduleDic];
+                    
+                    
+                    [bself createLocationNotificationWith:my_dictionary];
+                }
+                
+                //输入写入
+                [my_dictionary writeToFile:filename atomically:YES];
+                
+                [[NSUserDefaults standardUserDefaults] setObject:now_updatetime forKey:@"updatetime"];
+            }else
+            {
+                NSFileManager * manager = [NSFileManager defaultManager];
+                if (![manager fileExistsAtPath:filename])
+                {
+                    [my_dictionary writeToFile:filename atomically:YES];
+                }
+            }
+        }
+    }];
+    
+    [brequest setFailedBlock:^{
+        
+    }];
+    
+    [request startAsynchronous];
+}
+#pragma mark - 创建本地推送
+-(void)createLocationNotificationWith:(NSMutableDictionary *)scheduleDic
+{
+    [[UIApplication sharedApplication] cancelAllLocalNotifications];
+    
+    NSArray * allKeys = [scheduleDic allKeys];
+    for (int i = 0;i < allKeys.count;i++)
+    {
+        NSString * aDate = [allKeys objectAtIndex:i];
+        NSString * aValue = [scheduleDic objectForKey:aDate];
+        
+        UILocalNotification *notification = [[UILocalNotification alloc] init];
+        NSLog(@"adate -=-=-   %@",aDate);
+        NSDate *pushDate = [zsnApi dateFromString:aDate];//[NSDate dateWithTimeIntervalSinceNow:10];//设置10秒之后
+        NSDate * nowDate = [NSDate date];
+        
+        if ([nowDate timeIntervalSinceDate:pushDate] < 0)
+        {
+            if (notification != nil) {
+                // 设置推送时间
+                notification.fireDate = pushDate;
+                // 设置时区
+                notification.timeZone = [NSTimeZone defaultTimeZone];
+                // 设置重复间隔
+                notification.repeatInterval = kCFCalendarUnitEra;
+                // 推送声音
+                notification.soundName = UILocalNotificationDefaultSoundName;//@"new-mail.caf";
+                // 推送内容
+                notification.alertBody = aValue;
+                //显示在icon上的红色圈中的数子
+//                notification.applicationIconBadgeNumber = 1;
+                //设置userinfo 方便在之后需要撤销的时候使用
+                NSDictionary *info = [NSDictionary dictionaryWithObject:aValue forKey:@"key"];
+                notification.userInfo = info;
+                //添加推送到UIApplication
+                UIApplication *app = [UIApplication sharedApplication];
+                [app scheduleLocalNotification:notification];
+            }
+        }
+    }
+}
+
+#pragma mark - 发表微博相关
+#pragma mark - UIActionSheetDelegate
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    
+}
+
+#pragma mark - 跳转到微博界面
+-(void)PushToWeiBoController
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"PushToWeiBoController" object:nil];
+    NewWeiBoViewController * weiBoVC = [[NewWeiBoViewController alloc] init];
+    weiBoVC.isGoBack = YES;
+    [self.navigationController pushViewController:weiBoVC animated:YES];
+}
+
+#pragma mark - UIImagePickerControllerDelegate
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    UIImage *image1 = [info objectForKey:UIImagePickerControllerOriginalImage];
+    UIImage * newImage = [zsnApi scaleToSizeWithImage:image1 size:CGSizeMake(720,960)];
+    __weak typeof(self) bself = self;
+    NSMutableArray * allImageUrl = [NSMutableArray array];
+//    NSMutableArray * allAssesters = [NSMutableArray array];
+    ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
+    [library writeImageToSavedPhotosAlbum:newImage.CGImage orientation:(ALAssetOrientation)newImage.imageOrientation completionBlock:^(NSURL *assetURL, NSError *error )
+     {
+         //here is your URL : assetURL
+         
+         NSString * string = [assetURL absoluteString];
+         
+         [allImageUrl addObject:string];
+         
+         [picker dismissViewControllerAnimated:YES completion:^{
+             WriteBlogViewController * witeBlog = [[WriteBlogViewController alloc] init];
+             witeBlog.myAllimgUrl = allImageUrl;
+             witeBlog.theText = @"#2014英雄会#";
+             [bself presentViewController:witeBlog animated:YES completion:NULL];
+         }];
+     }];
+}
+
 
 
 #pragma mark-跳到fb页面

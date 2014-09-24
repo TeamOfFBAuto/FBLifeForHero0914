@@ -22,7 +22,7 @@
 #import "AwesomeMenu.h"
 
 
-@interface ComprehensiveViewController : UIViewController<ZkingNavigationViewDelegate,UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate,EGORefreshTableHeaderDelegate,NewHuandengViewDelegate,AwesomeMenuDelegate>{
+@interface ComprehensiveViewController : UIViewController<ZkingNavigationViewDelegate,UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate,EGORefreshTableHeaderDelegate,NewHuandengViewDelegate,UIActionSheetDelegate,AwesomeMenuDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate>{
 
     ZkingNavigationView *navibar;
     

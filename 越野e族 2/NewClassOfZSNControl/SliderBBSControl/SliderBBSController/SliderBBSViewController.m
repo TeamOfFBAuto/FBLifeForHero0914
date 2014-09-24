@@ -394,8 +394,10 @@
     
     //请求所有论坛板块数据
     
-    [self loadAllForums];
+//    [self loadAllForums];
     
+    timer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(checkTheNetWork) userInfo:nil repeats:YES];
+    [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
     
     //论坛版块收藏通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(forumSectionChange:) name:@"forumSectionChange" object:nil];
@@ -789,13 +791,6 @@
     if (!networkQueue) {
         networkQueue = [[ASINetworkQueue alloc] init];
     }
-    
-//    if ([[Reachability checkNetWork] isEqualToString:@"NONetWork"])
-//    {
-//        NSTimer * timer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(checkTheNetWork) userInfo:nil repeats:YES];
-//        
-//        return;
-//    }
     
     for (int i = 0;i < 4;i++)
     {

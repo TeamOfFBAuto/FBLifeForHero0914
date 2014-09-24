@@ -199,7 +199,7 @@
     //[self usenewguanggao];
     
     [self NewShowMainVC];
-
+    
     //    [self keepAlive:[[NSNumber alloc] initWithInt:100]];
     
     [self.window makeKeyAndVisible];
@@ -208,13 +208,9 @@
     
     //推送不烦你 apns
     
-//    [[NSNotificationCenter defaultCenter]
-//     postNotificationName:@"testpush" object:dic_push];
-    //内部推送
+    [[NSNotificationCenter defaultCenter]
+     postNotificationName:@"testpush" object:dic_push];
     
-    
-    [application cancelAllLocalNotifications];
-    [self createLocationNotificationWith:[NSArray arrayWithObjects:@"活动安排1",@"2014感受城市脉搏",nil] WithDate:[NSArray arrayWithObjects:@"2014-09-19 16:26:00",@"2014-09-19 16:09:00",nil]];
     
     // Required
     
@@ -233,56 +229,8 @@
     
     return YES;
 }
--(void)reachabilityChanged:(NSNotification *)note
-{
-    
-    
-    
-}
-#pragma mark - 创建本地推送
--(void)createLocationNotificationWith:(NSArray *)array WithDate:(NSArray *)theDate
-{
-    
-    NSString * path = [[NSBundle mainBundle] pathForResource:@"TheScheduleList" ofType:@"plist"];
-    NSMutableDictionary * scheduleDic = [NSMutableDictionary dictionaryWithContentsOfFile:path];
-    
-    NSArray * allKeys = [scheduleDic allKeys];
-    
-    for (int i = 0;i < allKeys.count;i++)
-    {
-        NSString * aDate = [allKeys objectAtIndex:i];
-        NSString * aValue = [scheduleDic objectForKey:aDate];
-        
-        UILocalNotification *notification = [[[UILocalNotification alloc] init] autorelease];
-        
-        NSDate *pushDate = [zsnApi dateFromString:aDate];//[NSDate dateWithTimeIntervalSinceNow:10];//设置10秒之后
-        NSDate * nowDate = [NSDate date];
-        
-        if ([nowDate timeIntervalSinceDate:pushDate] < 0)
-        {
-            if (notification != nil) {
-                // 设置推送时间
-                notification.fireDate = pushDate;
-                // 设置时区
-                notification.timeZone = [NSTimeZone defaultTimeZone];
-                // 设置重复间隔
-                notification.repeatInterval = kCFCalendarUnitEra;
-                // 推送声音
-                notification.soundName = UILocalNotificationDefaultSoundName;//@"new-mail.caf";
-                // 推送内容
-                notification.alertBody = aValue;
-                //显示在icon上的红色圈中的数子
-                notification.applicationIconBadgeNumber = 1;
-                //设置userinfo 方便在之后需要撤销的时候使用
-                NSDictionary *info = [NSDictionary dictionaryWithObject:aValue forKey:@"key"];
-                notification.userInfo = info;
-                //添加推送到UIApplication
-                UIApplication *app = [UIApplication sharedApplication];
-                [app scheduleLocalNotification:notification];
-            }
-        }
-    }
-}
+
+
 
 -(void)changepic{
     
@@ -837,12 +785,12 @@
     
     UIAlertView * myAlert = [[UIAlertView alloc] initWithTitle:[notification.userInfo objectForKey:@"key"] message:@"" delegate:nil cancelButtonTitle:@"确认" otherButtonTitles:nil];
     
-//    [myAlert show];
-    
+    [myAlert show];
+ /*
     GongGaoViewController * gonggao = [[GongGaoViewController alloc] init];
     gonggao.html_name = @"index";
     [_navigationController pushViewController:gonggao animated:YES];
-    
+*/
     [application cancelLocalNotification:notification];
 }
 
