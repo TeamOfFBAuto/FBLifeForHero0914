@@ -45,9 +45,9 @@
 #import "GongGaoViewController.h"
 
 ///浮动层开始显示的时间
-#define SHOW_TIME @"2014-09-11 19:10:00"
+#define SHOW_TIME @"2014-09-30 02:00:00"
 ///浮动层消失的时间
-#define HIDDEN_TIME @"2014-10-07 23:00:00"
+#define HIDDEN_TIME @"2014-10-08 23:00:00"
 
 
 
@@ -356,7 +356,7 @@
 {
     [super viewDidLoad];
     
-
+    self.navigationController.interactivePopGestureRecognizer.enabled = NO;
 
     //判断新版本
     
@@ -415,9 +415,11 @@
     if ([now timeIntervalSinceDate:end_time] < 0)
     {
         [self loadActivityData];
+        [self loadNewsData];
+        timer = [NSTimer scheduledTimerWithTimeInterval:20 target:self selector:@selector(checkTheNetWork) userInfo:nil repeats:YES];
     }
     
-    timer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(checkTheNetWork) userInfo:nil repeats:YES];
+    
     
     //外部来了推送之后，会走这里
     
@@ -560,7 +562,9 @@
         }
     }else if (idx == 1)//跳转到问卷调查界面
     {
-        
+        fbWebViewController * webView = [[fbWebViewController alloc] init];
+        webView.urlstring = @"http://www.wenjuan.com/s/yMJN7z";
+        [self.navigationController pushViewController:webView animated:YES];
     }
 }
 #pragma mark - 关闭
@@ -586,7 +590,7 @@
 -(void)checkTheNetWork
 {
     NSString * path = [self returnPath];
-    if ([[NSFileManager defaultManager] fileExistsAtPath:path])
+    if (![[NSFileManager defaultManager] fileExistsAtPath:path])
     {
         [timer invalidate];
     }else
@@ -597,6 +601,59 @@
             [self loadActivityData];
         }
     }
+    
+    
+    NSUserDefaults * user = [NSUserDefaults standardUserDefaults];
+    NSDictionary * dic = [user objectForKey:@"gonggaoNewsData"];
+    
+    NSString * netWork = [Reachability checkNetWork];
+    if (![netWork isEqualToString:@"NONetWork"])
+    {
+        if (![[NSFileManager defaultManager] fileExistsAtPath:path])
+        {
+            [self loadActivityData];
+        }
+        
+        if ([[dic objectForKey:@"error"] intValue] == 0)
+        {
+            [self loadNewsData];
+        }
+    }
+    
+    if ([[NSFileManager defaultManager] fileExistsAtPath:path] && [[dic objectForKey:@"error"] intValue] == 1)
+    {
+        [timer invalidate];
+    }
+    
+    
+    
+}
+
+#pragma mark - 读取公告里边的新闻数据
+-(void)loadNewsData
+{
+    NSURL * url = [NSURL URLWithString:@"http://cmsweb.fblife.com/web.php?c=hero2014&a=getappnews&classid=353"];
+    
+    ASIHTTPRequest * request = [[ASIHTTPRequest alloc] initWithURL:url];
+    request.timeOutSeconds = 30;
+    
+    __block typeof(request)wrequest = request;
+    
+    [wrequest setCompletionBlock:^{
+        
+        NSDictionary * allDic = [request.responseString objectFromJSONString];
+        
+        if ([[allDic objectForKey:@"error"] intValue] == 0)
+        {
+            [[NSUserDefaults standardUserDefaults] setObject:allDic forKey:@"gonggaoNewsData"];
+        }
+    }];
+    
+    [wrequest setFailedBlock:^{
+        
+    }];
+    
+    [request startAsynchronous];
 }
 
 #pragma mark - 获取沙盒plist文件路径

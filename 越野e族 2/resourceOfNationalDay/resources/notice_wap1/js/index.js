@@ -7,6 +7,10 @@ $(document).ready(function(){
 		swipeFun($(this),scontObj,"ul","li");
 	});
 	
+	obj.find("li").css("height",$(window).height() - 22);
+	$(window).resize(function(){
+		obj.find("li").css("height",$(window).height() - 22);
+	});
 	
 	//参数分别为第一个div，第二个滚动div，滚动里面的div，第三个里面的div
 	

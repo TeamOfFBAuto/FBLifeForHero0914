@@ -17,13 +17,13 @@ body {background-image:url("../images/notic_bg.jpg"); background-repeat:no-repea
 .all-screen{ position:relative; width:100%;height:100%;}
 .no_top {width:295px;position:absolute;top:8px;left:50%;margin-left:-147px;z-index:5;}
 .no_topcon {width:100%;overflow:hidden;float:left;}
-.no_topcon li {width:295px;float:left;}
+.no_topcon li {width:295px;float:left;position:relative;}
 .no_data {width:132px;margin:0 auto;}
 .no_data img {width:100%;}
 .no_tianqi {width:218px;height:20px;overflow:hidden;text-align:left;position:relative;top:-10px;}
 .no_richeng {width:100%;margin:0 auto;color:#5b5b5b;font-size:12px;line-height:20px;padding-bottom:5px;text-align:center;height:187px;}
 .no_richeng h6 {font-size:15px;width:100%;text-align:center;font-weight:normal;padding:10px 0;}
-.no_fotnews {width:100%;-background:url(../images/foot_Bg.png) repeat-x;background-color:#fff;}
+.no_fotnews {width:100%;-background:url(../images/foot_Bg.png) repeat-x;background-color:#fff;position:absolute;bottom:0;left:0;height:105px;}
 .foot_tit {height:21px;border-bottom:1px solid #747474;position:relative;}
 .foot_tit span {position:absolute;top:9px;background-color:#fff;left:50%;font-size:16px;color:#010101;width:79px;margin-left:-40px;text-align:center;}
 .foot_news {overflow:hidden;padding-top:23px;}
@@ -34,12 +34,12 @@ body {background-image:url("../images/notic_bg.jpg"); background-repeat:no-repea
 .foot_con h6 {font-size:16px;color:#313131;font-weight:normal;width:100%;line-height:16px;}
 .foot_con h6 a {color:#313131;}
 .foot_con p {font-size:11px;color:#7c7c7c;font-weight:normal;line-height:13px;padding-top:5px;width:100%;}
-.no_leftbtn {position:absolute;left:0;top:60px;width:11px;height:20px;}
-.no_rightbtn {position:absolute;right:0;top:60px;width:11px;height:20px;}
+.no_leftbtn {position:absolute;left:0;top:60px;width:11px;height:20px;z-index:30;}
+.no_rightbtn {position:absolute;right:0;top:60px;width:11px;height:20px;z-index:30;}
 .no_leftbtn  img, .no_rightbtn  img {width:100%;}
 .no_box {width:100%;overflow:hidden;}
 .no_gborder {width:100%;overflow:hidden;}
-.no_diposi {width:100%;-height:100%;height:120px;-background:url(../images/foot_Bg.png) repeat-x;background-color:#fff;position:relative;top:337px;z-index:0;}
+.no_diposi {width:100%;-height:100%;height:120px;-background:url(../images/foot_Bg.png) repeat-x;background-color:#fff;position:absolute;bottom:0;left:0;z-index:0;}
 
 
 /*¶þ¼¶Ò³*/

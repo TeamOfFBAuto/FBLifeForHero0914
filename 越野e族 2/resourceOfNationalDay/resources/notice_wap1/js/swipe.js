@@ -23,6 +23,7 @@
 			inits:function(){},
 			preventDeault:true
         }
+		
 		if(options) var options = $.extend(defaults, options);
 		/*************获取当前正在滑动的对象**************/
 		var $this=$(this);
