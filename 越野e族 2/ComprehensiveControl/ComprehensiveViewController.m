@@ -45,7 +45,7 @@
 #import "GongGaoViewController.h"
 
 ///浮动层开始显示的时间
-#define SHOW_TIME @"2014-09-3 02:00:00"
+#define SHOW_TIME @"2014-09-30 02:00:00"
 ///浮动层消失的时间
 #define HIDDEN_TIME @"2014-10-08 23:00:00"
 
@@ -590,17 +590,17 @@
 -(void)checkTheNetWork
 {
     NSString * path = [self returnPath];
-    if (![[NSFileManager defaultManager] fileExistsAtPath:path])
-    {
-        [timer invalidate];
-    }else
-    {
-        NSString * netWork = [Reachability checkNetWork];
-        if (![netWork isEqualToString:@"NONetWork"])
-        {
-            [self loadActivityData];
-        }
-    }
+//    if (![[NSFileManager defaultManager] fileExistsAtPath:path])
+//    {
+//        [timer invalidate];
+//    }else
+//    {
+//        NSString * netWork = [Reachability checkNetWork];
+//        if (![netWork isEqualToString:@"NONetWork"])
+//        {
+//            [self loadActivityData];
+//        }
+//    }
     
     
     NSUserDefaults * user = [NSUserDefaults standardUserDefaults];
@@ -614,25 +614,22 @@
             [self loadActivityData];
         }
         
-        if ([[dic objectForKey:@"error"] intValue] == 0)
+        if ([[dic objectForKey:@"newslist"] isKindOfClass:[NSNull class]])
         {
             [self loadNewsData];
         }
     }
     
-    if ([[NSFileManager defaultManager] fileExistsAtPath:path] && [[dic objectForKey:@"error"] intValue] == 1)
+    if ([[NSFileManager defaultManager] fileExistsAtPath:path])
     {
         [timer invalidate];
     }
-    
-    
-    
 }
 
 #pragma mark - 读取公告里边的新闻数据
 -(void)loadNewsData
 {
-    NSURL * url = [NSURL URLWithString:@"http://cmsweb.fblife.com/web.php?c=hero2014&a=getappnews&classid=353"];
+    NSURL * url = [NSURL URLWithString:@"http://cmsweb.fblife.com/web.php?c=hero2014&a=getappnews&classid=700"];
     
     ASIHTTPRequest * request = [[ASIHTTPRequest alloc] initWithURL:url];
     request.timeOutSeconds = 30;
@@ -643,8 +640,7 @@
         
         NSDictionary * allDic = [request.responseString objectFromJSONString];
         
-        if ([[allDic objectForKey:@"error"] intValue] == 0)
-        {
+        if (![[allDic objectForKey:@"newslist"] isKindOfClass:[NSNull class]]) {
             [[NSUserDefaults standardUserDefaults] setObject:allDic forKey:@"gonggaoNewsData"];
         }
     }];

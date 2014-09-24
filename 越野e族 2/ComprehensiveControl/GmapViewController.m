@@ -9,6 +9,7 @@
 #import "GmapViewController.h"
 
 
+
 @interface GmapViewController ()
 {
     BMKLocationService *_locService;//定位服务
@@ -31,6 +32,9 @@
 
 - (void)dealloc
 {
+    
+    
+    [locationManager stopUpdatingLocation];
     NSLog(@"%s",__FUNCTION__);
     
 }
@@ -46,6 +50,10 @@
     self.title = @"英雄会";
     
     
+    
+    
+    
+    
     //GScrollView
     
     UIActivityIndicatorView *testActivityIndicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
@@ -56,19 +64,51 @@
     
     dispatch_async(dispatch_get_main_queue(), ^{
         self.gscrollView = [[GScrollView alloc]initWithFrame:CGRectMake(0, 0, 320, iPhone5?568-64:480-64) WithLocation:iPhone5?[UIImage imageNamed:@"big5s.jpg"]:[UIImage imageNamed:@"big4s.jpg"]];
-        
         [self.view addSubview:self.gscrollView];
+        self.gscrollView.mapVCDelegate = self;
+
+        
+        self.tishilabel = [[UILabel alloc]initWithFrame:CGRectMake(0, iPhone5?568-64-40:480-64-40, 320, 40)];
+        self.tishilabel.text = @"您目前不在大本营范围内";
+        self.tishilabel.backgroundColor = [UIColor grayColor];
+        self.tishilabel.alpha = 0.5;
+        self.tishilabel.textAlignment = NSTextAlignmentCenter;
+        
+        [self.view addSubview:self.tishilabel];
         
         [testActivityIndicator stopAnimating];
         [testActivityIndicator setHidesWhenStopped:YES]; //当旋转结束时隐藏
     });
     
     
+    //版本判断 开启定位
+    if( ([[[UIDevice currentDevice] systemVersion] doubleValue]>=8.0)) {
+        //ios8 定位
+        locationManager = [[CLLocationManager alloc] init];
+        [locationManager requestAlwaysAuthorization];
+        [locationManager startUpdatingLocation];
+        
+        
+        //百度定位
+        _locService = [[BMKLocationService alloc]init];
+        _locService.delegate = self;
+        [_locService startUserLocationService];
+        
+    }else{
+        //ios7 定位
+        _locService = [[BMKLocationService alloc]init];
+        _locService.delegate = self;
+        [_locService startUserLocationService];
+    }
     
-    //定位
-    _locService = [[BMKLocationService alloc]init];
-    _locService.delegate = self;
-    [_locService startUserLocationService];
+    
+    
+    
+    
+    
+    
+    
+    
     
     
 }
@@ -95,6 +135,7 @@
 //用户位置更新后，会调用此函数
 - (void)didUpdateUserLocation:(BMKUserLocation *)userLocation
 {
+    
     NSLog(@" 定位数据(x,y)    long = %f   lat = %f",userLocation.location.coordinate.longitude,userLocation.location.coordinate.latitude);
     
     
@@ -103,7 +144,6 @@
     
     //实际定位坐标  x:long   y:lat
     [self.gscrollView dingweiViewWithX:userLocation.location.coordinate.longitude Y:userLocation.location.coordinate.latitude];
-    
     
 }
 
