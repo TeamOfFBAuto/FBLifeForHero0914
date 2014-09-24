@@ -1000,8 +1000,6 @@
 		566E7971185EE75D00BB88C5 /* QBImagePickerVideoInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 566E7890185EE75C00BB88C5 /* QBImagePickerVideoInfoView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		566E7972185EE75D00BB88C5 /* takePhoto@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 566E7891185EE75C00BB88C5 /* takePhoto@2x.png */; };
 		566E7973185EE75D00BB88C5 /* takePhotoBack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 566E7892185EE75C00BB88C5 /* takePhotoBack@2x.png */; };
-		566E7974185EE75D00BB88C5 /* 确认80_78(1)@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 566E7893185EE75C00BB88C5 /* 确认80_78(1)@2x.png */; };
-		566E7975185EE75D00BB88C5 /* 确认80_78-2(1)(1)@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 566E7894185EE75C00BB88C5 /* 确认80_78-2(1)(1)@2x.png */; };
 		566E7977185EE75D00BB88C5 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 566E7897185EE75C00BB88C5 /* Reachability.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		566E7978185EE75D00BB88C5 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 566E789A185EE75C00BB88C5 /* MBProgressHUD.m */; };
 		566E7979185EE75D00BB88C5 /* MWCaptionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 566E789C185EE75C00BB88C5 /* MWCaptionView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -2497,8 +2495,6 @@
 		566E7890185EE75C00BB88C5 /* QBImagePickerVideoInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QBImagePickerVideoInfoView.m; sourceTree = "<group>"; };
 		566E7891185EE75C00BB88C5 /* takePhoto@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "takePhoto@2x.png"; sourceTree = "<group>"; };
 		566E7892185EE75C00BB88C5 /* takePhotoBack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "takePhotoBack@2x.png"; sourceTree = "<group>"; };
-		566E7893185EE75C00BB88C5 /* 确认80_78(1)@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "确认80_78(1)@2x.png"; sourceTree = "<group>"; };
-		566E7894185EE75C00BB88C5 /* 确认80_78-2(1)(1)@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "确认80_78-2(1)(1)@2x.png"; sourceTree = "<group>"; };
 		566E7896185EE75C00BB88C5 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		566E7897185EE75C00BB88C5 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		566E7899185EE75C00BB88C5 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
@@ -5096,8 +5092,6 @@
 				566E7890185EE75C00BB88C5 /* QBImagePickerVideoInfoView.m */,
 				566E7891185EE75C00BB88C5 /* takePhoto@2x.png */,
 				566E7892185EE75C00BB88C5 /* takePhotoBack@2x.png */,
-				566E7893185EE75C00BB88C5 /* 确认80_78(1)@2x.png */,
-				566E7894185EE75C00BB88C5 /* 确认80_78-2(1)(1)@2x.png */,
 			);
 			path = QBImagePickerController;
 			sourceTree = "<group>";
@@ -6614,7 +6608,6 @@
 				190F02F91973DA3400EC6C47 /* sanjiao21_8@2x.png in Resources */,
 				566E7A25185EE7D000BB88C5 /* menu_self.png in Resources */,
 				56607570188F5D1200C25ACE /* UMSocialLocalizable.strings in Resources */,
-				566E7975185EE75D00BB88C5 /* 确认80_78-2(1)(1)@2x.png in Resources */,
 				5634D4A01860588B003868D7 /* talk_write@2x.png in Resources */,
 				56C955A5185EEE5500763E69 /* 20130502_xiaolian@2x.png in Resources */,
 				5633645C1862E7490069F838 /* down_zhhf188X40.png in Resources */,
@@ -6844,7 +6837,6 @@
 				563365F51862E7590069F838 /* newselect@2x.png in Resources */,
 				56C9560D185EEEB700763E69 /* quanzikuang.png in Resources */,
 				566E78F6185EE75D00BB88C5 /* face17_1.png in Resources */,
-				566E7974185EE75D00BB88C5 /* 确认80_78(1)@2x.png in Resources */,
 				5633653C1862E7510069F838 /* setting_qingchu.png in Resources */,
 				563363651862E68D0069F838 /* ios7_right1628@2x.png in Resources */,
 				566E7954185EE75D00BB88C5 /* face6.png in Resources */,
