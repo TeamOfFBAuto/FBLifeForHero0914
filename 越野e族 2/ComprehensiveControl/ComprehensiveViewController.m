@@ -479,7 +479,7 @@
     if ([now timeIntervalSinceDate:begin_time] > 0 && [now timeIntervalSinceDate:end_time]<0)
     {
         
-        NSArray * images_array = [NSArray arrayWithObjects:@"AwesomeMenu_gonggao",@"AwesomeMenu_ditu",@"AwesomeMenu_zhinan",@"AwesomeMenu_gonggao",@"AwesomeMenu_ditu",nil];
+        NSArray * images_array = [NSArray arrayWithObjects:@"AwesomeMenu_gonggao",@"AwesomeMenu_ditu",@"AwesomeMenu_zhinan",@"AwesomeMenu_wenjuan",@"AwesomeMenu_weibo",nil];
          NSMutableArray *menus = [NSMutableArray array];
         for (int i = 0;i < images_array.count;i++)
         {
@@ -499,7 +499,7 @@
         
         awesomeMenu = [[AwesomeMenu alloc] initWithFrame:self.navigationController.view.bounds startItem:startItem optionMenus:menus];
         awesomeMenu.delegate = self;
-        awesomeMenu.menuWholeAngle = 2*M_PI/3;
+        awesomeMenu.menuWholeAngle = 5*M_PI/6;
         awesomeMenu.farRadius = 110.0f;
         awesomeMenu.endRadius = 100.0f;
         awesomeMenu.nearRadius = 90.0f;
@@ -511,46 +511,38 @@
     }
 }
 
-#pragma mark - 计时器，到预定时间，消失浮动框
--(void)timeCount:(NSTimer *)sender
-{
-    NSDate * now = [NSDate date];
-    NSDate * end_time = [zsnApi dateFromString:HIDDEN_TIME];
-    if ([now timeIntervalSinceDate:end_time]>0)
-    {
-        if (awesomeMenu) {
-            for (int i = 0;i < awesomeMenu.subviews.count;i++) {
-                UIView * view = [awesomeMenu.subviews objectAtIndex:i];
-                [view removeFromSuperview];
-            }
-            [awesomeMenu removeFromSuperview];
-        }
-//        [timer invalidate];
-    }
-}
-
 #pragma mark - AWeSomeMenuDelegate
 #pragma mark - 点击的第几个
 - (void)awesomeMenu:(AwesomeMenu *)menu didSelectIndex:(NSInteger)idx
 {
     NSLog(@"Select the index : %d",idx);
     [awesomeMenu setBackgroundColor:[UIColor clearColor]];
-    if (idx == 1) {//跳转到离线地图
+    if (idx == 3) {//跳转到离线地图
         //添加离线地图包资源 并显示地图
         GmapViewController *mapvc = [[GmapViewController alloc]init];
         [self.navigationController pushViewController:mapvc animated:YES];
-    }else if (idx == 0)//跳到指南界面
+    }else if (idx == 2)//跳到指南界面
     {
         GongGaoViewController * gongGao = [[GongGaoViewController alloc] init];
         gongGao.html_name = @"guide";
         [self.navigationController pushViewController:gongGao animated:YES];
-    }else if (idx == 2)//跳到公告界面
+    }else if (idx == 4)//跳到公告界面
     {
         GongGaoViewController * gongGao = [[GongGaoViewController alloc] init];
         gongGao.html_name = @"index";
         [self.navigationController pushViewController:gongGao animated:YES];
-    }else if (idx == 3)//跳转到发表微博界面
+    }else if (idx == 0)//跳转到发表微博界面
     {
+        
+        BOOL isLogIn = [[NSUserDefaults standardUserDefaults] boolForKey:USER_IN];
+        if (!isLogIn)
+        {
+            LogInViewController * logIn = [LogInViewController sharedManager];
+            [self presentViewController:logIn animated:YES completion:NULL];
+            return;
+        }
+        
+        
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(PushToWeiBoController) name:@"refreshmydata" object:nil];
         
         UIImagePickerControllerSourceType sourceType = UIImagePickerControllerSourceTypeCamera;
@@ -566,6 +558,9 @@
         {
             NSLog(@"模拟其中无法打开照相机,请在真机中使用");
         }
+    }else if (idx == 1)//跳转到问卷调查界面
+    {
+        
     }
 }
 #pragma mark - 关闭
@@ -625,17 +620,21 @@
     {
         NSFileManager * manager = [NSFileManager defaultManager];
         
-        if ([manager fileExistsAtPath:filename])
+        if (![manager fileExistsAtPath:filename])
         {
-            NSMutableDictionary * scheduleDic = [NSMutableDictionary dictionaryWithContentsOfFile:filename];
-            [self createLocationNotificationWith:scheduleDic];
+            NSString * path = [[NSBundle mainBundle] pathForResource:@"TheScheduleList" ofType:@"plist"];
+            ///本地活动日程数据
+            NSMutableDictionary * localScheduleDic = [NSMutableDictionary dictionaryWithContentsOfFile:path];
+            [self createLocationNotificationWith:localScheduleDic];
             return;
         }else
         {
             NSString * path = [[NSBundle mainBundle] pathForResource:@"TheScheduleList" ofType:@"plist"];
-            NSMutableDictionary * scheduleDic = [NSMutableDictionary dictionaryWithContentsOfFile:path];
-            [self createLocationNotificationWith:scheduleDic];
-            return;
+            ///本地活动日程数据
+            NSMutableDictionary * localScheduleDic = [NSMutableDictionary dictionaryWithContentsOfFile:path];
+            NSMutableDictionary * docDic = [NSMutableDictionary dictionaryWithContentsOfFile:filename];
+            [docDic addEntriesFromDictionary:localScheduleDic];
+            [self createLocationNotificationWith:docDic];
         }
     }
     
@@ -659,8 +658,14 @@
             if (![updatetime isEqualToString:now_updatetime])
             {
                 NSDictionary * array = [allDic objectForKey:@"content"];
-                if ([array isKindOfClass:[NSDictionary class]]) {
+                if ([array isKindOfClass:[NSDictionary class]])
+                {
                     my_dictionary = [NSMutableDictionary dictionaryWithDictionary:[allDic objectForKey:@"content"]];
+                    NSString * path = [[NSBundle mainBundle] pathForResource:@"TheScheduleList" ofType:@"plist"];
+                    ///本地活动日程数据
+                    NSMutableDictionary * localScheduleDic = [NSMutableDictionary dictionaryWithContentsOfFile:path];
+                    [my_dictionary addEntriesFromDictionary:localScheduleDic];
+                    
                     
                     [bself createLocationNotificationWith:my_dictionary];
                 }
@@ -672,12 +677,10 @@
             }else
             {
                 NSFileManager * manager = [NSFileManager defaultManager];
-                
                 if (![manager fileExistsAtPath:filename])
                 {
                     [my_dictionary writeToFile:filename atomically:YES];
                 }
-
             }
         }
     }];
@@ -718,7 +721,7 @@
                 // 推送内容
                 notification.alertBody = aValue;
                 //显示在icon上的红色圈中的数子
-                notification.applicationIconBadgeNumber = 1;
+//                notification.applicationIconBadgeNumber = 1;
                 //设置userinfo 方便在之后需要撤销的时候使用
                 NSDictionary *info = [NSDictionary dictionaryWithObject:aValue forKey:@"key"];
                 notification.userInfo = info;
@@ -766,6 +769,7 @@
          [picker dismissViewControllerAnimated:YES completion:^{
              WriteBlogViewController * witeBlog = [[WriteBlogViewController alloc] init];
              witeBlog.myAllimgUrl = allImageUrl;
+             witeBlog.theText = @"#2014英雄会#";
              [bself presentViewController:witeBlog animated:YES completion:NULL];
          }];
      }];

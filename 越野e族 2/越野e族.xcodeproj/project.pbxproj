@@ -199,6 +199,8 @@
 		56203CA5197E31400005D720 /* newWriteBlogButtonImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56203CA3197E31400005D720 /* newWriteBlogButtonImage@2x.png */; };
 		56203CA7197E3F7A0005D720 /* atlas_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56203CA6197E3F7A0005D720 /* atlas_logo@2x.png */; };
 		56203CA8197E3F7A0005D720 /* atlas_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56203CA6197E3F7A0005D720 /* atlas_logo@2x.png */; };
+		56262CC919D26E9F007D9809 /* AwesomeMenu_weibo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56262CC719D26E9F007D9809 /* AwesomeMenu_weibo@2x.png */; };
+		56262CCA19D26E9F007D9809 /* AwesomeMenu_wenjuan@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56262CC819D26E9F007D9809 /* AwesomeMenu_wenjuan@2x.png */; };
 		563022871978C9BE00F85B11 /* bbs_rankinglist_chexing@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5630227F1978C9BE00F85B11 /* bbs_rankinglist_chexing@2x.png */; };
 		563022881978C9BE00F85B11 /* bbs_rankinglist_chexing@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5630227F1978C9BE00F85B11 /* bbs_rankinglist_chexing@2x.png */; };
 		563022891978C9BE00F85B11 /* bbs_rankinglist_chexing1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 563022801978C9BE00F85B11 /* bbs_rankinglist_chexing1@2x.png */; };
@@ -1615,6 +1617,8 @@
 		561B65D119668B4200572350 /* SliderBBSForumSegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SliderBBSForumSegmentView.m; sourceTree = "<group>"; };
 		56203CA3197E31400005D720 /* newWriteBlogButtonImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "newWriteBlogButtonImage@2x.png"; sourceTree = "<group>"; };
 		56203CA6197E3F7A0005D720 /* atlas_logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "atlas_logo@2x.png"; sourceTree = "<group>"; };
+		56262CC719D26E9F007D9809 /* AwesomeMenu_weibo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AwesomeMenu_weibo@2x.png"; sourceTree = "<group>"; };
+		56262CC819D26E9F007D9809 /* AwesomeMenu_wenjuan@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AwesomeMenu_wenjuan@2x.png"; sourceTree = "<group>"; };
 		5630227F1978C9BE00F85B11 /* bbs_rankinglist_chexing@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bbs_rankinglist_chexing@2x.png"; sourceTree = "<group>"; };
 		563022801978C9BE00F85B11 /* bbs_rankinglist_chexing1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bbs_rankinglist_chexing1@2x.png"; sourceTree = "<group>"; };
 		563022811978C9BE00F85B11 /* bbs_rankinglist_dadui@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bbs_rankinglist_dadui@2x.png"; sourceTree = "<group>"; };
@@ -4083,6 +4087,8 @@
 		5639C1F319CBD30B0021339C /* awesomeImages */ = {
 			isa = PBXGroup;
 			children = (
+				56262CC719D26E9F007D9809 /* AwesomeMenu_weibo@2x.png */,
+				56262CC819D26E9F007D9809 /* AwesomeMenu_wenjuan@2x.png */,
 				5639C1F419CBD3130021339C /* AwesomeMenu_gonggao@2x.png */,
 				5639C1F519CBD3130021339C /* AwesomeMenu_ditu@2x.png */,
 				5639C1F619CBD3130021339C /* AwesomeMenu_addbutton@2x.png */,
@@ -6420,6 +6426,7 @@
 				5633651E1862E7510069F838 /* send1sss@2x.png in Resources */,
 				19B11864186871B600CA4C07 /* logIn_close@2x.png in Resources */,
 				563365BA1862E7590069F838 /* bc@2x.png in Resources */,
+				56262CC919D26E9F007D9809 /* AwesomeMenu_weibo@2x.png in Resources */,
 				566E78EF185EE75D00BB88C5 /* face14.png in Resources */,
 				566E7A62185EE81500BB88C5 /* denglu@2x.png in Resources */,
 				563365121862E7510069F838 /* item_ok_selected@2x.png in Resources */,
@@ -6769,6 +6776,7 @@
 				563364A71862E7490069F838 /* laba1-72-67.png in Resources */,
 				566E7C7E185EE8F100BB88C5 /* newsselected@2x.png in Resources */,
 				563365F41862E7590069F838 /* bbsunselect@2x.png in Resources */,
+				56262CCA19D26E9F007D9809 /* AwesomeMenu_wenjuan@2x.png in Resources */,
 				566E7BF2185EE88400BB88C5 /* bubble-default-outgoing-green@2x.png in Resources */,
 				563363811862E68D0069F838 /* ios7_goahead4032@2x.png in Resources */,
 				563365301862E7510069F838 /* feedback@2x.png in Resources */,

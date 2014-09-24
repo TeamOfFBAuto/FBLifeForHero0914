@@ -54,17 +54,10 @@
     
 }
 
-- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+#pragma mark - dealloc
+-(void)dealloc
 {
-    
-//    if (![[request.URL absoluteString] hasPrefix:@"file:///"] && navigationType == UIWebViewNavigationTypeLinkClicked)
-//    {
-//        NSLog(@"request ----  %@  ---%@",request,[request.URL absoluteString]);
-//        [webView loadRequest:request];
-//        
-//    }
-    
-    return YES;
+    _myWebView = nil;
 }
 
 
