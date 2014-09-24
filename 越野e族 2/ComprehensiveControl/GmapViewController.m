@@ -47,6 +47,10 @@
     self.title = @"英雄会";
     
     
+    
+    
+    
+    
     //GScrollView
     
     UIActivityIndicatorView *testActivityIndicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
@@ -62,7 +66,7 @@
 
         
         self.tishilabel = [[UILabel alloc]initWithFrame:CGRectMake(0, iPhone5?568-64-40:480-64-40, 320, 40)];
-        self.tishilabel.text = @"您目前不在大本营内";
+        self.tishilabel.text = @"您目前不在大本营范围内";
         self.tishilabel.backgroundColor = [UIColor grayColor];
         self.tishilabel.alpha = 0.5;
         self.tishilabel.textAlignment = NSTextAlignmentCenter;
@@ -74,11 +78,30 @@
     });
     
     
+    //版本判断 开启定位
+    if( ([[[UIDevice currentDevice] systemVersion] doubleValue]>=8.0)) {
+        //ios8 定位
+        locationManager = [[CLLocationManager alloc] init];
+        [locationManager requestAlwaysAuthorization];
+        [locationManager startUpdatingLocation];
+        
+        //百度定位
+        _locService = [[BMKLocationService alloc]init];
+        _locService.delegate = self;
+        [_locService startUserLocationService];
+        
+    }else{
+        //ios7 定位
+        _locService = [[BMKLocationService alloc]init];
+        _locService.delegate = self;
+        [_locService startUserLocationService];
+    }
     
-    //定位
-    _locService = [[BMKLocationService alloc]init];
-    _locService.delegate = self;
-    [_locService startUserLocationService];
+    
+    
+    
+    
+    
     
     
     
@@ -108,6 +131,7 @@
 //用户位置更新后，会调用此函数
 - (void)didUpdateUserLocation:(BMKUserLocation *)userLocation
 {
+    
     NSLog(@" 定位数据(x,y)    long = %f   lat = %f",userLocation.location.coordinate.longitude,userLocation.location.coordinate.latitude);
     
     
