@@ -13,4 +13,6 @@
 
 @property(nonatomic,strong)GScrollView *gscrollView;
 
+@property(nonatomic,strong)UILabel *tishilabel;//在不在区域内的提示label
+
 @end

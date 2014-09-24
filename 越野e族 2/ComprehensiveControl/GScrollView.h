@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+@class GmapViewController;
 
 @protocol GShowImagesScrollViewDelegate <NSObject>
 -(void)singleClicked;
@@ -42,6 +43,9 @@
     
     //用户位置
     UIImageView *_blueImv;
+    
+    
+    
 }
 
 
@@ -55,8 +59,7 @@
 
 
 
-
-
+@property(nonatomic,assign)GmapViewController *mapVCDelegate;
 
 
 

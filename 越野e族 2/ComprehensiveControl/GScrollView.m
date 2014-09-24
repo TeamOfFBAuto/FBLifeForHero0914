@@ -7,6 +7,11 @@
 //
 
 #import "GScrollView.h"
+
+#import "GmapViewController.h"
+
+
+
 ///最大缩放
 #define kMaxZoom 10.0
 
@@ -35,6 +40,10 @@
     _locationImageView = nil;
     
 }
+
+
+
+
 
 
 - (id)initWithFrame:(CGRect)frame
@@ -78,6 +87,7 @@
         _locationImageView.backgroundColor = [UIColor whiteColor];
         _locationImageView.contentMode = UIViewContentModeScaleAspectFit;
         [self addSubview:_locationImageView];
+        
         
         
         
@@ -133,7 +143,9 @@
     
     NSLog(@"比例 : %f %f",framex,framey);
     
-
+    if (framex >0.0 && framex <1.0 && framey >0.0 && framey < 1.0) {
+        self.mapVCDelegate.tishilabel.hidden = YES;
+    }
     
     //用户位置
     if (!_blueImv) {
@@ -293,6 +305,7 @@
 
 -(void)singleClicked{
     NSLog(@"%s",__FUNCTION__);
+    
 }
 
 
