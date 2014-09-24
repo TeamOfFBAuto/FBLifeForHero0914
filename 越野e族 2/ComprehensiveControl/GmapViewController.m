@@ -32,6 +32,9 @@
 
 - (void)dealloc
 {
+    
+    
+    [locationManager stopUpdatingLocation];
     NSLog(@"%s",__FUNCTION__);
     
 }
@@ -84,6 +87,7 @@
         locationManager = [[CLLocationManager alloc] init];
         [locationManager requestAlwaysAuthorization];
         [locationManager startUpdatingLocation];
+        
         
         //百度定位
         _locService = [[BMKLocationService alloc]init];
