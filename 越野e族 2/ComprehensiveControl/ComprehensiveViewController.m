@@ -629,7 +629,7 @@
 #pragma mark - 读取公告里边的新闻数据
 -(void)loadNewsData
 {
-    NSURL * url = [NSURL URLWithString:@"http://cmsweb.fblife.com/web.php?c=hero2014&a=getappnews&classid=700"];
+    NSURL * url = [NSURL URLWithString:@"http://cmsweb.fblife.com/web.php?c=hero2014&a=getappnews&classid=353"];
     
     ASIHTTPRequest * request = [[ASIHTTPRequest alloc] initWithURL:url];
     request.timeOutSeconds = 30;
