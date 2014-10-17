@@ -123,8 +123,6 @@
         
         _ttLeftUp = CLLocationCoordinate2DMake(kLeftUpLat, kLeftUpLong);
         
-       
-        
         
         
         
