@@ -660,7 +660,7 @@
             
             NSDictionary * alertnum_dic = [dic objectForKey:@"alertnum"];
             
-            //  NSLog(@"未读消息 ------  %@",alertnum_dic);
+              NSLog(@"未读消息 ------  %@",alertnum_dic);
             
             for (int i = 0;i <= 16;i++)
             {

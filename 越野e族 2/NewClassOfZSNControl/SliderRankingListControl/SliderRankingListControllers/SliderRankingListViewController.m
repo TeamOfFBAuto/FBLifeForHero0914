@@ -68,17 +68,12 @@
     
     
     _myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0,0,320,(iPhone5?568:480)-64) style:UITableViewStylePlain];
-    
     _myTableView.delegate = self;
-    
     _myTableView.dataSource = self;
-    
     _myTableView.separatorColor = RGBCOLOR(223,223,223);
-    
     if (MY_MACRO_NAME) {
         _myTableView.separatorInset = UIEdgeInsetsZero;
     }
-    
     [self.view addSubview:_myTableView];
     
     __weak typeof(self) bself = self;

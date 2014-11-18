@@ -17,9 +17,7 @@
     ASIHTTPRequest * request_;
     
     ASIHTTPRequest * reSend_request;
-    
-    ATMHud * hud;
-    
+        
     int time_number;
     
     NSTimer * timer;

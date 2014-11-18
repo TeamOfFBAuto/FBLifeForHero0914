@@ -5,3 +5,4 @@ pod 'MMDrawerController', '~> 0.5.5'
 
 pod 'LBBlurredImage', '~> 0.2.0'
 
+pod 'MBProgressHUD', '~> 0.9'

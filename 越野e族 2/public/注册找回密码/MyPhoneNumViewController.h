@@ -16,7 +16,6 @@
     
     ASIHTTPRequest * myRequest;
     
-    ATMHud * hud;
 }
 
 @end

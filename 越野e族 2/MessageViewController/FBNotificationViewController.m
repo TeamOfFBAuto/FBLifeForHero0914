@@ -55,65 +55,15 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = RGBCOLOR(248,248,248);
-    
     _read_array = [[NSMutableArray alloc] init];
-    
     _uread_array = [[NSMutableArray alloc] init];
-    
     _read_page = 1;
-    
     _uRead_page = 1;
     
-    
-//    self.navigationItem.title = @"系统通知";
-//    
-//    UIColor * cc = [UIColor blackColor];
-//    
-//    NSDictionary * dict = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:cc,[UIFont systemFontOfSize:20],[UIColor clearColor],nil] forKeys:[NSArray arrayWithObjects:UITextAttributeTextColor,UITextAttributeFont,UITextAttributeTextShadowColor,nil]];
-//    
-//    self.navigationController.navigationBar.titleTextAttributes = dict;
-    
-    
-//    _slsV=[[SliderSegmentView alloc]initWithFrame:CGRectMake(0,0,150,44)];
-//    _slsV.delegate=self;
-//    [_slsV NewloadContent:[NSArray arrayWithObjects:@"FB通知",@"论坛通知",nil]];
-//    
-//    UIView *view_title=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 170, 44)];
-//    view_title.backgroundColor=[UIColor clearColor];
-//    [view_title addSubview:_slsV];
-//    self.navigationItem.titleView=_slsV;
-    
-    //        _slsV.backgroundColor=[UIColor orangeColor];
-    
-    
-//    if([self.navigationController.navigationBar respondsToSelector:@selector(setBackgroundImage:forBarMetrics:)] )
-//    {
-//        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:MY_MACRO_NAME?IOS7DAOHANGLANBEIJING:IOS6DAOHANGLANBEIJING] forBarMetrics: UIBarMetricsDefault];
-//    }
-//    
-//    UIButton *button_back=[[UIButton alloc]initWithFrame:CGRectMake(10, 8, 12, 21.5)];
-//    
-//    [button_back addTarget:self action:@selector(backto) forControlEvents:UIControlEventTouchUpInside];
-//    
-//    [button_back setBackgroundImage:[UIImage imageNamed:@"ios7_back.png"] forState:UIControlStateNormal];
-//    
-//    
-//    UIBarButtonItem * space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-//    
-//    space.width = MY_MACRO_NAME?-4:5;
-//    
-//    
-//    
-//    UIBarButtonItem *back_item=[[UIBarButtonItem alloc]initWithCustomView:button_back];
-//    
-//    self.navigationItem.leftBarButtonItems=@[space,back_item];
-        
         
     [self setMyViewControllerLeftButtonType:MyViewControllerLeftbuttonTypeBack WithRightButtonType:MyViewControllerRightbuttonTypeNull];
     
-    
     seg_view = [[SliderBBSTitleView alloc] initWithFrame:CGRectMake(0,0,190,44)];
-
     
     __weak typeof(self) bself = self;
     
@@ -123,9 +73,7 @@
         
     }];
     
-    self.navigationItem.titleView = seg_view;
-    
-    
+    self.navigationItem.titleView = seg_view;    
     
     _myScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0,0,340, iPhone5?568-44-25:480-44-25)];
     
@@ -553,7 +501,8 @@
     NSDictionary *dic;
     
     
-    if (tableView==fbnoti_tab) {
+    if (tableView==fbnoti_tab)
+    {
         if (indexPath.section == 0)
         {
             if (_uread_array.count>0)

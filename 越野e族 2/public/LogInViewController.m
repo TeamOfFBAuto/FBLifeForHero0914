@@ -455,6 +455,8 @@
                 [[NSUserDefaults standardUserDefaults] setObject:pwNameField.text forKey:USER_PW] ;
                 [[NSUserDefaults standardUserDefaults] setObject:[dictionary objectForKey:@"bbsinfo"] forKey:USER_AUTHOD] ;
                 [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_IN];
+                [[NSUserDefaults standardUserDefaults] setObject:[dictionary objectForKey:@"uid"] forKey:USER_UID] ;
+                [[NSUserDefaults standardUserDefaults] setObject:[dictionary objectForKey:@"username"] forKey:USER_NAME] ;
                 [[NSUserDefaults standardUserDefaults] synchronize];
                 
                 [[NSNotificationCenter defaultCenter] postNotificationName:USER_AUTHOD object:[dictionary objectForKey:@"bbsinfo"]];
