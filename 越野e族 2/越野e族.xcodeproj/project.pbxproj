@@ -423,7 +423,6 @@
 		563365081862E7500069F838 /* botomviewofchat.m in Sources */ = {isa = PBXBuildFile; fileRef = 563364AF1862E7500069F838 /* botomviewofchat.m */; };
 		563365091862E7500069F838 /* UMEGORefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 563364B31862E7500069F838 /* UMEGORefreshTableHeaderView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		5633650A1862E7500069F838 /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 563364B51862E7500069F838 /* background@2x.png */; };
-		5633650C1862E7500069F838 /* blueArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 563364B71862E7500069F838 /* blueArrow@2x.png */; };
 		5633650D1862E7500069F838 /* icon_rightArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 563364B81862E7500069F838 /* icon_rightArrow@2x.png */; };
 		5633650E1862E7510069F838 /* icon_rightArrow_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 563364B91862E7500069F838 /* icon_rightArrow_selected@2x.png */; };
 		5633650F1862E7510069F838 /* item_cancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 563364BA1862E7500069F838 /* item_cancel@2x.png */; };
@@ -486,7 +485,6 @@
 		563365BA1862E7590069F838 /* bc@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 563365541862E7590069F838 /* bc@2x.png */; };
 		563365BB1862E7590069F838 /* blackArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 563365551862E7590069F838 /* blackArrow.png */; };
 		563365BC1862E7590069F838 /* blackArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 563365561862E7590069F838 /* blackArrow@2x.png */; };
-		563365BD1862E7590069F838 /* blueArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 563365571862E7590069F838 /* blueArrow@2x.png */; };
 		563365BE1862E7590069F838 /* down268_82.png in Resources */ = {isa = PBXBuildFile; fileRef = 563365581862E7590069F838 /* down268_82.png */; };
 		563365BF1862E7590069F838 /* lineofnews@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 563365591862E7590069F838 /* lineofnews@2x.png */; };
 		563365C01862E7590069F838 /* ping.png in Resources */ = {isa = PBXBuildFile; fileRef = 5633655A1862E7590069F838 /* ping.png */; };
@@ -1849,7 +1847,6 @@
 		563364B21862E7500069F838 /* UMEGORefreshTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMEGORefreshTableHeaderView.h; sourceTree = "<group>"; };
 		563364B31862E7500069F838 /* UMEGORefreshTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMEGORefreshTableHeaderView.m; sourceTree = "<group>"; };
 		563364B51862E7500069F838 /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background@2x.png"; sourceTree = "<group>"; };
-		563364B71862E7500069F838 /* blueArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blueArrow@2x.png"; sourceTree = "<group>"; };
 		563364B81862E7500069F838 /* icon_rightArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_rightArrow@2x.png"; sourceTree = "<group>"; };
 		563364B91862E7500069F838 /* icon_rightArrow_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_rightArrow_selected@2x.png"; sourceTree = "<group>"; };
 		563364BA1862E7500069F838 /* item_cancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "item_cancel@2x.png"; sourceTree = "<group>"; };
@@ -1924,7 +1921,6 @@
 		563365541862E7590069F838 /* bc@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bc@2x.png"; sourceTree = "<group>"; };
 		563365551862E7590069F838 /* blackArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blackArrow.png; sourceTree = "<group>"; };
 		563365561862E7590069F838 /* blackArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blackArrow@2x.png"; sourceTree = "<group>"; };
-		563365571862E7590069F838 /* blueArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blueArrow@2x.png"; sourceTree = "<group>"; };
 		563365581862E7590069F838 /* down268_82.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = down268_82.png; sourceTree = "<group>"; };
 		563365591862E7590069F838 /* lineofnews@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lineofnews@2x.png"; sourceTree = "<group>"; };
 		5633655A1862E7590069F838 /* ping.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ping.png; sourceTree = "<group>"; };
@@ -3838,7 +3834,6 @@
 			isa = PBXGroup;
 			children = (
 				563364B51862E7500069F838 /* background@2x.png */,
-				563364B71862E7500069F838 /* blueArrow@2x.png */,
 				563364B81862E7500069F838 /* icon_rightArrow@2x.png */,
 				563364B91862E7500069F838 /* icon_rightArrow_selected@2x.png */,
 				563364BA1862E7500069F838 /* item_cancel@2x.png */,
@@ -3942,7 +3937,6 @@
 				563365541862E7590069F838 /* bc@2x.png */,
 				563365551862E7590069F838 /* blackArrow.png */,
 				563365561862E7590069F838 /* blackArrow@2x.png */,
-				563365571862E7590069F838 /* blueArrow@2x.png */,
 				563365581862E7590069F838 /* down268_82.png */,
 				563365591862E7590069F838 /* lineofnews@2x.png */,
 				5633655A1862E7590069F838 /* ping.png */,
@@ -4799,13 +4793,13 @@
 		566E77A6185EE75C00BB88C5 /* public */ = {
 			isa = PBXGroup;
 			children = (
+				5660752C188F5D1100C25ACE /* 社会化分享 */,
 				56A425BF19C5ABB600DBCFA3 /* AwesomeMenu */,
 				561B65BB1964FA8B00572350 /* ZSNAPI */,
 				564387931963F9C500152B2D /* ZSNPhotoDetailControl */,
 				19CF4124186C526C00AA51A9 /* 注册找回密码 */,
 				19B1186E18687EB900CA4C07 /* custonnb */,
 				5660751A188F5D1100C25ACE /* UMtui推广 */,
-				5660752C188F5D1100C25ACE /* 社会化分享 */,
 				5660755D188F5D1100C25ACE /* 友盟 */,
 				56C9563F185EF08100763E69 /* RichTextLabel */,
 				566E786E185EE75C00BB88C5 /* FMDB */,
@@ -6676,7 +6670,6 @@
 				563365CC1862E7590069F838 /* write_jianpan_80 64@2x.png in Resources */,
 				563364961862E7490069F838 /* yellow_star32X31.png in Resources */,
 				566E7922185EE75D00BB88C5 /* face37_1.png in Resources */,
-				5633650C1862E7500069F838 /* blueArrow@2x.png in Resources */,
 				19B645181988A8AF00E9C3F6 /* shareweixin@2x.png in Resources */,
 				563365C11862E7590069F838 /* ping@2x.png in Resources */,
 				566E7BFB185EE88400BB88C5 /* bubble-square-outgoing-selected.png in Resources */,
@@ -7018,7 +7011,6 @@
 				5639C1F919CBD3130021339C /* AwesomeMenu_ditu@2x.png in Resources */,
 				566E7C0D185EE88400BB88C5 /* send1.png in Resources */,
 				565D3267197611F300AF0881 /* atlas_zan-1@2x.png in Resources */,
-				563365BD1862E7590069F838 /* blueArrow@2x.png in Resources */,
 				566E7C09185EE88400BB88C5 /* messages_left_bubble3@2x.png in Resources */,
 				566E793A185EE75D00BB88C5 /* face48_1.png in Resources */,
 				56C95621185EEEB700763E69 /* xiaokuangkuang@2x.png in Resources */,
@@ -7622,7 +7614,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/越野e族/社会化分享/UMSocial_";
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "f0f07b52-40c5-4f8a-86b2-fee6114d7a20";
+				PROVISIONING_PROFILE = "96c93639-ff5c-44ac-ad74-809c23c1de89";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -7657,7 +7649,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/越野e族/社会化分享/UMSocial_";
-				PROVISIONING_PROFILE = "f0f07b52-40c5-4f8a-86b2-fee6114d7a20";
+				PROVISIONING_PROFILE = "96c93639-ff5c-44ac-ad74-809c23c1de89";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -7697,7 +7689,7 @@
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "f0f07b52-40c5-4f8a-86b2-fee6114d7a20";
+				PROVISIONING_PROFILE = "96c93639-ff5c-44ac-ad74-809c23c1de89";
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 				VALID_ARCHS = "armv7s armv7 arm64";
 				WRAPPER_EXTENSION = app;
@@ -7738,7 +7730,7 @@
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "f0f07b52-40c5-4f8a-86b2-fee6114d7a20";
+				PROVISIONING_PROFILE = "96c93639-ff5c-44ac-ad74-809c23c1de89";
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 				VALID_ARCHS = "armv7s armv7 arm64";
 				WRAPPER_EXTENSION = app;

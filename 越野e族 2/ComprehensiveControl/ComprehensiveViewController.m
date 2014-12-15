@@ -10,7 +10,6 @@
 
 #import "UIImageView+LBBlurredImage.h"
 
-
 #import "UIViewController+MMDrawerController.h"
 
 #import "LeftViewController.h"
@@ -42,12 +41,13 @@
 #import <CommonCrypto/CommonDigest.h> // Need to import for CC_MD5 access
 
 #import "GmapViewController.h"//地图
+
 #import "GongGaoViewController.h"
 
 ///浮动层开始显示的时间
 #define SHOW_TIME @"2014-09-30 02:00:00"
 ///浮动层消失的时间
-#define HIDDEN_TIME @"2014-10-08 23:00:00"
+#define HIDDEN_TIME @"2014-10-04 23:00:00"
 
 
 
@@ -66,6 +66,8 @@
     
     ///计时器，如果没有获取到线上日程表一直获取
     NSTimer * timer;
+    
+    BOOL isShowGuangGao;
 }
 
 @end
@@ -352,11 +354,25 @@
 }
 
 
+
+
 - (void)viewDidLoad
 {
+
     [super viewDidLoad];
     
+    isShowGuangGao=YES;
+    
+    [self turnToguanggao];
+    
+    
+    
+    
+    self.navigationController.navigationBarHidden=YES;
+
+/**/
     self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+
 
     //判断新版本
     
@@ -396,7 +412,6 @@
     
     
     
-    [self turnToguanggao];
 
     
     
@@ -405,6 +420,8 @@
     self.view.backgroundColor=[UIColor whiteColor];
     
     huandengDic=[NSDictionary dictionary];
+    
+    [self layoutSubViewsOfload];
     
     [self loadHuandeng];
     [self loadNomalData];
@@ -426,11 +443,57 @@
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(showOutput:) name:@"testpush" object:nil];
 }
 
+
+-(void)layoutSubViewsOfload{
+    nomore=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, 320, 30)];
+    nomore.text=@"没有更多数据";
+    nomore.textAlignment=NSTextAlignmentCenter;
+    nomore.font=[UIFont systemFontOfSize:13];
+    nomore.textColor=[UIColor lightGrayColor];
+    
+    loadview=[[LoadingIndicatorView alloc]initWithFrame:CGRectMake(0, 900, 320, 40)];
+    loadview.backgroundColor=[UIColor clearColor];
+    
+    
+    mainTabView=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, 320, iPhone5?568-64:480-64)];
+    mainTabView.delegate=self;
+    mainTabView.dataSource=self;
+    mainTabView.backgroundColor=[UIColor whiteColor];
+    mainTabView.separatorColor=[UIColor clearColor];
+    [self.view addSubview:mainTabView];
+    
+    
+    UIView *placeview=[[UIView alloc]initWithFrame:mainTabView.frame];
+    placeview.tag=234;
+    //   placeview.backgroundColor=RGBCOLOR(222, 222, 222);
+    UIImageView *imgcenterlogo=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"ios7_newsbeijing.png"]];
+    imgcenterlogo.center=CGPointMake(mainTabView.frame.size.width/2, mainTabView.frame.size.height/2-20);
+    [placeview addSubview:imgcenterlogo];
+    placeview.hidden=NO;
+    [mainTabView addSubview:placeview];
+    
+    
+    
+    
+    
+    
+    if (_refreshHeaderView == nil)
+    {
+        EGORefreshTableHeaderView *view = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0-mainTabView.bounds.size.height, 320, mainTabView.bounds.size.height)];
+        view.delegate = self;
+        _refreshHeaderView = view;
+    }
+    [_refreshHeaderView refreshLastUpdatedDate];
+    [mainTabView addSubview:_refreshHeaderView];
+    
+
+
+}
 #pragma mark-从广告页面回来刷新一下
 
 -(void)jiaSshuaxin{
     
-    
+    self.navigationController.navigationBarHidden=NO;
     
     
     [UIView animateWithDuration:0.6 animations:^{
@@ -835,8 +898,7 @@
     
     
     
-    
-    
+    isShowGuangGao=NO;
     fbWebViewController *fbweb=[[fbWebViewController alloc]init];
     fbweb.urlstring=[NSString stringWithFormat:@"%@",[sender.userInfo objectForKey:@"link"]];
     [fbweb viewWillAppear:YES];
@@ -851,11 +913,23 @@
 #pragma mark--先加广告
 
 -(void)turnToguanggao{
+  
 
-
+//    UIWindow *mywindow=   [[UIApplication sharedApplication]keyWindow];
+//    
+//    
+//    UIView *aview=[[UIView alloc]initWithFrame:mywindow.bounds];
+//    
+//    aview.backgroundColor=[UIColor whiteColor];
+//    
+//    [mywindow addSubview:aview];
+    
+    
     GuanggaoViewController *_guanggaoVC=[[GuanggaoViewController alloc]init];
+    [self.navigationController.view addSubview:_guanggaoVC.view];
 
     [self presentViewController:_guanggaoVC animated:NO completion:NULL];
+    
 
 }
 
@@ -918,47 +992,47 @@
 -(void)loadView{
     [super loadView];
     
-    nomore=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, 320, 30)];
-    nomore.text=@"没有更多数据";
-    nomore.textAlignment=NSTextAlignmentCenter;
-    nomore.font=[UIFont systemFontOfSize:13];
-    nomore.textColor=[UIColor lightGrayColor];
-    
-    loadview=[[LoadingIndicatorView alloc]initWithFrame:CGRectMake(0, 900, 320, 40)];
-    loadview.backgroundColor=[UIColor clearColor];
-
-    
-    mainTabView=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, 320, iPhone5?568-64:480-64)];
-    mainTabView.delegate=self;
-    mainTabView.dataSource=self;
-    mainTabView.backgroundColor=[UIColor whiteColor];
-    mainTabView.separatorColor=[UIColor clearColor];
-    [self.view addSubview:mainTabView];
-    
-    
-    UIView *placeview=[[UIView alloc]initWithFrame:mainTabView.frame];
-    placeview.tag=234;
-    //   placeview.backgroundColor=RGBCOLOR(222, 222, 222);
-    UIImageView *imgcenterlogo=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"ios7_newsbeijing.png"]];
-    imgcenterlogo.center=CGPointMake(mainTabView.frame.size.width/2, mainTabView.frame.size.height/2-20);
-    [placeview addSubview:imgcenterlogo];
-    placeview.hidden=NO;
-    [mainTabView addSubview:placeview];
-    
-    
-
-    
-    
-    
-    if (_refreshHeaderView == nil)
-    {
-        EGORefreshTableHeaderView *view = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0-mainTabView.bounds.size.height, 320, mainTabView.bounds.size.height)];
-        view.delegate = self;
-        _refreshHeaderView = view;
-    }
-    [_refreshHeaderView refreshLastUpdatedDate];
-    [mainTabView addSubview:_refreshHeaderView];
-    
+//    nomore=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, 320, 30)];
+//    nomore.text=@"没有更多数据";
+//    nomore.textAlignment=NSTextAlignmentCenter;
+//    nomore.font=[UIFont systemFontOfSize:13];
+//    nomore.textColor=[UIColor lightGrayColor];
+//    
+//    loadview=[[LoadingIndicatorView alloc]initWithFrame:CGRectMake(0, 900, 320, 40)];
+//    loadview.backgroundColor=[UIColor clearColor];
+//
+//    
+//    mainTabView=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, 320, iPhone5?568-64:480-64)];
+//    mainTabView.delegate=self;
+//    mainTabView.dataSource=self;
+//    mainTabView.backgroundColor=[UIColor whiteColor];
+//    mainTabView.separatorColor=[UIColor clearColor];
+//    [self.view addSubview:mainTabView];
+//    
+//    
+//    UIView *placeview=[[UIView alloc]initWithFrame:mainTabView.frame];
+//    placeview.tag=234;
+//    //   placeview.backgroundColor=RGBCOLOR(222, 222, 222);
+//    UIImageView *imgcenterlogo=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"ios7_newsbeijing.png"]];
+//    imgcenterlogo.center=CGPointMake(mainTabView.frame.size.width/2, mainTabView.frame.size.height/2-20);
+//    [placeview addSubview:imgcenterlogo];
+//    placeview.hidden=NO;
+//    [mainTabView addSubview:placeview];
+//    
+//    
+//
+//    
+//    
+//    
+//    if (_refreshHeaderView == nil)
+//    {
+//        EGORefreshTableHeaderView *view = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0-mainTabView.bounds.size.height, 320, mainTabView.bounds.size.height)];
+//        view.delegate = self;
+//        _refreshHeaderView = view;
+//    }
+//    [_refreshHeaderView refreshLastUpdatedDate];
+//    [mainTabView addSubview:_refreshHeaderView];
+//    
     
 
 
@@ -969,6 +1043,18 @@
     
     [super viewWillAppear:NO];
     
+    NSLog(@"xxxxxxxxxxxxxx===%d",isShowGuangGao);
+    
+    self.navigationController.navigationBarHidden=isShowGuangGao;
+    
+    
+    
+    if (isShowGuangGao) {
+        isShowGuangGao=NO;
+    }
+    
+    
+    
     
     [XTSideMenuManager resetSideMenuRecognizerEnable:YES];
     
@@ -976,7 +1062,6 @@
     
     [[UIApplication sharedApplication]setStatusBarStyle:UIStatusBarStyleDefault animated:NO];
     
-//    self.navigationController.navigationBarHidden=YES;
     [self isShowAwesomeMenu];
     
 }
@@ -985,6 +1070,12 @@
 {
     [super viewWillDisappear:animated];
     awesomeMenu.hidden = YES;
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:YES];
+    
+
 }
 
 -(void)viewDidDisappear:(BOOL)animated{
@@ -1021,6 +1112,14 @@
             
         }else{
         //网络有问题
+            
+            if (isHaveNetWork) {
+                sleep(0.3);
+                
+                [wself loadHuandeng];
+            }
+            
+           
         
         }
         
@@ -1078,7 +1177,11 @@
             
         }else{
             //网络有问题
-            
+            if (isHaveNetWork) {
+                sleep(0.3);
+                [wself loadNomalData];
+            }
+           
         }
         
     }];

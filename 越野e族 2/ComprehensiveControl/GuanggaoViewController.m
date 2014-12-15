@@ -208,7 +208,6 @@
         
         
         
-        
         NSLog(@"在读。。。数据=%@",dicinfo);
         
         if (errcode==0&&dicinfo.count!=0) {
@@ -219,11 +218,14 @@
 
         }else{
         
-        
-            sleep(1);
-            if (!isHidden) {
-                [wself loadGuanggaoData];
+            if (isHaveNetWork) {
+                sleep(0.3);
+                if (!isHidden) {
+                    [wself loadGuanggaoData];
+                }
+
             }
+        
             
         
         }

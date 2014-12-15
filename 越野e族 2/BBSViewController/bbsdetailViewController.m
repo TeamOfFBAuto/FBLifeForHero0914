@@ -887,7 +887,7 @@
             
             [WXApi sendReq:req];
         }else{
-            UIAlertView *alView = [[UIAlertView alloc]initWithTitle:@"" message:@"你的iPhone上还没有安装微信,无法使用此功能，使用微信可以方便的把你喜欢的作品分享给好友。" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"免费下载微信", nil];
+            UIAlertView *alView = [[UIAlertView alloc]initWithTitle:@"温馨提示" message:@"你的iPhone上还没有安装微信" delegate:nil cancelButtonTitle:@"知道了" otherButtonTitles:nil, nil];
             [alView show];
             
         }
@@ -937,14 +937,13 @@
             
             [WXApi sendReq:req];
         }else{
-            UIAlertView *alView = [[UIAlertView alloc]initWithTitle:@"" message:@"你的iPhone上还没有安装微信,无法使用此功能，使用微信可以方便的把你喜欢的作品分享给好友。" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"免费下载微信", nil];
-            [alView show];
-            
-        }
+            UIAlertView *alView = [[UIAlertView alloc]initWithTitle:@"温馨提示" message:@"你的iPhone上还没有安装微信" delegate:nil cancelButtonTitle:@"知道了" otherButtonTitles:nil, nil];
+            [alView show];        }
         
     }
     else if(buttonIndex==3){
-        
+        if ([WeiboSDK isWeiboAppInstalled]) {
+
         NSLog(@"到新浪微博界面的");
         WBWebpageObject *pageObject = [ WBWebpageObject object ];
         pageObject.objectID =@"nimeideid";
@@ -958,7 +957,14 @@
         message.mediaObject = pageObject;
         WBSendMessageToWeiboRequest *req = [ [  WBSendMessageToWeiboRequest alloc ] init  ];
         req.message = message;
-        [ WeiboSDK sendRequest:req ];
+            [ WeiboSDK sendRequest:req ];
+        }else{
+            
+            
+            UIAlertView *myAlert=[[UIAlertView alloc]initWithTitle:@"温馨提示" message:@"您的手机未安装微博客户端" delegate:nil cancelButtonTitle:@"知道了" otherButtonTitles:nil, nil];
+            
+            [myAlert show];
+            }
         
         
     }
@@ -1104,7 +1110,7 @@
             
             [WXApi sendReq:req];
         }else{
-            UIAlertView *alView = [[UIAlertView alloc]initWithTitle:@"" message:@"你的iPhone上还没有安装微信,无法使用此功能，使用微信可以方便的把你喜欢的作品分享给好友。" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"免费下载微信", nil];
+            UIAlertView *alView = [[UIAlertView alloc]initWithTitle:@"温馨提示" message:@"你的iPhone上还没有安装微信" delegate:nil cancelButtonTitle:@"知道了" otherButtonTitles:@"免费下载微信", nil];
             [alView show];
             
         }
@@ -1154,9 +1160,8 @@
             
             [WXApi sendReq:req];
         }else{
-            UIAlertView *alView = [[UIAlertView alloc]initWithTitle:@"" message:@"你的iPhone上还没有安装微信,无法使用此功能，使用微信可以方便的把你喜欢的作品分享给好友。" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"免费下载微信", nil];
+            UIAlertView *alView = [[UIAlertView alloc]initWithTitle:@"温馨提示" message:@"你的iPhone上还没有安装微信" delegate:nil cancelButtonTitle:@"知道了" otherButtonTitles:@"免费下载微信", nil];
             [alView show];
-            
         }
         
     }

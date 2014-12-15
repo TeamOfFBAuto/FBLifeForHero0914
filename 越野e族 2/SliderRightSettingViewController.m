@@ -78,6 +78,12 @@
 //    _mTableView.dataLoadDelegate = (id<UMUFPTableViewDataLoadDelegate>)self;
 //    
 //    [_mTableView requestPromoterDataInBackground];
+    //    _mTableView = [[UMUFPTableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain appkey:@"5153e5e456240b79e20006b9" slotId:nil currentViewController:self];
+    //    _mTableView.delegate = self;
+    //    _mTableView.dataSource = self;
+    //    _mTableView.dataLoadDelegate = (id<UMUFPTableViewDataLoadDelegate>)self;
+    //
+    //    [_mTableView requestPromoterDataInBackground];
     
     
     
@@ -479,14 +485,14 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+ {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end
