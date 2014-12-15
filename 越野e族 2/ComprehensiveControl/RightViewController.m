@@ -112,7 +112,7 @@
 
     
     
-    _rootScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0,0,298,(iPhone5?568:480))];
+    _rootScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH-23,DEVICE_HEIGHT)];
     
     _rootScrollView.backgroundColor = RGBCOLOR(242,242,242);
     
@@ -128,7 +128,7 @@
     
     
     
-    UIView * user_Info_BackView = [[UIView alloc] initWithFrame:CGRectMake(0,0,298,191)];
+    UIView * user_Info_BackView = [[UIView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH-23,191)];
     
     user_Info_BackView.backgroundColor = RGBCOLOR(248,248,248);
     

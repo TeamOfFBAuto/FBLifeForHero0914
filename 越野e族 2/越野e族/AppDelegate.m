@@ -97,9 +97,6 @@
     }
     
     
-    self.window = [[[UIWindow alloc] initWithFrame:CGRectMake(0,MY_MACRO_NAME?0:0,320,MY_MACRO_NAME? [[UIScreen mainScreen] bounds].size.height:iPhone5?568+20:480+20)] autorelease];
-    self.window.backgroundColor = [UIColor whiteColor];
-    
     flagofpage=0;
     bgCount=1;
     
@@ -133,7 +130,7 @@
     
     [MobClick setLogEnabled:YES];
     
-    self.window = [[[UIWindow alloc] initWithFrame:CGRectMake(0,MY_MACRO_NAME?0:0,320,MY_MACRO_NAME? [[UIScreen mainScreen] bounds].size.height:iPhone5?568+20:480+20)] autorelease];
+    self.window = [[[UIWindow alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,DEVICE_HEIGHT)] autorelease];
     self.window.backgroundColor = [UIColor whiteColor];
     
     

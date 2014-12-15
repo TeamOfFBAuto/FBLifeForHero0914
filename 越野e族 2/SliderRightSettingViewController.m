@@ -1,7 +1,7 @@
 //
 //  SliderRightSettingViewController.m
 //  越野e族
-//
+//shuige
 //  Created by soulnear on 14-7-8.
 //  Copyright (c) 2014年 soulnear. All rights reserved.
 //
