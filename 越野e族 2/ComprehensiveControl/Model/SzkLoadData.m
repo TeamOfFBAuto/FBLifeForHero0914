@@ -29,9 +29,9 @@
     
     NSURL *url = [NSURL URLWithString:_string_url];
     NSURLRequest * req = [NSURLRequest requestWithURL:url];
+    
     [NSURLConnection connectionWithRequest:req delegate:self];
  
-    
 }
 
 -(void)SeturlStr:(NSString *)str mytest:(heibloc)xblock{

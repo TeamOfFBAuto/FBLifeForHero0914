@@ -4799,13 +4799,13 @@
 		566E77A6185EE75C00BB88C5 /* public */ = {
 			isa = PBXGroup;
 			children = (
+				5660752C188F5D1100C25ACE /* 社会化分享 */,
 				56A425BF19C5ABB600DBCFA3 /* AwesomeMenu */,
 				561B65BB1964FA8B00572350 /* ZSNAPI */,
 				564387931963F9C500152B2D /* ZSNPhotoDetailControl */,
 				19CF4124186C526C00AA51A9 /* 注册找回密码 */,
 				19B1186E18687EB900CA4C07 /* custonnb */,
 				5660751A188F5D1100C25ACE /* UMtui推广 */,
-				5660752C188F5D1100C25ACE /* 社会化分享 */,
 				5660755D188F5D1100C25ACE /* 友盟 */,
 				56C9563F185EF08100763E69 /* RichTextLabel */,
 				566E786E185EE75C00BB88C5 /* FMDB */,
@@ -7604,8 +7604,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Bing Jin (KMZ2AD5LZY)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Bing Jin (KMZ2AD5LZY)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: FBLIFE (Beijing) Media & Technology Co., Ltd. (96PFYKQ596)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: FBLIFE (Beijing) Media & Technology Co., Ltd. (96PFYKQ596)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -7624,7 +7624,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/越野e族/社会化分享/UMSocial_";
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "db5d35fa-89e9-42b3-ad18-97734e7f3484";
+				PROVISIONING_PROFILE = "3cb80595-f204-4a14-94c2-b8faf9bf374e";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -7646,8 +7646,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Bing Jin (KMZ2AD5LZY)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Bing Jin (KMZ2AD5LZY)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: FBLIFE (Beijing) Media & Technology Co., Ltd. (96PFYKQ596)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: FBLIFE (Beijing) Media & Technology Co., Ltd. (96PFYKQ596)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -7659,7 +7659,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/越野e族/社会化分享/UMSocial_";
-				PROVISIONING_PROFILE = "db5d35fa-89e9-42b3-ad18-97734e7f3484";
+				PROVISIONING_PROFILE = "3cb80595-f204-4a14-94c2-b8faf9bf374e";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -7670,8 +7670,10 @@
 			baseConfigurationReference = 5C1EA72A18914F7EAC3FE954 /* Pods.xcconfig */;
 			buildSettings = {
 				ARCHS = armv7;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Bing Jin (KMZ2AD5LZY)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Bing Jin (KMZ2AD5LZY)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: FBLIFE (Beijing) Media & Technology Co., Ltd. (96PFYKQ596)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: FBLIFE (Beijing) Media & Technology Co., Ltd. (96PFYKQ596)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
@@ -7692,7 +7694,7 @@
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "db5d35fa-89e9-42b3-ad18-97734e7f3484";
+				PROVISIONING_PROFILE = "3cb80595-f204-4a14-94c2-b8faf9bf374e";
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 				VALID_ARCHS = "armv7s armv7 arm64";
 				WRAPPER_EXTENSION = app;
@@ -7704,8 +7706,10 @@
 			baseConfigurationReference = 5C1EA72A18914F7EAC3FE954 /* Pods.xcconfig */;
 			buildSettings = {
 				ARCHS = armv7;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Bing Jin (KMZ2AD5LZY)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Bing Jin (KMZ2AD5LZY)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: FBLIFE (Beijing) Media & Technology Co., Ltd. (96PFYKQ596)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: FBLIFE (Beijing) Media & Technology Co., Ltd. (96PFYKQ596)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
@@ -7726,7 +7730,7 @@
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "db5d35fa-89e9-42b3-ad18-97734e7f3484";
+				PROVISIONING_PROFILE = "3cb80595-f204-4a14-94c2-b8faf9bf374e";
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 				VALID_ARCHS = "armv7s armv7 arm64";
 				WRAPPER_EXTENSION = app;

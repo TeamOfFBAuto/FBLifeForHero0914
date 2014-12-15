@@ -289,7 +289,6 @@
     }
     
     
-    
 }
 
 -(void)clickedButtonAtIndex:(NSInteger)buttonIndex{
@@ -343,10 +342,8 @@
         }
         
         else{
-            UIAlertView *alView = [[UIAlertView alloc]initWithTitle:@"" message:@"你的iPhone上还没有安装微信,无法使用此功能" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"免费下载微信", nil];
-            [alView show];
-            
-        }
+            UIAlertView *alView = [[UIAlertView alloc]initWithTitle:@"温馨提示" message:@"你的iPhone上还没有安装微信" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil, nil];
+            [alView show];        }
         
         
         
@@ -384,7 +381,7 @@
             
             [WXApi sendReq:req];
         }else{
-            UIAlertView *alView = [[UIAlertView alloc]initWithTitle:@"" message:@"你的iPhone上还没有安装微信,无法使用此功能" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"下载微信", nil];
+            UIAlertView *alView = [[UIAlertView alloc]initWithTitle:@"温馨提示" message:@"你的iPhone上还没有安装微信" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil, nil];
             [alView show];
             
         }
@@ -392,7 +389,8 @@
     else if ( buttonIndex==3){
         
         NSLog(@"到新浪微博界面的");
-        
+        if ([WeiboSDK isWeiboAppInstalled]) {
+
         WBWebpageObject *pageObject = [ WBWebpageObject object ];
         pageObject.objectID =@"nimeideid";
         pageObject.thumbnailData =UIImageJPEGRepresentation([self scaleToSize:[UIImage imageNamed:@"Icon@2x.png"] size:CGSizeMake([UIImage imageNamed:@"Icon@2x.png"].size.width/5, [UIImage imageNamed:@"Icon@2x.png"].size.height/5)], 1);
@@ -405,7 +403,15 @@
         message.mediaObject = pageObject;
         WBSendMessageToWeiboRequest *req = [ [  WBSendMessageToWeiboRequest alloc ] init  ];
         req.message = message;
-        [ WeiboSDK sendRequest:req ];
+            [ WeiboSDK sendRequest:req ];
+        }else{
+                
+                UIAlertView *myAlert=[[UIAlertView alloc]initWithTitle:@"温馨提示" message:@"您的手机未安装微博客户端" delegate:nil cancelButtonTitle:@"知道了" otherButtonTitles:nil, nil];
+                
+                [myAlert show];
+                
+            }
+
         
         
     }
@@ -549,7 +555,7 @@
         }
         
         else{
-            UIAlertView *alView = [[UIAlertView alloc]initWithTitle:@"" message:@"你的iPhone上还没有安装微信,无法使用此功能" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"免费下载微信", nil];
+            UIAlertView *alView = [[UIAlertView alloc]initWithTitle:@"温馨提示" message:@"你的iPhone上还没有安装微信" delegate:nil cancelButtonTitle:@"知道了" otherButtonTitles:nil, nil];
             [alView show];
             
         }
@@ -590,7 +596,7 @@
             
             [WXApi sendReq:req];
         }else{
-            UIAlertView *alView = [[UIAlertView alloc]initWithTitle:@"" message:@"你的iPhone上还没有安装微信,无法使用此功能" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"下载微信", nil];
+            UIAlertView *alView = [[UIAlertView alloc]initWithTitle:@"温馨提示" message:@"你的iPhone上还没有安装微信" delegate:nil cancelButtonTitle:@"知道了" otherButtonTitles:nil, nil];
             [alView show];
             
         }

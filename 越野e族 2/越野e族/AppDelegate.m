@@ -937,54 +937,55 @@ static int numberof = 0;
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
+    /*
+     
+//    if (isSixTimes) {
+//        
+//        [[UIApplication sharedApplication] setKeepAliveTimeout:600 handler:^{
+//            
+//            
+//            numberof++;
+//            
+//            if (numberof>6) {
+//                isSixTimes=NO;
+//            }
+//            
+//            UIApplication *app = [UIApplication sharedApplication];
+//            __block    UIBackgroundTaskIdentifier szkTast;
+//            szkTast = [app beginBackgroundTaskWithExpirationHandler:
+//                       ^{
+//                           [app endBackgroundTask:szkTast];
+//                           szkTast = UIBackgroundTaskInvalid;
+//                       }];
+//        }];
+//        
+//        
+//        UIApplication *app = [UIApplication sharedApplication];
+//        __block    UIBackgroundTaskIdentifier szkTast;
+//        szkTast = [app beginBackgroundTaskWithExpirationHandler:
+//                   ^{
+//                       [app endBackgroundTask:szkTast];
+//                       szkTast = UIBackgroundTaskInvalid;
+//                   }];
+//        
+//        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//            while (1)
+//            {
+//                //                NSLog(@"%d",temptest);
+//                sleep(1);
+//                temptest++;
+//            }
+//        });
+//        
+//        
+//        
+//    }
+//    
+//    
+//    
     
-    if (isSixTimes) {
-        
-        [[UIApplication sharedApplication] setKeepAliveTimeout:600 handler:^{
-            
-            
-            numberof++;
-            
-            if (numberof>6) {
-                isSixTimes=NO;
-            }
-            
-            UIApplication *app = [UIApplication sharedApplication];
-            __block    UIBackgroundTaskIdentifier szkTast;
-            szkTast = [app beginBackgroundTaskWithExpirationHandler:
-                       ^{
-                           [app endBackgroundTask:szkTast];
-                           szkTast = UIBackgroundTaskInvalid;
-                       }];
-        }];
-        
-        
-        UIApplication *app = [UIApplication sharedApplication];
-        __block    UIBackgroundTaskIdentifier szkTast;
-        szkTast = [app beginBackgroundTaskWithExpirationHandler:
-                   ^{
-                       [app endBackgroundTask:szkTast];
-                       szkTast = UIBackgroundTaskInvalid;
-                   }];
-        
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            while (1)
-            {
-                //                NSLog(@"%d",temptest);
-                sleep(1);
-                temptest++;
-            }
-        });
-        
-        
-        
-    }
     
-    
-    
-    
-    
-    
+    */
     
     
     //    szkTast = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
@@ -1210,7 +1211,7 @@ static int numberof = 0;
     _navigationController = [[UINavigationController alloc] initWithRootViewController:[[ComprehensiveViewController alloc] init]];
     
     
-    
+    _navigationController.navigationBarHidden=YES;
     //    UINavigationController *ritht = [[UINavigationController alloc] initWithRootViewController:[[RightViewController alloc] init]];
     
     //
@@ -1339,76 +1340,76 @@ static int numberof = 0;
 
 
 
-#pragma mark-延长后台时间
+//#pragma mark-延长后台时间
 
 
 
-- (BOOL) isMultitaskingSupported{
-    
-    BOOL result = NO;
-    
-    if ([[UIDevice currentDevice] respondsToSelector:@selector(isMultitaskingSupported)])
-        
-    {
-        
-        result = [[UIDevice currentDevice]  isMultitaskingSupported];
-        
-    }
-    
-    return result;
-    
-}
-
-- (void)keepAlive:(NSNumber *)Num {
-    
-    backgroundTask_ = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
-        
-        
-        [[UIApplication sharedApplication]  endBackgroundTask:backgroundTask_];
-        
-        backgroundTask_ = UIBackgroundTaskInvalid;
-        
-        bgCount += 1;
-        
-    }];
-    
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        
-        while (1) {
-            
-            if (backgroundTask_ == UIBackgroundTaskInvalid) {
-                
-                break;
-                
-            }
-            
-            //运行的方法
-            
-            
-            NSTimeInterval remainingTime = [UIApplication sharedApplication].backgroundTimeRemaining;
-            
-            if (remainingTime < 10) {
-                
-                break;
-                
-            }
-            
-            //          NSLog(@"BackgroundTaskWithExpiration:%f",remainingTime);
-            
-            sleep(1);
-            
-        }
-        
-        
-        [[UIApplication sharedApplication]  endBackgroundTask:backgroundTask_];
-        
-        backgroundTask_ = UIBackgroundTaskInvalid;
-        
-        bgCount += 1;
-        
-    });
-    
-}
+//- (BOOL) isMultitaskingSupported{
+//    
+//    BOOL result = NO;
+//    
+//    if ([[UIDevice currentDevice] respondsToSelector:@selector(isMultitaskingSupported)])
+//        
+//    {
+//        
+//        result = [[UIDevice currentDevice]  isMultitaskingSupported];
+//        
+//    }
+//    
+//    return result;
+//    
+//}
+//
+//- (void)keepAlive:(NSNumber *)Num {
+//    
+//    backgroundTask_ = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
+//        
+//        
+//        [[UIApplication sharedApplication]  endBackgroundTask:backgroundTask_];
+//        
+//        backgroundTask_ = UIBackgroundTaskInvalid;
+//        
+//        bgCount += 1;
+//        
+//    }];
+//    
+//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//        
+//        while (1) {
+//            
+//            if (backgroundTask_ == UIBackgroundTaskInvalid) {
+//                
+//                break;
+//                
+//            }
+//            
+//            //运行的方法
+//            
+//            
+//            NSTimeInterval remainingTime = [UIApplication sharedApplication].backgroundTimeRemaining;
+//            
+//            if (remainingTime < 10) {
+//                
+//                break;
+//                
+//            }
+//            
+//            //          NSLog(@"BackgroundTaskWithExpiration:%f",remainingTime);
+//            
+//            sleep(1);
+//            
+//        }
+//        
+//        
+//        [[UIApplication sharedApplication]  endBackgroundTask:backgroundTask_];
+//        
+//        backgroundTask_ = UIBackgroundTaskInvalid;
+//        
+//        bgCount += 1;
+//        
+//    });
+//    
+//}
 
 //-(void)application:(UIApplication *)application didChangeStatusBarFrame:(CGRect)oldStatusBarFrame{
 //    NSLog(@"statubar.....=========%f",oldStatusBarFrame.origin.y);

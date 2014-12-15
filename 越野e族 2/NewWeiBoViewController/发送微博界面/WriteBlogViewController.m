@@ -35,7 +35,6 @@
 @synthesize allImageUrl;
 @synthesize allImageArray1;
 @synthesize allAssesters1;
-@synthesize delegate = _delegate;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -68,13 +67,6 @@
                      
                      [allAssesters addObject:returnValue];
                  }
-                 
-                 
-                 //                UIButton * button = (UIButton *)[morePicView viewWithTag:101+i];
-                 //
-                 //                [button setImage:returnValue forState:UIControlStateNormal];
-                 
-                 
              } failureBlock:^(NSError *error) {
                  // error handling
              }];
@@ -99,6 +91,17 @@
     [super viewWillAppear:animated];
     
     [MobClick beginEvent:@"WriteBlogViewController"];
+    
+    if (morePicView.hidden && myTextView)
+    {
+        if (isFace)
+        {
+            [self ShowFaceView];
+        }else
+        {
+            [myTextView becomeFirstResponder];
+        }
+    }
 }
 
 
@@ -117,17 +120,14 @@
     //    self.navigationController.navigationBarHidden = YES;
     
     self.view.backgroundColor = [UIColor colorWithRed:245/255.0f green:245/255.0f blue:245/255.0f alpha:1];
-	//自定义navigation
+    //自定义navigation
     CGRect aScreenRect = [[UIScreen mainScreen] bounds];
     //创建navbar
     nav = [[UINavigationBar alloc] initWithFrame:CGRectMake(0,0,aScreenRect.size.width,IOS_VERSION>=7.0?64:44)];
     //创建navbaritem
     UINavigationItem *NavTitle = [[UINavigationItem alloc] initWithTitle:@"发表微博"];
-    
     nav.barStyle = UIBarStyleBlackOpaque;
-    
     [nav pushNavigationItem:NavTitle animated:YES];
-    
     [self.view addSubview:nav];
     
     
@@ -146,17 +146,11 @@
     NavTitle.leftBarButtonItems=@[space_button,back_item];
     
     UIButton * send_button = [UIButton buttonWithType:UIButtonTypeCustom];
-    
     send_button.frame = CGRectMake(0,0,30,44);
-    
     send_button.titleLabel.textAlignment = NSTextAlignmentRight;
-    
     [send_button setTitle:@"发送" forState:UIControlStateNormal];
-    
     send_button.titleLabel.font = [UIFont systemFontOfSize:15];
-    
     [send_button setTitleColor:RGBCOLOR(89,89,89) forState:UIControlStateNormal];
-    
     [send_button addTarget:self action:@selector(loginH) forControlEvents:UIControlEventTouchUpInside];
     
     NavTitle.rightBarButtonItems = @[space_button,[[UIBarButtonItem alloc] initWithCustomView:send_button]];
@@ -170,28 +164,18 @@
     }
     
     UILabel * title_label = [[UILabel alloc] initWithFrame:CGRectMake(0,0,100,44)];
-    
     title_label.text = @"发表微博";
-    
     title_label.backgroundColor = [UIColor clearColor];
-    
     title_label.textColor = [UIColor blackColor];
-    
     title_label.textAlignment = NSTextAlignmentCenter;
-    
     title_label.font = TITLEFONT;
-    
     NavTitle.titleView = title_label;
     
     
-    
-    myTextView = [[UITextView alloc] initWithFrame:CGRectMake(10,IOS_VERSION>=7.0?64:55,300,100)];
+    myTextView = [[UITextView alloc] initWithFrame:CGRectMake(10,IOS_VERSION>=7.0?64:55,DEVICE_WIDTH-20,100)];
     myTextView.backgroundColor =IOS_VERSION>=7.0?[UIColor whiteColor]:[UIColor colorWithRed:245/255.0f green:245/255.0f blue:245/255.0f alpha:1];
-    
     myTextView.backgroundColor = [UIColor clearColor];
-    
     myTextView.delegate = self;
-    
     if (theText.length ==0 || [theText isEqualToString:@""])
     {
         myTextView.text = @"分享新鲜事......";
@@ -209,14 +193,10 @@
     myTextView.font = [UIFont systemFontOfSize:17];
     myTextView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
     myTextView.scrollEnabled = YES;
-    //    [myTextView sizeToFit];
     [myTextView becomeFirstResponder];
-    
     [self.view addSubview:myTextView];
     
-    
-    
-    options_view = [[UIView alloc] initWithFrame:CGRectMake(0,IOS_VERSION>=7.0?79:59,320,73)];
+    options_view = [[UIView alloc] initWithFrame:CGRectMake(0,IOS_VERSION>=7.0?79:59,DEVICE_WIDTH,73)];
     options_view.backgroundColor = [UIColor colorWithRed:245/255.0f green:245/255.0f blue:245/255.0f alpha:1];
     [self.view addSubview:options_view];
     
@@ -241,15 +221,10 @@
     
     
     wordsNumber_button = [UIButton buttonWithType:UIButtonTypeCustom];
-    
-    wordsNumber_button.frame = CGRectMake(260,2,60,25);
-    
+    wordsNumber_button.frame = CGRectMake(DEVICE_WIDTH-60,2,60,25);
     [wordsNumber_button setTitle:@"140" forState:UIControlStateNormal];
-    
     [wordsNumber_button setTitleColor:RGBCOLOR(154,162,166) forState:UIControlStateNormal];
-    
     wordsNumber_button.titleLabel.font = [UIFont systemFontOfSize:14];
-    
     [wordsNumber_button setTitleEdgeInsets:UIEdgeInsetsMake(1,0,0,12)];
     
     
@@ -258,127 +233,78 @@
     UIImageView *xximg=[[UIImageView alloc]initWithFrame:CGRectMake(40,9,9,9)];
     xximg.image=[UIImage imageNamed:@"writeblog_delete_image.png"];
     [wordsNumber_button addSubview:xximg];
-    
     wordsNumber_button.backgroundColor = [UIColor clearColor];
-    
     [wordsNumber_button setImageEdgeInsets:UIEdgeInsetsMake(2,35,0,0)];
-    
     [wordsNumber_button addTarget:self action:@selector(doTap:) forControlEvents:UIControlEventTouchUpInside
      ];
-    
     [options_view addSubview:wordsNumber_button];
     
     
     UIImageView * faceImageView = [[UIImageView alloc] initWithImage:[personal getImageWithName:@"write_blog_back@2x"]];
-    
     faceImageView.userInteractionEnabled = YES;
-    
-    faceImageView.frame = CGRectMake(0,30,320,43);
-    
+    faceImageView.frame = CGRectMake(0,30,DEVICE_WIDTH,43);
     [options_view addSubview:faceImageView];
-    
     
     NSArray * array = [NSArray arrayWithObjects:@"photo_write",@"where_write",@"talk_write",@"write_blog_at",@"smile_write",@"write_blog_key",nil];
     
     for (int i = 0;i < 5;i++)
     {
         UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
-        
         button.tag = 1000 + i;
-        
         
         if (i == 1) {
             UIImageView * imageView11 = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,30/2,44/2)];
-            
             imageView11.center = CGPointMake(12.5,12.5);
-            
             imageView11.image = [UIImage imageNamed:@"where_write.png"];
-            
             [button addSubview:imageView11];
         }else{
             [button setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@.png",[array objectAtIndex:i]]] forState:UIControlStateNormal];
         }
         
-        
         [button addTarget:self action:@selector(doButton:) forControlEvents:UIControlEventTouchUpInside];
-        
         button.frame = CGRectMake(12 + 68.75 * i,7.5,25,25);
-        
         [faceImageView addSubview:button];
     }
     
-    
-    
     UIButton * deleteImageView = [UIButton buttonWithType:UIButtonTypeCustom];
-    
     deleteImageView.frame = CGRectMake(0,0,25,20);
-    
     deleteImageView.hidden = YES;
-    
     deleteImageView.center = CGPointMake(0,0);
-    
     deleteImageView.tag = 999999;
-    
     [deleteImageView setImage:[personal getImageWithName:@"delete"] forState:UIControlStateNormal];
-    
     [deleteImageView addTarget:self action:@selector(deleteImage:) forControlEvents:UIControlEventTouchUpInside];
-    
     [imageView addSubview:deleteImageView];
     
     
-    
-    scrollView = [[WeiBoFaceScrollView alloc] initWithFrame:CGRectMake(0,(iPhone5?(568-215):(480-215))-(MY_MACRO_NAME?0:20),320,215) target:self];
+    scrollView = [[WeiBoFaceScrollView alloc] initWithFrame:CGRectMake(0,DEVICE_HEIGHT-215,DEVICE_WIDTH,215) target:self];
     scrollView.hidden = YES;
     scrollView.delegate = self;
     scrollView.bounces = NO;
-    scrollView.contentSize = CGSizeMake(320*3,0);
+    scrollView.contentSize = CGSizeMake(DEVICE_WIDTH*3,0);
     [self.view addSubview:scrollView];
     
     
     
-    pageControl = [[GrayPageControl alloc] initWithFrame:CGRectMake(0,0,320,25)];
-    
-    //    pageControl.center = CGPointMake(160,iPhone5?(568-20-(IOS_VERSION>=7.0?0:20)):(480-20-(IOS_VERSION>=7.0?0:20)));
-    
-    pageControl.center = CGPointMake(160,215-20);
-    
+    pageControl = [[GrayPageControl alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,25)];
+    pageControl.center = CGPointMake(DEVICE_WIDTH/2,215-20);
     pageControl.numberOfPages = 3;
-    
     pageControl.currentPage = 0;
-    
     [scrollView addSubview:pageControl];
     
     
-    
-    morePicView = [[UIView alloc] initWithFrame:CGRectMake(0,iPhone5?(568-215-(IOS_VERSION>=7.0?0:20)):(480-215-(IOS_VERSION>=7.0?0:20)),320,215)];
-    
+    morePicView = [[UIView alloc] initWithFrame:CGRectMake(0,DEVICE_HEIGHT-215,DEVICE_WIDTH,215)];
     morePicView.backgroundColor = RGBCOLOR(241,241,241);
-    
     morePicView.hidden = YES;
-    
     [self.view addSubview:morePicView];
     
-    
-    morePicImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,320,135)];
-    
+    morePicImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,135)];
     morePicImageView.userInteractionEnabled = YES;
-    
     morePicImageView.backgroundColor = RGBCOLOR(241,241,241);
-    
     [morePicView addSubview:morePicImageView];
-    
     
     if (self.myAllimgUrl.count>0)
     {
         [self comeonmyimage];
-//        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-//            [self comeonmyimage];
-//            dispatch_async(dispatch_get_main_queue(), ^{
-//                
-//                NSLog(@"我艹 -----  %@",allImageArray);
-//                [self setbutton];
-//            });
-//        });
     }else
     {
         [self setbutton];
@@ -386,29 +312,18 @@
     
     
     UILabel * highPic_titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10,150,200,44)];
-    
     highPic_titleLabel.text = @"开启上传高清图片";
-    
     highPic_titleLabel.backgroundColor = [UIColor clearColor];
-    
     highPic_titleLabel.textAlignment = NSTextAlignmentLeft;
-    
     highPic_titleLabel.textColor = RGBCOLOR(43,43,43);
-    
     [morePicView addSubview:highPic_titleLabel];
     
     
     UISwitch * highPicSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(160,156,80,25)];
-    
     highPicSwitch.on = YES;
-    
     image_quality = YES;
-    
     [highPicSwitch addTarget:self action:@selector(chooseImageQuality:) forControlEvents:UIControlEventValueChanged];
-    
     [morePicView addSubview:highPicSwitch];
-    
-    
     
     if (!hud)
     {
@@ -434,52 +349,52 @@
     
     __weak typeof(self)bself = self;
     
-//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    //    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
     
+    
+    for (int i = 0;i < self.myAllimgUrl.count;i++)
+    {
+        NSString *imgurl=[NSString stringWithFormat:@"%@",[self.myAllimgUrl objectAtIndex:i]];
+        NSURL *referenceURL = [NSURL URLWithString:imgurl];
         
-        for (int i = 0;i < self.myAllimgUrl.count;i++)
-        {
-            NSString *imgurl=[NSString stringWithFormat:@"%@",[self.myAllimgUrl objectAtIndex:i]];
-            NSURL *referenceURL = [NSURL URLWithString:imgurl];
-            
-            __block UIImage *returnValue = nil;
-            [library assetForURL:referenceURL resultBlock:^(ALAsset *asset)
+        __block UIImage *returnValue = nil;
+        [library assetForURL:referenceURL resultBlock:^(ALAsset *asset)
+         {
+             
+             //returnValue = [UIImage imageWithCGImage:[asset thumbnail]]; //Retain Added
+             ALAssetRepresentation *assetRep = [asset defaultRepresentation];
+             
+             CGImageRef imgRef = [assetRep fullScreenImage];
+             
+             returnValue=[UIImage imageWithCGImage:imgRef
+                                             scale:assetRep.scale
+                                       orientation:(UIImageOrientation)assetRep.orientation];
+             
+             if (returnValue)
              {
-                 
-                 //returnValue = [UIImage imageWithCGImage:[asset thumbnail]]; //Retain Added
-                 ALAssetRepresentation *assetRep = [asset defaultRepresentation];
-                 
-                 CGImageRef imgRef = [assetRep fullScreenImage];
-                 
-                 returnValue=[UIImage imageWithCGImage:imgRef
-                                                 scale:assetRep.scale
-                                           orientation:(UIImageOrientation)assetRep.orientation];
-                 
-                 if (returnValue)
-                 {
-                     [allImageArray addObject:returnValue];
-                     [allAssesters addObject:imgurl];
-                 }
-                 
-                 NSLog(@"怎么没有呢1111 ----  %@",allImageArray);
-                 
-                 if (i == self.myAllimgUrl.count-1) {
-                     [bself setbutton];
-                 }
-                 
-             } failureBlock:^(NSError *error)
-             {
-                 // error handling
-             }];
-        }
-        
-//        dispatch_async(dispatch_get_main_queue(), ^{
+                 [allImageArray addObject:returnValue];
+                 [allAssesters addObject:imgurl];
+             }
+             
+             NSLog(@"怎么没有呢1111 ----  %@",allImageArray);
+             
+             if (i == self.myAllimgUrl.count-1) {
+                 [bself setbutton];
+             }
+             
+         } failureBlock:^(NSError *error)
+         {
+             // error handling
+         }];
+    }
     
-            NSLog(@"怎么没有呢 ----  %@",allImageArray);
-//            [bself setbutton];
+    //        dispatch_async(dispatch_get_main_queue(), ^{
     
-//        });
-//    });
+    NSLog(@"怎么没有呢 ----  %@",allImageArray);
+    //            [bself setbutton];
+    
+    //        });
+    //    });
     
     
     
@@ -506,8 +421,7 @@
                 [imageV setImage:[UIImage imageNamed:@"write_blog_more.png"] forState:UIControlStateNormal];
                 if (j+i*5-1 < allImageArray.count)
                 {
-                    UIImage * image = [zsnApi scaleToSizeWithImage:[allImageArray objectAtIndex:j+i*5-1] size:CGSizeMake(119,119)];
-                    [imageV setImage:image  forState:UIControlStateNormal];
+                    [imageV setImage:[allImageArray objectAtIndex:j+i*5-1]  forState:UIControlStateNormal];
                 }
                 
                 
@@ -590,7 +504,7 @@
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView1
 {
-    pageControl.center = CGPointMake(160+scrollView1.contentOffset.x,215-20);
+    pageControl.center = CGPointMake(DEVICE_WIDTH/2+scrollView1.contentOffset.x,215-20);
 }
 
 
@@ -671,9 +585,9 @@
             [UIView animateWithDuration:0.3 animations:^
              {
                  morePicView.hidden = NO;
-                 
-                 options_view.frame =  CGRectMake(0,(iPhone5?568:480)-(MY_MACRO_NAME?0:20)-72-215,320,73);
-                 myTextView.frame = CGRectMake(myTextView.frame.origin.x,myTextView.frame.origin.y,myTextView.frame.size.width,(iPhone5?568-73-20-44-215:480-73-20-44-215)-(MY_MACRO_NAME?0:20));
+                 morePicImageView.hidden = NO;
+                 options_view.frame =  CGRectMake(0,DEVICE_HEIGHT-(MY_MACRO_NAME?0:20)-72-215,DEVICE_WIDTH,73);
+                 myTextView.frame = CGRectMake(myTextView.frame.origin.x,myTextView.frame.origin.y,myTextView.frame.size.width,(DEVICE_HEIGHT-73-20-44-215)-(MY_MACRO_NAME?0:20));
                  [myTextView resignFirstResponder];
              }];
             
@@ -702,12 +616,20 @@
             break;
         case 3:
         {
+            if (!isFace && morePicView.hidden)
+            {
+                [myTextView resignFirstResponder];
+                [UIView animateWithDuration:0.2 animations:^
+                 {
+                     options_view.frame = CGRectMake(0,DEVICE_HEIGHT-(MY_MACRO_NAME?0:20)-72,DEVICE_WIDTH,73);
+                     myTextView.frame = CGRectMake(myTextView.frame.origin.x,myTextView.frame.origin.y,myTextView.frame.size.width,DEVICE_HEIGHT-20-73-44-(MY_MACRO_NAME?0:20));
+                 }];
+            }
+            
             //@某人
             FriendListViewController * list = [[FriendListViewController alloc] init];
             list.delegate = self;
-            
             UINavigationController * list_nav = [[UINavigationController alloc] initWithRootViewController:list];
-            
             [self presentViewController:list_nav animated:YES completion:NULL];
         }
             break;
@@ -727,8 +649,8 @@
                 scrollView.hidden = NO;
                 
                 [UIView animateWithDuration:0.3 animations:^{
-                    options_view.frame =  CGRectMake(0,((iPhone5?568:480)-72-215)-(MY_MACRO_NAME?0:20),320,73);
-                    myTextView.frame = CGRectMake(myTextView.frame.origin.x,myTextView.frame.origin.y,myTextView.frame.size.width,(iPhone5?568-73-20-44-215:480-20-73-44-215)-(MY_MACRO_NAME?0:20));
+                    options_view.frame =  CGRectMake(0,(DEVICE_HEIGHT-72-215)-(MY_MACRO_NAME?0:20),DEVICE_WIDTH,73);
+                    myTextView.frame = CGRectMake(myTextView.frame.origin.x,myTextView.frame.origin.y,myTextView.frame.size.width,DEVICE_HEIGHT-20-73-44-215-(MY_MACRO_NAME?0:20));
                     [myTextView resignFirstResponder];
                 }];
             }else
@@ -738,8 +660,8 @@
                 if (allImageArray.count)
                 {
                     morePicView.hidden = NO;
-                    options_view.frame =  CGRectMake(0,(iPhone5?568:480)-(MY_MACRO_NAME?0:20)-73-215,320,73);
-                    myTextView.frame = CGRectMake(myTextView.frame.origin.x,myTextView.frame.origin.y,myTextView.frame.size.width,(iPhone5?568-20-73-44-215:480-20-73-44-215)-(MY_MACRO_NAME?0:20));
+                    options_view.frame =  CGRectMake(0,DEVICE_HEIGHT-(MY_MACRO_NAME?0:20)-73-215,DEVICE_WIDTH,73);
+                    myTextView.frame = CGRectMake(myTextView.frame.origin.x,myTextView.frame.origin.y,myTextView.frame.size.width,DEVICE_HEIGHT-20-73-44-215-(MY_MACRO_NAME?0:20));
                 }else
                 {
                     [myTextView becomeFirstResponder];
@@ -809,9 +731,9 @@
     
     [UIView animateWithDuration:0.3 animations:^
      {
-         options_view.frame = CGRectMake(0,(iPhone5?568:480)-(MY_MACRO_NAME?0:20)-73-_keyboardRect.size.height,320,73);
+         options_view.frame = CGRectMake(0,DEVICE_HEIGHT-(MY_MACRO_NAME?0:20)-73-_keyboardRect.size.height,DEVICE_WIDTH,73);
          
-         myTextView.frame = CGRectMake(myTextView.frame.origin.x,myTextView.frame.origin.y,myTextView.frame.size.width,(iPhone5?568-20-73-44-_keyboardRect.size.height:480-20-73-44-_keyboardRect.size.height)-(MY_MACRO_NAME?0:20));
+         myTextView.frame = CGRectMake(myTextView.frame.origin.x,myTextView.frame.origin.y,myTextView.frame.size.width,DEVICE_HEIGHT-20-73-44-_keyboardRect.size.height-(MY_MACRO_NAME?0:20));
      }];
 }
 
@@ -820,13 +742,13 @@
     [myTextView resignFirstResponder];
     
     scrollView.hidden = YES;
-    
+    morePicView.hidden = YES;
     morePicImageView.hidden = YES;
     
     [UIView animateWithDuration:0.3 animations:^{
-        options_view.frame = CGRectMake(0,(iPhone5?568:480)-(MY_MACRO_NAME?0:20)-72,320,73);
+        options_view.frame = CGRectMake(0,DEVICE_HEIGHT-(MY_MACRO_NAME?0:20)-72,DEVICE_WIDTH,73);
         
-        myTextView.frame = CGRectMake(myTextView.frame.origin.x,myTextView.frame.origin.y,myTextView.frame.size.width,(iPhone5?568-20-73-44:480-20-73-44)-(MY_MACRO_NAME?0:20));
+        myTextView.frame = CGRectMake(myTextView.frame.origin.x,myTextView.frame.origin.y,myTextView.frame.size.width,DEVICE_HEIGHT-20-73-44-(MY_MACRO_NAME?0:20));
     }];
     
     if ((myTextView.tag == 100 && [myTextView.text isEqualToString:@"分享新鲜事......"])||[theText isEqualToString:myTextView.text])
@@ -882,9 +804,9 @@
     
     [UIView animateWithDuration:0.3 animations:^
      {
-         options_view.frame = CGRectMake(0,(iPhone5?568:480)-(MY_MACRO_NAME?0:20)-72,320,73);
+         options_view.frame = CGRectMake(0,DEVICE_HEIGHT-(MY_MACRO_NAME?0:20)-72,DEVICE_WIDTH,73);
          
-         myTextView.frame = CGRectMake(myTextView.frame.origin.x,myTextView.frame.origin.y,myTextView.frame.size.width,(iPhone5?568-20-73-44:480-20-73-44)-(MY_MACRO_NAME?0:20));
+         myTextView.frame = CGRectMake(myTextView.frame.origin.x,myTextView.frame.origin.y,myTextView.frame.size.width,DEVICE_HEIGHT-20-73-44-(MY_MACRO_NAME?0:20));
      }];
     
     
@@ -901,7 +823,7 @@
         [myTextView resignFirstResponder];
         pageControl.hidden = YES;
         scrollView.hidden = YES;
-        options_view.frame = CGRectMake(0,(iPhone5?568:480)-50-(MY_MACRO_NAME?0:20),320,73);
+        options_view.frame = CGRectMake(0,DEVICE_HEIGHT-50-(MY_MACRO_NAME?0:20),DEVICE_WIDTH,73);
         
         
         self.navigationItem.rightBarButtonItem.enabled=NO;
@@ -924,16 +846,47 @@
         {
             fullURL = [NSString stringWithFormat:URL_UPLOAD,[contetn stringByAddingPercentEscapesUsingEncoding:  NSUTF8StringEncoding],[[NSUserDefaults standardUserDefaults] objectForKey:USER_AUTHOD]];
         }
+        //        http://fb.fblife.com/openapi/index.php?mod=doweibo&code=add&content=%@&imgid=%@&fromtype=b5eeec0b&authkey=%@&jing_lng=%f&wei_lat=%f&locality=%@&map=google&fbtype=json
+        
+        ASIFormDataRequest * up_request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:@"http://fb.fblife.com/openapi/index.php?mod=doweibo&code=add&fromtype=b5eeec0b&map=google&fbtype=json"]];
+        [up_request setPostValue:contetn forKey:@"content"];
+        [up_request setPostValue:[[NSUserDefaults standardUserDefaults] objectForKey:USER_AUTHOD] forKey:@"authkey"];
+        [up_request setPostValue:[NSString stringWithFormat:@"%f",longitude] forKey:@"jing_lng"];
+        [up_request setPostValue:[NSString stringWithFormat:@"%f",lattitude] forKey:@"wei_lat"];
+        [up_request setPostValue:map_name forKey:@"locality"];
+        
+        __weak typeof(self)bself = self;
+        __weak typeof(up_request)brequest = up_request;
+        [brequest setCompletionBlock:^{
+            nav.userInteractionEnabled = YES;
+            [hud hide];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshmydata" object:myTextView.text];
+            
+            [bself dismissViewControllerAnimated:YES completion:NULL];
+            NSLog(@"request.tag22222 = 2 ==%@",[brequest responseString]);
+        }];
+        
+        [brequest setFailedBlock:^{
+            NSLog(@"error = %@",brequest.error);
+            
+            [bself saveWeiBo];
+            
+            UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"温馨提示" message:@"网络不稳定,已保存到草稿箱" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil,nil];
+            alertView.delegate = self;
+            [alertView show];
+        }];
+        
+        [up_request startAsynchronous];
+        
         
         NSLog(@"18请求的url：%@",fullURL);
-        
-        
-        ASIHTTPRequest * request = [[ASIHTTPRequest alloc] initWithURL:[NSURL URLWithString:fullURL]];
-        request.tag = 3;
-        request.delegate = self;
-        
-        [request startAsynchronous];
-        
+        /*
+         
+         ASIHTTPRequest * request = [[ASIHTTPRequest alloc] initWithURL:[NSURL URLWithString:fullURL]];
+         request.tag = 3;
+         request.delegate = self;
+         [request startAsynchronous];
+         */
     }
     
     
@@ -979,8 +932,6 @@
 {
     
     NSString* fullURL = [NSString stringWithFormat:URLIMAGE,[[NSUserDefaults standardUserDefaults] objectForKey:USER_AUTHOD]];
-    //  NSString * fullURL = [NSString stringWithFormat:@"http://t.fblife.com/openapi/index.php?mod=doweibo&code=addpicmuliti&fromtype=b5eeec0b&authkey=UmZaPlcyXj8AMQRoDHcDvQehBcBYxgfbtype=json"];
-    
     
     NSLog(@"上传图片的url  ——--  %@",fullURL);
     ASIFormDataRequest * request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:fullURL]];
@@ -989,19 +940,14 @@
     
     //得到图片的data
     NSData* data;
-    //获取图片质量
-    //  NSString *tupianzhiliang=[[NSUserDefaults standardUserDefaults] objectForKey:TUPIANZHILIANG];
-    
     NSMutableData *myRequestData=[NSMutableData data];
-    
-    NSLog(@"imagearray -----  %d",allImageArray.count);
     
     for (int i = 0;i < allImageArray.count; i++)
     {
         [request setPostFormat:ASIMultipartFormDataPostFormat];
         
         UIImage *image=[allImageArray objectAtIndex:i];
-   /*
+        
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,     NSUserDomainMask, YES);
         NSString *documentsDirectory = [paths objectAtIndex:0];
         NSString *savedImagePath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"savedImage%d.png",i]];
@@ -1010,36 +956,21 @@
         //UIImageJPEGRepresentation(image)
         [imageData writeToFile:savedImagePath atomically:NO];
         
-      */
-        
-        
-        
-        
-        
         UIImage * newImage = [personal scaleToSizeWithImage:image size:CGSizeMake(image.size.width>1024?1024:image.size.width,image.size.width>1024?image.size.height*1024/image.size.width:image.size.height)];
         
         data = UIImageJPEGRepresentation(newImage,image_quality?0.5:0.3);
-        
         
         [request addRequestHeader:@"Content-Length" value:[NSString stringWithFormat:@"%d", [myRequestData length]]];
         
         //设置http body
         
         [request addData:data withFileName:[NSString stringWithFormat:@"boris%d.png",i] andContentType:@"image/PNG" forKey:@"topic[]"];
-        
-        //  [request addData:myRequestData forKey:[NSString stringWithFormat:@"boris%d",i]];
-        
     }
     
     [request setRequestMethod:@"POST"];
-    
     request.cachePolicy = TT_CACHE_EXPIRATION_AGE_NEVER;
-    
     request.cacheStoragePolicy = ASICacheForSessionDurationCacheStoragePolicy;
-    
     [request startAsynchronous];
-    
-    
 }
 
 -(void)requestFinished:(ASIHTTPRequest *)request
@@ -1088,32 +1019,71 @@
                     contetn = @"分享图片";
                 }
                 
+                //        http://fb.fblife.com/openapi/index.php?mod=doweibo&code=add&content=%@&imgid=%@&fromtype=b5eeec0b&authkey=%@&jing_lng=%f&wei_lat=%f&locality=%@&map=google&fbtype=json
                 
-                NSString* fullURL;
-                if (_map_flg)
-                {
-                    _map_flg=NO;
-                    //带经纬度上传
-                    fullURL = [NSString stringWithFormat:URLJWD,[contetn stringByAddingPercentEscapesUsingEncoding:  NSUTF8StringEncoding],[authod stringByAddingPercentEscapesUsingEncoding:  NSUTF8StringEncoding],[[NSUserDefaults standardUserDefaults] objectForKey:USER_AUTHOD],longitude,lattitude,[map_name stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+                ASIFormDataRequest * up_request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:@"http://fb.fblife.com/openapi/index.php?mod=doweibo&code=add&fromtype=b5eeec0b&map=google&fbtype=json"]];
+                [up_request setPostValue:contetn forKey:@"content"];
+                [up_request setPostValue:[[NSUserDefaults standardUserDefaults] objectForKey:USER_AUTHOD] forKey:@"authkey"];
+                [up_request setPostValue:[NSString stringWithFormat:@"%f",longitude] forKey:@"jing_lng"];
+                [up_request setPostValue:[NSString stringWithFormat:@"%f",lattitude] forKey:@"wei_lat"];
+                [up_request setPostValue:map_name forKey:@"locality"];
+                [up_request setPostValue:authod forKey:@"imgid"];
+                
+                __weak typeof(self)bself = self;
+                __weak typeof(up_request)brequest = up_request;
+                [brequest setCompletionBlock:^{
+                    nav.userInteractionEnabled = YES;
+                    [hud hide];
+                    NSDictionary * jieguo = [brequest.responseData objectFromJSONData];
                     
-                }else
-                {
-                    fullURL = [NSString stringWithFormat:URLIMAGEID,[contetn stringByAddingPercentEscapesUsingEncoding:  NSUTF8StringEncoding],[authod stringByAddingPercentEscapesUsingEncoding:  NSUTF8StringEncoding],[[NSUserDefaults standardUserDefaults] objectForKey:USER_AUTHOD]];
-                }
+                    NSLog(@"request.tag1111 = 2 ==%@",[jieguo objectForKey:@"data"]);
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshmydata" object:myTextView.text];
+                    
+                    [bself dismissViewControllerAnimated:YES completion:NULL];
+                }];
                 
-                NSLog(@"19请求的url：%@",fullURL);
+                [brequest setFailedBlock:^{
+                    NSLog(@"error = %@",brequest.error);
+                    
+                    [bself saveWeiBo];
+                    
+                    UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"温馨提示" message:@"网络不稳定,已保存到草稿箱" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil,nil];
+                    alertView.delegate = self;
+                    [alertView show];
+                }];
+                
+                [up_request startAsynchronous];
                 
                 
-                ASIHTTPRequest * request1 = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:fullURL]];
-                request1.tag = 2;
-                request1.delegate = self;
-                
-                [request1 startAsynchronous];
+                /*
+                 
+                 NSString* fullURL;
+                 if (_map_flg)
+                 {
+                 _map_flg=NO;
+                 //带经纬度上传
+                 fullURL = [NSString stringWithFormat:URLJWD,[[zsnApi encodeSpecialCharactersString:contetn] stringByAddingPercentEscapesUsingEncoding:  NSUTF8StringEncoding],[authod stringByAddingPercentEscapesUsingEncoding:  NSUTF8StringEncoding],[[NSUserDefaults standardUserDefaults] objectForKey:USER_AUTHOD],longitude,lattitude,[map_name stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+                 
+                 }else
+                 {
+                 fullURL = [NSString stringWithFormat:URLIMAGEID,[[zsnApi encodeSpecialCharactersString:contetn] stringByAddingPercentEscapesUsingEncoding:  NSUTF8StringEncoding],[authod stringByAddingPercentEscapesUsingEncoding:  NSUTF8StringEncoding],[[NSUserDefaults standardUserDefaults] objectForKey:USER_AUTHOD]];
+                 }
+                 
+                 NSLog(@"19请求的url：%@",fullURL);
+                 
+                 
+                 ASIHTTPRequest * request1 = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:fullURL]];
+                 request1.tag = 2;
+                 request1.delegate = self;
+                 
+                 [request1 startAsynchronous];
+                 
+                 */
             }else
             {
                 nav.userInteractionEnabled = YES;
                 [hud hide];
-                UIAlertView * alert = [[UIAlertView alloc] initWithTitle:[dic objectForKey:@"data"] message:@"" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil,nil];
+                UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"温馨提示" message:@"图片上传失败,请重新上传" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil,nil];
                 [alert show];
             }
             
@@ -1355,6 +1325,8 @@
     {
         NSLog(@"模拟其中无法打开照相机,请在真机中使用");
     }
+    
+    [myTextView resignFirstResponder];
 }
 
 -(void)localPhoto
@@ -1371,8 +1343,8 @@
     
     
     morePicView.hidden = NO;
-    options_view.frame =  CGRectMake(0,(iPhone5?568:480)-(MY_MACRO_NAME?0:20)-72-215,320,73);
-    myTextView.frame = CGRectMake(myTextView.frame.origin.x,myTextView.frame.origin.y,myTextView.frame.size.width,(iPhone5?568-20-73-44-215:480-20-73-44-215)-(MY_MACRO_NAME?0:20));
+    options_view.frame =  CGRectMake(0,DEVICE_HEIGHT-(MY_MACRO_NAME?0:20)-72-215,DEVICE_WIDTH,73);
+    myTextView.frame = CGRectMake(myTextView.frame.origin.x,myTextView.frame.origin.y,myTextView.frame.size.width,DEVICE_HEIGHT-20-73-44-215-(MY_MACRO_NAME?0:20));
     [myTextView resignFirstResponder];
 }
 
@@ -1381,6 +1353,9 @@
 {
     UIButton * button = (UIButton *)[self.view viewWithTag:1004];
     isFace = NO;
+    morePicView.hidden = YES;
+    pageControl.hidden = YES;
+    scrollView.hidden = YES;
     [button setImage:[personal getImageWithName:isFace?@"write_blog_key@2x":@"smile_write@2x"] forState:UIControlStateNormal];
     
     return YES;
@@ -1445,25 +1420,25 @@
 -(void)atSomeBodys:(NSString *)string
 {
     
-    if (isFace)
-    {
-        //弹出表情
-        pageControl.hidden = NO;
-        
-        scrollView.hidden = NO;
-        
-        morePicView.hidden = NO;
-        
-        [UIView animateWithDuration:0.3 animations:^{
-            options_view.frame =  CGRectMake(0,(iPhone5?568:480)-(MY_MACRO_NAME?0:20)-72-160,320,73);
-            myTextView.frame = CGRectMake(myTextView.frame.origin.x,myTextView.frame.origin.y,myTextView.frame.size.width,(iPhone5?568-20-73-44-160:480-20-73-44-160)-(MY_MACRO_NAME?0:20));
-            [myTextView resignFirstResponder];
-        }];
-    }else
-    {
-        //弹出键盘
-        [myTextView becomeFirstResponder];
-    }
+    //    if (isFace)
+    //    {
+    //        //弹出表情
+    //        pageControl.hidden = NO;
+    //
+    //        scrollView.hidden = NO;
+    //
+    //        morePicView.hidden = NO;
+    //
+    //        [UIView animateWithDuration:0.3 animations:^{
+    //            options_view.frame =  CGRectMake(0,(iPhone5?568:480)-(MY_MACRO_NAME?0:20)-72-160,320,73);
+    //            myTextView.frame = CGRectMake(myTextView.frame.origin.x,myTextView.frame.origin.y,myTextView.frame.size.width,(iPhone5?568-20-73-44-160:480-20-73-44-160)-(MY_MACRO_NAME?0:20));
+    //            [myTextView resignFirstResponder];
+    //        }];
+    //    }else
+    //    {
+    //        //弹出键盘
+    //        [myTextView becomeFirstResponder];
+    //    }
     
     
     if (string.length == 0 || [string isEqualToString:@""])
@@ -1481,7 +1456,20 @@
     myTextView.text = [myTextView.text stringByAppendingFormat:@" @%@",string];
 }
 
-
+-(void)ShowFaceView
+{
+    //弹出表情
+    
+    morePicView.hidden = YES;
+    pageControl.hidden = NO;
+    scrollView.hidden = NO;
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        options_view.frame =  CGRectMake(0,(DEVICE_HEIGHT-72-215)-(MY_MACRO_NAME?0:20),DEVICE_WIDTH,73);
+        myTextView.frame = CGRectMake(myTextView.frame.origin.x,myTextView.frame.origin.y,myTextView.frame.size.width,DEVICE_HEIGHT-20-73-44-215-(MY_MACRO_NAME?0:20));
+        [myTextView resignFirstResponder];
+    }];
+}
 
 
 - (void)image:(UIImage *)image didFinishSavingWithError:
@@ -1494,9 +1482,8 @@
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     UIImage *image1 = [info objectForKey:UIImagePickerControllerOriginalImage];
-    UIImage * newImage = [zsnApi scaleToSizeWithImage:image1 size:CGSizeMake(720,960)];
     ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
-    [library writeImageToSavedPhotosAlbum:newImage.CGImage orientation:(ALAssetOrientation)newImage.imageOrientation completionBlock:^(NSURL *assetURL, NSError *error )
+    [library writeImageToSavedPhotosAlbum:image1.CGImage orientation:(ALAssetOrientation)image1.imageOrientation completionBlock:^(NSURL *assetURL, NSError *error )
      {
          //here is your URL : assetURL
          
@@ -1535,8 +1522,8 @@
     [allImageArray addObject:[info objectForKey:@"UIImagePickerControllerOriginalImage"]];
     
     morePicView.hidden = NO;
-    options_view.frame =  CGRectMake(0,(iPhone5?568:480)-(MY_MACRO_NAME?0:20)-72-215,320,73);
-    myTextView.frame = CGRectMake(myTextView.frame.origin.x,myTextView.frame.origin.y,myTextView.frame.size.width,(iPhone5?568-20-73-44-215:480-20-73-44-215)-(MY_MACRO_NAME?0:20));
+    options_view.frame =  CGRectMake(0,DEVICE_HEIGHT-(MY_MACRO_NAME?0:20)-72-215,DEVICE_WIDTH,73);
+    myTextView.frame = CGRectMake(myTextView.frame.origin.x,myTextView.frame.origin.y,myTextView.frame.size.width,DEVICE_HEIGHT-20-73-44-215-(MY_MACRO_NAME?0:20));
     [myTextView resignFirstResponder];
     
     
@@ -1595,8 +1582,8 @@
     
     
     morePicView.hidden = NO;
-    options_view.frame =  CGRectMake(0,(iPhone5?568:480)-(MY_MACRO_NAME?0:20)-72-215,320,73);
-    myTextView.frame = CGRectMake(myTextView.frame.origin.x,myTextView.frame.origin.y,myTextView.frame.size.width,(iPhone5?568-20-73-44-215:480-20-73-44-215)-(MY_MACRO_NAME?0:20));
+    options_view.frame =  CGRectMake(0,DEVICE_HEIGHT-(MY_MACRO_NAME?0:20)-72-215,DEVICE_WIDTH,73);
+    myTextView.frame = CGRectMake(myTextView.frame.origin.x,myTextView.frame.origin.y,myTextView.frame.size.width,DEVICE_HEIGHT-20-73-44-215-(MY_MACRO_NAME?0:20));
     [myTextView resignFirstResponder];
     
 }

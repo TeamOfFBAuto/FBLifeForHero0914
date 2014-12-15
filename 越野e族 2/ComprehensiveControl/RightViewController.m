@@ -51,8 +51,8 @@
     
     [super viewWillAppear:YES];
     
-//    self.navigationController.navigationBarHidden = YES;
-//    
+    self.navigationController.navigationBarHidden = YES;
+//
 //    self.wantsFullScreenLayout = YES;
 //    
 //    if (MY_MACRO_NAME) {
