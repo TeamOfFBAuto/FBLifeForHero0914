@@ -49,7 +49,7 @@
     
     self.title = @"设置";
     
-    title_array = [NSArray arrayWithObjects:@"",@"清除缓存",@"意见反馈",@"版本更新",@"关于",@"",@"精品应用",@"",@"",nil];
+    title_array = [NSArray arrayWithObjects:@"",@"清除缓存",@"意见反馈",@"版本更新",@"关于",@"",nil];
     
     
     self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0,0,320,(iPhone5?568:480)-20 - 44) style:UITableViewStylePlain];
@@ -72,12 +72,12 @@
     
     
     
-    _mTableView = [[UMUFPTableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain appkey:@"5153e5e456240b79e20006b9" slotId:nil currentViewController:self];
-    _mTableView.delegate = self;
-    _mTableView.dataSource = self;
-    _mTableView.dataLoadDelegate = (id<UMUFPTableViewDataLoadDelegate>)self;
-    
-    [_mTableView requestPromoterDataInBackground];
+//    _mTableView = [[UMUFPTableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain appkey:@"5153e5e456240b79e20006b9" slotId:nil currentViewController:self];
+//    _mTableView.delegate = self;
+//    _mTableView.dataSource = self;
+//    _mTableView.dataLoadDelegate = (id<UMUFPTableViewDataLoadDelegate>)self;
+//    
+//    [_mTableView requestPromoterDataInBackground];
     
     
     
@@ -136,14 +136,11 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == 0 || indexPath.row == 5) {
+    if (indexPath.row == 0) {
         return 23;
-    }else if(indexPath.row == 8)
+    }else if(indexPath.row == 5)
     {
         return 90;
-    }else if (indexPath.row == 7)
-    {
-        return 233/2;
     }else
     {
         return 54;
@@ -180,51 +177,12 @@
     
     [cell.contentView addSubview:lineView];
     
-    if (indexPath.row == 0 || indexPath.row == 5)
+    if (indexPath.row == 0)
     {
-//        cell.separatorInset = UIEdgeInsetsZero;
-        
         lineView.center = CGPointMake(160,0.25);
-        
+        lineView.hidden = YES;
         cell.backgroundColor = RGBCOLOR(248,248,248);
-    }else if (indexPath.row == 6)
-    {
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        
-        lineView.center = CGPointMake(160,0.25);
-    }else if (indexPath.row == 7)
-    {
-        for (int i=0; i<4; i++) {
-            
-            if (arrayofjingpinyingyong.count > i) {
-                NSDictionary *dicjingpininfo=[arrayofjingpinyingyong objectAtIndex:i];
-                
-                UIButton *suggest_button=[[UIButton alloc]initWithFrame:CGRectMake(11.25+80*i,18, 115/2, 115/2)];
-                suggest_button.tag=99+i;
-                suggest_button.backgroundColor=[UIColor clearColor];
-                [suggest_button addTarget:self action:@selector(domysuggestbutton:) forControlEvents:UIControlEventTouchUpInside];
-                [cell.contentView addSubview:suggest_button];
-                
-                AsyncImageView *imgbuttonbg=[[AsyncImageView alloc]initWithFrame:CGRectMake(0, 0, 115/2, 115/2)];
-                
-                [ imgbuttonbg loadImageFromURL:[NSString stringWithFormat:@"%@",[dicjingpininfo objectForKey:@"icon"]] withPlaceholdImage:nil];
-                
-                [suggest_button addSubview:imgbuttonbg];
-                
-                
-                UILabel *labelofname=[[UILabel alloc]initWithFrame:CGRectMake(8+80*i, 18+115/2+3, 67, 20)];
-                labelofname.text=[NSString stringWithFormat:@"%@",[dicjingpininfo objectForKey:@"title"]];
-                labelofname.font=[UIFont systemFontOfSize:12];
-                labelofname.backgroundColor = [UIColor clearColor];
-                labelofname.textAlignment=NSTextAlignmentCenter;
-                [cell.contentView addSubview:labelofname];
-            }
-        }
-        
-        
-        lineView.center = CGPointMake(174,0.25);
-        
-    }else if (indexPath.row == 8)
+    }else if (indexPath.row == 5)
     {
         cell.backgroundColor = RGBCOLOR(248,248,248);
         
@@ -275,7 +233,6 @@
     }else if (indexPath.row == 2)
     {
         lineView.center = CGPointMake(174,0.25);
-        
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }else if (indexPath.row == 3)
     {
@@ -283,7 +240,6 @@
     }else if (indexPath.row == 4)
     {
         lineView.center = CGPointMake(174,0.25);
-        
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     
@@ -307,10 +263,6 @@
     {
         AboutViewController * aboutVC = [[AboutViewController alloc] init];
         [self.navigationController pushViewController:aboutVC animated:YES];
-    }else if (indexPath.row == 6)//精品应用
-    {
-        UMTableViewController *controller = [[UMTableViewController alloc] init];
-        [self.navigationController pushViewController:controller animated:YES];
     }
 }
 
