@@ -260,13 +260,9 @@
                 url = [url stringByReplacingOccurrencesOfString:@"[/img]" withString:@""];
                 
                 AsyncImageView * imageView = [[AsyncImageView alloc] initWithFrame:CGRectMake(theType ==JSBubbleMessageTypeIncoming?10:5,theHeight?theHeight+distance:5,image_width,image_height)];
-                
                 imageView.delegate = self;
-                
                 imageView.backgroundColor = [UIColor clearColor];
-                
                 [imageView loadImageFromURL:url withPlaceholdImage:[personal getImageWithName:@"url_image_loading"]];
-                
                 imageView.contentMode = UIViewContentModeScaleAspectFill;
                 imageView.clipsToBounds = YES;
                 

@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "MBProgressHUD.h"
 
 
 @interface ZSNButton : UIButton
@@ -81,6 +82,13 @@
 ///裁剪图片
 +(UIImage *)scaleToSizeWithImage:(UIImage *)img size:(CGSize)size;
 
+///pragma mark - 弹出提示框
++ (MBProgressHUD *)showMBProgressWithText:(NSString *)text addToView:(UIView *)aView;
+
+///pragma mark - 弹出提示框，1.5秒后消失
++ (void)showAutoHiddenMBProgressWithText:(NSString *)text addToView:(UIView *)aView;
+///弹出提示框（包含标题，内容），1.5秒后消失
++(void)showautoHiddenMBProgressWithTitle:(NSString *)title WithContent:(NSString *)content addToView:(UIView *)aView;
 
 @end
 

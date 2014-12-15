@@ -7,6 +7,10 @@
 //
 
 
+
+
+#import <UIKit/UIKit.h>
+
 @class NewFaceView;
 @protocol expressionDelegate <NSObject>
 
@@ -14,8 +18,6 @@
 
 
 @end
-
-#import <UIKit/UIKit.h>
 
 @interface NewFaceView : UIView
 {

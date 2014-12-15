@@ -535,7 +535,6 @@
 
 
 #pragma mark - 判断论坛有没有缓存数据
-
 -(void)isHaveCacheDataWith:(int)index
 {
     //获取版块数据
@@ -654,8 +653,6 @@
 
 
 #pragma mark - 请求我的订阅数据
-
-
 -(void)loadMyCollectionData
 {
     NSString * fullUrl = [NSString stringWithFormat:GET_ALL_COLLECTION_SECTION,AUTHKEY,100];
@@ -1391,8 +1388,6 @@
 
 
 #pragma mark - UIScrollViewDelegate
-
-
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     if (scrollView.contentOffset.x<-40)

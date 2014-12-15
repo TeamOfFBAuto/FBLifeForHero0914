@@ -1303,6 +1303,57 @@
     return scaledImage;
 }
 
+
+#pragma mark - 弹出提示框
++ (MBProgressHUD *)showMBProgressWithText:(NSString *)text addToView:(UIView *)aView
+{
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:aView animated:YES];
+    hud.mode = MBProgressHUDModeText;
+    hud.labelText = text;
+    hud.margin = 15.f;
+    hud.yOffset = 0.0f;
+    hud.removeFromSuperViewOnHide = YES;
+    return hud;
+}
+#pragma mark - 弹出提示框，1.5秒后消失
++ (void)showAutoHiddenMBProgressWithText:(NSString *)text addToView:(UIView *)aView
+{
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:aView animated:YES];
+    hud.mode = MBProgressHUDModeText;
+    hud.labelText = text;
+    hud.margin = 15.f;
+    hud.yOffset = 0.f;
+    hud.removeFromSuperViewOnHide = YES;
+    [hud hide:YES afterDelay:1.5];
+}
+#pragma mark - 弹出提示框（包含标题，内容），1.5秒后消失
++(void)showautoHiddenMBProgressWithTitle:(NSString *)title WithContent:(NSString *)content addToView:(UIView *)aView
+{
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:aView animated:YES];
+    hud.mode = MBProgressHUDModeText;
+    hud.labelText = title;
+    hud.detailsLabelText = content;
+    hud.margin = 15.f;
+    hud.yOffset = 0.f;
+    hud.removeFromSuperViewOnHide = YES;
+    [hud hide:YES afterDelay:1.5];
+}
+
+
+#pragma mark - 解码特殊字符
++(NSString *)decodeSpecialCharactersString:(NSString *)input
+{
+    input = [input stringByReplacingOccurrencesOfString:@"&amp;" withString:@"&"];
+    input = [input stringByReplacingOccurrencesOfString:@"quot;" withString:@"\""];
+    input = [input stringByReplacingOccurrencesOfString:@"&#039;" withString:@"'"];
+    input = [input stringByReplacingOccurrencesOfString:@"&lt;" withString:@"&lt"];
+    input = [input stringByReplacingOccurrencesOfString:@"&gt;" withString:@"&gt"];
+    
+    input = [input stringByReplacingOccurrencesOfString:@"<" withString:@"&lt"];
+    input = [input stringByReplacingOccurrencesOfString:@">" withString:@"&gt"];
+    return input;
+}
+
 @end
 
 

@@ -9,6 +9,9 @@
 #import "MyPhoneNumViewController.h"
 
 @interface MyPhoneNumViewController ()
+{
+    MBProgressHUD * hud;
+}
 
 @end
 
@@ -161,16 +164,6 @@
     
     [self.view addSubview:xieyi_button];
     
-    
-    
-    
-    if (!hud)
-    {
-        hud = [[ATMHud alloc] initWithDelegate:self];
-        
-        [self.view addSubview:hud.view];
-    }
-    
 }
 
 
@@ -205,8 +198,7 @@
             break;
         case 1:
         {
-            [self animationStar];
-            
+            [phone_textField resignFirstResponder];
             if (myRequest)
             {
                 [myRequest cancel];
@@ -214,6 +206,7 @@
                 myRequest = nil;
             }
             
+            hud = [zsnApi showMBProgressWithText:@"发送中..." addToView:self.view];
             
             NSString * fullUrl = [NSString stringWithFormat:SENDPHONENUMBER,phone_textField.text];
             
@@ -246,59 +239,29 @@
     
     NSLog(@"bbsinfo -----  %@",bbsinfo);
     
-    [self animationEnd];
+    [hud hide:YES];
     
     if ([errcode intValue] == 0)
     {
+        [zsnApi showAutoHiddenMBProgressWithText:@"发送成功" addToView:self.view];
         VerificationViewController * verification = [[VerificationViewController alloc] init];
-        
         verification.MyPhoneNumber = phone_textField.text;
-        
         [self.navigationController pushViewController:verification animated:YES];
     }else
     {
-        UIAlertView * alertView = [[UIAlertView alloc]initWithTitle:@"温馨提示" message:bbsinfo delegate:nil cancelButtonTitle:@"确认" otherButtonTitles:nil,nil];
+        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:bbsinfo message:@"" delegate:nil cancelButtonTitle:@"确认" otherButtonTitles:nil,nil];
+        [alert show];
         
-        [alertView show];
+//        [zsnApi showautoHiddenMBProgressWithTitle:@"" WithContent:bbsinfo addToView:self.view];
     }
 }
 
 
 -(void)requestFailed:(ASIHTTPRequest *)request
 {
-    [self animationEnd];
-    
-    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"温馨提示" message:@"发送失败,请检查当前网络" delegate:self cancelButtonTitle:@"确认" otherButtonTitles:nil,nil];
-    
-    [alert show];
+    [hud hide:YES];
+    [zsnApi showAutoHiddenMBProgressWithText:@"发送失败,请检查当前网络" addToView:self.view];
 }
-
-
-
-
--(void)animationStar
-{
-    //弹出提示信息
-    [hud setBlockTouches:NO];
-    [hud setAccessoryPosition:ATMHudAccessoryPositionLeft];
-    [hud setCaption:@"发送中..."];
-    [hud setActivity:NO];
-    [hud show];
-    [hud hideAfter:3];
-}
-
--(void)animationEnd
-{
-    //弹出提示信息
-    [hud setBlockTouches:NO];
-    [hud setAccessoryPosition:ATMHudAccessoryPositionLeft];
-    [hud setCaption:@"发送成功"];
-    [hud setActivity:NO];
-    [hud setImage:[UIImage imageNamed:@"19-check"]];
-    [hud show];
-    [hud hideAfter:3];
-}
-
 
 
 - (void)didReceiveMemoryWarning

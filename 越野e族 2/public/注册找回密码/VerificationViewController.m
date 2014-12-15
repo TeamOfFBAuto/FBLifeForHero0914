@@ -9,6 +9,9 @@
 #import "VerificationViewController.h"
 
 @interface VerificationViewController ()
+{
+    MBProgressHUD * hud;
+}
 
 @end
 
@@ -177,15 +180,6 @@
     
     [self.view addSubview:time_label];
     
-    
-    if (!hud)
-    {
-        hud = [[ATMHud alloc] initWithDelegate:self];
-        
-        [self.view addSubview:hud.view];
-    }
-    
-    
     timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timeCount) userInfo:nil repeats:YES];
 }
 
@@ -223,8 +217,6 @@
 
 -(void)initReSendRequest
 {
-    [self animationStar];
-    
     if (reSend_request)
     {
         [reSend_request cancel];
@@ -232,6 +224,7 @@
         reSend_request = nil;
     }
     
+    hud = [zsnApi showMBProgressWithText:@"发送中..." addToView:self.view];
     
     NSString * fullUrl = [NSString stringWithFormat:SENDPHONENUMBER,self.MyPhoneNumber];
     
@@ -250,13 +243,14 @@
 
 -(void)initYanZhengVerification
 {
-    [self animationStar];
     if (request_)
     {
         [request_ cancel];
         request_.delegate = nil;
         request_ = nil;
     }
+    
+    hud = [zsnApi showMBProgressWithText:@"发送中..." addToView:self.view];
     
     NSString * fullUrl = [NSString stringWithFormat:SENDERVerification,self.MyPhoneNumber,verification_tf.text];
     
@@ -272,8 +266,7 @@
 
 -(void)requestFinished:(ASIHTTPRequest *)request
 {
-    [self animationEnd];
-    
+    [hud hide:YES];
     NSDictionary * data_dic = [request.responseData objectFromJSONData];
     
     NSString * errcode = [NSString stringWithFormat:@"%@",[data_dic objectForKey:@"errcode"]]
@@ -287,32 +280,26 @@
         if ([errcode intValue] == 0)
         {
             ZhuCeViewController * zhuce = [[ZhuCeViewController alloc] init];
-            
             zhuce.PhoneNumber = self.MyPhoneNumber;
-            
             zhuce.verification = verification_tf.text;
-            
             [self.navigationController pushViewController:zhuce animated:YES];
         }else
         {
-            UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"温馨提示" message:bbsinfo delegate:self cancelButtonTitle:@"确认" otherButtonTitles:nil,nil];
-            
+            UIAlertView * alert = [[UIAlertView alloc] initWithTitle:bbsinfo message:@"" delegate:self cancelButtonTitle:@"确认" otherButtonTitles:nil,nil];
             [alert show];
         }
     }else
     {
         if ([errcode intValue] == 0)
         {
+            [zsnApi showAutoHiddenMBProgressWithText:@"发送成功" addToView:self.view];
             time_number = 60;
             timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timeCount) userInfo:nil repeats:YES];
-
             ReSendButton.hidden = YES;
-            
             time_label.hidden = NO;
-
         }else
         {
-            UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"温馨提示" message:bbsinfo delegate:self cancelButtonTitle:@"确认" otherButtonTitles:nil,nil];
+            UIAlertView * alert = [[UIAlertView alloc] initWithTitle:bbsinfo message:@"" delegate:self cancelButtonTitle:@"确认" otherButtonTitles:nil,nil];
             
             [alert show];
         }
@@ -326,37 +313,13 @@
 
 -(void)requestFailed:(ASIHTTPRequest *)request
 {
-    [self animationEnd];
+    [hud hide:YES];
     
     UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"温馨提示" message:@"发送失败,请检查当前网络" delegate:self cancelButtonTitle:@"确认" otherButtonTitles:nil,nil];
     
     [alert show];
 }
 
-
-
--(void)animationStar
-{
-    //弹出提示信息
-    [hud setBlockTouches:NO];
-    [hud setAccessoryPosition:ATMHudAccessoryPositionLeft];
-    [hud setCaption:@"发送中..."];
-    [hud setActivity:NO];
-    [hud show];
-    [hud hideAfter:3];
-}
-
--(void)animationEnd
-{
-    //弹出提示信息
-    [hud setBlockTouches:NO];
-    [hud setAccessoryPosition:ATMHudAccessoryPositionLeft];
-    [hud setCaption:@"发送成功"];
-    [hud setActivity:NO];
-    [hud setImage:[UIImage imageNamed:@"19-check"]];
-    [hud show];
-    [hud hideAfter:3];
-}
 
 
 - (void)didReceiveMemoryWarning

@@ -7,8 +7,12 @@
 //
 
 #import "ZhuCeViewController.h"
+#import "MBProgressHUD.h"
 
 @interface ZhuCeViewController ()
+{
+    MBProgressHUD * aHud;
+}
 
 @end
 
@@ -30,7 +34,7 @@
 
 -(void)backH
 {
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -184,12 +188,6 @@
     [complete_button addTarget:self action:@selector(zhuCe:) forControlEvents:UIControlEventTouchUpInside];
     
     [self.view addSubview:complete_button];
-    
-    
-    
-    hud = [[ATMHud alloc] initWithDelegate:self];
-    
-    [self.view addSubview:hud.view];
 }
 
 
@@ -251,33 +249,29 @@
         request_ = nil;
     }
     
-    [self animationStar];
-    
+    aHud = [zsnApi showMBProgressWithText:@"正在注册..." addToView:self.view];
     
     NSString * fullUrl = [NSString stringWithFormat:SENDUSERINFO,self.PhoneNumber,self.verification,[userName_tf.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],mima_tf.text,youxiang_tf.text];
-    
     request_ = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:fullUrl]];
-    
     request_.delegate = self;
-    
     request_.shouldAttemptPersistentConnection = NO;
-    
     [request_ startAsynchronous];
 }
 
 
 -(void)requestFailed:(ASIHTTPRequest *)request
 {
-    [self animationEnd];
+    [aHud hide:YES];
     
-    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"温馨提示" message:@"发送失败,请检查当前网络" delegate:self cancelButtonTitle:@"确认" otherButtonTitles:nil,nil];
+    [zsnApi showAutoHiddenMBProgressWithText:@"注册失败,请检查当前网络" addToView:self.view];
     
-    [alert show];
+//    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"温馨提示" message:@"发送失败,请检查当前网络" delegate:self cancelButtonTitle:@"确认" otherButtonTitles:nil,nil];
+//    [alert show];
 }
 
 -(void)requestFinished:(ASIHTTPRequest *)request
 {
-    [self animationEnd];
+    [aHud hide:YES];
     
     NSDictionary * data_dic = [request.responseData objectFromJSONData];
     
@@ -289,14 +283,11 @@
     if ([errcode intValue] == 0)
     {
         UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"温馨提示" message:@"注册成功,马上去登录" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确认",nil];
-        
         alert.delegate = self;
-        
         [alert show];
     }else
     {
-        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"温馨提示" message:bbsinfo delegate:self cancelButtonTitle:@"确认" otherButtonTitles:nil,nil];
-        
+        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:bbsinfo message:@"" delegate:self cancelButtonTitle:@"确认" otherButtonTitles:nil,nil];
         [alert show];
     }
 }
@@ -306,7 +297,7 @@
 {
     if (buttonIndex == 1)
     {
-        [self dismissModalViewControllerAnimated:YES];
+        [self dismissViewControllerAnimated:YES completion:nil];
     }
 }
 
@@ -337,9 +328,35 @@
 
 #pragma mark-UITextFieldDelegate
 
+#pragma mark-UITextFieldDelegate
+-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    if (textField.frame.origin.y+textField.frame.size.height + 260 > DEVICE_HEIGHT)
+    {
+        CGRect frame = self.view.frame;
+        frame.origin.y = DEVICE_HEIGHT - (textField.frame.origin.y+textField.frame.size.height + 300);
+        [UIView animateWithDuration:0.35 animations:^{
+            self.view.frame = frame;
+        } completion:^(BOOL finished) {
+            
+        }];
+    }
+    
+    return YES;
+}
+
+
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
+    
+    [UIView animateWithDuration:0.35 animations:^{
+        CGRect frame = self.view.frame;
+        frame.origin.y = 64;
+        self.view.frame = frame;
+    } completion:^(BOOL finished) {
+        
+    }];
     
     return YES;
 }
