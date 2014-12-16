@@ -134,7 +134,7 @@
    // self.navigationItem.title=self.string_name;
     
     
-    tab_ =[[UITableView alloc]initWithFrame:CGRectMake(0, 0, 320, iPhone5?568-20-44:480-20-44) style:UITableViewStylePlain];
+    tab_ =[[UITableView alloc]initWithFrame:CGRectMake(0, 0, DEVICE_WIDTH, DEVICE_HEIGHT - 64) style:UITableViewStylePlain];
     tab_.delegate=self;
     tab_.dataSource=self;
     tab_.separatorColor=[UIColor clearColor];
@@ -281,7 +281,7 @@
         valuelabel.text=string_text;
         
         
-        UIImageView *img=[[UIImageView alloc]initWithFrame:CGRectMake(0, 29, 320, 1)];
+        UIImageView *img=[[UIImageView alloc]initWithFrame:CGRectMake(0, 29, DEVICE_WIDTH, 1)];
         img.image=[UIImage imageNamed:@"line-2.png"];
         [cell.contentView addSubview:img];
 
@@ -304,7 +304,7 @@
 }
 -(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     
-    UIView *view_header=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 28)];
+    UIView *view_header=[[UIView alloc]initWithFrame:CGRectMake(0, 0, DEVICE_WIDTH, 28)];
     view_header.backgroundColor=RGBCOLOR(227, 227, 227);
     
     
@@ -326,7 +326,7 @@
     label_point.textColor=[UIColor blackColor];
     [view_header addSubview:label_point];
     
-    UILabel *label_biaopei=[[UILabel alloc]initWithFrame:CGRectMake(200, 0, 320, 28)];
+    UILabel *label_biaopei=[[UILabel alloc]initWithFrame:CGRectMake(200, 0, DEVICE_WIDTH, 28)];
     label_biaopei.text=[NSString stringWithFormat:@"标配 - 无"];
     label_biaopei.backgroundColor=RGBCOLOR(227, 227, 227);
     label_biaopei.font=[UIFont systemFontOfSize:13];

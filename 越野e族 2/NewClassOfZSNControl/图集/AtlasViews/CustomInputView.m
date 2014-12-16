@@ -155,6 +155,8 @@
     
     text_background_view.backgroundColor = RGBCOLOR(249,248,249);
     
+    text_background_view.backgroundColor = [UIColor redColor];
+    
     [[UIApplication sharedApplication].keyWindow addSubview:text_background_view];
     
     

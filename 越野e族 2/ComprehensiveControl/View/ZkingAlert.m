@@ -18,7 +18,7 @@
     self.backgroundColor=[UIColor clearColor];
     if (self) {
         self.hidden=YES;
-        self.center=CGPointMake(160, iPhone5?568/2:480/2);
+        self.center=CGPointMake(DEVICE_WIDTH / 2.f, DEVICE_HEIGHT / 2.f);
         self.textLabel=[[UILabel alloc]initWithFrame:CGRectMake(2, 58, 150, 50)];
         self.textLabel.backgroundColor=[UIColor clearColor];
         self.textLabel.textAlignment=NSTextAlignmentCenter;

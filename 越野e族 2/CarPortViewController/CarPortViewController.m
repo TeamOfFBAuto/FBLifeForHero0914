@@ -1386,7 +1386,7 @@
         [self.view addSubview:_silder_view];
         
         
-        _car_tableview = [[UITableView alloc] initWithFrame:CGRectMake(45/2,53/2+2,240-45/2-23/2,_silder_view.frame.size.height-53/2)];
+        _car_tableview = [[UITableView alloc] initWithFrame:CGRectMake(45/2,53/2+2,DEVICE_WIDTH - 80 -45/2-23/2,_silder_view.frame.size.height-53/2)];
         
         _car_tableview.backgroundColor = [UIColor whiteColor];
         

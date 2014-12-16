@@ -54,6 +54,8 @@
     
     pagesofnews=1;
     
+    //车库
+    
 //    UIButton *button_back=[[UIButton alloc]initWithFrame: CGRectMake(MY_MACRO_NAME? -7:5, 3, 12, 43/2)];
 //    
 //    [button_back addTarget:self action:@selector(backto) forControlEvents:UIControlEventTouchUpInside];

@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CarPortViewController/CarPortDetailViewController.m"
-            timestampString = "440394582.460361"
+            timestampString = "440412573.777356"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -49,6 +49,130 @@
             endingLineNumber = "841"
             landmarkName = "-viewDidLayoutSubviews"
             landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RootViewController/newsdetail/newsdetailViewController.m"
+            timestampString = "440418861.077482"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1781"
+            endingLineNumber = "1781"
+            landmarkName = "-commentyemian"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NewClassOfZSNControl/&#x56fe;&#x96c6;/AtlasViews/CustomInputView.m"
+            timestampString = "440419141.438"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "266"
+            endingLineNumber = "266"
+            landmarkName = "-handleWillShowKeyboardForCustomInputView:"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__60-[CustomInputView handleWillShowKeyboardForCustomInputView:]_block_invoke"
+                  moduleName = "&#x8d8a;&#x91ce;e&#x65cf;"
+                  urlString = "file:///Users/lcw/Desktop/FBLife/FBLife/FBLifeForHero0914/%E8%B6%8A%E9%87%8Ee%E6%97%8F%202/NewClassOfZSNControl/%E5%9B%BE%E9%9B%86/AtlasViews/CustomInputView.m"
+                  timestampString = "440420119.299571"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "267"
+                  endingLineNumber = "267"
+                  offsetFromSymbolStart = "1052">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__60-[CustomInputView handleWillShowKeyboardForCustomInputView:]_block_invoke122"
+                  moduleName = "&#x8d8a;&#x91ce;e&#x65cf;"
+                  urlString = "file:///Users/lcw/Desktop/FBLife/FBLife/FBLifeForHero0914/%E8%B6%8A%E9%87%8Ee%E6%97%8F%202/NewClassOfZSNControl/%E5%9B%BE%E9%9B%86/AtlasViews/CustomInputView.m"
+                  timestampString = "440420119.299848"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "269"
+                  endingLineNumber = "269"
+                  offsetFromSymbolStart = "21">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NewClassOfZSNControl/&#x56fe;&#x96c6;/AtlasViews/CustomInputView.m"
+            timestampString = "440419162.969472"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "276"
+            endingLineNumber = "276"
+            landmarkName = "-handleWillHideKeyboardForCustomInputView:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NewClassOfZSNControl/&#x56fe;&#x96c6;/AtlasViews/CustomInputView.m"
+            timestampString = "440419166.003514"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "283"
+            endingLineNumber = "283"
+            landmarkName = "-hiddenInputView"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[CustomInputView hiddenInputView]"
+                  moduleName = "&#x8d8a;&#x91ce;e&#x65cf;"
+                  urlString = "file:///Users/lcw/Desktop/FBLife/FBLife/FBLifeForHero0914/%E8%B6%8A%E9%87%8Ee%E6%97%8F%202/NewClassOfZSNControl/%E5%9B%BE%E9%9B%86/AtlasViews/CustomInputView.m"
+                  timestampString = "440420119.300369"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "284"
+                  endingLineNumber = "284"
+                  offsetFromSymbolStart = "51">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__34-[CustomInputView hiddenInputView]_block_invoke"
+                  moduleName = "&#x8d8a;&#x91ce;e&#x65cf;"
+                  urlString = "file:///Users/lcw/Desktop/FBLife/FBLife/FBLifeForHero0914/%E8%B6%8A%E9%87%8Ee%E6%97%8F%202/NewClassOfZSNControl/%E5%9B%BE%E9%9B%86/AtlasViews/CustomInputView.m"
+                  timestampString = "440420119.300604"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "284"
+                  endingLineNumber = "284"
+                  offsetFromSymbolStart = "28">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
