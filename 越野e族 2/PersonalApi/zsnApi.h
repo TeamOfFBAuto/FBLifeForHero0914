@@ -89,7 +89,10 @@
 + (void)showAutoHiddenMBProgressWithText:(NSString *)text addToView:(UIView *)aView;
 ///弹出提示框（包含标题，内容），1.5秒后消失
 +(void)showautoHiddenMBProgressWithTitle:(NSString *)title WithContent:(NSString *)content addToView:(UIView *)aView;
-
+///根据原宽度返回适配后的宽度
++(float)returnAutoWidthWith:(float)aWith;
+///根据原高度返回适配后的高度
++(float)returnAutoHeightWith:(float)aHeight WithWidth:(float)aWidth;
 @end
 
 

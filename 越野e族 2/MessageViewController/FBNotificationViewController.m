@@ -69,13 +69,13 @@
     
     [seg_view setAllViewsWith:[NSArray arrayWithObjects:@"FB通知",@"论坛通知",nil] withBlock:^(int index) {
         
-        [bself.myScrollView setContentOffset:CGPointMake(340*index,0) animated:YES];
+        [bself.myScrollView setContentOffset:CGPointMake((DEVICE_WIDTH+20)*index,0) animated:YES];
         
     }];
     
     self.navigationItem.titleView = seg_view;    
     
-    _myScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0,0,340, iPhone5?568-44-25:480-44-25)];
+    _myScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH+20,DEVICE_HEIGHT-44-25)];
     
     _myScrollView.showsHorizontalScrollIndicator = NO;
     
@@ -92,7 +92,7 @@
     
     
     
-    fbnoti_tab=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, 320, iPhone5?568-44-25:480-44-25)];
+    fbnoti_tab=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, DEVICE_WIDTH, DEVICE_HEIGHT-44-25)];
     
     fbnoti_tab.backgroundColor=RGBCOLOR(248,248,248);
     
@@ -105,7 +105,7 @@
     [_myScrollView addSubview:fbnoti_tab];
     
     
-    bbs_tab=[[UITableView alloc]initWithFrame:CGRectMake(340, 0, 320, iPhone5?568-44-25:480-44-25)];
+    bbs_tab=[[UITableView alloc]initWithFrame:CGRectMake(DEVICE_WIDTH+20, 0, DEVICE_WIDTH, DEVICE_HEIGHT-44-25)];
     
     bbs_tab.backgroundColor=RGBCOLOR(248,248,248);
     
@@ -120,7 +120,7 @@
     
     if (!_loadingView)
     {
-        _loadingView = [[LoadingIndicatorView alloc] initWithFrame:CGRectMake(0, 900, 320, 40)];
+        _loadingView = [[LoadingIndicatorView alloc] initWithFrame:CGRectMake(0, 900, DEVICE_WIDTH, 40)];
         
         fbnoti_tab.tableFooterView = _loadingView;
     }
@@ -306,7 +306,7 @@
     if (tableView==bbs_tab) {
         return nil;
     }else{
-        UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, 320, 24)];
+        UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, DEVICE_WIDTH, 24)];
         label.backgroundColor=RGBCOLOR(240, 240, 240);
         [label setFont:[UIFont systemFontOfSize:15]];
         
@@ -364,7 +364,7 @@
         
         
         
-        timestampLabel = [[UILabel alloc] initWithFrame:CGRectMake(100,5,120,16)];
+        timestampLabel = [[UILabel alloc] initWithFrame:CGRectMake((DEVICE_WIDTH-120)/2,5,120,16)];
         
         timestampLabel.textAlignment = NSTextAlignmentCenter;
         
@@ -393,9 +393,9 @@
         labelcontent.text=string_contenttext;
         labelcontent.numberOfLines=0;
         labelcontent.font=[UIFont systemFontOfSize:17];
-        CGSize constraintSize = CGSizeMake(220, MAXFLOAT);
+        CGSize constraintSize = CGSizeMake(DEVICE_WIDTH-100, MAXFLOAT);
         CGSize labelSize = [string_contenttext sizeWithFont:labelcontent.font constrainedToSize:constraintSize lineBreakMode:NSLineBreakByWordWrapping];
-        labelcontent.frame=CGRectMake(67, 38, 220, labelSize.height);
+        labelcontent.frame=CGRectMake(67, 38, DEVICE_WIDTH-100, labelSize.height);
         labelcontent.backgroundColor=[UIColor clearColor];
         labelcontent.textColor=RGBCOLOR(24,24,24);
         
@@ -408,7 +408,7 @@
         
         _background_imageView.image = [image stretchableImageWithLeftCapWidth:22.f topCapHeight:22.f];
         
-        _background_imageView.frame=CGRectMake(52, 33, 240, labelSize.height+10);
+        _background_imageView.frame=CGRectMake(52, 33, DEVICE_WIDTH-80, labelSize.height+10);
         
         [cell.contentView addSubview:_background_imageView];
         [cell.contentView addSubview:labelcontent];
@@ -436,7 +436,7 @@
          },
          */
 
-        timestampLabel = [[UILabel alloc] initWithFrame:CGRectMake(100,5,120,16)];
+        timestampLabel = [[UILabel alloc] initWithFrame:CGRectMake((DEVICE_WIDTH-120)/2,5,120,16)];
         
         timestampLabel.textAlignment = NSTextAlignmentCenter;
         
@@ -465,9 +465,9 @@
         labelcontent.text=string_contenttext;
         labelcontent.numberOfLines=0;
         labelcontent.font=[UIFont systemFontOfSize:17];
-        CGSize constraintSize = CGSizeMake(220, MAXFLOAT);
+        CGSize constraintSize = CGSizeMake(DEVICE_WIDTH-100, MAXFLOAT);
         CGSize labelSize = [string_contenttext sizeWithFont:labelcontent.font constrainedToSize:constraintSize lineBreakMode:NSLineBreakByWordWrapping];
-        labelcontent.frame=CGRectMake(67, 38, 220, labelSize.height);
+        labelcontent.frame=CGRectMake(67, 38, DEVICE_WIDTH-100, labelSize.height);
         labelcontent.backgroundColor=[UIColor clearColor];
         labelcontent.textColor=RGBCOLOR(24,24,24);
         
@@ -480,7 +480,7 @@
         
         _background_imageView.image = [image stretchableImageWithLeftCapWidth:22.f topCapHeight:22.f];
         
-        _background_imageView.frame=CGRectMake(52, 33, 240, labelSize.height+10);
+        _background_imageView.frame=CGRectMake(52, 33, DEVICE_WIDTH-80, labelSize.height+10);
         
         [cell.contentView addSubview:_background_imageView];
         [cell.contentView addSubview:labelcontent];
@@ -1209,7 +1209,7 @@
                 [_loadingView removeFromSuperview];
                 _loadingView=nil;
                 
-                label_nonedata=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, 320, 40)];
+                label_nonedata=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, DEVICE_WIDTH, 40)];
                 label_nonedata.text=@"没有更多数据";
                 label_nonedata.textColor=[UIColor grayColor];
                 label_nonedata.textAlignment=UITextAlignmentCenter;

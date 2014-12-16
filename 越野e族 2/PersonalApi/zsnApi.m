@@ -1354,6 +1354,17 @@
     return input;
 }
 
+#pragma mark - 返回适配后的宽度
++(float)returnAutoWidthWith:(float)aWith
+{
+    return aWith*DEVICE_WIDTH/320;
+}
+#pragma mark - 返回适配后的高度
++(float)returnAutoHeightWith:(float)aHeight WithWidth:(float)aWidth
+{
+    return aHeight*(aWidth*DEVICE_WIDTH/320)/aWidth;
+}
+
 @end
 
 

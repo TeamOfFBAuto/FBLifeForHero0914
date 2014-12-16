@@ -409,7 +409,7 @@
     
     UIButton * attention_button = [UIButton buttonWithType:UIButtonTypeCustom];
     
-    attention_button.frame = CGRectMake(240,22.75,135/2,55/2);
+    attention_button.frame = CGRectMake(DEVICE_WIDTH-80,22.75,135/2,55/2);
     
     attention_button.tag = 100000 + indexPath.row;
     

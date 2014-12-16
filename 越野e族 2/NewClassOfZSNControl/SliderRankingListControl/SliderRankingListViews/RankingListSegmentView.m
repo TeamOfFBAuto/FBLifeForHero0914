@@ -19,11 +19,12 @@
         
         NSArray * image_array = [NSArray arrayWithObjects:@"bbs_rankinglist_zhuti1",@"bbs_rankinglist_chexing1",@"bbs_rankinglist_dadui1",@"bbs_rankinglist_zhuti",@"bbs_rankinglist_chexing",@"bbs_rankinglist_dadui",nil];
         
+        float awidth = (DEVICE_WIDTH-24-8)/3;
         for (int i = 0;i < 3;i++)
         {
             UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
             
-            button.frame = CGRectMake(12 + 100*i,12,96,45);
+            button.frame = CGRectMake(12 + (awidth+4)*i,12,awidth,45);
                         
             [button setImage:[UIImage imageNamed:[image_array objectAtIndex:i]] forState:UIControlStateNormal];
             

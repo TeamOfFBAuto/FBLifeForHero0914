@@ -339,7 +339,7 @@
 		_refreshHeaderView = view;
 	}
 	[_refreshHeaderView refreshLastUpdatedDate];
-    self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0,0,320,iPhone5?548-44:460-44) style:UITableViewStylePlain];
+    self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,DEVICE_HEIGHT-64) style:UITableViewStylePlain];
     
     self.myTableView.delegate = self;
     
@@ -357,13 +357,13 @@
     [self.view addSubview:self.myTableView];
     
     
-    label_havenoshuju = [[LoadingIndicatorView alloc] initWithFrame:CGRectMake(0,0,320,40)];
+    label_havenoshuju = [[LoadingIndicatorView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,40)];
     
 //    self.myTableView.tableFooterView = label_havenoshuju;
     
     [label_havenoshuju startLoading];
     
-    UIView * vvvv = [[UIView alloc] initWithFrame:CGRectMake(0,0,320,0)];
+    UIView * vvvv = [[UIView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,0)];
     
     self.myTableView.tableFooterView = vvvv;
     

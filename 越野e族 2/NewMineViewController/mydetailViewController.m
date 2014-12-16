@@ -121,8 +121,8 @@
         
         self.navigationItem.title=@"详细资料";
         
-        UIView *view_header=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 30)];
-        headerview =[[UILabel alloc]initWithFrame:CGRectMake(10, 10, 320, 20)];
+        UIView *view_header=[[UIView alloc]initWithFrame:CGRectMake(0,0,DEVICE_WIDTH, 30)];
+        headerview =[[UILabel alloc]initWithFrame:CGRectMake(10,10,DEVICE_WIDTH,20)];
         headerview.font=[UIFont systemFontOfSize:15];
         headerview.textColor = RGBCOLOR(94,94,94);
         headerview.backgroundColor=[UIColor clearColor];
@@ -131,7 +131,7 @@
         
         
         
-        detail_tab=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, 320, iPhone5?iphone5fram:iphone4fram) style:UITableViewStylePlain];
+        detail_tab=[[UITableView alloc]initWithFrame:CGRectMake(0,0,DEVICE_WIDTH, iPhone5?iphone5fram:iphone4fram) style:UITableViewStylePlain];
         detail_tab.backgroundView = nil;
         //    detail_tab.separatorColor = RGBCOLOR(226,226,226);
         detail_tab.backgroundColor=[UIColor whiteColor];//RGBCOLOR(248,248,248);
@@ -174,7 +174,7 @@
     
     float height = 0;
     
-    CGRect jianjie_frame = CGRectMake(23/2,25/2,297,10);
+    CGRect jianjie_frame = CGRectMake(23/2,25/2,DEVICE_WIDTH-23,10);
     
     UIImageView * jianjie_view = [[UIImageView alloc] initWithFrame:jianjie_frame];
     
@@ -182,7 +182,7 @@
     [scrollView addSubview:jianjie_view];
     
     
-    UILabel * name_label = [[UILabel alloc] initWithFrame:CGRectMake(5,10,594/2-10,20)];
+    UILabel * name_label = [[UILabel alloc] initWithFrame:CGRectMake(5,10,DEVICE_WIDTH-23-10,20)];
     
     name_label.text = self.info.service_shopname;
     
@@ -195,7 +195,7 @@
     [jianjie_view addSubview:name_label];
     
     
-    RTLabel * jianjie_label = [[RTLabel alloc] initWithFrame:CGRectMake(5,30,594/2-10,10)];
+    RTLabel * jianjie_label = [[RTLabel alloc] initWithFrame:CGRectMake(5,30,DEVICE_WIDTH-23-10,10)];
     
     jianjie_label.lineBreakMode = NSLineBreakByCharWrapping;
     
@@ -211,7 +211,7 @@
     
     height = optimumSize.height;
     
-    jianjie_label.frame = CGRectMake(5,30,594/2-10,height);
+    jianjie_label.frame = CGRectMake(5,30,DEVICE_WIDTH-23-10,height);
     
     [jianjie_view addSubview:jianjie_label];
     
@@ -225,7 +225,7 @@
     //地图
     
     
-    CGRect ditu_back_frame = CGRectMake(23/2,jianjie_frame.origin.y+jianjie_frame.size.height+21/2,297,10);
+    CGRect ditu_back_frame = CGRectMake(23/2,jianjie_frame.origin.y+jianjie_frame.size.height+21/2,DEVICE_WIDTH-23,10);
     
     UIImageView * ditu_back = [[UIImageView alloc] initWithFrame:ditu_back_frame];
     ditu_back.userInteractionEnabled = YES;
@@ -233,7 +233,7 @@
     
     
     
-    myMapView = [[MKMapView alloc] initWithFrame:CGRectMake(5,8,287,94)];
+    myMapView = [[MKMapView alloc] initWithFrame:CGRectMake(5,8,DEVICE_WIDTH-23-10,94)];
     
     myMapView.mapType=MKMapTypeStandard;
     
@@ -282,7 +282,7 @@
     [ditu_back addSubview:gongsidizhi];
     
     
-    CGRect dizhi_label_frame = CGRectMake(80,113,210,10);
+    CGRect dizhi_label_frame = CGRectMake(80,113,DEVICE_WIDTH-110,10);
     
     RTLabel * dizhi_label = [[RTLabel alloc] initWithFrame:dizhi_label_frame];
     
@@ -308,7 +308,7 @@
     
     
     
-    UIImageView * phone_imageview = [[UIImageView alloc] initWithFrame:CGRectMake(23/2,ditu_back_frame.origin.y+ditu_back_frame.size.height+23/2,594/2,40)];
+    UIImageView * phone_imageview = [[UIImageView alloc] initWithFrame:CGRectMake(23/2,ditu_back_frame.origin.y+ditu_back_frame.size.height+23/2,DEVICE_WIDTH-23,40)];
     phone_imageview.userInteractionEnabled = YES;
     phone_imageview.image = [UIImage imageNamed:@"jianjiebackimage.png"];
     
@@ -342,7 +342,7 @@
     [phone_imageview addSubview:gongsidianhua];
     
     
-    UILabel * telephone_content_label = [[UILabel alloc] initWithFrame:CGRectMake(120,5,140,30)];
+    UILabel * telephone_content_label = [[UILabel alloc] initWithFrame:CGRectMake(120,5,DEVICE_WIDTH-180,30)];
     
     telephone_content_label.text = self.info.service_telphone;
     
@@ -473,7 +473,7 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     
-    UIImageView * imageView = [[UIImageView alloc] initWithFrame:CGRectMake(11.5,0,297,44)];
+    UIImageView * imageView = [[UIImageView alloc] initWithFrame:CGRectMake(11.5,0,DEVICE_WIDTH-23,44)];
     
     imageView.image = [UIImage imageNamed:@"jianjiebackimage.png"];
     
@@ -491,7 +491,7 @@
     
     if (array_receive.count != 0)
     {
-        label_receive=[[UILabel alloc]initWithFrame:CGRectMake(85, 0, 320-85, 44)];
+        label_receive=[[UILabel alloc]initWithFrame:CGRectMake(85, 0, DEVICE_WIDTH-85, 44)];
         label_receive.textAlignment=NSTextAlignmentLeft;
         label_receive.font=[UIFont systemFontOfSize:15];
         label_receive.textColor = RGBACOLOR(12,12,12,1);
@@ -509,7 +509,7 @@
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    UIView * view = [[UIView alloc] initWithFrame:CGRectMake(0,0,320,35)];
+    UIView * view = [[UIView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,35)];
     
     view.backgroundColor = [UIColor clearColor];
     

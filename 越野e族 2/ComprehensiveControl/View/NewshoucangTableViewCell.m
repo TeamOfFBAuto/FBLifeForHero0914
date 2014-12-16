@@ -84,16 +84,16 @@
             
             UIFont *font = [UIFont systemFontOfSize:16];
             //设置一个行高上限
-            CGSize size = CGSizeMake(320-24,MAXFLOAT);
+            CGSize size = CGSizeMake(DEVICE_WIDTH-24,MAXFLOAT);
             //计算实际frame大小，并将label的frame变成实际大小
             CGSize labelsize = [_bigTitleLabel.text sizeWithFont:font constrainedToSize:size lineBreakMode:UILineBreakModeWordWrap];
             
             
-            _bigTitleLabel.frame=CGRectMake(12, 12, 320-24, labelsize.height);
+            _bigTitleLabel.frame=CGRectMake(12, 12, DEVICE_WIDTH-24, labelsize.height);
             
-            _pindaoLabel.frame=CGRectMake(12, 12+labelsize.height+12, 200, 15);
+            _pindaoLabel.frame=CGRectMake(12, 12+labelsize.height+12, DEVICE_WIDTH-120, 15);
             
-            _timeLabel.frame=CGRectMake(220, _pindaoLabel.frame.origin.y, 100, 15);
+            _timeLabel.frame=CGRectMake(DEVICE_WIDTH-100, _pindaoLabel.frame.origin.y, 100, 15);
 
 
             
@@ -112,16 +112,16 @@
             
             UIFont *font = [UIFont systemFontOfSize:16];
             //设置一个行高上限
-            CGSize size = CGSizeMake(320-24,MAXFLOAT);
+            CGSize size = CGSizeMake(DEVICE_WIDTH-24,MAXFLOAT);
             //计算实际frame大小，并将label的frame变成实际大小
             CGSize labelsize = [_bigTitleLabel.text sizeWithFont:font constrainedToSize:size lineBreakMode:UILineBreakModeWordWrap];
             
             
-            _bigTitleLabel.frame=CGRectMake(12, 12, 320-24, labelsize.height);
+            _bigTitleLabel.frame=CGRectMake(12, 12, DEVICE_WIDTH-24, labelsize.height);
             
-            _pindaoLabel.frame=CGRectMake(12, 12+labelsize.height+12, 200, 15);
+            _pindaoLabel.frame=CGRectMake(12, 12+labelsize.height+12,DEVICE_WIDTH-120, 15);
             
-            _timeLabel.frame=CGRectMake(220, _pindaoLabel.frame.origin.y, 100, 15);
+            _timeLabel.frame=CGRectMake(DEVICE_WIDTH-100, _pindaoLabel.frame.origin.y, 100, 15);
 
             
             
@@ -137,12 +137,12 @@
             
             _bigTitleLabel.text=[NSString stringWithFormat:@"%@",[dic objectForKey:@"name"]];
 
-            _bigTitleLabel.frame=CGRectMake(12, 12, 320-24, 20);
+            _bigTitleLabel.frame=CGRectMake(12, 12, DEVICE_WIDTH-24, 20);
             
             
             _timeLabel.text=[NSString stringWithFormat:@"今日新贴 %@",[dic objectForKey:@"postcount"]];
             
-            _timeLabel.frame=CGRectMake(200, 12, 320-200-12, 20);
+            _timeLabel.frame=CGRectMake(DEVICE_WIDTH-120, 12, 120-12, 20);
             
             _timeLabel.textAlignment=NSTextAlignmentRight;
             
@@ -160,16 +160,16 @@
             
             UIFont *font = [UIFont systemFontOfSize:16];
             //设置一个行高上限
-            CGSize size = CGSizeMake(320-24,MAXFLOAT);
+            CGSize size = CGSizeMake(DEVICE_WIDTH-24,MAXFLOAT);
             //计算实际frame大小，并将label的frame变成实际大小
             CGSize labelsize = [_bigTitleLabel.text sizeWithFont:font constrainedToSize:size lineBreakMode:UILineBreakModeWordWrap];
             
             
-            _bigTitleLabel.frame=CGRectMake(12, 12, 320-24, labelsize.height);
+            _bigTitleLabel.frame=CGRectMake(12, 12, DEVICE_WIDTH-24, labelsize.height);
             
             //_pindaoLabel.frame=CGRectMake(12, 12+labelsize.height+12, 200, 15);
             
-            _timeLabel.frame=CGRectMake(220, 12+labelsize.height+12, 100, 15);
+            _timeLabel.frame=CGRectMake(DEVICE_WIDTH-100, 12+labelsize.height+12, 100, 15);
 
             _commentImagev.frame=CGRectMake(12, _timeLabel.frame.origin.y+3, 10, 9.5);
             _commentImagev.image=[UIImage imageNamed:@"newcommentpic20_19.png"];
@@ -193,16 +193,16 @@
             
             UIFont *font = [UIFont systemFontOfSize:16];
             //设置一个行高上限
-            CGSize size = CGSizeMake(320-24,MAXFLOAT);
+            CGSize size = CGSizeMake(DEVICE_WIDTH-24,MAXFLOAT);
             //计算实际frame大小，并将label的frame变成实际大小
             CGSize labelsize = [_bigTitleLabel.text sizeWithFont:font constrainedToSize:size lineBreakMode:UILineBreakModeWordWrap];
             
             
-            _bigTitleLabel.frame=CGRectMake(12, 12, 320-24, labelsize.height);
+            _bigTitleLabel.frame=CGRectMake(12, 12, DEVICE_WIDTH-24, labelsize.height);
             
-            _pindaoLabel.frame=CGRectMake(12, 12+labelsize.height+12, 200, 15);
+            _pindaoLabel.frame=CGRectMake(12, 12+labelsize.height+12, DEVICE_WIDTH-120, 15);
             
-            _timeLabel.frame=CGRectMake(220, _pindaoLabel.frame.origin.y, 100, 15);
+            _timeLabel.frame=CGRectMake(DEVICE_WIDTH-100, _pindaoLabel.frame.origin.y, 100, 15);
             
             
             
@@ -220,16 +220,16 @@
             
             UIFont *font = [UIFont systemFontOfSize:16];
             //设置一个行高上限
-            CGSize size = CGSizeMake(320-24,MAXFLOAT);
+            CGSize size = CGSizeMake(DEVICE_WIDTH-24,MAXFLOAT);
             //计算实际frame大小，并将label的frame变成实际大小
             CGSize labelsize = [_bigTitleLabel.text sizeWithFont:font constrainedToSize:size lineBreakMode:UILineBreakModeWordWrap];
             
             
-            _bigTitleLabel.frame=CGRectMake(12, 12, 320-24, labelsize.height);
+            _bigTitleLabel.frame=CGRectMake(12, 12, DEVICE_WIDTH-24, labelsize.height);
             
-            _pindaoLabel.frame=CGRectMake(12, 12+labelsize.height+12, 200, 15);
+            _pindaoLabel.frame=CGRectMake(12, 12+labelsize.height+12, DEVICE_WIDTH-120, 15);
             
-            _timeLabel.frame=CGRectMake(220, _pindaoLabel.frame.origin.y, 100, 15);
+            _timeLabel.frame=CGRectMake(DEVICE_WIDTH-100, _pindaoLabel.frame.origin.y, 100, 15);
             
             
             
@@ -256,7 +256,7 @@
 
     [super layoutSubviews];
     
-    _viewline.frame=CGRectMake(12, self.frame.size.height-0.5, 320-24, 0.5);
+    _viewline.frame=CGRectMake(12, self.frame.size.height-0.5, DEVICE_WIDTH-24, 0.5);
     //新闻的
     switch (_mystyle) {
         case NewshoucangTableViewCellStyleNews:
@@ -304,7 +304,7 @@
     
     UIFont *font = [UIFont systemFontOfSize:16];
     //设置一个行高上限
-    CGSize size = CGSizeMake(320-24,MAXFLOAT);
+    CGSize size = CGSizeMake(DEVICE_WIDTH-24,MAXFLOAT);
     //计算实际frame大小，并将label的frame变成实际大小
     CGSize labelsize = [thestring sizeWithFont:font constrainedToSize:size lineBreakMode:UILineBreakModeWordWrap];
     

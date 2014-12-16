@@ -67,7 +67,7 @@
     _data_array = [NSMutableArray arrayWithObjects:[NSMutableArray array],[NSMutableArray array],[NSMutableArray array],nil];
     
     
-    _myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0,0,320,(iPhone5?568:480)-64) style:UITableViewStylePlain];
+    _myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,DEVICE_HEIGHT-64) style:UITableViewStylePlain];
     _myTableView.delegate = self;
     _myTableView.dataSource = self;
     _myTableView.separatorColor = RGBCOLOR(223,223,223);
@@ -80,7 +80,7 @@
     
     _currentPage = 1;
     
-    ranking_segment = [[RankingListSegmentView alloc] initWithFrame:CGRectMake(0,0,320,56.5) WithBlock:^(int index) {
+    ranking_segment = [[RankingListSegmentView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,56.5) WithBlock:^(int index) {
         
         bself.currentPage = index + 1;
         

@@ -69,7 +69,7 @@
         
         if (!_timeLabel)
         {
-            _timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(220,15,90,20)];
+            _timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(DEVICE_WIDTH-100,15,90,20)];
             
             _timeLabel.textAlignment = NSTextAlignmentRight;
             
@@ -88,7 +88,7 @@
         
         if (!_contentLabel1)
         {
-            _contentLabel1 = [[UILabel alloc] initWithFrame:CGRectMake(73,40,240,20)];
+            _contentLabel1 = [[UILabel alloc] initWithFrame:CGRectMake(73,40,DEVICE_WIDTH-80,20)];
             
             _contentLabel1.textColor = RGBCOLOR(120,120,120);
             
@@ -122,7 +122,7 @@
     {
         if (!_contentLabel)
         {
-            _contentLabel = [[UILabel alloc] initWithFrame:CGRectMake(73,30,260,30)];
+            _contentLabel = [[UILabel alloc] initWithFrame:CGRectMake(73,30,DEVICE_WIDTH-60,30)];
             
             _contentLabel.textColor = RGBCOLOR(120,120,120);
             

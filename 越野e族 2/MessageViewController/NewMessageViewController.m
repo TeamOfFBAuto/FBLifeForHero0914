@@ -195,7 +195,7 @@
     
     self.view.backgroundColor = [UIColor whiteColor];
     
-    UIView *view_daohang=[[UIView alloc]initWithFrame:CGRectMake(0,0,320,44+ios7_height)];
+    UIView *view_daohang=[[UIView alloc]initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,44+ios7_height)];
     
     view_daohang.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:IOS_VERSION>=7.0?IOS7DAOHANGLANBEIJING:IOS6DAOHANGLANBEIJING]];
     
@@ -222,7 +222,7 @@
     [view_daohang addSubview:button_back];
     
     
-    UIView * backGround_view = [[UIView alloc] initWithFrame:CGRectMake(0,44+ios7_height,320,HEIGHT)];
+    UIView * backGround_view = [[UIView alloc] initWithFrame:CGRectMake(0,44+ios7_height,DEVICE_WIDTH,HEIGHT)];
     
     backGround_view.backgroundColor = RGBCOLOR(248,248,248);
     
@@ -243,7 +243,7 @@
     
     
     
-    self.name_textField = [[UITextField alloc] initWithFrame:CGRectMake(75,0,210,HEIGHT)];
+    self.name_textField = [[UITextField alloc] initWithFrame:CGRectMake(75,0,DEVICE_WIDTH-110,HEIGHT)];
     
     [self.name_textField becomeFirstResponder];
     
@@ -260,7 +260,7 @@
     
     UIButton * button = [UIButton buttonWithType:UIButtonTypeContactAdd];
     
-    button.frame = CGRectMake(285,5,30,30);
+    button.frame = CGRectMake(DEVICE_WIDTH-35,5,30,30);
     
     
     [button addTarget:self action:@selector(friendList:) forControlEvents:UIControlEventTouchUpInside];

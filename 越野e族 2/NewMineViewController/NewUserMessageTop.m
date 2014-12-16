@@ -30,7 +30,7 @@
         //背景图片
         if (!_background_imageview)
         {
-            _background_imageview = [[AsyncImageView alloc] initWithFrame:CGRectMake(0,0,320,97.5)];
+            _background_imageview = [[AsyncImageView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,97.5)];
             
             _background_imageview.backgroundColor = [UIColor clearColor];
             
@@ -137,7 +137,7 @@
         
         if (!_tap_background_view)
         {
-            UIImageView * backV = [[UIImageView alloc] initWithFrame:CGRectMake(0,145,320,50)];
+            UIImageView * backV = [[UIImageView alloc] initWithFrame:CGRectMake(0,145,DEVICE_WIDTH,50)];
             
 //            backV.image = [UIImage imageNamed:@"di-1.png"];
             
@@ -166,13 +166,13 @@
         
         
         
-        UIView * view = [[UIView alloc] initWithFrame:CGRectMake(0,195,320,6)];
+        UIView * view = [[UIView alloc] initWithFrame:CGRectMake(0,195,DEVICE_WIDTH,6)];
         
         view.backgroundColor = RGBCOLOR(248,247,248);
         
         [self addSubview:view];
         
-        UIView * view_line_view = [[UIView alloc] initWithFrame:CGRectMake(0,5.5,320,0.5)];
+        UIView * view_line_view = [[UIView alloc] initWithFrame:CGRectMake(0,5.5,DEVICE_WIDTH,0.5)];
         
         view_line_view.backgroundColor = RGBCOLOR(216,215,216);
         
@@ -465,10 +465,10 @@
             
         }else
         {
-            _background_imageview.frame = CGRectMake(0,0,320,195/2);
+            _background_imageview.frame = CGRectMake(0,0,DEVICE_WIDTH,195/2);
         }
         
-        _background_imageview.center = CGPointMake(160,97.5/2);
+        _background_imageview.center = CGPointMake(DEVICE_WIDTH/2,97.5/2);
     }else
     {
         _background_imageview.image = [UIImage imageNamed:@"new_banner.jpg"];

@@ -77,12 +77,12 @@
     //    array_info = [DraftDatabase findallbytheColumns:@"微博"];
     
     
-    tab_=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, 320, iPhone5?568-44-20:480-44-20)];
+    tab_=[[UITableView alloc]initWithFrame:CGRectMake(0, 0,DEVICE_WIDTH, DEVICE_HEIGHT-44-20)];
     [aview addSubview:tab_];
     tab_.dataSource=self;
     tab_.delegate=self;
     
-    UIView * v = [[UIView alloc] initWithFrame:CGRectMake(0,0,320,0)];
+    UIView * v = [[UIView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,0)];
     
     v.backgroundColor = [UIColor clearColor];
     
@@ -92,18 +92,18 @@
     
     
     
-    wormingLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,0,320,iPhone5?568-64:480-64)];
+    wormingLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,DEVICE_HEIGHT-64)];
     
     wormingLabel.backgroundColor = [UIColor clearColor];
     
     wormingLabel.textAlignment = NSTextAlignmentCenter;
     
     UIImageView *img_none=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"ios7_zanwu_120_120.png"]];
-    img_none.center=CGPointMake(160, 375/2);
+    img_none.center=CGPointMake(DEVICE_WIDTH/2, 375/2);
     
     [wormingLabel addSubview:img_none];
     
-    UILabel *label_=[[UILabel alloc]initWithFrame:CGRectMake(0, 464/2, 320, 15)];
+    UILabel *label_=[[UILabel alloc]initWithFrame:CGRectMake(0, 464/2, DEVICE_WIDTH, 15)];
     label_.text=@"还没有草稿";
     label_.textAlignment=NSTextAlignmentCenter;
     label_.textColor=RGBCOLOR(197, 197, 197);
@@ -527,12 +527,12 @@
     }
     NSLog(@"editing===%d",cell.editing);
     
-    float heightOfLabel_Content=[personal celllength:300 lablefont:[UIFont systemFontOfSize:16] labeltext:str];
+    float heightOfLabel_Content=[personal celllength:DEVICE_WIDTH-20 lablefont:[UIFont systemFontOfSize:16] labeltext:str];
     
     NSLog(@"===height====%@",base_.columns);
 
     
-    UILabel *label_content=[[UILabel alloc]initWithFrame:CGRectMake(10, 8,tab_.editing?200:300, heightOfLabel_Content)];
+    UILabel *label_content=[[UILabel alloc]initWithFrame:CGRectMake(10, 8,tab_.editing?(DEVICE_WIDTH-120):(DEVICE_WIDTH-20), heightOfLabel_Content)];
     label_content.numberOfLines=0;
 
     label_content.text=str;
@@ -550,7 +550,7 @@
     label_fborbbs.textColor=RGBCOLOR(154, 154, 154);
     [cell.contentView addSubview:label_fborbbs];
     
-    UILabel *label_time=[[UILabel alloc]initWithFrame:CGRectMake(tab_.editing?100:200, 5+heightOfLabel_Content,110,20 )];
+    UILabel *label_time=[[UILabel alloc]initWithFrame:CGRectMake(tab_.editing?(DEVICE_WIDTH-220):(DEVICE_WIDTH-120), 10+heightOfLabel_Content,110,20 )];
     label_time.text=base_.date;
     label_time.backgroundColor=[UIColor clearColor];
     label_time.font=[UIFont systemFontOfSize:12];
@@ -618,7 +618,7 @@
     }
     
     
-   height= [personal celllength:300 lablefont:[UIFont systemFontOfSize:16] labeltext:str]+37;
+   height= [personal celllength:DEVICE_WIDTH-20 lablefont:[UIFont systemFontOfSize:16] labeltext:str]+37;
     NSLog(@"===height====%f",height-37);
 
     return height;

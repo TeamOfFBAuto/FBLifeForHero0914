@@ -80,7 +80,7 @@
     UIImage * image = [UIImage imageNamed:type == JSBubbleMessageTypeOutgoing ?@"talk1.png":@"talk2.png"];
     
     
-    _background_imageView = [[UIImageView alloc] initWithFrame:CGRectMake(type == JSBubbleMessageTypeOutgoing?(320 - point.x - 65):50,34,point.x+15,point.y)];
+    _background_imageView = [[UIImageView alloc] initWithFrame:CGRectMake(type == JSBubbleMessageTypeOutgoing?(DEVICE_WIDTH - point.x - 65):50,34,point.x+15,point.y)];
     
     _background_imageView.userInteractionEnabled = YES;
     
@@ -179,21 +179,21 @@
     {
         for (NSString * str in array)
         {
-            CGSize titleSize = [[str stringByAppendingString:@"哈"] sizeWithFont:[UIFont systemFontOfSize:16] constrainedToSize:CGSizeMake(240, MAXFLOAT) lineBreakMode:NSLineBreakByWordWrapping];
+            CGSize titleSize = [[str stringByAppendingString:@"哈"] sizeWithFont:[UIFont systemFontOfSize:16] constrainedToSize:CGSizeMake(DEVICE_WIDTH-80, MAXFLOAT) lineBreakMode:NSLineBreakByWordWrapping];
             theLastWidth = titleSize.width>theLastWidth?titleSize.width:theLastWidth;
         }
     }else
     {
-        CGSize titleSize = [string sizeWithFont:[UIFont systemFontOfSize:16] constrainedToSize:CGSizeMake(240, MAXFLOAT) lineBreakMode:NSLineBreakByWordWrapping];
+        CGSize titleSize = [string sizeWithFont:[UIFont systemFontOfSize:16] constrainedToSize:CGSizeMake(DEVICE_WIDTH-80, MAXFLOAT) lineBreakMode:NSLineBreakByWordWrapping];
         theLastWidth = titleSize.width>theLastWidth?titleSize.width:theLastWidth;
     }
     
     
-    CGSize titleSize = [string sizeWithFont:[UIFont systemFontOfSize:16] constrainedToSize:CGSizeMake(240, MAXFLOAT) lineBreakMode:NSLineBreakByWordWrapping];
+    CGSize titleSize = [string sizeWithFont:[UIFont systemFontOfSize:16] constrainedToSize:CGSizeMake(DEVICE_WIDTH-80, MAXFLOAT) lineBreakMode:NSLineBreakByWordWrapping];
     
     CGPoint lastPoint;
     CGSize sz = [string sizeWithFont:label.font constrainedToSize:CGSizeMake(MAXFLOAT,40)];//原来为40
-    CGSize linesSz = [string sizeWithFont:label.font constrainedToSize:CGSizeMake(240, MAXFLOAT) lineBreakMode:NSLineBreakByWordWrapping];
+    CGSize linesSz = [string sizeWithFont:label.font constrainedToSize:CGSizeMake(DEVICE_WIDTH-80, MAXFLOAT) lineBreakMode:NSLineBreakByWordWrapping];
     
     
     if(sz.width <= linesSz.width) //判断是否折行
@@ -292,7 +292,7 @@
                 
                 
                 
-                CGRect content_frame = CGRectMake(theType ==JSBubbleMessageTypeIncoming?10:5,theHeight?theHeight:5,250,50);
+                CGRect content_frame = CGRectMake(theType ==JSBubbleMessageTypeIncoming?10:5,theHeight?theHeight:5,DEVICE_WIDTH-70,50);
                 
                 RTLabel * content_label = [[RTLabel alloc] initWithFrame:content_frame];
                 
@@ -345,7 +345,7 @@
     
     if(type == JSBubbleMessageTypeOutgoing)
     {
-        avatarX = (self.contentView.frame.size.width - kJSAvatarSize - 10);
+        avatarX = (DEVICE_WIDTH - kJSAvatarSize - 10);
     }
     
     self.avatarImageView = [[AsyncImageView alloc] initWithFrame:CGRectMake(avatarX,
@@ -405,7 +405,7 @@
                 
                 
                 
-                CGRect content_frame = CGRectMake(theType ==JSBubbleMessageTypeIncoming?10:5,theHeight?theHeight:5,250,50);
+                CGRect content_frame = CGRectMake(theType ==JSBubbleMessageTypeIncoming?10:5,theHeight?theHeight:5,DEVICE_WIDTH-70,50);
                 
                 RTLabel * content_label = [[RTLabel alloc] initWithFrame:content_frame];
                 
@@ -426,9 +426,9 @@
                 
                 theWidth = optimumSize.width>theWidth?optimumSize.width:theWidth;
 
-                if (optimumSize.width >= 240 || optimumSize.width == 0)
+                if (optimumSize.width >= DEVICE_WIDTH-80 || optimumSize.width == 0)
                 {
-                    theWidth = 245;
+                    theWidth = DEVICE_WIDTH-80+5;
                 }
             }
         }

@@ -164,7 +164,7 @@
         {
             _delete_button = [UIButton buttonWithType:UIButtonTypeCustom];
             
-            _delete_button.frame = CGRectMake(270,10,60,20);
+            _delete_button.frame = CGRectMake(DEVICE_WIDTH-50,10,60,20);
             
             [_delete_button setTitle:@"删除" forState:UIControlStateNormal];
             

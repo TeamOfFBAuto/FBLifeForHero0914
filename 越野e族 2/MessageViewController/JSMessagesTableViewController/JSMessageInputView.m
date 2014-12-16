@@ -93,7 +93,7 @@
     //    CGFloat width = self.frame.size.width - SEND_BUTTON_WIDTH;
     //    CGFloat height = [JSMessageInputView textViewLineHeight];
     
-    self.textView = [[JSDismissiveTextView  alloc] initWithFrame:CGRectMake(9.0f,5.0f,255,30)];
+    self.textView = [[JSDismissiveTextView  alloc] initWithFrame:CGRectMake(9.0f,5.0f,DEVICE_WIDTH-65,30)];
     self.textView.font = [JSBubbleView font];
     self.textView.textColor = [UIColor blackColor];
     self.textView.backgroundColor = [UIColor whiteColor];
@@ -104,7 +104,7 @@
     
     
     
-    UIImageView *inputFieldBack = [[UIImageView alloc] initWithFrame:CGRectMake(self.textView.frame.origin.x - 1.0f,5.0f,255,self.frame.size.height-10)];
+    UIImageView *inputFieldBack = [[UIImageView alloc] initWithFrame:CGRectMake(self.textView.frame.origin.x - 1.0f,5.0f,DEVICE_WIDTH-65,self.frame.size.height-10)];
     inputFieldBack.image = [UIImage inputField];
     inputFieldBack.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
     inputFieldBack.backgroundColor = [UIColor clearColor];

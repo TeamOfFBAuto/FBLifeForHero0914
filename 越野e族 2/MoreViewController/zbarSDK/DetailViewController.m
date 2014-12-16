@@ -155,7 +155,7 @@
 -(void)scanning
 {
     myReaderView = [[ZBarReaderView alloc]init];
-    myReaderView.frame = CGRectMake(0,0,self.view.frame.size.width,self.view.frame.size.height);
+    myReaderView.frame = CGRectMake(0,0,DEVICE_WIDTH,DEVICE_HEIGHT);
     myReaderView.readerDelegate = self;
     myReaderView.tracksSymbols = NO;
     //关闭闪光灯
@@ -169,12 +169,12 @@
     float height = iPhone5?0:-60;
     
     //半透明的浮层
-    UIImageView *backImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0,0,320,(iPhone5?568:480)-64)];
+    UIImageView *backImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,DEVICE_HEIGHT-64)];
     backImageView.image = [UIImage imageNamed:@"saoyisao_bg_640_996.png"];
     [myReaderView addSubview:backImageView];
 	
     
-    UILabel * labIntroudction= [[UILabel alloc] initWithFrame:CGRectMake(15,40+height,290,50)];
+    UILabel * labIntroudction= [[UILabel alloc] initWithFrame:CGRectMake(15,40+height,DEVICE_WIDTH-30,50)];
     labIntroudction.backgroundColor = [UIColor clearColor];
     labIntroudction.numberOfLines=2;
     labIntroudction.textColor=[UIColor whiteColor];
@@ -184,14 +184,14 @@
     
     
     //四个角
-    UIImageView * imageView = [[UIImageView alloc]initWithFrame:CGRectMake(50,89+height,220,220)];
+    UIImageView * imageView = [[UIImageView alloc]initWithFrame:CGRectMake((DEVICE_WIDTH-220)/2,89+height,220,220)];
     imageView.image = [UIImage imageNamed:@"saoyisao_440_440.png"];
     [myReaderView addSubview:imageView];
     
     
     //文字提示label
     
-    UILabel *tishiLabel = [[UILabel alloc]initWithFrame:CGRectMake(100,CGRectGetMaxY(imageView.frame)+19,120,50)];
+    UILabel *tishiLabel = [[UILabel alloc]initWithFrame:CGRectMake((DEVICE_WIDTH-120)/2,CGRectGetMaxY(imageView.frame)+19,120,50)];
     tishiLabel.numberOfLines = 0;
     tishiLabel.textAlignment = NSTextAlignmentCenter;
     tishiLabel.font = [UIFont systemFontOfSize:13];
@@ -210,7 +210,7 @@
     [myReaderView addSubview:_line];
     
     
-    UIView * function_view = [[UIView alloc] initWithFrame:CGRectMake(0,(iPhone5?568:480)-64-100,320,100)];
+    UIView * function_view = [[UIView alloc] initWithFrame:CGRectMake(0,DEVICE_HEIGHT-64-100,DEVICE_WIDTH,100)];
     
     function_view.backgroundColor = RGBCOLOR(53,53,51);
     
@@ -226,7 +226,7 @@
         
         button.backgroundColor = [UIColor clearColor];
         
-        button.frame = CGRectMake(5+105*i,0,90,100);
+        button.frame = CGRectMake(5+((DEVICE_WIDTH-10-90*3)/2 + 90)*i,0,90,100);
         
         button.tag = 10000 + i;
         

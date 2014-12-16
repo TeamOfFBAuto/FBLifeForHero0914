@@ -153,7 +153,7 @@
     
     if (!myScrollView)
     {
-        myScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0,0,320,iPhone5?568-44-20:480-44-20)];
+        myScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,DEVICE_HEIGHT-44-20)];
     }
     
     myScrollView.backgroundColor = [UIColor whiteColor];
@@ -182,7 +182,7 @@
     
     if (!dateLine_Label)
     {
-        dateLine_Label = [[UILabel alloc] initWithFrame:CGRectMake(180+30,CELL_TOP,100,30)];
+        dateLine_Label = [[UILabel alloc] initWithFrame:CGRectMake(DEVICE_WIDTH-110,CELL_TOP,100,30)];
         dateLine_Label.backgroundColor = [UIColor clearColor];
         dateLine_Label.font = [UIFont systemFontOfSize:10];
         dateLine_Label.textColor = RGBCOLOR(164,132,98);
@@ -193,7 +193,7 @@
     
     if (!title_Label)
     {
-        title_Label = [[UILabel alloc] initWithFrame:CGRectMake(CELL_LEFT,CELL_NAME_TOP+30,320-CELL_LEFT*2,20)];
+        title_Label = [[UILabel alloc] initWithFrame:CGRectMake(CELL_LEFT,CELL_NAME_TOP+30,DEVICE_WIDTH-CELL_LEFT*2,20)];
         title_Label.backgroundColor = [UIColor clearColor];
         title_Label.textAlignment = NSTextAlignmentLeft;
         title_Label.font = [UIFont systemFontOfSize:16];
@@ -203,7 +203,7 @@
     
     if (!line_imageView)
     {
-        line_imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0,65,320,2)];
+        line_imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0,65,DEVICE_WIDTH,2)];
         line_imageView.image = [personal getImageWithName:@"blog_sp"];
         [myScrollView addSubview:line_imageView];
     }
@@ -211,19 +211,19 @@
     
     if (!webView)
     {
-        webView = [[UIWebView alloc] initWithFrame:CGRectMake(0,64,320,iPhone5?(568-20-44-64):(480-20-44-64))];
+        webView = [[UIWebView alloc] initWithFrame:CGRectMake(0,64,DEVICE_WIDTH,DEVICE_HEIGHT-20-44-64)];
     }
     
     webView.delegate = self;
     webView.scrollView.scrollEnabled = NO;
     webView.backgroundColor = [UIColor clearColor];
-    
+    [webView scalesPageToFit];
     [myScrollView addSubview:webView];
     
     
     if (!Load_view)
     {
-        Load_view = [[loadingview alloc] initWithFrame:CGRectMake(0,0,320,iPhone5?568-20-44:460-44)];
+        Load_view = [[loadingview alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,DEVICE_HEIGHT-20-44)];
         [self.view addSubview:Load_view];
     }else
     {

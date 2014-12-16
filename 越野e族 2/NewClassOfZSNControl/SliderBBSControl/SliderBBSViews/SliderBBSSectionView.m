@@ -43,7 +43,8 @@
             
             if (i == 0)
             {
-                button.frame = CGRectMake(0,0,111,44);
+                ///给
+                button.frame = CGRectMake(0,0,DEVICE_WIDTH/3,44);
                 
                 [button setTitle:@"我的收藏" forState:UIControlStateNormal];
                 
@@ -53,14 +54,14 @@
                 
                 UIView * line_view = [[UIView alloc] initWithFrame:CGRectMake(0,0,1,15)];
                 
-                line_view.center = CGPointMake(223.0/2,22);
+                line_view.center = CGPointMake(DEVICE_WIDTH/3,22);
                 
                 line_view.backgroundColor = RGBCOLOR(184,184,184);
                 
                 [self addSubview:line_view];
             }else if(i == 1)
             {
-                button.frame = CGRectMake(112,0,223.0/2,44);
+                button.frame = CGRectMake(DEVICE_WIDTH/3,0,DEVICE_WIDTH/3+10,44);
                 
                 [button setTitle:@"最新浏览" forState:UIControlStateNormal];
                 
@@ -70,14 +71,14 @@
                 
                 UIView * line_view = [[UIView alloc] initWithFrame:CGRectMake(0,0,1,15)];
                 
-                line_view.center = CGPointMake(448.0/2,22);
+                line_view.center = CGPointMake(DEVICE_WIDTH/3*2,22);
                 
                 line_view.backgroundColor = RGBCOLOR(184,184,184);
                 
                 [self addSubview:line_view];
             }else
             {
-                button.frame = CGRectMake(224.5,0,191.0/2,44);
+                button.frame = CGRectMake(DEVICE_WIDTH/3*2,0,DEVICE_WIDTH/3-10,44);
                 
                 [button setTitle:@"排行榜" forState:UIControlStateNormal];
                 
@@ -303,7 +304,7 @@
   */
     
     [UIView animateWithDuration:0.3 animations:^{
-        background_imageview.frame = CGRectMake(0,37,320,58.5);
+        background_imageview.frame = CGRectMake(0,37,DEVICE_WIDTH,58.5);
     } completion:^(BOOL finished) {
         
     }];

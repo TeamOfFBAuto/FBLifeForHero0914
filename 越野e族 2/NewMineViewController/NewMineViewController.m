@@ -431,14 +431,14 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-
+#pragma mark - 商家视图
 -(void)shangjiaDataView
 {
     float total_height = 0;
     
     if (!shangjia_detail_view)
     {
-        shangjia_detail_view = [[UIView alloc] initWithFrame:CGRectMake(0,0,320,472)];
+        shangjia_detail_view = [[UIView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,472)];
     }else
     {
         for (UIView * view in shangjia_detail_view.subviews)
@@ -447,13 +447,15 @@
         }
     }
     
+    float image_width = [zsnApi returnAutoWidthWith:145.5];
+    float image_height = [zsnApi returnAutoHeightWith:96.5 WithWidth:145.5];
     
     if (_zixin_array.count > 0 && _zixin_array.count <=2)
     {
-        total_height = 108;
+        total_height = image_height+11.5;
     }else if (_zixin_array.count > 2)
     {
-        total_height = 204.5;
+        total_height = image_height*2+11.5;
     }
     
     for (int i = 0;i < 2;i++)
@@ -466,7 +468,7 @@
             {
                 ShangJiaNewsInfo * info = [_zixin_array objectAtIndex:cout];
                 
-                AsyncImageView * imageView = [[AsyncImageView alloc] initWithFrame:CGRectMake(23/2 + 151*j,23/2 + 102*i,145.5,96.5)];
+                AsyncImageView * imageView = [[AsyncImageView alloc] initWithFrame:CGRectMake(23/2 + (image_width+5.5)*j,23/2 + (image_height+5.5)*i,image_width,image_height)];
                 
                 imageView.userInteractionEnabled = YES;
                 
@@ -510,7 +512,7 @@
     {
         float height = 0;
         
-        CGRect image_frmae = CGRectMake(23/2,total_height+23/2,594/2,205/2);
+        CGRect image_frmae = CGRectMake(23/2,total_height+23/2,DEVICE_WIDTH-23,205/2);
         
         UIImageView * jianjie_imageview = [[UIImageView alloc] initWithFrame:image_frmae];
         
@@ -525,7 +527,7 @@
         
         
         
-        UILabel * name_label = [[UILabel alloc] initWithFrame:CGRectMake(5,10,594/2-10,20)];
+        UILabel * name_label = [[UILabel alloc] initWithFrame:CGRectMake(5,10,DEVICE_WIDTH-23-10,20)];
         
         name_label.text = _per_info.service_shopname;
         
@@ -538,7 +540,7 @@
         [jianjie_imageview addSubview:name_label];
         
         
-        RTLabel * jianjie_label = [[RTLabel alloc] initWithFrame:CGRectMake(5,35,594/2-10,10)];
+        RTLabel * jianjie_label = [[RTLabel alloc] initWithFrame:CGRectMake(5,35,DEVICE_WIDTH-23-10,10)];
         
         jianjie_label.lineBreakMode = NSLineBreakByCharWrapping;
         
@@ -555,7 +557,7 @@
         
         height = optimumSize.height;
         
-        jianjie_label.frame = CGRectMake(5,30,594/2-10,height);
+        jianjie_label.frame = CGRectMake(5,30,DEVICE_WIDTH-23-10,height);
         
         jianjie_label.text = [NSString stringWithFormat:@"%@...",_per_info.service_simpcontent];
         [jianjie_imageview addSubview:jianjie_label];
@@ -595,7 +597,7 @@
     
     if (_per_info.service_address.length > 0)
     {
-        CGRect address_frame = CGRectMake(23/2,total_height+23/2,594/2,10);
+        CGRect address_frame = CGRectMake(23/2,total_height+23/2,DEVICE_WIDTH-23,10);
         
         UIImageView * address_back_imageview = [[UIImageView alloc] initWithFrame:address_frame];
         
@@ -663,7 +665,7 @@
     
     if (_per_info.service_telphone.length > 0)
     {
-        UIImageView * phone_imageview = [[UIImageView alloc] initWithFrame:CGRectMake(23/2,total_height+23/2,594/2,40)];
+        UIImageView * phone_imageview = [[UIImageView alloc] initWithFrame:CGRectMake(23/2,total_height+23/2,DEVICE_WIDTH-23,40)];
         
         phone_imageview.userInteractionEnabled = YES;
         
@@ -734,7 +736,7 @@
     }
     
     
-    shangjia_detail_view.frame = CGRectMake(0,0,320,total_height+10);
+    shangjia_detail_view.frame = CGRectMake(0,0,DEVICE_WIDTH,total_height+10);
     
     show_shangjia_jianjie = total_height?YES:NO;
 }
@@ -998,7 +1000,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     
-    UIView * back_viewww = [[UIView alloc] initWithFrame:CGRectMake(0,0,320,120)];
+    UIView * back_viewww = [[UIView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,120)];
     
     back_viewww.backgroundColor = RGBCOLOR(40, 43, 53);
     
@@ -1053,11 +1055,11 @@
     
     if (!loadview)
     {
-        loadview=[[LoadingIndicatorView alloc]initWithFrame:CGRectMake(0, 900, 320, 40)];
+        loadview=[[LoadingIndicatorView alloc]initWithFrame:CGRectMake(0, 900, DEVICE_WIDTH, 40)];
     }
     
     
-    _myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0,0,320,(iPhone5?568:480)-20-44) style:UITableViewStylePlain];
+    _myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,DEVICE_HEIGHT-20-44) style:UITableViewStylePlain];
     
     _myTableView.delegate = self;
     
@@ -1077,7 +1079,7 @@
     _myTableView.tableFooterView = loadview;
     
     
-    _top_view = [[NewUserMessageTop alloc] initWithFrame:CGRectMake(0,0,320,201)];
+    _top_view = [[NewUserMessageTop alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,201)];
     
     _top_view.delegate = self;
     

@@ -41,7 +41,7 @@
     if (self) {
         self.mytype=thetype;
         
-        tab_=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, 320, self.frame.size.height) style:UITableViewStylePlain];
+        tab_=[[UITableView alloc]initWithFrame:CGRectMake(0, 0,DEVICE_WIDTH, self.frame.size.height) style:UITableViewStylePlain];
         [self addSubview:tab_];
         
         tab_.delegate=self;
@@ -55,20 +55,20 @@
         
         if (_refreshHeaderView == nil)
         {
-            EGORefreshTableHeaderView *view = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0-tab_.bounds.size.height, 320, tab_.bounds.size.height)];
+            EGORefreshTableHeaderView *view = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0-tab_.bounds.size.height,DEVICE_WIDTH, tab_.bounds.size.height)];
             view.delegate = self;
             _refreshHeaderView = view;
         }
         [_refreshHeaderView refreshLastUpdatedDate];
         [tab_ addSubview:_refreshHeaderView];
         
-        nomore=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, 320, 30)];
+        nomore=[[UILabel alloc]initWithFrame:CGRectMake(0, 0,DEVICE_WIDTH, 30)];
         nomore.text=@"没有更多数据";
         nomore.textAlignment=NSTextAlignmentCenter;
         nomore.font=[UIFont systemFontOfSize:13];
         nomore.textColor=[UIColor lightGrayColor];
         
-        loadview=[[LoadingIndicatorView alloc]initWithFrame:CGRectMake(0, 900, 320, 40)];
+        loadview=[[LoadingIndicatorView alloc]initWithFrame:CGRectMake(0, 900, DEVICE_WIDTH, 40)];
         loadview.backgroundColor=[UIColor clearColor];
         
         numberofpage=1;

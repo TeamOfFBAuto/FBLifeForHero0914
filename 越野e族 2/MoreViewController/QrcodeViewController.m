@@ -123,7 +123,7 @@
     
     
     UIImageView *centerimgkuang=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"ios7_erweima533_700.png"]];
-    centerimgkuang.center=CGPointMake(160, (iPhone5?568-64:480-64)/2);
+    centerimgkuang.center=CGPointMake(DEVICE_WIDTH/2, (DEVICE_HEIGHT-64)/2);
     [self.view addSubview:centerimgkuang];
     
     

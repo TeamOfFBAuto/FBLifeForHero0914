@@ -158,7 +158,7 @@
     
     
     
-    UIButton * button_dingwei = [[UIButton alloc]initWithFrame:CGRectMake(270,8,29/2,44/2)];
+    UIButton * button_dingwei = [[UIButton alloc]initWithFrame:CGRectMake(DEVICE_WIDTH-50,8,29/2,44/2)];
     [button_dingwei addTarget:self action:@selector(ToMapView:) forControlEvents:UIControlEventTouchUpInside];
     [button_dingwei setBackgroundImage:[personal getImageWithName:@"where_write@2x"] forState:UIControlStateNormal];
     [button_dingwei.titleLabel setFont:[UIFont systemFontOfSize:12]];
@@ -166,7 +166,7 @@
     self.navigationItem.rightBarButtonItems = @[spaceBar,[[UIBarButtonItem alloc] initWithCustomView:button_dingwei]];
     
     
-    _myMapView = [[MKMapView alloc] initWithFrame:self.view.bounds];
+    _myMapView = [[MKMapView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,DEVICE_HEIGHT-64)];
     
     _myMapView.mapType=MKMapTypeStandard;
     

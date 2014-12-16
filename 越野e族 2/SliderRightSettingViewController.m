@@ -52,7 +52,7 @@
     title_array = [NSArray arrayWithObjects:@"",@"清除缓存",@"意见反馈",@"版本更新",@"关于",@"",nil];
     
     
-    self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0,0,320,(iPhone5?568:480)-20 - 44) style:UITableViewStylePlain];
+    self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,DEVICE_HEIGHT-20 - 44) style:UITableViewStylePlain];
     
     self.myTableView.delegate = self;
     
@@ -177,7 +177,7 @@
     cell.backgroundColor = [UIColor whiteColor];
     
     
-    UIView * lineView = [[UIView alloc] initWithFrame:CGRectMake(0,0,320,0.5)];
+    UIView * lineView = [[UIView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,0.5)];
     
     lineView.backgroundColor = RGBCOLOR(231,231,231);
     
@@ -185,14 +185,14 @@
     
     if (indexPath.row == 0)
     {
-        lineView.center = CGPointMake(160,0.25);
+        lineView.center = CGPointMake(DEVICE_WIDTH/2,0.25);
         lineView.hidden = YES;
         cell.backgroundColor = RGBCOLOR(248,248,248);
     }else if (indexPath.row == 5)
     {
         cell.backgroundColor = RGBCOLOR(248,248,248);
         
-        lineView.center = CGPointMake(160,0.25);
+        lineView.center = CGPointMake(DEVICE_WIDTH/2,0.25);
         
         BOOL isLogIn = [[NSUserDefaults standardUserDefaults] boolForKey:USER_IN];
         
@@ -202,7 +202,7 @@
         
         logOut_button = [UIButton buttonWithType:UIButtonTypeCustom];
         
-        logOut_button.frame = CGRectMake(14,23,584/2,85/2);
+        logOut_button.frame = CGRectMake(14,23,DEVICE_WIDTH-28,85/2);
         
         [logOut_button setTitle:isLogIn?@"退出登录":@"立即登录" forState:UIControlStateNormal];
         
@@ -221,7 +221,7 @@
         
         lineView.center = CGPointMake(160,0.25);
         
-        UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake(208,0,100,54)];
+        UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake(DEVICE_WIDTH-112,0,100,54)];
         
         label.textAlignment = NSTextAlignmentRight;
         
