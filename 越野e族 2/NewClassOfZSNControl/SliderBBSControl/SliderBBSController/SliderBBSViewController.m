@@ -243,7 +243,7 @@
     
     [_seg_view setAllViewsWith:[NSArray arrayWithObjects:@"精选推荐",@"全部版块",nil] withBlock:^(int index) {
         
-        [bself.myScrollView setContentOffset:CGPointMake(340*index,0) animated:YES];
+        [bself.myScrollView setContentOffset:CGPointMake((DEVICE_WIDTH+20)*index,0) animated:YES];
         
         bself.seg_current_page = index;
         
@@ -257,7 +257,7 @@
     
     [self loadLuntanJingXuanData];
     
-    _myScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0,0,340,(iPhone5?568:480)-64)];
+    _myScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH+20,DEVICE_HEIGHT-64)];
     
     _myScrollView.delegate = self;
     
@@ -271,15 +271,15 @@
     
     [self.view addSubview:_myScrollView];
     
-    _myScrollView.contentSize = CGSizeMake(340*2,0);
+    _myScrollView.contentSize = CGSizeMake((DEVICE_WIDTH+20)*2,0);
     
     
     [_seg_view MyButtonStateWithIndex:_seg_current_page];
     
-    [self.myScrollView setContentOffset:CGPointMake(340*_seg_current_page,0) animated:YES];
+    [self.myScrollView setContentOffset:CGPointMake((DEVICE_WIDTH+20)*_seg_current_page,0) animated:YES];
     
     
-    _myTableView1 = [[UITableView alloc] initWithFrame:CGRectMake(0,0,320,_myScrollView.frame.size.height)];
+    _myTableView1 = [[UITableView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,_myScrollView.frame.size.height)];
     
     _myTableView1.delegate = self;
     
@@ -302,7 +302,7 @@
     
     
     
-    loadview=[[LoadingIndicatorView alloc]initWithFrame:CGRectMake(0, 900, 320, 40)];
+    loadview=[[LoadingIndicatorView alloc]initWithFrame:CGRectMake(0, 900, DEVICE_WIDTH, 40)];
     loadview.backgroundColor=[UIColor whiteColor];
     _myTableView1.tableFooterView = loadview;
     
@@ -311,7 +311,7 @@
     
     
     
-    _myTableView2 = [[UITableView alloc] initWithFrame:CGRectMake(340,63,320,_myScrollView.frame.size.height-63)];
+    _myTableView2 = [[UITableView alloc] initWithFrame:CGRectMake(DEVICE_WIDTH+20,63,DEVICE_WIDTH,_myScrollView.frame.size.height-63)];
     
     _myTableView2.delegate = self;
     
@@ -332,7 +332,7 @@
     current_seg_index = 0;
     
     
-    SliderBBSForumSegmentView * forumSegmentView = [[SliderBBSForumSegmentView alloc] initWithFrame:CGRectMake(340,0,320,63)];
+    SliderBBSForumSegmentView * forumSegmentView = [[SliderBBSForumSegmentView alloc] initWithFrame:CGRectMake(DEVICE_WIDTH+20,0,DEVICE_WIDTH,63)];
     
     [forumSegmentView setAllViewsWithTextArray:[NSArray arrayWithObjects:@"地区",@"车型",@"主题",@"交易",nil] WithImageArray:[NSArray arrayWithObjects:@"bbs_forum_earth",@"bbs_forum_car",@"bbs_forum_zhuti",@"bbs_forum_jiaoyi",@"bbs_forum_earth-1",@"bbs_forum_car-1",@"bbs_forum_zhuti-1",@"bbs_forum_jiaoyi-1",nil] WithBlock:^(int index) {
         
@@ -349,7 +349,7 @@
     [self.myScrollView addSubview:forumSegmentView];
     
     
-    sectionView = [[SliderBBSSectionView alloc] initWithFrame:CGRectMake(0,0,320,101) WithBlock:^(int index) {
+    sectionView = [[SliderBBSSectionView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,101) WithBlock:^(int index) {
         
         
         current_dingyue_zuijin = index;
@@ -1023,7 +1023,7 @@
             }
             
             
-            UIView * single_line_view = [[UIView alloc] initWithFrame:CGRectMake(16,43.5,320,0.5)];
+            UIView * single_line_view = [[UIView alloc] initWithFrame:CGRectMake(16,43.5,DEVICE_WIDTH,0.5)];
             
             single_line_view.backgroundColor = RGBCOLOR(225,225,225);
             
@@ -1032,7 +1032,7 @@
             
             if (indexPath.row == model.forum_sub.count - 1)
             {
-                single_line_view.frame = CGRectMake(0,43.5,320,0.5);
+                single_line_view.frame = CGRectMake(0,43.5,DEVICE_WIDTH,0.5);
             }
             
             
@@ -1106,7 +1106,7 @@
     {
         SliderBBSForumModel * model = [[_forum_temp_array objectAtIndex:current_forum] objectAtIndex:section];
         
-        UIView * view = [[UIView alloc] initWithFrame:CGRectMake(0,0,320,44)];
+        UIView * view = [[UIView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,44)];
         
         view.tag = 10000 + section;
         
@@ -1135,7 +1135,7 @@
         [view addSubview:line_view];
         
         
-        UIView * bottom_line_view = [[UIView alloc] initWithFrame:CGRectMake(0,43.5,320,0.5)];
+        UIView * bottom_line_view = [[UIView alloc] initWithFrame:CGRectMake(0,43.5,DEVICE_WIDTH,0.5)];
         
         bottom_line_view.backgroundColor = RGBCOLOR(228,228,228);
         
@@ -1145,7 +1145,7 @@
         
         if (section == 0)
         {
-            UIView * top_line_view = [[UIView alloc] initWithFrame:CGRectMake(0,0,320,0.5)];
+            UIView * top_line_view = [[UIView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,0.5)];
             
             top_line_view.backgroundColor = RGBCOLOR(228,228,228);
             
@@ -1252,7 +1252,7 @@
 
 -(UIView *)loadthirdViewWithIndexPath:(NSIndexPath *)indexPath
 {
-    UIView * view = [[UIView alloc] initWithFrame:CGRectMake(0,44,320,0)];
+    UIView * view = [[UIView alloc] initWithFrame:CGRectMake(0,44,DEVICE_WIDTH,0)];
     
     view.clipsToBounds = YES;
     
@@ -1337,7 +1337,7 @@
         }
     }
     
-    view.frame = CGRectMake(0,44,320,22 + row*36 + (row-1)*7);
+    view.frame = CGRectMake(0,44,DEVICE_WIDTH,22 + row*36 + (row-1)*7);
     
     return view;
 }
@@ -1394,7 +1394,7 @@
     {
         [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
         
-    }else if(scrollView.contentOffset.x>380)
+    }else if(scrollView.contentOffset.x>(DEVICE_WIDTH+60))
     {
         [self.mm_drawerController toggleDrawerSide:MMDrawerSideRight animated:YES completion:nil];
     }

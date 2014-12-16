@@ -38,147 +38,94 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [MobClick beginEvent:@"VerificationViewController"];
 }
 
 -(void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
     
-    [MobClick endEvent:@"VerificationViewController"];
 }
 
-
+-(void)cancelKeyboradTap:(UITapGestureRecognizer *)sender
+{
+    [self.view endEditing:YES];
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    self.view.backgroundColor = RGBCOLOR(245,245,245);
+    self.view.backgroundColor = RGBCOLOR(247,247,247);
+    UITapGestureRecognizer * cancel_tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(cancelKeyboradTap:)];
+    [self.view addGestureRecognizer:cancel_tap];
     
-    
-    if([self.navigationController.navigationBar respondsToSelector:@selector(setBackgroundImage:forBarMetrics:)] )
-    {
-        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:MY_MACRO_NAME?IOS7DAOHANGLANBEIJING:IOS6DAOHANGLANBEIJING] forBarMetrics: UIBarMetricsDefault];
-    }
-    
-    self.navigationItem.title = @"填写验证码";
-    
-//    UIColor * cc = [UIColor blackColor];
-//    
-//    NSDictionary * dict = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:cc,[UIFont systemFontOfSize:20],[UIColor clearColor],nil] forKeys:[NSArray arrayWithObjects:UITextAttributeTextColor,UITextAttributeFont,UITextAttributeTextShadowColor,nil]];
-//    
-//    self.navigationController.navigationBar.titleTextAttributes = dict;
-//    
-//    UIBarButtonItem * space_button = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-//    space_button.width = MY_MACRO_NAME?0:5;
-//    
-//    
-//    
-//    UIButton *button_back=[[UIButton alloc]initWithFrame:CGRectMake(10,8,12,21.5)];
-//    [button_back addTarget:self action:@selector(backH) forControlEvents:UIControlEventTouchUpInside];
-//    [button_back setBackgroundImage:[UIImage imageNamed:BACK_DEFAULT_IMAGE] forState:UIControlStateNormal];
-//    
-//    UIBarButtonItem *back_item = [[UIBarButtonItem alloc]initWithCustomView:button_back];
-//    self.navigationItem.leftBarButtonItems = @[space_button,back_item];
-    
+    self.title = @"填写验证码";
     
     [self setMyViewControllerLeftButtonType:MyViewControllerLeftbuttonTypeBack WithRightButtonType:MyViewControllerRightbuttonTypeNull];
     
-    
-    UILabel * label1 = [[UILabel alloc] initWithFrame:CGRectMake(23/2,23/2,200,20)];
-    
+    UILabel * label1 = [[UILabel alloc] initWithFrame:CGRectMake(23/2,23/2,200,16)];
     label1.text = @"请输入收到的短信验证码:";
-    
     label1.textAlignment = NSTextAlignmentLeft;
-    
     label1.textColor = RGBCOLOR(101,102,104);
-    
     label1.backgroundColor = [UIColor clearColor];
-    
     [self.view addSubview:label1];
     
     
-    
-    
-    UIView * back_view = [[UIView alloc] initWithFrame:CGRectMake(23/2,38,296,42)];
-    
+    UIView * back_view = [[UIView alloc] initWithFrame:CGRectMake(23/2,38,DEVICE_WIDTH-23,42)];
     back_view.backgroundColor = [UIColor whiteColor];
-    
+    back_view.layer.borderColor = RGBCOLOR(226,226,226).CGColor;
+    back_view.layer.borderWidth = 0.5;
     [self.view addSubview:back_view];
     
-    
-    
-    
-    verification_tf = [[UITextField alloc] initWithFrame:CGRectMake(10,0,276,42)];
-    
+    verification_tf = [[UITextField alloc] initWithFrame:CGRectMake(10,0,DEVICE_WIDTH-23-20,42)];
     verification_tf.clearButtonMode = UITextFieldViewModeWhileEditing;
-    
     verification_tf.placeholder = @"请输入验证码";
-    
     verification_tf.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-    
     verification_tf.keyboardType = UIKeyboardTypeNumberPad;
-    
     verification_tf.backgroundColor = [UIColor clearColor];
-    
     verification_tf.font = [UIFont systemFontOfSize:15];
-    
     [verification_tf becomeFirstResponder];
     
     [back_view addSubview:verification_tf];
     
     
-    
     UIButton * next_button = [UIButton buttonWithType:UIButtonTypeCustom];
-    
-    next_button.frame = CGRectMake(23/2,80+23/2,297,43);
-    
-    next_button.backgroundColor = RGBCOLOR(101,102,104);
-    
+    next_button.frame = CGRectMake(23/2,80+23/2,DEVICE_WIDTH-23,43);
+    next_button.backgroundColor = RGBCOLOR(255,144,0);
     [next_button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    
     [next_button setTitle:@"下一步" forState:UIControlStateNormal];
-    
     [next_button addTarget:self action:@selector(nextStep:) forControlEvents:UIControlEventTouchUpInside];
-    
     [self.view addSubview:next_button];
     
     
     
     ReSendButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    
-    ReSendButton.frame = CGRectMake(94,200,132,43.5);
-    
+    ReSendButton.frame = CGRectMake((DEVICE_WIDTH-132)/2,200,132,43.5);
     ReSendButton.hidden = YES;
-    
     [ReSendButton setTitle:@"重新发送验证码" forState:UIControlStateNormal];
-    
-    [ReSendButton setTitleColor:RGBCOLOR(151,151,151) forState:UIControlStateNormal];
-    
-    ReSendButton.titleLabel.font = [UIFont systemFontOfSize:16];
-    
-    [ReSendButton setBackgroundImage:[UIImage imageNamed:@"zc_resendimage.png"] forState:UIControlStateNormal];
-    
+    [ReSendButton setTitleColor:RGBCOLOR(168,167,167) forState:UIControlStateNormal];
+    ReSendButton.titleLabel.font = [UIFont systemFontOfSize:15];
+    //    [ReSendButton setBackgroundImage:RGBCOLOR(247,247,247) forState:UIControlStateNormal];
+    ReSendButton.backgroundColor = RGBCOLOR(247,247,247);
     [ReSendButton addTarget:self action:@selector(reSend:) forControlEvents:UIControlEventTouchUpInside];
-    
+    ReSendButton.layer.borderColor = RGBCOLOR(207,207,207).CGColor;
+    ReSendButton.layer.borderWidth = 0.5;
     [self.view addSubview:ReSendButton];
+    
+    
     
     time_number = 60;
     
-    time_label = [[UILabel alloc] initWithFrame:CGRectMake(70,200,180,43.5)];
-    
+    time_label = [[UILabel alloc] initWithFrame:CGRectMake((DEVICE_WIDTH-180)/2,200,180,43.5)];
     time_label.text = [NSString stringWithFormat:@"接收短信大约需要%d秒钟",time_number];
-    
     time_label.textAlignment = NSTextAlignmentCenter;
-    
     time_label.textColor = [UIColor grayColor];
-    
     time_label.font = [UIFont systemFontOfSize:15];
-    
     time_label.backgroundColor = [UIColor clearColor];
-    
     [self.view addSubview:time_label];
+    
+    UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doTap:)];
+    [self.view addGestureRecognizer:tap];
     
     timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timeCount) userInfo:nil repeats:YES];
 }
@@ -188,6 +135,10 @@
     [self initReSendRequest];
 }
 
+-(void)doTap:(UITapGestureRecognizer *)sender
+{
+    [self.view endEditing:YES];
+}
 
 -(void)timeCount
 {
@@ -211,6 +162,13 @@
 
 -(void)nextStep:(UIButton *)sender
 {
+    //    ZhuCeViewController * zhuce = [[ZhuCeViewController alloc] init];
+    //    zhuce.PhoneNumber = self.MyPhoneNumber;
+    //    zhuce.verification = verification_tf.text;
+    //    [self.navigationController pushViewController:zhuce animated:YES];
+    //    return;
+    
+    
     [self initYanZhengVerification];
 }
 
@@ -237,7 +195,7 @@
     reSend_request.shouldAttemptPersistentConnection = NO;
     
     [reSend_request startAsynchronous];
-
+    
 }
 
 

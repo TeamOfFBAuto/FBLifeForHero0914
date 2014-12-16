@@ -344,7 +344,7 @@
         
         load_failed_view = [[UIView alloc] initWithFrame:CGRectMake(0,0,175,100)];
         
-        load_failed_view.center = CGPointMake(160,(iPhone5?568:480)/2-20);
+        load_failed_view.center = CGPointMake(DEVICE_WIDTH/2,DEVICE_HEIGHT/2-20);
         
         load_failed_view.hidden = YES;
         

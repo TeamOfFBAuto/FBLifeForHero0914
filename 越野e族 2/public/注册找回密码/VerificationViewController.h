@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "ZhuCeViewController.h"
-#import "ATMHud.h"
 
 @interface VerificationViewController : MyViewController<ASIHTTPRequestDelegate>
 {
@@ -17,7 +16,7 @@
     ASIHTTPRequest * request_;
     
     ASIHTTPRequest * reSend_request;
-        
+    
     int time_number;
     
     NSTimer * timer;

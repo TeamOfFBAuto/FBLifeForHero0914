@@ -424,12 +424,12 @@
     
     
     
-    search_view = [[UIView alloc] initWithFrame:CGRectMake(0,0,320,40)];
+    search_view = [[UIView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,40)];
     search_view.backgroundColor = [UIColor whiteColor];//RGBCOLOR(242,242,242);
     [self.view addSubview:search_view];
     
     
-    imgbc=[[UIImageView alloc]initWithFrame:CGRectMake(10,6,300,56/2)];
+    imgbc=[[UIImageView alloc]initWithFrame:CGRectMake(10,6,DEVICE_WIDTH-20,56/2)];
     
     imgbc.image=[[UIImage imageNamed:@"ios7_newssearchbar.png"] stretchableImageWithLeftCapWidth:50 topCapHeight:7];
     
@@ -448,7 +448,7 @@
     [search_view addSubview:search_tf];
     
     
-    cancelButton=[[UIButton alloc]initWithFrame:CGRectMake(320,6,320-517/2,61/2)];
+    cancelButton=[[UIButton alloc]initWithFrame:CGRectMake(DEVICE_WIDTH,6,DEVICE_WIDTH-517/2,61/2)];
     cancelButton.backgroundColor = [UIColor clearColor];
     cancelButton.userInteractionEnabled=YES;
     [cancelButton setTitle:@"取消"  forState:UIControlStateNormal];//文字
@@ -468,7 +468,7 @@
     }
     
     
-    _myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0,40,320,(iPhone5?568:480)-64-40) style:UITableViewStylePlain];
+    _myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0,40,DEVICE_WIDTH,DEVICE_HEIGHT-64-40) style:UITableViewStylePlain];
     
     if (IOS_VERSION >=6.0)
     {
@@ -491,6 +491,7 @@
     [self.view addSubview:_myTableView];
     
     _replaceAlertView=[[AlertRePlaceView alloc]initWithFrame:CGRectMake(100, 200, 150, 100) labelString:@"您的网络不给力哦，请检查网络"];
+    _replaceAlertView.center = CGPointMake(DEVICE_WIDTH/2,DEVICE_HEIGHT/2);
     _replaceAlertView.delegate=self;
     _replaceAlertView.hidden=YES;
     [[UIApplication sharedApplication].keyWindow
@@ -527,14 +528,14 @@
 {
     [UIView animateWithDuration:0.4 animations:^{
         
-        nav.frame = CGRectMake(0,-(ios7_height),320,44+ios7_height);
-        search_view.frame = CGRectMake(0,ios7_height,320,40);
-        _myTableView.frame = CGRectMake(0,40+ios7_height,320,iPhone5?508:420);
+        nav.frame = CGRectMake(0,-(ios7_height),DEVICE_WIDTH,44+ios7_height);
+        search_view.frame = CGRectMake(0,ios7_height,DEVICE_WIDTH,40);
+        _myTableView.frame = CGRectMake(0,40+ios7_height,DEVICE_WIDTH,DEVICE_HEIGHT-60);
         
         
-        imgbc.frame = CGRectMake(10,6,517/2,56/2);
+        imgbc.frame = CGRectMake(10,6,DEVICE_WIDTH-61,56/2);
         
-        cancelButton.frame = CGRectMake(517/2+4,6,320-517/2,61/2);
+        cancelButton.frame = CGRectMake(DEVICE_WIDTH-80,6,DEVICE_WIDTH-517/2,61/2);
         
     } completion:^(BOOL finished) {
         
@@ -559,16 +560,16 @@
     
     [UIView animateWithDuration:0.4 animations:^
      {
-         nav.frame = CGRectMake(0,0,320,ios7_height);
+         nav.frame = CGRectMake(0,0,DEVICE_WIDTH,ios7_height);
          
-         search_view.frame = CGRectMake(0,ios7_height,320,40);
+         search_view.frame = CGRectMake(0,ios7_height,DEVICE_WIDTH,40);
          
-         _myTableView.frame = CGRectMake(0,40+ios7_height,320,iPhone5?548-44-40:460-44-40);
+         _myTableView.frame = CGRectMake(0,40+ios7_height,DEVICE_WIDTH,DEVICE_HEIGHT-64-40);
          
          
-         imgbc.frame = CGRectMake(10,6,300,56/2);
+         imgbc.frame = CGRectMake(10,6,DEVICE_WIDTH-20,56/2);
          
-         cancelButton.frame = CGRectMake(320,6,320-517/2,61/2);
+         cancelButton.frame = CGRectMake(DEVICE_WIDTH,6,DEVICE_WIDTH-517/2,61/2);
          
      } completion:^(BOOL finished)
      {
@@ -675,7 +676,7 @@
 -(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     
-    UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(0,0,320,24)];
+    UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,24)];
     label.backgroundColor=RGBCOLOR(235, 235, 235);
     [label setFont:[UIFont systemFontOfSize:14]];
     
@@ -930,15 +931,15 @@
     
     [UIView animateWithDuration:0.4 animations:^
      {
-         nav.frame = CGRectMake(0,0,320,ios7_height);
+         nav.frame = CGRectMake(0,0,DEVICE_WIDTH,ios7_height);
          
-         search_view.frame = CGRectMake(0,ios7_height,320,40);
+         search_view.frame = CGRectMake(0,ios7_height,DEVICE_WIDTH,40);
          
-         _myTableView.frame = CGRectMake(0,40+ios7_height,320,iPhone5?548-44-40:460-44-40);
+         _myTableView.frame = CGRectMake(0,40+ios7_height,DEVICE_WIDTH,DEVICE_HEIGHT-64-40);
          
-         imgbc.frame = CGRectMake(10,6,300,56/2);
+         imgbc.frame = CGRectMake(10,6,DEVICE_WIDTH-20,56/2);
          
-         cancelButton.frame = CGRectMake(320,6,320-517/2,61/2);
+         cancelButton.frame = CGRectMake(DEVICE_WIDTH,6,DEVICE_WIDTH-517/2,61/2);
          
      } completion:^(BOOL finished)
      {
@@ -974,7 +975,7 @@
             _isloadingIv.backgroundColor=[[UIColor grayColor]colorWithAlphaComponent:0.8];
             [_isloadingIv setTextColor:[UIColor whiteColor]];
             [_isloadingIv setFont:[UIFont systemFontOfSize:16]];
-            _isloadingIv.center=CGPointMake(160, iPhone5?568/2:480/2);
+            _isloadingIv.center=CGPointMake(DEVICE_WIDTH/2, DEVICE_HEIGHT/2);
             
         }
         

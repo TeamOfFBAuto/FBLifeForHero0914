@@ -1229,6 +1229,7 @@
 		5675DE29196D3C6B001926E1 /* RankingListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5675DE27196D3C6B001926E1 /* RankingListModel.m */; };
 		5675DE2C196D4CDD001926E1 /* RankingListCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5675DE2B196D4CDD001926E1 /* RankingListCustomCell.m */; };
 		5675DE2D196D4CDD001926E1 /* RankingListCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5675DE2B196D4CDD001926E1 /* RankingListCustomCell.m */; };
+		5697221C1A3FD2E8004B6641 /* PrivacyPolicyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5697221B1A3FD2E8004B6641 /* PrivacyPolicyViewController.m */; };
 		56A425BE19C58A3A00DBCFA3 /* TheScheduleList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 56A425BD19C58A3A00DBCFA3 /* TheScheduleList.plist */; };
 		56A425C419C5ABB600DBCFA3 /* AwesomeMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A425C119C5ABB600DBCFA3 /* AwesomeMenu.m */; };
 		56A425C519C5ABB600DBCFA3 /* AwesomeMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A425C119C5ABB600DBCFA3 /* AwesomeMenu.m */; };
@@ -2802,6 +2803,8 @@
 		5675DE27196D3C6B001926E1 /* RankingListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RankingListModel.m; sourceTree = "<group>"; };
 		5675DE2A196D4CDD001926E1 /* RankingListCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RankingListCustomCell.h; sourceTree = "<group>"; };
 		5675DE2B196D4CDD001926E1 /* RankingListCustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RankingListCustomCell.m; sourceTree = "<group>"; };
+		5697221A1A3FD2E8004B6641 /* PrivacyPolicyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrivacyPolicyViewController.h; sourceTree = "<group>"; };
+		5697221B1A3FD2E8004B6641 /* PrivacyPolicyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrivacyPolicyViewController.m; sourceTree = "<group>"; };
 		56A425BD19C58A3A00DBCFA3 /* TheScheduleList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TheScheduleList.plist; sourceTree = "<group>"; };
 		56A425C019C5ABB600DBCFA3 /* AwesomeMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AwesomeMenu.h; sourceTree = "<group>"; };
 		56A425C119C5ABB600DBCFA3 /* AwesomeMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AwesomeMenu.m; sourceTree = "<group>"; };
@@ -3270,6 +3273,8 @@
 				19CF4126186C526C00AA51A9 /* MyPhoneNumViewController.m */,
 				19CF4127186C526C00AA51A9 /* VerificationViewController.h */,
 				19CF4128186C526C00AA51A9 /* VerificationViewController.m */,
+				5697221A1A3FD2E8004B6641 /* PrivacyPolicyViewController.h */,
+				5697221B1A3FD2E8004B6641 /* PrivacyPolicyViewController.m */,
 			);
 			path = "注册找回密码";
 			sourceTree = "<group>";
@@ -7454,6 +7459,7 @@
 				56C955C5185EEEA900763E69 /* wbCell.m in Sources */,
 				19B11855186865E800CA4C07 /* MerchantsInfoCell.m in Sources */,
 				563364841862E7490069F838 /* BBSfenduiViewController.m in Sources */,
+				5697221C1A3FD2E8004B6641 /* PrivacyPolicyViewController.m in Sources */,
 				19EA041A19629A160080C03E /* ZkingNavigationView.m in Sources */,
 				566E7A54185EE80100BB88C5 /* newscellview.m in Sources */,
 				563365E31862E7590069F838 /* commentViewController.m in Sources */,

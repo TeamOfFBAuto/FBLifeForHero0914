@@ -144,7 +144,7 @@
     
     self.view.backgroundColor = [UIColor whiteColor];//RGBCOLOR(245,245,245);
     
-    myTextView = [[MyTextViewForForward alloc] initWithFrame:CGRectMake(10,IOS_VERSION>=7.0?64:44,300,100)];
+    myTextView = [[MyTextViewForForward alloc] initWithFrame:CGRectMake(10,IOS_VERSION>=7.0?64:44,DEVICE_WIDTH-20,100)];
     myTextView.backgroundColor = [UIColor whiteColor];//[UIColor colorWithRed:245/255.0f green:245/255.0f blue:245/255.0f alpha:1];
     myTextView.delegate = self;
     myTextView.delegate1 = self;
@@ -173,18 +173,18 @@
     
     
     
-    backView = [[UIView alloc] initWithFrame:CGRectMake(0,IOS_VERSION>=7.0?20:0,320,73)];
+    backView = [[UIView alloc] initWithFrame:CGRectMake(0,IOS_VERSION>=7.0?20:0,DEVICE_WIDTH,73)];
     backView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:backView];
     
-    face_view = [[UIView alloc] initWithFrame:CGRectMake(0,0,320,30)];
+    face_view = [[UIView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,30)];
     face_view.backgroundColor = [UIColor whiteColor];//[UIColor colorWithRed:245/255.0f green:245/255.0f blue:245/255.0f alpha:1];
     [backView addSubview:face_view];
     
     
     wordsNumber_button = [UIButton buttonWithType:UIButtonTypeCustom];
     
-    wordsNumber_button.frame = CGRectMake(260,2.5,60,25);
+    wordsNumber_button.frame = CGRectMake(DEVICE_WIDTH-60,2.5,60,25);
     
     [wordsNumber_button setTitle:@"140" forState:UIControlStateNormal];
     
@@ -217,7 +217,7 @@
     
     
     
-    weibo_view = [[UIImageView alloc] initWithFrame:CGRectMake(0,30,320,43)];
+    weibo_view = [[UIImageView alloc] initWithFrame:CGRectMake(0,30,DEVICE_WIDTH,43)];
     //    weibo_view.backgroundColor = [UIColor blackColor];
     weibo_view.image = [personal getImageWithName:@"write_blog_back@2x"];
     weibo_view.userInteractionEnabled = YES;
@@ -299,11 +299,11 @@
     [face_view addSubview:label];
     
     
-    scrollView = [[WeiBoFaceScrollView alloc] initWithFrame:CGRectMake(0,(iPhone5?568-215:480-215)-(IOS_VERSION>=7.0?0:20),320,215) target:self];
+    scrollView = [[WeiBoFaceScrollView alloc] initWithFrame:CGRectMake(0,DEVICE_HEIGHT-215-(IOS_VERSION>=7.0?0:20),DEVICE_WIDTH,215) target:self];
     scrollView.hidden = YES;
     scrollView.bounces = NO;
     scrollView.delegate = self;
-    scrollView.contentSize = CGSizeMake(320*3,0);
+    scrollView.contentSize = CGSizeMake(DEVICE_WIDTH*3,0);
     //    [self.view addSubview:scrollView];
     
     
@@ -315,9 +315,9 @@
     }
     
     
-    pageControl = [[GrayPageControl alloc] initWithFrame:CGRectMake(0,0,320,25)];
+    pageControl = [[GrayPageControl alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,25)];
     
-    pageControl.center = CGPointMake(160,215-20);
+    pageControl.center = CGPointMake(DEVICE_WIDTH/2,215-20);
     
     pageControl.numberOfPages = 3;
     
@@ -407,7 +407,7 @@
     
     [self updateLoading];
     
-    backView.frame = CGRectMake(0,(iPhone5?(568-IOS_VERSION>=7.0?0:20):(480-IOS_VERSION>=7.0?0:20))-72,320,73);
+    backView.frame = CGRectMake(0,DEVICE_HEIGHT-20-72,DEVICE_WIDTH,73);
     [myTextView resignFirstResponder];
     pageControl.hidden = YES;
     
@@ -448,7 +448,7 @@
                     [delegate commentSuccessWihtTid:self.tid IndexPath:self.theIndexPath SelectView:self.theSelectViewIndex withForward:isZhuanFa];
                 }
                 
-                [self dismissModalViewControllerAnimated:YES];
+                [self dismissViewControllerAnimated:YES completion:nil];
             }else
             {
                 UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"发送失败,请重试" delegate:self cancelButtonTitle:@"确认" otherButtonTitles:nil,nil];
@@ -506,9 +506,9 @@
     CGRect _keyboardRect = [[[notification userInfo] objectForKey:_UIKeyboardFrameEndUserInfoKey] CGRectValue];
     
     [UIView animateWithDuration:0.3 animations:^{
-        backView.frame = CGRectMake(0,(iPhone5?568:480)-(IOS_VERSION >= 7.0?0:20)-_keyboardRect.size.height-(myTextView.inputView==scrollView?72:73),320,73);
+        backView.frame = CGRectMake(0,DEVICE_HEIGHT-(IOS_VERSION >= 7.0?0:20)-_keyboardRect.size.height-(myTextView.inputView==scrollView?72:73),DEVICE_WIDTH,73);
         
-        myTextView.frame = CGRectMake(myTextView.frame.origin.x,IOS_VERSION>=7.0?64:44,myTextView.frame.size.width,(iPhone5?568-20-73-44-_keyboardRect.size.height:480-20-73-44-_keyboardRect.size.height)-(MY_MACRO_NAME?0:20));
+        myTextView.frame = CGRectMake(myTextView.frame.origin.x,IOS_VERSION>=7.0?64:44,myTextView.frame.size.width,(DEVICE_HEIGHT-20-73-44-_keyboardRect.size.height)-(MY_MACRO_NAME?0:20));
     }];
     
 }
@@ -643,8 +643,8 @@
         //弹出表情
         pageControl.hidden = NO;
         [UIView animateWithDuration:0.3 animations:^{
-            backView.frame = CGRectMake(0,(iPhone5?568:480)-(IOS_VERSION >= 7.0?0:20)-72-215,320,73);
-            myTextView.frame = CGRectMake(myTextView.frame.origin.x,IOS_VERSION>=7.0?64:44,myTextView.frame.size.width,(iPhone5?568-20-73-44-215:480-20-73-44-215)-(MY_MACRO_NAME?0:20));
+            backView.frame = CGRectMake(0,DEVICE_HEIGHT-(IOS_VERSION >= 7.0?0:20)-72-215,DEVICE_WIDTH,73);
+            myTextView.frame = CGRectMake(myTextView.frame.origin.x,IOS_VERSION>=7.0?64:44,myTextView.frame.size.width,(DEVICE_HEIGHT-20-73-44-215)-(MY_MACRO_NAME?0:20));
             [myTextView resignFirstResponder];
         }];
         myTextView.inputView = scrollView;
@@ -693,8 +693,8 @@
         scrollView.hidden = NO;
         //弹出表情
         [UIView animateWithDuration:0.3 animations:^{
-            backView.frame = CGRectMake(0,(iPhone5?568:480)-(IOS_VERSION >= 7.0?0:20)-72-215,320,73);
-            myTextView.frame = CGRectMake(myTextView.frame.origin.x,IOS_VERSION>=7.0?64:44,myTextView.frame.size.width,(iPhone5?568-20-73-44-215:480-20-73-44-215)-(MY_MACRO_NAME?0:20));
+            backView.frame = CGRectMake(0,DEVICE_HEIGHT-(IOS_VERSION >= 7.0?0:20)-72-215,DEVICE_WIDTH,73);
+            myTextView.frame = CGRectMake(myTextView.frame.origin.x,IOS_VERSION>=7.0?64:44,myTextView.frame.size.width,(DEVICE_HEIGHT-20-73-44-215)-(MY_MACRO_NAME?0:20));
             [myTextView resignFirstResponder];
         }];
     }else
@@ -819,14 +819,14 @@
     [myTextView resignFirstResponder];
     
     [UIView animateWithDuration:0.3 animations:^{
-        backView.frame = CGRectMake(0,(iPhone5?568:480)-(IOS_VERSION >= 7.0?0:20)-72,320,73);
+        backView.frame = CGRectMake(0,DEVICE_HEIGHT-(IOS_VERSION >= 7.0?0:20)-72,DEVICE_WIDTH,73);
         
-        myTextView.frame = CGRectMake(myTextView.frame.origin.x,IOS_VERSION>=7.0?64:44,myTextView.frame.size.width,(iPhone5?568-20-73-44:480-20-73-44)-(MY_MACRO_NAME?0:20));
+        myTextView.frame = CGRectMake(myTextView.frame.origin.x,IOS_VERSION>=7.0?64:44,myTextView.frame.size.width,(DEVICE_HEIGHT-20-73-44)-(MY_MACRO_NAME?0:20));
     }];
     
     if ((myTextView.tag == 100 && [myTextView.text isEqualToString:@"分享新鲜事......"])||[theText isEqualToString:myTextView.text])
     {
-        [self dismissModalViewControllerAnimated:YES];
+        [self dismissViewControllerAnimated:YES completion:nil];
     }else
     {
         UIActionSheet * sheet = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"保存草稿",@"不保存",nil];

@@ -36,7 +36,7 @@
     
     sendPingLun_block = theSendBlock;
     
-    top_line_view = [[UIView alloc] initWithFrame:CGRectMake(0,0,320,0.5)];
+    top_line_view = [[UIView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,0.5)];
     
     top_line_view.backgroundColor = RGBCOLOR(211,211,211);
     
@@ -84,7 +84,7 @@
     }
     
     
-    commot_background_view = [[UIView alloc] initWithFrame:CGRectMake(11+(_isShowFenYe?40:0),(self.bounds.size.height-30)/2,255-(_isShowFenYe?40:0),30)];
+    commot_background_view = [[UIView alloc] initWithFrame:CGRectMake(11+(_isShowFenYe?40:0),(self.bounds.size.height-30)/2,DEVICE_WIDTH-65-(_isShowFenYe?40:0),30)];
     
     commot_background_view.backgroundColor = [UIColor whiteColor];
     
@@ -126,7 +126,7 @@
     
     pinglun_button.backgroundColor = [UIColor clearColor];
     
-    pinglun_button.frame = CGRectMake(275,7,30,30);
+    pinglun_button.frame = CGRectMake(DEVICE_WIDTH-45,7,30,30);
     
     pinglun_button.userInteractionEnabled = YES;
     
@@ -151,14 +151,14 @@
     
     
     
-    text_background_view = [[UIView alloc] initWithFrame:CGRectMake(0,(iPhone5?568:480),320,250)];
+    text_background_view = [[UIView alloc] initWithFrame:CGRectMake(0,DEVICE_HEIGHT,DEVICE_WIDTH,250)];
     
     text_background_view.backgroundColor = RGBCOLOR(249,248,249);
     
     [[UIApplication sharedApplication].keyWindow addSubview:text_background_view];
     
     
-    text_input_view = [[UITextView alloc] initWithFrame:CGRectMake(20,20,280,84)];
+    text_input_view = [[UITextView alloc] initWithFrame:CGRectMake(20,20,DEVICE_WIDTH-40,84)];
     
     text_input_view.layer.masksToBounds = NO;
     
@@ -173,7 +173,7 @@
     
     send_button = [UIButton buttonWithType:UIButtonTypeCustom];
     
-    send_button.frame = CGRectMake(240,120,60,30);
+    send_button.frame = CGRectMake(DEVICE_WIDTH-80,120,60,30);
     
     send_button.enabled = NO;
     
@@ -260,7 +260,7 @@
         
         bself.text_background_view.frame = frame;
         
-        _theTouchView.frame = CGRectMake(0,0,320,bself.text_background_view.frame.origin.y);
+        _theTouchView.frame = CGRectMake(0,0,DEVICE_WIDTH,bself.text_background_view.frame.origin.y);
         
     } completion:^(BOOL finished) {
         
@@ -281,9 +281,9 @@
     
     [UIView animateWithDuration:0.275f animations:^{
         _theTouchView.hidden = YES;
-        bself.text_background_view.frame = CGRectMake(0,(iPhone5?568:480),320,250);
+        bself.text_background_view.frame = CGRectMake(0,DEVICE_HEIGHT,DEVICE_WIDTH,250);
         
-        _theTouchView.frame = CGRectMake(0,0,320,bself.text_background_view.frame.origin.y);
+        _theTouchView.frame = CGRectMake(0,0,DEVICE_WIDTH,bself.text_background_view.frame.origin.y);
     } completion:^(BOOL finished) {
         
     }];
@@ -356,7 +356,7 @@
     
     if (!_theTouchView)
     {
-        _theTouchView = [[UIView alloc] initWithFrame:CGRectMake(0,0,320,self.text_background_view.frame.origin.y)];
+        _theTouchView = [[UIView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,self.text_background_view.frame.origin.y)];
         
         _theTouchView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.5];
         

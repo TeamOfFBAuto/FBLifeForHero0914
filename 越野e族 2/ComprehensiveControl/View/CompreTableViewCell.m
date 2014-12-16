@@ -151,9 +151,9 @@
 
                 
                 _zanImageV.frame=CGRectMake(0, 0, 22/2, 23/2);
-                _zanImageV.center=CGPointMake(286, 122-3);
+                _zanImageV.center=CGPointMake(DEVICE_WIDTH-34, 122-3);
                 
-                _zanlabel.frame=CGRectMake(286+9,113 , 320-286-10, 11);
+                _zanlabel.frame=CGRectMake(DEVICE_WIDTH-34+9,113 , DEVICE_WIDTH-286-10, 11);
                 
 //                if (_newmodel.likes.length>2) {
 //                    _zanImageV.center=CGPointMake(286, 122-4);
@@ -163,7 +163,7 @@
                 
                              //标题
                 
-                _bigLabel.frame=CGRectMake(12, 12, 320, 18);
+                _bigLabel.frame=CGRectMake(12, 12, DEVICE_WIDTH, 18);
                 _bigLabel.font=[UIFont systemFontOfSize:16];
                 _bigLabel.text=_newmodel.title;
                 _bigLabel.textColor=RGBCOLOR(49, 49, 49);
@@ -219,8 +219,8 @@
                 
                 _zanImageV.frame=CGRectMake(0, 0, 22/2, 23/2);
 
-                _zanImageV.center=CGPointMake(286, 66);
-                _zanlabel.frame=CGRectMake(286+9,BIGORIGIN+5 , 320-286-10, 11);
+                _zanImageV.center=CGPointMake(DEVICE_WIDTH-34, 66);
+                _zanlabel.frame=CGRectMake(DEVICE_WIDTH-34+9,BIGORIGIN+5 , DEVICE_WIDTH-286-10, 11);
                 
                 
                 
@@ -247,7 +247,7 @@
                     
                 }
                 
-                _bigLabel.frame=CGRectMake(100+10, 13, 320-100-12-10, 16);
+                _bigLabel.frame=CGRectMake(100+10, 13, DEVICE_WIDTH-100-12-10, 16);
                 _bigLabel.font=[UIFont systemFontOfSize:16];
                 _bigLabel.text=_newmodel.title;
                 _bigLabel.textColor=RGBCOLOR(49, 49, 49);
@@ -256,7 +256,7 @@
 //                [self.contentView addSubview:_bigLabel];
                 
                 
-                _textBigLabel.frame=CGRectMake(100+10, 34, 320-100-12-10, 16);
+                _textBigLabel.frame=CGRectMake(100+10, 34, DEVICE_WIDTH-100-12-10, 16);
                 _textBigLabel.font=[UIFont systemFontOfSize:11];
                 _textBigLabel.text=_newmodel.stitle;
                 _textBigLabel.textColor=[UIColor lightGrayColor];
@@ -270,7 +270,7 @@
                 
                 //底部的线
                 
-                _normalLine.frame=CGRectMake(12, 86.5, 320-24, 0.5);
+                _normalLine.frame=CGRectMake(12, 86.5, DEVICE_WIDTH-24, 0.5);
                 _normalLine.backgroundColor=RGBCOLOR(223, 223, 223);
                 
                 

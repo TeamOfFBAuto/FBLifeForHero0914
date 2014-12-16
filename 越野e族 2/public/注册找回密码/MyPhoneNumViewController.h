@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "VerificationViewController.h"
-#import "ATMHud.h"
 
 @interface MyPhoneNumViewController : MyViewController<UITextFieldDelegate,ASIHTTPRequestDelegate,UIAlertViewDelegate>
 {

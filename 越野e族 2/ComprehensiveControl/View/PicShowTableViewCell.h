@@ -7,9 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#define IMAGE_WIDTH 90*DEVICE_WIDTH/320
+#define IMAGE_HEIGHT 60*(90*DEVICE_WIDTH/320)/90
+
 
 @interface PicShowTableViewCell : UITableViewCell
-
+{
+    
+}
 @property(nonatomic,strong)UILabel *bigLabel;//图集的大标题
 
 @property(nonatomic,strong)AsyncImageView *leftImageV;//左边的图片

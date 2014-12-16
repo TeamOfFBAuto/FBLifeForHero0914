@@ -6,18 +6,21 @@
 //  Copyright (c) 2013年 szk. All rights reserved.
 //
 
-
+/*
+ **登陆界面
+ */
 
 #import <UIKit/UIKit.h>
 #import "ASIHTTPRequest.h"
 #import "downloadtool.h"
-#import "ATMHud.h"
 #import "ZhuCeViewController.h"
 #import "ZhaoHuiViewController.h"
 #import "MyPhoneNumViewController.h"
 
 
 @protocol LogInViewControllerDelegate <NSObject>
+
+@optional
 
 -(void)successToLogIn;
 
@@ -36,7 +39,7 @@
     
     NSDictionary *dictionary;
     
-    ATMHud * hud;
+    MBProgressHUD * hud;
     
     UIImageView * logoImageView;
     

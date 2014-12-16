@@ -31,6 +31,18 @@
 #define AUTHKEY [[NSUserDefaults standardUserDefaults] objectForKey:USER_AUTHOD]
 
 
+#pragma mark - add by sn **************************************************************************
+///右侧边栏的宽度
+#define SLIDER_RIGHT_WIDTH (288*DEVICE_WIDTH)/320
+#define NOTIFICATION_LOGIN_SUCCESS @"login_success"//登录成功
+///成功退出登录
+#define NOTIFICATION_LOGOUT_SUCCESS @"logout_success"
+
+
+
+#pragma mark - end **************************************************************************
+
+
 // 是否是iphone5
 #define IPHONE5_HEIGHT 568
 #define IPHONE4_HEIGHT 480

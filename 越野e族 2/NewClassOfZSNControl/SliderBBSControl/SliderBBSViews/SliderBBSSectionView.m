@@ -92,7 +92,7 @@
         
         
         
-        background_imageview = [[UIImageView alloc] initWithFrame:CGRectMake(0,37,320,58.5)];
+        background_imageview = [[UIImageView alloc] initWithFrame:CGRectMake(0,37,DEVICE_WIDTH,58.5)];
         
         background_imageview.image = [UIImage imageNamed:@"bbs_forum_jingxuan_beijing"];
         
@@ -102,7 +102,7 @@
         
         
         
-        _myScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0,6,320,52)];
+        _myScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0,6,DEVICE_WIDTH,52)];
         
         _myScrollView.backgroundColor = [UIColor clearColor];
         

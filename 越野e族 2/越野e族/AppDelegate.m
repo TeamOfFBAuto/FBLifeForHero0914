@@ -1223,7 +1223,7 @@ static int numberof = 0;
     _RootVC=[[MMDrawerController alloc]initWithCenterViewController:_navigationController leftDrawerViewController:menuViewController rightDrawerViewController:rightVC];
     
     
-    [_RootVC setMaximumRightDrawerWidth:288];
+    [_RootVC setMaximumRightDrawerWidth:SLIDER_RIGHT_WIDTH]; //288*DEVICE_WIDTH/320];
     [_RootVC setMaximumLeftDrawerWidth:287];
     _RootVC.shouldStretchDrawer = NO;
     [_RootVC setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeNone];

@@ -409,7 +409,7 @@
         for (int j = 0;j < 5;j++)
         {
             UIButton * imageV = [UIButton buttonWithType:UIButtonTypeCustom];
-            imageV.frame = CGRectMake(5 + 62.75*j,7+62.75*i,59,59);
+            imageV.frame = CGRectMake(5 + ((DEVICE_WIDTH-10-59*5)/4+59)*j,7+62.75*i,59,59);
             imageV.imageView.clipsToBounds = YES;
             imageV.imageView.contentMode = UIViewContentModeScaleAspectFill;
             if (i == 0 && j == 0)

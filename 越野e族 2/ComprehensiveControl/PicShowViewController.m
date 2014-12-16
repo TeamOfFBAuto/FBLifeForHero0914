@@ -128,17 +128,17 @@
 -(void)loadView{
     [super loadView];
     
-    nomore=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, 320, 30)];
+    nomore=[[UILabel alloc]initWithFrame:CGRectMake(0, 0,DEVICE_WIDTH, 30)];
     nomore.text=@"没有更多数据";
     nomore.textAlignment=NSTextAlignmentCenter;
     nomore.font=[UIFont systemFontOfSize:13];
     nomore.textColor=[UIColor lightGrayColor];
     
-    loadview=[[LoadingIndicatorView alloc]initWithFrame:CGRectMake(0, 900, 320, 40)];
+    loadview=[[LoadingIndicatorView alloc]initWithFrame:CGRectMake(0, 900, DEVICE_WIDTH, 40)];
     loadview.backgroundColor=[UIColor clearColor];
 
     
-    mainTabView=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, 320, iPhone5?568-64:480-64)];
+    mainTabView=[[UITableView alloc]initWithFrame:CGRectMake(0, 0,DEVICE_WIDTH, DEVICE_HEIGHT-64)];
     mainTabView.delegate=self;
     mainTabView.dataSource=self;
     mainTabView.backgroundColor=[UIColor whiteColor];
@@ -147,7 +147,7 @@
     
     if (_refreshHeaderView == nil)
     {
-        EGORefreshTableHeaderView *view = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0-mainTabView.bounds.size.height, 320, mainTabView.bounds.size.height)];
+        EGORefreshTableHeaderView *view = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0-mainTabView.bounds.size.height, DEVICE_WIDTH, mainTabView.bounds.size.height)];
         view.delegate = self;
         _refreshHeaderView = view;
     }
@@ -328,7 +328,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    return 134+3;
+    return IMAGE_HEIGHT + 77;
     
 }
 

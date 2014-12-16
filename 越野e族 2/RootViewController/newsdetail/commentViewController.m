@@ -59,12 +59,7 @@
     
     [text_write resignFirstResponder];
     [self facescrowhiden];
-    if (isiphone5) {
-        aview.frame=CGRectMake(0, 0, 320, 568);
-        
-    }else{
-        aview.frame=CGRectMake(0, 0, 320, 480);
-    }
+    //aview.frame=CGRectMake(0,-249+31, DEVICE_WIDTH,DEVICE_HEIGHT);
     
     NSUserDefaults *user_=[NSUserDefaults standardUserDefaults];
     NSString *string_=@"refresh";
@@ -92,7 +87,7 @@
     [super viewDidLoad];
     
     //提醒的
-    self.thezkingAlertV=[[ZkingAlert alloc]initWithFrame:CGRectMake(0, 0, 320, 480) labelString:@""];
+    self.thezkingAlertV=[[ZkingAlert alloc]initWithFrame:CGRectMake(0, 0,DEVICE_WIDTH,DEVICE_HEIGHT) labelString:@""];
     _thezkingAlertV.hidden=YES;
     [[UIApplication sharedApplication].keyWindow
      addSubview:_thezkingAlertV];
@@ -120,14 +115,7 @@
     
     self.string_paixu=[[NSString alloc]initWithFormat:@"up"];
     
-    
-    if (isiphone5) {
-        aview=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 568)];
-        
-    }else{
-        aview=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 480)];
-        
-    }
+    aview=[[UIView alloc]initWithFrame:CGRectMake(0, 0, DEVICE_WIDTH, DEVICE_HEIGHT)];
     [self.view addSubview:aview];
     
     
@@ -207,11 +195,8 @@
     
     
     //评论部分
-    if (isiphone5) {
-        view_pinglun=[[UIView alloc]initWithFrame:CGRectMake(0, 419+88-42, 320, 41)];
-    }else{
-        view_pinglun=[[UIView alloc]initWithFrame:CGRectMake(0,377, 320, 41)];
-    }
+   
+    view_pinglun=[[UIView alloc]initWithFrame:CGRectMake(0,DEVICE_HEIGHT-103,DEVICE_WIDTH, 41)];
     
     //点击后键盘收起
     
@@ -275,7 +260,7 @@
     [view_pinglun addSubview:backfacebutton];
     
     
-    UIView *lineView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320,0.5)];
+    UIView *lineView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, DEVICE_WIDTH,0.5)];
     lineView.backgroundColor= RGBCOLOR(201,201,201);
     [view_pinglun addSubview:lineView];
     
@@ -286,9 +271,9 @@
     faceScrollView.delegate=self;
     faceScrollView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:faceScrollView];
-    pageControl = [[GrayPageControl alloc] initWithFrame:CGRectMake(0,900,320,25)];
+    pageControl = [[GrayPageControl alloc] initWithFrame:CGRectMake(0,900,DEVICE_WIDTH,25)];
     
-    pageControl.center = CGPointMake(160,460-12.5);
+    pageControl.center = CGPointMake(DEVICE_WIDTH/2,460-12.5);
     
     pageControl.numberOfPages = 3;
     
@@ -310,18 +295,13 @@
     //load
     //评论列表
     
-    if (isiphone5) {
-        tab_pinglunliebiao=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, 320, 316+88+101.5-52+8+3)];
-        
-    }else{
-        tab_pinglunliebiao=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, 320, 316+101.5-52+8+3)];
-        
-    }
+    tab_pinglunliebiao=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, DEVICE_WIDTH,DEVICE_HEIGHT-64-44)];
+    
     //    [tab_pinglunliebiao headerViewForSection:0];
     
     
     
-    loadview=[[LoadingIndicatorView alloc]initWithFrame:CGRectMake(0, 900, 320, 40)];
+    loadview=[[LoadingIndicatorView alloc]initWithFrame:CGRectMake(0, 900, DEVICE_WIDTH, 40)];
     loadview.backgroundColor=[UIColor clearColor];
     
     tab_pinglunliebiao.separatorColor=[UIColor clearColor];
@@ -401,13 +381,13 @@
     //数据解析部分
     
     
-    label_noneshuju=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, 320, 40)];
+    label_noneshuju=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, DEVICE_WIDTH, 40)];
     label_noneshuju.backgroundColor=[UIColor clearColor];
     label_noneshuju.text=@"暂无评论";
     label_noneshuju.textAlignment=NSTextAlignmentCenter;
     label_noneshuju.textColor=[UIColor grayColor];
     
-    label_meiduoshao=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, 320, 40)];
+    label_meiduoshao=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, DEVICE_WIDTH, 40)];
     label_meiduoshao.backgroundColor=[UIColor clearColor];
     label_meiduoshao.text=@"没有更多数据";
     label_meiduoshao.textAlignment=NSTextAlignmentCenter;
@@ -421,7 +401,7 @@
 
 -(void)prepairCommentTiao{
     
-    inputV=[[CustomInputView alloc]initWithFrame:CGRectMake(0,iPhone5?419+88-42:377, 320, 41)];
+    inputV=[[CustomInputView alloc]initWithFrame:CGRectMake(0,DEVICE_HEIGHT-41-64, DEVICE_WIDTH, 41)];
     
     
     __weak typeof(self)wself=self;
@@ -495,13 +475,7 @@
     [self  facescrowhiden];
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:0.5f];
-    if (isiphone5) {
-        aview.frame=CGRectMake(0, 0, 320, 568);
-        
-    }else{
-        aview.frame=CGRectMake(0, 0, 320, 480);
-        
-    }
+   // aview.frame=CGRectMake(0, 0, DEVICE_WIDTH,DEVICE_HEIGHT);
     [UIView commitAnimations];
     
     
@@ -937,7 +911,7 @@
     label_name.backgroundColor=[UIColor clearColor];
     label_name.font=[UIFont boldSystemFontOfSize:14.f];
     
-    UILabel *label_time=[[UILabel alloc]initWithFrame:CGRectMake(240, 7, 320-240-5, 15)];
+    UILabel *label_time=[[UILabel alloc]initWithFrame:CGRectMake(DEVICE_WIDTH-80, 7, 75, 15)];
     label_time.textAlignment=NSTextAlignmentLeft;
     label_time.backgroundColor=[UIColor clearColor];
     label_time.textColor=RGBCOLOR(170, 170, 170);
@@ -945,7 +919,6 @@
     
     //     UILabel *label_content=[[UILabel alloc]initWithFrame:CGRectMake(37, 25, 290, 20)];
     
-    [otherheaderview addSubview:label_name];
     [otherheaderview addSubview:label_time];
     
     AsyncImageView *image_head=[[AsyncImageView alloc]initWithFrame:CGRectMake(11, 13, 35, 35)];
@@ -984,9 +957,9 @@
         aview1.frame=CGRectMake(55, 30, 250, aview1.frame.size.height);
         [otherheaderview addSubview:aview1];
         
-        otherheaderview.frame=CGRectMake(0, 0, 320, haha+48);
+        otherheaderview.frame=CGRectMake(0, 0, DEVICE_WIDTH, haha+48);
         
-        UIImageView *imagexian=[[UIImageView alloc]initWithFrame:CGRectMake(0, haha+44, 320, 4)];
+        UIImageView *imagexian=[[UIImageView alloc]initWithFrame:CGRectMake(0, haha+44, DEVICE_WIDTH, 4)];
         imagexian.image=[UIImage imageNamed:@"lineofnews@2x.png"];
         [otherheaderview addSubview:imagexian];
         otherheaderview.backgroundColor=RGBCOLOR(247, 247, 247);
@@ -1017,9 +990,9 @@
 -(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     if (section==0) {
         
-        UIView *firstsectionview=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 156/2)];
+        UIView *firstsectionview=[[UIView alloc]initWithFrame:CGRectMake(0, 0, DEVICE_WIDTH, 156/2)];
         firstsectionview.backgroundColor=RGBCOLOR(255, 255, 255);
-        UILabel *label_bigtitle=[[UILabel alloc]initWithFrame:CGRectMake(10, 10, 300, 30)];
+        UILabel *label_bigtitle=[[UILabel alloc]initWithFrame:CGRectMake(10, 10, DEVICE_WIDTH-20, 30)];
         label_bigtitle.font=[UIFont systemFontOfSize:20];
         label_bigtitle.lineBreakMode = UILineBreakModeWordWrap|UILineBreakModeTailTruncation;
         label_bigtitle.backgroundColor=[UIColor clearColor];
@@ -1071,7 +1044,7 @@
         
         return firstsectionview ;
     }else if(section==1){
-        UIImageView *secondimgv=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 320, 30)];
+        UIImageView *secondimgv=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, DEVICE_WIDTH, 30)];
         // secondimgv.image=[[UIImage imageNamed:@"pinglun_bg2856.png"]stretchableImageWithLeftCapWidth:5 topCapHeight:5];
         secondimgv.backgroundColor=[UIColor whiteColor];
         
@@ -1083,17 +1056,17 @@
         if ([self.string_commentnumber integerValue]==0) {
             //上面带箭头的线
             UIImageView *img_topline=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"weibo_detai_line.png"]];
-            img_topline.center=CGPointMake(160, 2);
+            img_topline.center=CGPointMake(DEVICE_WIDTH/2, 2);
             [secondimgv addSubview:img_topline];
             //中间的那个图
             
             UIImageView *img_iconnone=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"ios7_nonecomment121_114.png"]];
-            img_iconnone.center =CGPointMake(160, 70);
+            img_iconnone.center =CGPointMake(DEVICE_WIDTH/2, 70);
             [secondimgv addSubview:img_iconnone];
             
             //最下面的还没有人评论
             
-            UILabel *label_none=[[UILabel alloc]initWithFrame:CGRectMake(0, 105, 320, 20)];
+            UILabel *label_none=[[UILabel alloc]initWithFrame:CGRectMake(0, 105, DEVICE_WIDTH, 20)];
             
             label_none.textAlignment=UITextAlignmentCenter;
             label_none.textColor=RGBCOLOR(205, 205, 205);
@@ -1185,19 +1158,19 @@
             aview1.frame=CGRectMake(57 , 34, 250, aview1.frame.size.height);
             aview1.backgroundColor=[UIColor whiteColor];
             [otherheaderview addSubview:aview1];
-            label_time.frame=CGRectMake(245, 10, 100, 20);
-            img_reply.frame=CGRectMake(280, haha+49, 26/2, 25/2);
+            label_time.frame=CGRectMake(DEVICE_WIDTH-75, 10, 100, 20);
+            img_reply.frame=CGRectMake(DEVICE_WIDTH-40, haha+49, 26/2, 25/2);
             // [otherheaderview addSubview:img_reply];
             
             label_replys.frame=CGRectMake(300, haha+44, 100, 20);
             label_replys.text=[NSString stringWithFormat:@"%@",[array_reply objectAtIndex:section-2]];
             //[otherheaderview addSubview:label_replys];
-            otherheaderview.frame=CGRectMake(0, 0, 320, haha+48+20);
+            otherheaderview.frame=CGRectMake(0, 0, DEVICE_WIDTH, haha+48+20);
             
             otherheaderview.backgroundColor=RGBCOLOR(255, 255, 255);
             
             
-            UIImageView *imagexian=[[UIImageView alloc]initWithFrame:CGRectMake(0, haha+52, 320, 4)];
+            UIImageView *imagexian=[[UIImageView alloc]initWithFrame:CGRectMake(0, haha+52, DEVICE_WIDTH, 4)];
             //          imagexian.image=[UIImage imageNamed:@"lineofnews@2x.png"];
             [otherheaderview addSubview:imagexian];
             
@@ -1552,14 +1525,8 @@
             text_write.keyboardType=UIKeyboardTypeDefault;
             [UIView beginAnimations:nil context:nil];
             [UIView setAnimationDuration:0.3];
-            if (isiphone5) {
-                
-                aview.frame=CGRectMake(0,-249+31, 320, 568);
-                
-            }else{
-                aview.frame=CGRectMake(0,-249+31, 320, 480);
-                
-            }
+            
+           // aview.frame=CGRectMake(0,-249+31, DEVICE_WIDTH,DEVICE_HEIGHT);
             [UIView commitAnimations];
             
             
@@ -1600,13 +1567,7 @@
 -(void)textFieldDidEndEditing:(UITextField *)textField{
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:0.3];
-    if (isiphone5) {
-        aview.frame=CGRectMake(0, 0, 320, 568);
-        
-    }else{
-        aview.frame=CGRectMake(0, 0, 320, 480);
-        
-    }
+   // aview.frame=CGRectMake(0, 0, DEVICE_WIDTH, DEVICE_HEIGHT);
     
     [UIView commitAnimations];
 }
@@ -1615,13 +1576,7 @@
     [self facescrowhiden];
     faceScrollView.frame =CGRectMake(0, 1000, self.view.frame.size.width, 215);
     
-    if (isiphone5) {
-        aview.frame=CGRectMake(0, 0, 320, 568);
-        
-    }else{
-        aview.frame=CGRectMake(0, 0, 320, 480);
-        
-    }
+    //aview.frame=CGRectMake(0, 0, DEVICE_WIDTH, DEVICE_HEIGHT);
     
     if (text_write.text.length==0) {
         UIAlertView *viewalert=[[UIAlertView alloc]initWithTitle:@"提示" message:@"评论内容不能为空" delegate:nil cancelButtonTitle:nil otherButtonTitles:@"确定", nil];
@@ -1669,13 +1624,7 @@
         
         
         [text_write resignFirstResponder];
-        if (isiphone5) {
-            aview.frame=CGRectMake(0,-162-55, 320, 568);
-            
-        }else{
-            aview.frame=CGRectMake(0,-162-55, 320, 480);
-            
-        }
+        //aview.frame=CGRectMake(0, 0,DEVICE_WIDTH,DEVICE_HEIGHT);
         [self facescrowviewshow];
         
     }else{
@@ -1684,13 +1633,7 @@
         [button_face setBackgroundImage:[UIImage imageNamed:@"ios7_face43_43.png"] forState:UIControlStateNormal];
         
         [text_write becomeFirstResponder];
-        if (isiphone5) {
-            aview.frame=CGRectMake(0,-249+31, 320, 568);
-            
-        }else{
-            aview.frame=CGRectMake(0,-249+31, 320, 480);
-            
-        }
+        //aview.frame=CGRectMake(0,-249+31, DEVICE_WIDTH,DEVICE_HEIGHT);
         [self facescrowhiden];
     }
     

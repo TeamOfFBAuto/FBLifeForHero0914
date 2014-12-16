@@ -7,7 +7,6 @@
 //
 
 #import "LogInViewController.h"
-#import "JSONKit.h"
 @interface LogInViewController ()
 {
     downloadtool *tool1;
@@ -69,9 +68,9 @@
 
 -(void)loadDown
 {
-    logoImageView.center = CGPointMake(160,42 + 49.5/2 + (IOS_VERSION>=7.0?64:44));
+    logoImageView.center = CGPointMake(logoImageView.center.x,42 + 49.5/2 + (IOS_VERSION>=7.0?64:44));
     
-    denglu_imageView.frame = CGRectMake(23.5/2,logoImageView.center.y+25+10,296.5,185);
+    denglu_imageView.frame = CGRectMake(denglu_imageView.frame.origin.x,logoImageView.center.y+25+10,296.5,185);
     
     isShow = NO;
 }
@@ -82,8 +81,6 @@
     [super viewDidLoad];
     
     isShow = NO;
-    
-    [self.leveyTabBarController hidesTabBar:YES animated:YES];
     
     dictionary = [[NSDictionary alloc] init];
     
@@ -106,63 +103,40 @@
     }
     
     UILabel * title_label = [[UILabel alloc] initWithFrame:CGRectMake(0,0,100,44)];
-    
     title_label.text = @"登录";
-    
     title_label.textColor = [UIColor blackColor];
-    
     title_label.backgroundColor = [UIColor clearColor];
-    
     title_label.textAlignment = NSTextAlignmentCenter;
-    
     title_label.font =TITLEFONT;
-    
     NavTitle.titleView = title_label;
     
-    
     UIBarButtonItem * spaceBar = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-    
     spaceBar.width = MY_MACRO_NAME?-5:5;
     
     
     UIButton *button_back=[[UIButton alloc]initWithFrame:CGRectMake(10,8,31/2,32/2)];
-    
     [button_back addTarget:self action:@selector(backH) forControlEvents:UIControlEventTouchUpInside];
-    
     [button_back setBackgroundImage:[UIImage imageNamed:@"logIn_close.png"] forState:UIControlStateNormal];
-    
     UIBarButtonItem *back_item=[[UIBarButtonItem alloc]initWithCustomView:button_back];
-    
-    NavTitle.leftBarButtonItems=@[spaceBar,back_item];
+    NavTitle.rightBarButtonItems=@[spaceBar,back_item];
     
     
     //设置barbutton
     [nav setItems:[NSArray arrayWithObject:NavTitle]];
     ///////////////////////////////////
     
-    
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque];
-    
     UIImage * logo_image = [UIImage imageNamed:@"logoInLogo.png"];
-    
     logoImageView = [[UIImageView alloc] initWithImage:logo_image];
-    
-    logoImageView.center = CGPointMake(160,42 + 49.5/2 + (IOS_VERSION>=7.0?64:44));
-    
+    logoImageView.center = CGPointMake(DEVICE_WIDTH/2.0,42 + 49.5/2 + (IOS_VERSION>=7.0?64:44));
     [self.view addSubview:logoImageView];
     
-    
-    
-    denglu_imageView = [[UIImageView alloc] initWithFrame:CGRectMake(23.5/2,logoImageView.center.y+25+10,296.5,185)];
-    
+    denglu_imageView = [[UIImageView alloc] initWithFrame:CGRectMake((DEVICE_WIDTH-296.5)/2.0,logoImageView.center.y+25+10,296.5,185)];
     denglu_imageView.userInteractionEnabled = YES;
-    
     denglu_imageView.image = [UIImage imageNamed:@"llongInBackImage.png"];
-    
     [self.view addSubview:denglu_imageView];
     
     
-    userNameField=[[UITextField alloc] initWithFrame:CGRectMake(70,18,[UIScreen mainScreen].applicationFrame.size.width-110,42)];
+    userNameField=[[UITextField alloc] initWithFrame:CGRectMake(70,18,209,42)];
     userNameField.backgroundColor=[UIColor clearColor];
     userNameField.contentVerticalAlignment=UIControlContentVerticalAlignmentCenter;//垂直居中
     userNameField.placeholder = @"用户名";                          //默认显示的字
@@ -172,8 +146,8 @@
     userNameField.delegate=self;
     userNameField.font = [UIFont systemFontOfSize:16];
     [denglu_imageView addSubview:userNameField];
-        
-    pwNameField=[[UITextField alloc] initWithFrame:CGRectMake(70,74,[UIScreen mainScreen].applicationFrame.size.width-110,42)];
+    
+    pwNameField=[[UITextField alloc] initWithFrame:CGRectMake(70,74,209,42)];
     pwNameField.delegate = self;
     pwNameField.backgroundColor=[UIColor clearColor];
     pwNameField.contentVerticalAlignment=UIControlContentVerticalAlignmentCenter;//垂直居中
@@ -188,22 +162,12 @@
     
     
     UIButton * logIn_button = [UIButton buttonWithType:UIButtonTypeCustom];
-    
     logIn_button.frame = CGRectMake(13,130,272,43);
-    
     logIn_button.backgroundColor = [UIColor clearColor];
-    
     [logIn_button setTitle:@"登 录" forState:UIControlStateNormal];
-    
     [logIn_button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    
     [logIn_button addTarget:self action:@selector(loginH) forControlEvents:UIControlEventTouchUpInside];
-    
     [denglu_imageView addSubview:logIn_button];
-    
-    
-    
-    
     
     
     /*老版界面
@@ -245,64 +209,37 @@
     
     
     UIButton * zhuce_button = [UIButton buttonWithType:UIButtonTypeCustom];
-    
-    zhuce_button.frame = CGRectMake(82,[UIScreen mainScreen].bounds.size.height-60,65,20);
-    
+    zhuce_button.frame = CGRectMake(DEVICE_WIDTH/2.0-80,[UIScreen mainScreen].bounds.size.height-60,65,20);
     [zhuce_button setTitle:@"注册账号" forState:UIControlStateNormal];
-    
     zhuce_button.titleLabel.font = [UIFont systemFontOfSize:16];
-    
     zhuce_button.titleLabel.textAlignment = NSTextAlignmentCenter;
-    
     zhuce_button.backgroundColor = [UIColor clearColor];
-    
     [zhuce_button setTitleColor:RGBCOLOR(82,82,82) forState:UIControlStateNormal];
-    
     [zhuce_button addTarget:self action:@selector(zhuceButton:) forControlEvents:UIControlEventTouchUpInside];
-    
     [self.view addSubview:zhuce_button];
     
-    UIView * lineView = [[UIView alloc] initWithFrame:CGRectMake(159.5,[UIScreen mainScreen].bounds.size.height-58,0.5,16)];
-    
+    UIView * lineView = [[UIView alloc] initWithFrame:CGRectMake(DEVICE_WIDTH/2.0,[UIScreen mainScreen].bounds.size.height-58,0.5,16)];
     lineView.backgroundColor = RGBCOLOR(65,65,65);
-    
     [self.view addSubview:lineView];
     
     UIButton * zhaohui_button = [UIButton buttonWithType:UIButtonTypeCustom];
-    
-    zhaohui_button.frame = CGRectMake(174,[UIScreen mainScreen].bounds.size.height-60,65,20);
-    
+    zhaohui_button.frame = CGRectMake(DEVICE_WIDTH/2.0+14,[UIScreen mainScreen].bounds.size.height-60,65,20);
     zhaohui_button.titleLabel.font = [UIFont systemFontOfSize:16];
-    
     [zhaohui_button setTitleColor:RGBCOLOR(82,82,82) forState:UIControlStateNormal];
-    
     [zhaohui_button setTitle:@"忘记密码" forState:UIControlStateNormal];
-    
     [zhaohui_button addTarget:self action:@selector(zhaohuiButton:) forControlEvents:UIControlEventTouchUpInside];
-    
     zhaohui_button.backgroundColor = [UIColor clearColor];
-    
     zhaohui_button.titleLabel.textAlignment = NSTextAlignmentCenter;
-    
     [self.view addSubview:zhaohui_button];
     
     [self.view addSubview:nav];
-    
-    
-    if (!hud)
-    {
-        hud = [[ATMHud alloc] initWithDelegate:self];
-        [self.view addSubview:hud.view];
-    }
 }
 
 
 -(void)zhuceButton:(UIButton *)sender
 {
     MyPhoneNumViewController * zhuce = [[MyPhoneNumViewController alloc] init];
-    
     UINavigationController * naVC = [[UINavigationController alloc] initWithRootViewController:zhuce];
-    
     [self presentViewController:naVC animated:YES completion:NULL];
 }
 
@@ -320,7 +257,11 @@
     [self loadDown];
     
     [self dismissViewControllerAnimated:YES completion:^(void){
-        [_delegate failToLogIn];
+        
+        if (_delegate && [_delegate respondsToSelector:@selector(failToLogIn)]) {
+            [_delegate failToLogIn];
+        }
+        
     }];
 }
 
@@ -352,16 +293,7 @@
     [tool2 stop];
     [tool3 stop];
     
-    //弹出提示信息
-    [hud setBlockTouches:NO];
-    [hud setAccessoryPosition:ATMHudAccessoryPositionLeft];
-    [hud setShowSound:[[NSBundle mainBundle] pathForResource:@"pop" ofType:@"wav"]];
-    [hud setCaption:NS_LOGINING];
-    [hud setActivity:YES];
-    //    [hud setImage:[UIImage imageNamed:@"19-check"]];
-    [hud show];
-    //    [hud hideAfter:3];
-    
+    hud = [zsnApi showMBProgressWithText:NS_LOGINING addToView:self.view];
     
     [userNameField resignFirstResponder];
     [pwNameField resignFirstResponder];
@@ -414,14 +346,14 @@
 
 -(void)downloadtoolError
 {
-    [hud hideAfter:0.01];
+    [hud hide:YES];
     [[[UIAlertView alloc] initWithTitle:@"温馨提示" message:@"登录失败,请重新登录" delegate:self cancelButtonTitle:@"确认" otherButtonTitles:nil,nil] show];
 }
 
 -(void)downloadtool:(downloadtool *)tool didfinishdownloadwithdata:(NSData *)data
 {
-    [hud hideAfter:0.01];
     
+    [hud hide:YES];
     @try
     {
         if (tool.tag==101)
@@ -451,16 +383,16 @@
             if ([[dic_ objectForKey:@"errcode"] intValue] == 1)
             {
                 //登陆成功保存用户信息
-                [[NSUserDefaults standardUserDefaults] setObject:userNameField.text forKey:USER_NAME] ;
+                //                [[NSUserDefaults standardUserDefaults] setObject:userNameField.text forKey:USER_NAME] ;
                 [[NSUserDefaults standardUserDefaults] setObject:pwNameField.text forKey:USER_PW] ;
                 [[NSUserDefaults standardUserDefaults] setObject:[dictionary objectForKey:@"bbsinfo"] forKey:USER_AUTHOD] ;
-                [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_IN];
                 [[NSUserDefaults standardUserDefaults] setObject:[dictionary objectForKey:@"uid"] forKey:USER_UID] ;
                 [[NSUserDefaults standardUserDefaults] setObject:[dictionary objectForKey:@"username"] forKey:USER_NAME] ;
+                [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_IN];
                 [[NSUserDefaults standardUserDefaults] synchronize];
                 
                 [[NSNotificationCenter defaultCenter] postNotificationName:USER_AUTHOD object:[dictionary objectForKey:@"bbsinfo"]];
-                
+                [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_LOGIN_SUCCESS object:nil];
                 
                 [self.delegate successToLogIn];
                 pwNameField.text = @"";
@@ -484,24 +416,29 @@
             
             NSDictionary * dic = [data objectFromJSONData];
             
+            NSLog(@"开通微博数据 -----  %@ ----  %@",[dic objectForKey:@"errcode"],[dic objectForKey:@"data"]);
             if ([[dic objectForKey:@"errcode"] intValue] == 1)
             {
                 NSLog(@"开通成功");
                 
-                [self loadDown];
-                
-                //激活成功保存用户信息
-                [[NSUserDefaults standardUserDefaults] setObject:userNameField.text forKey:USER_NAME] ;
+                //登陆成功保存用户信息
+                //                [[NSUserDefaults standardUserDefaults] setObject:userNameField.text forKey:USER_NAME] ;
                 [[NSUserDefaults standardUserDefaults] setObject:pwNameField.text forKey:USER_PW] ;
                 [[NSUserDefaults standardUserDefaults] setObject:[dictionary objectForKey:@"bbsinfo"] forKey:USER_AUTHOD] ;
-                // [[NSUserDefaults standardUserDefaults]setObject:[dictionary objectForKey:@""] forKey:<#(NSString *)#>];
+                [[NSUserDefaults standardUserDefaults] setObject:[dictionary objectForKey:@"uid"] forKey:USER_UID] ;
+                [[NSUserDefaults standardUserDefaults] setObject:[dictionary objectForKey:@"username"] forKey:USER_NAME] ;
                 [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_IN];
                 [[NSUserDefaults standardUserDefaults] synchronize];
+                
+                [[NSNotificationCenter defaultCenter] postNotificationName:USER_AUTHOD object:[dictionary objectForKey:@"bbsinfo"]];
+                [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_LOGIN_SUCCESS object:nil];
+                
                 [self.delegate successToLogIn];
                 pwNameField.text = @"";
+                
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"LogIn" object:nil];
-                [[NSNotificationCenter defaultCenter] postNotificationName:USER_AUTHOD object:[dictionary objectForKey:@"bbsinfo"]];
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"clearolddata" object:nil];
+                
+                [self loadDown];
                 
                 [self dismissViewControllerAnimated:YES completion:NULL];
             }else
@@ -527,7 +464,7 @@
 #pragma mark-开通fb
 - (void)requestFinished:(ASIHTTPRequest *)request
 {
-    [hud hideAfter:0.01];
+    [hud hide:YES];
     @try {
         if (request.tag==101) {
             NSLog(@"requeststring==%@",[request responseString]);
@@ -573,7 +510,7 @@
 }
 -(void)requestFailed:(ASIHTTPRequest *)request
 {
-    [hud hideAfter:0.01];
+    [hud hide:YES];
     NSLog(@"error");
 }
 
@@ -589,9 +526,9 @@
     [userNameField resignFirstResponder];
     
     [UIView animateWithDuration:0.3 animations:^{
-        logoImageView.center = CGPointMake(160,42 + 49.5/2 + (IOS_VERSION>=7.0?64:44));
+        logoImageView.center = CGPointMake(logoImageView.center.x,42 + 49.5/2 + (IOS_VERSION>=7.0?64:44));
         
-        denglu_imageView.frame = CGRectMake(23.5/2,logoImageView.center.y+25+10,296.5,185);
+        denglu_imageView.frame = CGRectMake(denglu_imageView.frame.origin.x,logoImageView.center.y+25+10,296.5,185);
         
         
     } completion:^(BOOL finished) {
@@ -604,16 +541,16 @@
 
 -(BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
-    if (!iPhone5)
+    if (DEVICE_HEIGHT==480)
     {
         if (!isShow)
         {
             isShow = YES;
             
             [UIView animateWithDuration:0.4 animations:^{
-                logoImageView.center = CGPointMake(160,-49.5/2);
+                logoImageView.center = CGPointMake(DEVICE_WIDTH/2.0,-49.5/2);
                 
-                denglu_imageView.center = CGPointMake(160,(IOS_VERSION>=7.0?64:44)+185/2);
+                denglu_imageView.center = CGPointMake(DEVICE_WIDTH/2.0f,(IOS_VERSION>=7.0?64:44)+185/2);
                 
             } completion:^(BOOL finished) {
                 

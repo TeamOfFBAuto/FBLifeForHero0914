@@ -81,14 +81,14 @@
 -(void)setNavgationBar
 {
     
-    navImageView = [[UIView alloc] initWithFrame:CGRectMake(0,0,320,64)];
+    navImageView = [[UIView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,64)];
     
     navImageView.backgroundColor = [UIColor clearColor];// RGBCOLOR(229,229,229);
     
     [self.view addSubview:navImageView];
     
     
-    UIImageView * daohangView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,320,64)];
+    UIImageView * daohangView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,64)];
     
 //    daohangView.image = [UIImage imageNamed:MY_MACRO_NAME?IOS7DAOHANGLANBEIJING:IOS6DAOHANGLANBEIJING];
     
@@ -116,7 +116,7 @@
     {
         UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
         
-        button.frame = CGRectMake(130 + 70*i,20,60,44);
+        button.frame = CGRectMake(DEVICE_WIDTH- 200 + 70*i,20,60,44);
         
         button.backgroundColor = [UIColor clearColor];
         
@@ -476,6 +476,7 @@
     [super viewWillDisappear:animated];
     
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
     
     [input_view deleteKeyBordNotification];
 }
@@ -485,6 +486,7 @@
 //    [input_view.text_background_view removeFromSuperview];
 //    
 //    input_view.text_background_view = nil;
+    self.edgesForExtendedLayout = UIRectEdgeAll;
 }
 
 
@@ -516,8 +518,8 @@
         
         [input_view.pinglun_button setTitle:atlasModel.atlas_comment forState:UIControlStateNormal];
         
-        bself.myScrollView.contentSize = CGSizeMake(340*self.allImagesUrlArray.count,0);
-        bself.myScrollView.contentOffset = CGPointMake(340*_currentPage,0);
+        bself.myScrollView.contentSize = CGSizeMake((DEVICE_WIDTH+20)*self.allImagesUrlArray.count,0);
+        bself.myScrollView.contentOffset = CGPointMake((DEVICE_WIDTH+20)*_currentPage,0);
         
         
         commit_label.userInteractionEnabled = YES;
@@ -564,7 +566,7 @@
         return;
     }
     
-    QBShowImagesScrollView * scrollView = [[QBShowImagesScrollView alloc] initWithFrame:CGRectMake(340*_currentPage,0,320,_myScrollView.frame.size.height) WithUrl:theUrl];
+    QBShowImagesScrollView * scrollView = [[QBShowImagesScrollView alloc] initWithFrame:CGRectMake((DEVICE_WIDTH+20)*_currentPage,0,DEVICE_WIDTH,_myScrollView.frame.size.height) WithUrl:theUrl];
     
     scrollView.aDelegate = self;
     
@@ -584,7 +586,7 @@
     {
         for (int i = 0;i < self.allImagesUrlArray.count;i++)
         {
-            QBShowImagesScrollView * scrollView = [[QBShowImagesScrollView alloc] initWithFrame:CGRectMake(340*i,0,320,_myScrollView.frame.size.height) WithUrl:@""];
+            QBShowImagesScrollView * scrollView = [[QBShowImagesScrollView alloc] initWithFrame:CGRectMake((DEVICE_WIDTH+20)*i,0,DEVICE_WIDTH,_myScrollView.frame.size.height) WithUrl:@""];
             
             scrollView.aDelegate = self;
             
@@ -609,7 +611,7 @@
                 string=[string stringByReplacingOccurrencesOfString:@"small" withString:@"ori"];
             }
             
-            QBShowImagesScrollView * scrollView = [[QBShowImagesScrollView alloc] initWithFrame:CGRectMake(340*_currentPage,0,320,_myScrollView.frame.size.height) WithUrl:nil];
+            QBShowImagesScrollView * scrollView = [[QBShowImagesScrollView alloc] initWithFrame:CGRectMake((DEVICE_WIDTH+20)*_currentPage,0,DEVICE_WIDTH,_myScrollView.frame.size.height) WithUrl:nil];
             
             scrollView.aDelegate = self;
             
@@ -629,7 +631,7 @@
                 string=[string stringByReplacingOccurrencesOfString:@"small" withString:@"ori"];
             }
             
-            QBShowImagesScrollView * scrollView = [[QBShowImagesScrollView alloc] initWithFrame:CGRectMake(340*i,0,320,_myScrollView.frame.size.height) WithUrl:string];
+            QBShowImagesScrollView * scrollView = [[QBShowImagesScrollView alloc] initWithFrame:CGRectMake((DEVICE_WIDTH+20)*i,0,DEVICE_WIDTH,_myScrollView.frame.size.height) WithUrl:string];
             
             scrollView.aDelegate = self;
             
@@ -666,31 +668,22 @@
     
     [self loadData];
     
-    _myScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0,0,340,iPhone5?568:480)];
-    
+    _myScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH+20,DEVICE_HEIGHT)];
     _myScrollView.delegate = self;
-    
     _myScrollView.pagingEnabled = YES;
-    
     _myScrollView.backgroundColor = [UIColor blackColor];//RGBCOLOR(242,242,242);
-    
     _myScrollView.showsHorizontalScrollIndicator = NO;
-    
     _myScrollView.showsHorizontalScrollIndicator = NO;
-    
-    _myScrollView.contentSize = CGSizeMake(340*self.allImagesUrlArray.count,0);
-    
+    _myScrollView.contentSize = CGSizeMake((DEVICE_WIDTH+20)*self.allImagesUrlArray.count,0);
     [self.view addSubview:_myScrollView];
     
-    _myScrollView.contentOffset = CGPointMake(340*_currentPage,0);
-    
+    _myScrollView.contentOffset = CGPointMake((DEVICE_WIDTH+20)*_currentPage,0);
     _myScrollView.scrollEnabled = NO;
-    
     [self loadCurrentImageWithUrl:nil];
     
     
     
-    content_back_view = [[AtlasContentView alloc] initWithFrame:CGRectMake(0,(iPhone5?568:480)-166,320,122)];
+    content_back_view = [[AtlasContentView alloc] initWithFrame:CGRectMake(0,DEVICE_HEIGHT-166,DEVICE_WIDTH,122)];
     
     content_back_view.hidden = YES;
     
@@ -698,7 +691,7 @@
     
     __weak typeof(self) bself = self;
     
-    input_view = [[CustomInputView alloc] initWithFrame:CGRectMake(0,content_back_view.frame.origin.y + content_back_view.frame.size.height,320,44)];
+    input_view = [[CustomInputView alloc] initWithFrame:CGRectMake(0,content_back_view.frame.origin.y + content_back_view.frame.size.height,DEVICE_WIDTH,44)];
     
     input_view.userInteractionEnabled = NO;
     
@@ -735,17 +728,11 @@
     
     
     input_view.backgroundColor = RGBCOLOR(3,3,3);
-    
     input_view.top_line_view.backgroundColor = [UIColor clearColor];
-    
     input_view.commot_background_view.backgroundColor = RGBCOLOR(24,26,25);
-    
     input_view.commot_background_view.layer.borderWidth = 0;
-    
     input_view.commit_label.textColor = RGBCOLOR(52,63,62);
-    
     [input_view.pinglun_button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    
     input_view.text_input_view.layer.borderColor = RGBCOLOR(211,211,211).CGColor;
     
     
@@ -875,7 +862,7 @@
     
     
     
-    _thezkingAlertV=[[ZkingAlert alloc]initWithFrame:CGRectMake(0, 0, 320, 480) labelString:@""];
+    _thezkingAlertV=[[ZkingAlert alloc]initWithFrame:CGRectMake(0, 0,DEVICE_WIDTH,DEVICE_HEIGHT) labelString:@""];
     _thezkingAlertV.hidden=YES;
     [self.view addSubview:_thezkingAlertV];
     
@@ -961,7 +948,7 @@
     
     if (!_theTouchView)
     {
-        _theTouchView = [[UIView alloc] initWithFrame:CGRectMake(0,0,320,text_background_view.frame.origin.y)];
+        _theTouchView = [[UIView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,text_background_view.frame.origin.y)];
         
         _theTouchView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.3];
         

@@ -23,7 +23,7 @@
         self.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.5];
         
         
-        _title_label = [[UILabel alloc] initWithFrame:CGRectMake(12,17,260,18)];
+        _title_label = [[UILabel alloc] initWithFrame:CGRectMake(12,17,DEVICE_WIDTH-60,18)];
         
         _title_label.backgroundColor = [UIColor clearColor];
         
@@ -39,7 +39,7 @@
         
      
         
-        _current_page = [[UILabel alloc] initWithFrame:CGRectMake(280,0,40,42)];
+        _current_page = [[UILabel alloc] initWithFrame:CGRectMake(DEVICE_WIDTH-40,0,40,42)];
         
         _current_page.backgroundColor = [UIColor clearColor];
         
@@ -51,7 +51,7 @@
         
         
         
-        _content_textView = [[UITextView alloc] initWithFrame:CGRectMake(8,45,306,77)];
+        _content_textView = [[UITextView alloc] initWithFrame:CGRectMake(8,45,DEVICE_WIDTH-14,77)];
 
         _content_textView.backgroundColor = [UIColor clearColor];
         

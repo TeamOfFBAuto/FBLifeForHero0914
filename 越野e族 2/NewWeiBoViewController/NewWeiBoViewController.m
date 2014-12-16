@@ -97,7 +97,7 @@
 -(void)ClickWeiBoCustomSegmentWithIndex:(int)index
 {
     //    [UIView animateWithDuration:0.4 animations:^{
-    _rootScrollView.contentOffset = CGPointMake(320*index,0);
+    _rootScrollView.contentOffset = CGPointMake(DEVICE_WIDTH*index,0);
     //    } completion:^(BOOL finished) {
     //
     //    }];
@@ -616,7 +616,7 @@
     
     
     //创建主滚动视图
-    _rootScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0,0,320,iPhone5?548-44:460-44)];
+    _rootScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,DEVICE_HEIGHT-64)];
     _rootScrollView.delegate = self;
     _rootScrollView.pagingEnabled = YES;
     _rootScrollView.backgroundColor = [UIColor whiteColor];
@@ -627,17 +627,17 @@
     _rootScrollView.contentSize = CGSizeMake(960,0);
     [self.view addSubview:_rootScrollView];
     
-    _rootScrollView.contentOffset = CGPointMake(selectedView*320,0);
+    _rootScrollView.contentOffset = CGPointMake(selectedView*DEVICE_WIDTH,0);
     
     _userContentOffsetX = 0;
     
     
     
-    loadview=[[LoadingIndicatorView alloc]initWithFrame:CGRectMake(0, 900, 320, 40)];
-    loadview1=[[LoadingIndicatorView alloc]initWithFrame:CGRectMake(0, 900, 320, 40)];
-    loadview3=[[LoadingIndicatorView alloc]initWithFrame:CGRectMake(0, 900, 320, 40)];
+    loadview=[[LoadingIndicatorView alloc]initWithFrame:CGRectMake(0, 900,DEVICE_WIDTH, 40)];
+    loadview1=[[LoadingIndicatorView alloc]initWithFrame:CGRectMake(0, 900,DEVICE_WIDTH, 40)];
+    loadview3=[[LoadingIndicatorView alloc]initWithFrame:CGRectMake(0, 900, DEVICE_WIDTH, 40)];
     //微博广场
-    _myTableView = [[UITableView alloc] initWithFrame:CGRectMake(320,0,320,iPhone5?548-44:460-44) style:UITableViewStylePlain];
+    _myTableView = [[UITableView alloc] initWithFrame:CGRectMake(DEVICE_WIDTH,0,DEVICE_WIDTH,DEVICE_HEIGHT-64) style:UITableViewStylePlain];
     
     if (IOS_VERSION>=7.0)
     {
@@ -652,7 +652,7 @@
     
     
     //我关注的
-    _myTableView1 = [[UITableView alloc] initWithFrame:CGRectMake(0,0,320,iPhone5?548-44:460-44) style:UITableViewStylePlain];
+    _myTableView1 = [[UITableView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,DEVICE_HEIGHT-64) style:UITableViewStylePlain];
     
     if (IOS_VERSION>=7.0)
     {
@@ -665,7 +665,7 @@
     _myTableView1.tableFooterView = loadview1;
     
     
-    _myTableView2 = [[UITableView alloc] initWithFrame:CGRectMake(640,0,320,iPhone5?548-44:460-44) style:UITableViewStylePlain];
+    _myTableView2 = [[UITableView alloc] initWithFrame:CGRectMake(DEVICE_WIDTH*2,0,DEVICE_WIDTH,DEVICE_HEIGHT-64) style:UITableViewStylePlain];
     
     if (IOS_VERSION>=7.0)
     {
@@ -777,6 +777,7 @@
     [self showLeftAndRightData];
     
     _replaceAlertView=[[AlertRePlaceView alloc]initWithFrame:CGRectMake(85, 200, 150, 100) labelString:@"您的网络不给力哦，请检查网络"];
+    _replaceAlertView.center = CGPointMake(DEVICE_WIDTH/2,DEVICE_HEIGHT/2);
     _replaceAlertView.delegate=self;
     _replaceAlertView.hidden=YES;
     [[UIApplication sharedApplication].keyWindow
@@ -787,7 +788,7 @@
     
     if (!searchloadingview)
     {
-        searchloadingview =[[LoadingIndicatorView alloc]initWithFrame:CGRectMake(0, 900, 320, 40)];
+        searchloadingview =[[LoadingIndicatorView alloc]initWithFrame:CGRectMake(0, 900,DEVICE_WIDTH, 40)];
         searchloadingview.backgroundColor=[UIColor clearColor];
         searchloadingview.normalLabel.text=@"上拉加载更多";
     }
@@ -797,7 +798,7 @@
 
     if (!xiala_tab)
     {
-        xiala_tab=[[UITableView alloc]initWithFrame:CGRectMake(0,MY_MACRO_NAME?108:88,320,iPhone5?(568-19-44-36):(480-19-44-36)) style:UITableViewStylePlain];
+        xiala_tab=[[UITableView alloc]initWithFrame:CGRectMake(0,MY_MACRO_NAME?108:88,DEVICE_WIDTH,DEVICE_HEIGHT-19-44-36) style:UITableViewStylePlain];
         xiala_tab.backgroundColor=[UIColor whiteColor];
         xiala_tab.hidden=YES;
         
@@ -821,7 +822,7 @@
     
     Write_blog_button.frame = CGRectMake(0,0,60,60);
     
-    Write_blog_button.center = CGPointMake(35,(iPhone5?568:480)-42-64);
+    Write_blog_button.center = CGPointMake(35,DEVICE_HEIGHT-42-64);
     
     [Write_blog_button setImage:[UIImage imageNamed:@"newWriteBlogButtonImage"] forState:UIControlStateNormal];
     
@@ -974,7 +975,7 @@
     
     if (!temp_view)
     {
-        temp_view = [[UIView alloc] initWithFrame:CGRectMake(0,0,320,iPhone5?568:480)];
+        temp_view = [[UIView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,DEVICE_HEIGHT)];
         
         temp_view.backgroundColor = [UIColor blackColor];
         
@@ -994,7 +995,7 @@
     
     if (!view_xialaherader)
     {
-        view_xialaherader=[[UIView alloc]initWithFrame:CGRectMake(0,0,320,IOS_VERSION>=7.0?108:88)];
+        view_xialaherader=[[UIView alloc]initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,IOS_VERSION>=7.0?108:88)];
         
         UIImageView *imgbc=[[UIImageView alloc]initWithFrame:CGRectMake(12,IOS_VERSION>=7.0?26:6,517/2,28)];
         imgbc.image=[UIImage imageNamed:@"ios7_newssearchbar.png"];
@@ -1009,7 +1010,7 @@
         _searchbar.userInteractionEnabled = TRUE;
         
         
-        cancelButton=[[UIButton alloc]initWithFrame:CGRectMake(263,MY_MACRO_NAME?26:6,320-517/2,61/2)];
+        cancelButton=[[UIButton alloc]initWithFrame:CGRectMake(263,MY_MACRO_NAME?26:6,DEVICE_WIDTH-517/2,61/2)];
         cancelButton.backgroundColor = [UIColor clearColor];
         cancelButton.userInteractionEnabled=YES;
         [cancelButton setTitle:@"取消"  forState:UIControlStateNormal];//文字
@@ -1019,7 +1020,7 @@
         //        [ImgV_ofsearch addSubview:cancelButton];
         
         
-        viewsearch=[[UIImageView alloc]initWithFrame:CGRectMake(0,0,320,IOS_VERSION>=7.0?64:44)];
+        viewsearch=[[UIImageView alloc]initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,IOS_VERSION>=7.0?64:44)];
         viewsearch.image=[UIImage imageNamed:IOS_VERSION>=7.0?IOS7DAOHANGLANBEIJING:IOS6DAOHANGLANBEIJING];
         [viewsearch addSubview:imgbc];
         [viewsearch addSubview:_searchbar];
@@ -1028,7 +1029,7 @@
         [view_xialaherader addSubview:viewsearch];
         
         view_xialaherader.backgroundColor = RGBACOLOR(247,247,247,1);
-        _slsV=[[SliderSegmentView alloc]initWithFrame:CGRectMake(0,IOS_VERSION>=7.0?64:44,320,36)];
+        _slsV=[[SliderSegmentView alloc]initWithFrame:CGRectMake(0,IOS_VERSION>=7.0?64:44,DEVICE_WIDTH,36)];
         _slsV.delegate=self;
         [_slsV loadContent:[NSArray arrayWithObjects:@"搜索微博",@"搜索用户",nil]];
         [view_xialaherader addSubview:_slsV];
@@ -1516,7 +1517,7 @@
     [_array1 removeAllObjects];
     [_array3 removeAllObjects];
     
-    _rootScrollView.contentOffset = CGPointMake(320,0);
+    _rootScrollView.contentOffset = CGPointMake(DEVICE_WIDTH,0);
     
     [_myTableView1 reloadData];
     
@@ -1633,7 +1634,7 @@
 {
     if (scrollView == _rootScrollView)
     {
-        int current_page = scrollView.contentOffset.x/320;
+        int current_page = scrollView.contentOffset.x/DEVICE_WIDTH;
         
         if (current_page == selectedView)
         {
@@ -1647,7 +1648,7 @@
                 if (!isLogIn)
                 {
                     [self LogIn];
-                    _rootScrollView.contentOffset = CGPointMake(320*selectedView,0);
+                    _rootScrollView.contentOffset = CGPointMake(DEVICE_WIDTH*selectedView,0);
                     
                     return;
                 }

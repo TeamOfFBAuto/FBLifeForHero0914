@@ -83,7 +83,7 @@
         
         if (!_DateLine_Label)
         {
-            _DateLine_Label = [[UILabel alloc] initWithFrame:CGRectMake(250,10,60,20)];
+            _DateLine_Label = [[UILabel alloc] initWithFrame:CGRectMake(DEVICE_WIDTH-70,10,60,20)];
             _DateLine_Label.backgroundColor = [UIColor clearColor];
             _DateLine_Label.font = [UIFont systemFontOfSize:12];
             _DateLine_Label.textColor = RGBCOLOR(142,142,142);
@@ -99,15 +99,10 @@
         if (!_from_label)
         {
             _from_label = [[UILabel alloc] initWithFrame:CGRectMake(55,10,100,20)];
-            
             _from_label.textColor = RGBCOLOR(142,142,142);
-            
             _from_label.textAlignment = NSTextAlignmentLeft;
-            
             _from_label.font = [UIFont systemFontOfSize:12];
-            
             _from_label.backgroundColor = [UIColor clearColor];
-            
             [self.contentView addSubview:_from_label];
         }
         
@@ -115,7 +110,7 @@
         
         if (!_content_view_special)
         {
-            _content_view_special = [[WeiBoSpecialView alloc] initWithFrame:CGRectMake(55,35,255,100)];
+            _content_view_special = [[WeiBoSpecialView alloc] initWithFrame:CGRectMake(55,35,DEVICE_WIDTH-65,100)];
             _content_view_special.delegate = self;
             _content_view_special.line_space = 3;
             _content_view_special.content_font = 16;
@@ -129,7 +124,7 @@
         
         if (!_reply_background_view)
         {
-            _reply_background_view = [[UIImageView alloc] initWithFrame:CGRectMake(55,0,255,0)];
+            _reply_background_view = [[UIImageView alloc] initWithFrame:CGRectMake(55,0,DEVICE_WIDTH-65,0)];
             
             _reply_background_view.userInteractionEnabled = YES;
             
@@ -138,7 +133,7 @@
         
         if (!_content_reply_special)
         {
-            _content_reply_special = [[WeiBoSpecialView alloc] initWithFrame:CGRectMake(8,10,255-16,0)];
+            _content_reply_special = [[WeiBoSpecialView alloc] initWithFrame:CGRectMake(8,10,DEVICE_WIDTH-65-16,0)];
             _content_reply_special.delegate = self;
             _content_reply_special.line_space = 3;
             _content_reply_special.content_font = 16;
@@ -206,7 +201,7 @@
         
         if (!_content_view_special)
         {
-            _content_view_special = [[WeiBoSpecialView alloc] initWithFrame:CGRectMake(10,40,300,100)];
+            _content_view_special = [[WeiBoSpecialView alloc] initWithFrame:CGRectMake(10,40,DEVICE_WIDTH-20,100)];
             _content_view_special.delegate = self;
             _content_view_special.line_space = 3;
             _content_view_special.content_font = 16;
@@ -220,7 +215,7 @@
         
         if (!_reply_background_view)
         {
-            _reply_background_view = [[UIImageView alloc] initWithFrame:CGRectMake(10,0,300,0)];
+            _reply_background_view = [[UIImageView alloc] initWithFrame:CGRectMake(10,0,DEVICE_WIDTH-20,0)];
             
             _reply_background_view.userInteractionEnabled = YES;
             
@@ -229,7 +224,7 @@
         
         if (!_content_reply_special)
         {
-            _content_reply_special = [[WeiBoSpecialView alloc] initWithFrame:CGRectMake(8,10,300-16,0)];
+            _content_reply_special = [[WeiBoSpecialView alloc] initWithFrame:CGRectMake(8,10,DEVICE_WIDTH-20-16,0)];
             _content_reply_special.delegate = self;
             _content_reply_special.line_space = 3;
             _content_reply_special.content_font = 16;
@@ -339,10 +334,10 @@
         _reply_background_view.image = [[UIImage imageNamed:@"newWeiBoBackGroundImage.png"] stretchableImageWithLeftCapWidth:130 topCapHeight:7];
     }
     
-    _pinglun_button.frame = CGRectMake(280,theheight - 30,40,20);
+    _pinglun_button.frame = CGRectMake(DEVICE_WIDTH-40,theheight - 30,40,20);
     [_pinglun_button setTitle:info.replys forState:UIControlStateNormal];
     
-    _zhuanfa_button.frame = CGRectMake(240,theheight - 30,40,20);
+    _zhuanfa_button.frame = CGRectMake(DEVICE_WIDTH-80,theheight - 30,40,20);
     [_zhuanfa_button setTitle:info.forwards forState:UIControlStateNormal];
     
     
@@ -501,7 +496,7 @@
     
     //0:微博  2:文集  3:图集  4:论坛帖子转发微博  5:论坛分享 6:新闻评论 8:新闻分享  10:资源分享
     
-    CGRect rect = CGRectMake(55,theType?35:40,theType?300:255,100);
+    CGRect rect = CGRectMake(55,theType?35:40,theType?(DEVICE_WIDTH-20):(DEVICE_WIDTH-65),100);
     
     if (!view_special)
     {
@@ -517,7 +512,7 @@
     {
         if (!content_v2)
         {
-            content_v2 = [[WeiBoSpecialView alloc] initWithFrame:CGRectMake(8,10,(theType?300:255)-16,10)];
+            content_v2 = [[WeiBoSpecialView alloc] initWithFrame:CGRectMake(8,10,(theType?(DEVICE_WIDTH-20):(DEVICE_WIDTH-65))-16,10)];
             content_v2.line_space = 3;
             content_v2.content_font = 16;
         }

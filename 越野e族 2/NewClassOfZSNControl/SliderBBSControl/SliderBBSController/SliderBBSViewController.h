@@ -5,6 +5,9 @@
 //  Created by soulnear on 14-7-3.
 //  Copyright (c) 2014年 soulnear. All rights reserved.
 //
+/*
+ 论坛部分
+ */
 
 #import <UIKit/UIKit.h>
 #import "SliderBBSJingXuanModel.h"
