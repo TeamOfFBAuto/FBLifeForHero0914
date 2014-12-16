@@ -39,6 +39,7 @@
         [_button_ahead addTarget:self action:@selector(refreshdata:) forControlEvents:UIControlEventTouchUpInside];
         _button_ahead.tag=202;
         [self addSubview:_button_ahead];
+        _button_ahead.center = CGPointMake(DEVICE_WIDTH / 4.f, _button_ahead.center.y);
         
         
         _button_show=[[UIButton alloc]initWithFrame:CGRectMake(110, 1, 100, 38)];
@@ -47,14 +48,17 @@
         _button_show.tag=203;
         [_button_show setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [self addSubview:_button_show];
+        _button_show.center = CGPointMake(DEVICE_WIDTH / 2.f,_button_show.center.y);
         
         _button_behind=[[UIButton alloc]initWithFrame:CGRectMake(220, 12, 20, 16)];
         [_button_behind setBackgroundImage:[UIImage imageNamed:@"ios7_goahead4032.png"] forState:UIControlStateNormal];
         [_button_behind addTarget:self action:@selector(refreshdata:) forControlEvents:UIControlEventTouchUpInside];
         _button_behind.tag=204;
         [self addSubview:_button_behind];
+        _button_behind.center = CGPointMake(3 * DEVICE_WIDTH / 4.f, _button_behind.center.y);
         
-        _button_comment=[[UIButton alloc]initWithFrame:CGRectMake(294-5-1, (40-39/2)/2, 38/2, 39/2)];
+        
+        _button_comment=[[UIButton alloc]initWithFrame:CGRectMake(DEVICE_WIDTH - 32, (40-39/2)/2, 38/2, 39/2)];
         [_button_comment addTarget:self action:@selector(refreshdata:) forControlEvents:UIControlEventTouchUpInside];
         _button_comment.tag=205;
         [self addSubview:_button_comment];

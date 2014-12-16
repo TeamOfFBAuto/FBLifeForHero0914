@@ -19,14 +19,14 @@
         
         self.arrray_title=[NSArray arrayWithObjects:@"自留地",@"微信好友",@"微信朋友圈",@"新浪微博",@"邮箱", nil];
         
-        self.touchView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, iPhone5?568:480)];
+        self.touchView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, DEVICE_WIDTH, DEVICE_HEIGHT)];
         
         self.touchView.hidden=YES;
         
         self.touchView.backgroundColor=[[UIColor blackColor]colorWithAlphaComponent:0.4];
         
-        self.frame=CGRectMake(0, self.touchView.frame.size.height-268, 320, 268);
-
+        self.frame=CGRectMake(0, self.touchView.frame.size.height-268, DEVICE_WIDTH, 268);
+        
         
         UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(shareviewHiden)];
         
@@ -53,16 +53,20 @@
         
         for (int i=0; i<self.arrray_title.count; i++) {
             
-            UIButton *thebutton=[[UIButton alloc]initWithFrame:CGRectMake(34+100*(i%3), 50+80*(i/3), 50, 50)];
+            //            UIButton *thebutton=[[UIButton alloc]initWithFrame:CGRectMake(34+100*(i%3), 50+80*(i/3), 50, 50)];
+            
+            UIButton *thebutton=[[UIButton alloc]initWithFrame:CGRectMake((DEVICE_WIDTH - 250)/2.f + 100*(i%3), 50+80*(i/3), 50, 50)];
             
             [thebutton setImage:[UIImage imageNamed:[self.array_icon objectAtIndex:i]] forState:UIControlStateNormal];
             
             thebutton.tag=i+100;
             
+            thebutton.backgroundColor = [UIColor whiteColor];
+            
             [thebutton addTarget:self action:@selector(doshareButton:) forControlEvents:UIControlEventTouchUpInside];
             [self addSubview:thebutton];
             
-            UILabel *thelabel=[[UILabel alloc]initWithFrame:CGRectMake(24+100*(i%3), thebutton.frame.origin.y+55, 70, 20)];
+            UILabel *thelabel=[[UILabel alloc]initWithFrame:CGRectMake((DEVICE_WIDTH - 250)/2.f - 10 +100*(i%3), thebutton.frame.origin.y+55, 70, 20)];
             
             thelabel.font=[UIFont systemFontOfSize:12];
             
@@ -80,13 +84,13 @@
             
         }
         //分割线
-        UIView *viewLine=[[UIView alloc]initWithFrame:CGRectMake(0, 220, 320, 1)];
+        UIView *viewLine=[[UIView alloc]initWithFrame:CGRectMake(0, 220, DEVICE_WIDTH, 1)];
         
         viewLine.backgroundColor=RGBCOLOR(173, 173, 173);
         
         [self addSubview:viewLine];
         
-        UIButton *cancelButton=[[UIButton alloc]initWithFrame:CGRectMake(0, 221, 320, 50)];
+        UIButton *cancelButton=[[UIButton alloc]initWithFrame:CGRectMake(0, 221, DEVICE_WIDTH, 50)];
         
         [cancelButton setTitle:@"取消" forState:UIControlStateNormal];
         
@@ -100,12 +104,6 @@
         [cancelButton addTarget:self action:@selector(shareviewHiden) forControlEvents:UIControlEventTouchUpInside];
         
         [self addSubview:cancelButton];
-        
-        
-        
-        
-        
-        
         
     }
     return self;
@@ -128,7 +126,7 @@
     
     [UIView animateWithDuration:0.3 animations:^{
         
-        self.frame=CGRectMake(0, self.touchView.frame.size.height, 320, 268);
+        self.frame=CGRectMake(0, self.touchView.frame.size.height, DEVICE_WIDTH, 268);
 //        self.touchView.alpha=0;
 
         
@@ -169,7 +167,7 @@
     [UIView animateWithDuration:0.3 animations:^{
         
 
-        self.frame=CGRectMake(0, self.touchView.frame.size.height-268, 320, 268);
+        self.frame=CGRectMake(0, self.touchView.frame.size.height-268, DEVICE_WIDTH, 268);
 
 
     } completion:^(BOOL finished) {

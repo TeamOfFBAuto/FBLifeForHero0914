@@ -17,7 +17,7 @@
     self.image=[UIImage imageNamed:@"308_223.png"];
     self.backgroundColor=[UIColor clearColor];
     if (self) {
-        self.center=CGPointMake(160, iPhone5?568/2:480/2);
+        self.center=CGPointMake(DEVICE_WIDTH / 2.f, DEVICE_HEIGHT /  2.f);
         UILabel *label_text=[[UILabel alloc]initWithFrame:CGRectMake(2, 58, 150, 50)];
         label_text.backgroundColor=[UIColor clearColor];
         label_text.textAlignment=UITextAlignmentCenter;
