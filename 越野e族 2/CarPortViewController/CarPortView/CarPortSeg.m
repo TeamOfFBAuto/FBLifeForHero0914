@@ -35,7 +35,7 @@
     mytype=__type;
     NSLog(@"type===%d",self.type);
     if (__type==0) {
-        UIImageView *imgvline=[[UIImageView alloc]initWithFrame:CGRectMake(0, self.frame.size.height-0.5, 320, 0.5)];
+        UIImageView *imgvline=[[UIImageView alloc]initWithFrame:CGRectMake(0, self.frame.size.height-0.5, DEVICE_WIDTH, 0.5)];
         imgvline.image=[UIImage imageNamed:@"line-2.png"];
         [self addSubview:imgvline];
         self.backgroundColor=RGBCOLOR(247, 247, 247);
@@ -43,7 +43,7 @@
         
         NSLog(@"firstttttt");
         for (int i=0; i<NUMBEROFBUTTON; i++) {
-            button_=[[UIButton alloc]initWithFrame:CGRectMake(i*320/NUMBEROFBUTTON, 0, 320/NUMBEROFBUTTON, 33)];
+            button_=[[UIButton alloc]initWithFrame:CGRectMake(i*DEVICE_WIDTH/NUMBEROFBUTTON, 0, DEVICE_WIDTH/NUMBEROFBUTTON, 33)];
             button_.tag=i+1000;
             [button_ setTitle:[self.NameArray objectAtIndex:i] forState:UIControlStateNormal];
             button_.titleLabel.font=[UIFont systemFontOfSize:14];
@@ -52,7 +52,7 @@
             [self addSubview:button_];
             
             UIImageView *imgv=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"carlineios7.png"]];
-            imgv.frame=CGRectMake(320*(i+1)/4, 0, 0.5, 32);
+            imgv.frame=CGRectMake(DEVICE_WIDTH * (i+1)/4, 0, 0.5, 32);
             [self addSubview:imgv];
             
             if (button_.tag==1000) {
@@ -76,7 +76,7 @@
     }
     if (__type==1)
     {
-        UIImageView *imgvline=[[UIImageView alloc]initWithFrame:CGRectMake(0,self.frame.size.height-1, 320,1)];
+        UIImageView *imgvline=[[UIImageView alloc]initWithFrame:CGRectMake(0,self.frame.size.height-1, DEVICE_WIDTH,1)];
         imgvline.image=[UIImage imageNamed:@"line-2.png"];
         [self addSubview:imgvline];
         
@@ -85,9 +85,9 @@
             
             NSString * title = [self.NameArray objectAtIndex:i];
             
-            float theWidth = [zsnApi boolLabelLength:title withFont:14 wihtWidth:320/NUMBEROFBUTTON];
+            float theWidth = [zsnApi boolLabelLength:title withFont:14 wihtWidth:DEVICE_WIDTH/NUMBEROFBUTTON];
             
-            button_=[[UIButton alloc]initWithFrame:CGRectMake(i*320/NUMBEROFBUTTON, 0, 320/NUMBEROFBUTTON, 33)];
+            button_=[[UIButton alloc]initWithFrame:CGRectMake(i * DEVICE_WIDTH /NUMBEROFBUTTON, 0, DEVICE_WIDTH / NUMBEROFBUTTON, 33)];
             button_.tag=i+10000000;
             
             
@@ -112,12 +112,12 @@
             
             icon_view.tag = 100;
             
-            icon_view.center = CGPointMake((320/NUMBEROFBUTTON)/2+theWidth/2 + 10 - 5,33/2+1);
+            icon_view.center = CGPointMake((DEVICE_WIDTH / NUMBEROFBUTTON)/2+theWidth/2 + 10 - 5,33/2+1);
             
             [button_ addSubview:icon_view];
             
             UIImageView *imgv=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"carlineios7.png"]];
-            imgv.frame=CGRectMake(320*(i+1)/4, 0,0.5,32);
+            imgv.frame=CGRectMake(DEVICE_WIDTH * (i+1)/4, 0,0.5,32);
             [self addSubview:imgv];
         }
         
@@ -128,7 +128,8 @@
         self.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"ios_7carportpicselect608_57.png"]];
         NSLog(@"firstttttt");
         for (int i=0; i<NUMBEROFBUTTON; i++) {
-                button_=[[UIButton alloc]initWithFrame:CGRectMake(i*304/NUMBEROFBUTTON+0.5, 0, 303/NUMBEROFBUTTON, 57/2)];
+            //304
+                button_=[[UIButton alloc]initWithFrame:CGRectMake(i*(DEVICE_WIDTH - 16)/NUMBEROFBUTTON+0.5, 0, (DEVICE_WIDTH - 17)/NUMBEROFBUTTON, 57/2)];
 
   
             button_.tag=i+1000;

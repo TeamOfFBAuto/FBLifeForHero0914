@@ -88,11 +88,11 @@
 
     
     
-    UIView *aview=[[UIView alloc]initWithFrame:CGRectMake(0,0,320,20+iPhone5?iphone5fram:iphone4fram)];
+    UIView *aview=[[UIView alloc]initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,20 + DEVICE_HEIGHT)];
     self.view=aview;
     aview.backgroundColor=[UIColor whiteColor];
     
-    segview=[[CarPortSeg alloc]initWithFrame:CGRectMake(0, 0, 320, 33)];
+    segview=[[CarPortSeg alloc]initWithFrame:CGRectMake(0, 0, DEVICE_WIDTH, 33)];
     [segview setNameArray:[NSArray arrayWithObjects:@"综述",@"图片",@"资讯",@"论坛", nil]];
     
     
@@ -105,7 +105,7 @@
   
     
     //车系图片的tableview
-    imagetableview=[[UITableView alloc]initWithFrame:CGRectMake(0, 33.5, 320, iPhone5?568-20-33.5-44:480-20-33.5-44)];
+    imagetableview=[[UITableView alloc]initWithFrame:CGRectMake(0, 33.5, DEVICE_WIDTH, DEVICE_HEIGHT - 20-33.5-44)];
     imagetableview.separatorColor=[UIColor clearColor];
     imagetableview.delegate=self;
     imagetableview.dataSource=self;
@@ -115,11 +115,13 @@
     [self.view addSubview:imagetableview];
     //车系新闻的tableview
     
-    newstab=[[UITableView alloc]initWithFrame:CGRectMake(0, 33.5, 320, iPhone5?568-20-33.5-44:480-20-33.5-44)];
+    newstab=[[UITableView alloc]initWithFrame:CGRectMake(0, 33.5, DEVICE_WIDTH, DEVICE_HEIGHT - 20-33.5-44)];
     newstab.separatorColor=[UIColor clearColor];
     newstab.delegate=self;
     newstab.dataSource=self;
     newstab.hidden=YES;
+    newstab.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
     isnewsloadsuccess=NO;
     newsofdiscriptionarray=[[NSMutableArray alloc]init];
     newsofdatearray=[[NSMutableArray alloc]init];
@@ -128,12 +130,12 @@
     newsofimgarray=[[NSMutableArray alloc]init];
     
     
-    loadview=[[LoadingIndicatorView alloc]initWithFrame:CGRectMake(0, 900, 320, 40)];
+    loadview=[[LoadingIndicatorView alloc]initWithFrame:CGRectMake(0, 900, DEVICE_WIDTH, 40)];
     loadview.backgroundColor=[UIColor clearColor];
     [self.view addSubview:newstab];
     
     
-    summarytabview=[[UITableView alloc]initWithFrame:CGRectMake(0, 33, 320, iPhone5?568-20-33-44:480-20-33-44)];
+    summarytabview=[[UITableView alloc]initWithFrame:CGRectMake(0, 33, DEVICE_WIDTH, DEVICE_HEIGHT - 20-33-44)];
     summarytabview.separatorColor=GRAYXIAN;
     summarytabview.delegate=self;
     summarytabview.dataSource=self;
@@ -202,7 +204,7 @@
     int num=0;
     if (tableView==imagetableview)
     {
-        num = 154/2-4;
+        num = [self heightFor:154/2-4];
     }
     if (tableView==newstab)
     {
@@ -220,7 +222,7 @@
     {
         if (section==0)
         {
-            UIView *aviews=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 90)];
+            UIView *aviews=[[UIView alloc]initWithFrame:CGRectMake(0, 0, DEVICE_WIDTH, 90)];
             aviews.backgroundColor=RGBCOLOR(245, 245, 245);
             
             AsyncImageView *_imgV=[[AsyncImageView alloc]initWithFrame:CGRectMake(5, 10, 105, 70)];
@@ -269,7 +271,7 @@
             return aviews;
         }else
         {
-            UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, 320, 25)];
+            UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, DEVICE_WIDTH, 25)];
             label.backgroundColor=RGBCOLOR(227, 227, 227);
             label.text=@"  参数配置";
             label.font=[UIFont systemFontOfSize:14];
@@ -297,6 +299,14 @@
     }
     
 }
+
+//根据宽度适应高度
+- (CGFloat)heightFor:(CGFloat)oHeight
+{
+    CGFloat aHeight = (DEVICE_WIDTH / 320) * oHeight;
+    return aHeight;
+}
+
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *string_cell=@"cell";
     UITableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:string_cell];
@@ -318,10 +328,11 @@
 
         UIImage *placeImg=[UIImage imageNamed:@"implaceofcarport.png"];
         
+        CGFloat aWidth = (DEVICE_WIDTH - 9*4)/3;
         
         if (indexPath.row*3 < smallimagearray.count)
         {
-            asyimagev=[[AsyncImageView alloc] initWithFrame:CGRectMake(9, 9, 94.5, 152/2-12)];
+            asyimagev=[[AsyncImageView alloc] initWithFrame:CGRectMake(9, 9, aWidth, [self heightFor:152/2-12])];
             [asyimagev loadImageFromURL:[smallimagearray objectAtIndex:indexPath.row*3] withPlaceholdImage:placeImg];
             asyimagev.tag=indexPath.row*3;
             [cell.contentView addSubview:asyimagev];
@@ -335,7 +346,7 @@
         
         if (indexPath.row*3+1 < smallimagearray.count)
         {
-            asyimagev=[[AsyncImageView alloc] initWithFrame:CGRectMake(9+94.5+9, 9, 94.5, 152/2-12)];
+            asyimagev=[[AsyncImageView alloc] initWithFrame:CGRectMake(9 + aWidth +9, 9, aWidth, [self heightFor:152/2-12])];
             [asyimagev loadImageFromURL:[smallimagearray objectAtIndex:indexPath.row*3+1] withPlaceholdImage:placeImg];
             asyimagev.tag=indexPath.row*3+1;
             [cell.contentView addSubview:asyimagev];
@@ -350,7 +361,9 @@
         
         if (indexPath.row*3+2 < smallimagearray.count)
         {
-            asyimagev=[[AsyncImageView alloc] initWithFrame:CGRectMake(9+94.5+9+94.5+9, 9, 94.5, 152/2-12)];
+//            asyimagev=[[AsyncImageView alloc] initWithFrame:CGRectMake(9+94.5+9+94.5+9, 9, 94.5, 152/2-12)];
+            
+            asyimagev=[[AsyncImageView alloc] initWithFrame:CGRectMake(9 + aWidth +9 + aWidth +9, 9, aWidth, [self heightFor:152/2-12])];
             [asyimagev loadImageFromURL:[smallimagearray objectAtIndex:indexPath.row*3+2] withPlaceholdImage:placeImg];
             asyimagev.tag=indexPath.row*3+2;
             [cell.contentView addSubview:asyimagev];
@@ -366,14 +379,15 @@
     
     if (tableView==newstab)
     {
-        orcell=[[newscellview alloc]initWithFrame:CGRectMake(0, 0, 320, 77)];
+        orcell=[[newscellview alloc]initWithFrame:CGRectMake(0, 0, DEVICE_WIDTH, 77)];
         [orcell setImv_string:[newsofimgarray objectAtIndex:indexPath.row]];
         [orcell setTitle_string:[newsoftitlearray objectAtIndex:indexPath.row]];
         [orcell setDate_string:[newsofdatearray objectAtIndex:indexPath.row]];
         [orcell setDiscribe_string:[newsofdiscriptionarray objectAtIndex:indexPath.row]];
         [cell.contentView addSubview:orcell];
         
-        UIImageView *img=[[UIImageView alloc]initWithFrame:CGRectMake(0, 77, 320, 1)];
+        UIImageView *img=[[UIImageView alloc]initWithFrame:CGRectMake(0, 77, DEVICE_WIDTH, 1)];
+        img.contentMode =  UIViewContentModeScaleToFill;
         img.image=[UIImage imageNamed:@"line-2.png"];
         [cell.contentView addSubview:img];
         UIView *selectback=[[UIView alloc]initWithFrame:cell.frame];
@@ -384,7 +398,7 @@
     if (tableView==summarytabview)
     {        
         NSDictionary *sumdicinfo=[summarayarrayinfo objectAtIndex:indexPath.row];
-        summarycellview *scellview=[[summarycellview alloc]initWithFrame:CGRectMake(0, 0, 320, 55)];
+        summarycellview *scellview=[[summarycellview alloc]initWithFrame:CGRectMake(0, 0, DEVICE_WIDTH, 55)];
         [scellview setSuminfo:sumdicinfo];
         [cell.contentView addSubview:scellview];
         
@@ -427,7 +441,7 @@
 
     if (_discriptionarray.count==0)
     {
-        UILabel *    label_nonedata=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, 320, 40)];
+        UILabel *    label_nonedata=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, DEVICE_WIDTH, 40)];
             label_nonedata.text=@"没有更多数据";
             label_nonedata.textColor=GRAYZI;
             label_nonedata.textAlignment=UITextAlignmentCenter;

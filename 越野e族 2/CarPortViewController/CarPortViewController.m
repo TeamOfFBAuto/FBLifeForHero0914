@@ -518,7 +518,7 @@
     [self.view addSubview:myScrollView];
     
     
-    seg = [[CarPortSeg alloc] initWithFrame:CGRectMake(0,0,320,33)];
+    seg = [[CarPortSeg alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,33)];
     
     seg.NameArray = [NSArray arrayWithObjects:@"车型",@"价格",@"国别",@"尺寸",nil];
     
@@ -542,7 +542,7 @@
     
     
     
-    CGRect rect = CGRectMake(0,33,320,iPhone5?568-33-20-44:480-33-20-44);
+    CGRect rect = CGRectMake(0,33,DEVICE_WIDTH,DEVICE_HEIGHT - 33-20-44);
     
     self.myTableView = [[UITableView alloc] initWithFrame:rect style:UITableViewStylePlain];
     
@@ -611,7 +611,7 @@
     
     
     
-    loadingView = [[LoadingIndicatorView alloc] initWithFrame:CGRectMake(0, 900, 320, 40)];
+    loadingView = [[LoadingIndicatorView alloc] initWithFrame:CGRectMake(0, 900, DEVICE_WIDTH, 40)];
     _Screening_tableView.tableFooterView = loadingView;
     
     
@@ -653,7 +653,7 @@
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:0.3];
     
-    _myTableView.contentOffset=CGPointMake(0, -80);
+    _myTableView.contentOffset=CGPointMake(0, -(DEVICE_WIDTH / 4));
     [_refreshHeaderView szksetstate];
     
     [UIView commitAnimations];
@@ -669,7 +669,7 @@
         [_refreshHeaderView egoRefreshScrollViewDidScroll:scrollView];
     }
     
-    if (_silder_view.frame.origin.x != 322 && scrollView == _myTableView)
+    if (_silder_view.frame.origin.x != DEVICE_WIDTH + 2 && scrollView == _myTableView)
     {
         if (request2)
         {
@@ -680,7 +680,7 @@
             request2 = nil;
         }
         [UIView animateWithDuration:0.2 animations:^{
-            _silder_view.frame = CGRectMake(322,self.myTableView.frame.origin.y,_silder_view.frame.size.width,self.myTableView.frame.size.height);
+            _silder_view.frame = CGRectMake(DEVICE_WIDTH + 2,self.myTableView.frame.origin.y,_silder_view.frame.size.width,self.myTableView.frame.size.height);
         } completion:^(BOOL finished)
          {
              
@@ -691,7 +691,7 @@
     if (scrollView == myScrollView)
     {
         [UIView animateWithDuration:0.2 animations:^{
-            _silder_view.frame = CGRectMake(322,self.myTableView.frame.origin.y,_silder_view.frame.size.width,self.myTableView.frame.size.height);
+            _silder_view.frame = CGRectMake(DEVICE_WIDTH + 2,self.myTableView.frame.origin.y,_silder_view.frame.size.width,self.myTableView.frame.size.height);
         } completion:^(BOOL finished)
          {
              
@@ -834,6 +834,53 @@
     }
 }
 
+-(void)viewDidLayoutSubviews
+{
+//    if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) {
+//        [self.tableView setSeparatorInset:UIEdgeInsetsMake(0,0,0,0)];
+//    }
+//    if ([self.tableView respondsToSelector:@selector(setLayoutMargins:)]) {
+//        [self.tableView setLayoutMargins:UIEdgeInsetsMake(0,0,0,0)];
+//    }
+    
+    //_myTableView _car_tableview _choose_tableview _Screening_tableView
+    
+    NSMutableArray *tabls_arr = [NSMutableArray array];
+    if (_myTableView) {
+        [tabls_arr addObject:_myTableView];
+    }
+    if (_car_tableview) {
+        [tabls_arr addObject:_car_tableview];
+    }
+    if (_choose_tableview) {
+        [tabls_arr addObject:_choose_tableview];
+    }
+    
+    if (_Screening_tableView) {
+        [tabls_arr  addObject:_Screening_tableView];
+    }
+    
+    
+    for (UITableView *aTable in tabls_arr) {
+        if (aTable && [aTable respondsToSelector:@selector(setSeparatorInset:)]) {
+            [aTable setSeparatorInset:UIEdgeInsetsMake(0,0,0,0)];
+        }
+        if (aTable && [aTable respondsToSelector:@selector(setLayoutMargins:)]) {
+            [aTable setLayoutMargins:UIEdgeInsetsMake(0,0,0,0)];
+        }
+    }
+}
+
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
+        [cell setSeparatorInset:UIEdgeInsetsZero];
+    }
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+        [cell setLayoutMargins:UIEdgeInsetsZero];
+    }
+}
+
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
@@ -934,7 +981,7 @@
         
         [cell.contentView addSubview:pic_imageView];
         
-        UILabel * name = [[UILabel alloc] initWithFrame:CGRectMake(80,10,120,20)];
+        UILabel * name = [[UILabel alloc] initWithFrame:CGRectMake(DEVICE_WIDTH / 4,10,120,20)];
         
         name.text = type.name;
         
@@ -1118,7 +1165,7 @@
 {
     if (tableView == _Screening_tableView)
     {
-        UIImageView * back_image = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,320,33)];
+        UIImageView * back_image = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,33)];
         
         back_image.image = [UIImage imageNamed:@"clean_backimage.png"];
         
@@ -1142,7 +1189,7 @@
         
         UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
         
-        button.frame = CGRectMake(213,0,105,33);
+        button.frame = CGRectMake(DEVICE_WIDTH - 103,0,105,33);//213
         
         button.adjustsImageWhenHighlighted = NO;
         
@@ -1169,11 +1216,11 @@
         
     }else if (tableView == _myTableView)
     {
-        UIView * view = [[UIView alloc] initWithFrame:CGRectMake(0,0,320,20)];
+        UIView * view = [[UIView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,20)];
         
         view.backgroundColor = RGBCOLOR(235,235,235);
         
-        UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake(10,0,320,20)];
+        UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake(10,0,DEVICE_WIDTH,20)];
         
         label.backgroundColor = [UIColor clearColor];
         
@@ -1252,7 +1299,7 @@
         }
         
         [UIView animateWithDuration:0.4 animations:^{
-            _silder_view.frame = CGRectMake(80,self.myTableView.frame.origin.y,_silder_view.frame.size.width,self.myTableView.frame.size.height);
+            _silder_view.frame = CGRectMake(DEVICE_WIDTH / 4,self.myTableView.frame.origin.y,_silder_view.frame.size.width,self.myTableView.frame.size.height);
         } completion:^(BOOL finished)
          {
              
@@ -1324,7 +1371,7 @@
 {
     if (!_silder_view)
     {
-        _silder_view = [[UIView alloc] initWithFrame:CGRectMake(322,self.myTableView.frame.origin.y,240,self.myTableView.frame.size.height)];
+        _silder_view = [[UIView alloc] initWithFrame:CGRectMake(DEVICE_WIDTH + 2,self.myTableView.frame.origin.y,DEVICE_WIDTH - DEVICE_WIDTH / 4,self.myTableView.frame.size.height)];
         
         _silder_view.layer.shadowColor = [UIColor blackColor].CGColor;
         
@@ -1432,7 +1479,7 @@
 -(void)doButton:(UIButton *)button
 {
     [UIView animateWithDuration:0.4 animations:^{
-        _silder_view.frame = CGRectMake(322,self.myTableView.frame.origin.y,_silder_view.frame.size.width,self.myTableView.frame.size.height);
+        _silder_view.frame = CGRectMake(DEVICE_WIDTH + 2,self.myTableView.frame.origin.y,_silder_view.frame.size.width,self.myTableView.frame.size.height);
     } completion:^(BOOL finished) {
         
     }];
@@ -1475,7 +1522,7 @@
     _Screening_tableView.contentOffset = CGPointMake(0,0);
     
     [UIView animateWithDuration:0.2 animations:^{
-        _silder_view.frame = CGRectMake(322,self.myTableView.frame.origin.y,_silder_view.frame.size.width,self.myTableView.frame.size.height);
+        _silder_view.frame = CGRectMake(DEVICE_WIDTH + 2,self.myTableView.frame.origin.y,_silder_view.frame.size.width,self.myTableView.frame.size.height);
     } completion:^(BOOL finished)
      {
          
@@ -1506,7 +1553,7 @@
         }
         [self.view addSubview:_choose_tableview];
         
-        UIView * vvvvv = [[UIView alloc] initWithFrame:CGRectMake(0,0,320,0)];
+        UIView * vvvvv = [[UIView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,0)];
         self.choose_tableview.tableFooterView = vvvvv;
         
         
@@ -1532,7 +1579,7 @@
     
     if (now_point.x > start_point.x)
     {
-        rect.origin.x = 80 + (now_point.x-start_point.x);
+        rect.origin.x = DEVICE_WIDTH / 4 + (now_point.x-start_point.x);
         
         _silder_view.frame = rect;
     }
@@ -1558,7 +1605,7 @@
             }
             
             [UIView animateWithDuration:0.4 animations:^{
-                _silder_view.frame = CGRectMake(322,self.myTableView.frame.origin.y,_silder_view.frame.size.width,self.myTableView.frame.size.height);
+                _silder_view.frame = CGRectMake(DEVICE_WIDTH + 2,self.myTableView.frame.origin.y,_silder_view.frame.size.width,self.myTableView.frame.size.height);
             } completion:^(BOOL finished)
              {
                  
@@ -1581,7 +1628,7 @@
         }
         
         [UIView animateWithDuration:0.4 animations:^{
-            _silder_view.frame = CGRectMake(322,self.myTableView.frame.origin.y,_silder_view.frame.size.width,self.myTableView.frame.size.height);
+            _silder_view.frame = CGRectMake(DEVICE_WIDTH + 2,self.myTableView.frame.origin.y,_silder_view.frame.size.width,self.myTableView.frame.size.height);
         } completion:^(BOOL finished)
          {
              
@@ -1589,7 +1636,7 @@
     }else if (now_point.x>100 && now_point.x<210)
     {
         [UIView animateWithDuration:0.4 animations:^{
-            _silder_view.frame = CGRectMake(80,self.myTableView.frame.origin.y,_silder_view.frame.size.width,self.myTableView.frame.size.height);
+            _silder_view.frame = CGRectMake(DEVICE_WIDTH / 4,self.myTableView.frame.origin.y,_silder_view.frame.size.width,self.myTableView.frame.size.height);
         } completion:^(BOOL finished)
          {
              
