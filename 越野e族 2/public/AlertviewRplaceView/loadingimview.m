@@ -30,7 +30,7 @@
         label_zhengzaijiazai.text=@"数据加载中";
         [self addSubview:label_zhengzaijiazai];
         
-        self.center=CGPointMake(160, iPhone5?568/2:480/2);
+        self.center=CGPointMake(DEVICE_WIDTH / 2.f, DEVICE_HEIGHT / 2.f);
     UIActivityIndicatorView *    activityIndicator = [[UIActivityIndicatorView alloc]
                              initWithActivityIndicatorStyle:
                              UIActivityIndicatorViewStyleWhiteLarge];
