@@ -203,7 +203,7 @@
     if (IOS_VERSION>=7) {
         
         
-        _keytop=[[keyboardtopview alloc]initWithFrame:CGRectMake(0, iPhone5?205+88+20:205+20, DEVICE_WIDTH, 40)];
+        _keytop=[[keyboardtopview alloc]initWithFrame:CGRectMake(0, DEVICE_HEIGHT - 275 +20, DEVICE_WIDTH, 40)];
         
     }else{
         _keytop=[[keyboardtopview alloc]initWithFrame:CGRectMake(0, iPhone5?205+88:205, DEVICE_WIDTH, 40)];
@@ -1111,7 +1111,7 @@
     return newImage;
 }
 
-
+#pragma mark - 键盘状态监测
 
 - (void) keyboardWillShow:(NSNotification *)notification {
     

@@ -146,14 +146,14 @@
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:0.3];
     
-    [self setFrame:CGRectMake(0,iPhone5? [UIScreen mainScreen].bounds.size.height-40+88:[UIScreen mainScreen].bounds.size.height-40, DEVICE_WIDTH, 40)];
+    [self setFrame:CGRectMake(0,DEVICE_HEIGHT - 40, DEVICE_WIDTH, 40)];
     [UIView commitAnimations];
 }
 -(void)uping{
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:0.3];
     if (IOS_VERSION>=7) {
-        [self setFrame:CGRectMake(0,iPhone5?205+88+20:205+20, DEVICE_WIDTH, 40)];
+        [self setFrame:CGRectMake(0,DEVICE_HEIGHT - 275 + 20, DEVICE_WIDTH, 40)];
 
         
     }else{
@@ -167,7 +167,7 @@
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:0.3];
     if (IOS_VERSION>=7) {
-        [self setFrame:CGRectMake(0,iPhone5? 168+88+20:168+20, DEVICE_WIDTH, 40)];
+        [self setFrame:CGRectMake(0,DEVICE_HEIGHT - 312 +20, DEVICE_WIDTH, 40)];
 
         
     }else{
@@ -183,7 +183,7 @@
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:0.3];
     if (IOS_VERSION>=7) {
-        [self setFrame:CGRectMake(0,iPhone5? 168+88+20:168+20, DEVICE_WIDTH, 40)];
+        [self setFrame:CGRectMake(0,DEVICE_HEIGHT - 312 +20, DEVICE_WIDTH, 40)];
         
         
     }else{
@@ -199,7 +199,7 @@
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:0.3];
     if (IOS_VERSION>=7) {
-        [self setFrame:CGRectMake(0,iPhone5?205+88+20+216-184:205+20+216-184, DEVICE_WIDTH, 40)];
+        [self setFrame:CGRectMake(0,DEVICE_HEIGHT - 275 + 20+216-184, DEVICE_WIDTH, 40)];
         
         
     }else{
@@ -212,14 +212,24 @@
 -(void)WhenfaceviewFram{
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:0.3];
+//    if (IOS_VERSION>=7) {
+//        [self setFrame:CGRectMake(0,iPhone5? 263+88+20-55:263+20-55, DEVICE_WIDTH, 40)];
+//
+//        
+//    }else{
+//        [self setFrame:CGRectMake(0,iPhone5? 263+88-55:263-55, DEVICE_WIDTH, 40)];
+//
+//    }
+    
     if (IOS_VERSION>=7) {
-        [self setFrame:CGRectMake(0,iPhone5? 263+88+20-55:263+20-55, DEVICE_WIDTH, 40)];
-
+        [self setFrame:CGRectMake(0,DEVICE_HEIGHT - 217 +20-55, DEVICE_WIDTH, 40)];
+        
         
     }else{
         [self setFrame:CGRectMake(0,iPhone5? 263+88-55:263-55, DEVICE_WIDTH, 40)];
-
+        
     }
+    
     [UIView commitAnimations];
 }
 /*
