@@ -29,9 +29,9 @@
         
         self.date_label.font=[UIFont systemFontOfSize:10];
         
-//        UIView *viewline=[[UIView alloc]initWithFrame:CGRectMake(12, 76+10.5, 320-24, 0.5)];
-//        viewline.backgroundColor=RGBCOLOR(223, 223, 223);
-//        [self addSubview:viewline];
+        UIView *viewline=[[UIView alloc]initWithFrame:CGRectMake(12, 76+10.5, DEVICE_WIDTH-24, 0.5)];
+        viewline.backgroundColor=RGBCOLOR(224, 224, 224);
+        [self addSubview:viewline];
         
     }
     return self;

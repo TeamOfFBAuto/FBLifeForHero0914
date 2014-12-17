@@ -155,12 +155,6 @@
                 
                 _zanlabel.frame=CGRectMake(DEVICE_WIDTH-34+9,113 , DEVICE_WIDTH-286-10, 11);
                 
-//                if (_newmodel.likes.length>2) {
-//                    _zanImageV.center=CGPointMake(286, 122-4);
-//                    _zanlabel.frame=CGRectMake(286,112 , 320-286-10, 11);
-//
-//                }
-                
                              //标题
                 
                 _bigLabel.frame=CGRectMake(12, 12, DEVICE_WIDTH, 18);
@@ -205,7 +199,7 @@
                 //右边的button
                 
                 
-                _normalLine.frame=CGRectMake(12, 133.5+4, 320-24, 0.5);
+                _normalLine.frame=CGRectMake(12, 133.5+4, DEVICE_WIDTH-24, 0.5);
                 _normalLine.backgroundColor=RGBCOLOR(223, 223, 223);
                 
                 
@@ -233,11 +227,6 @@
                 
                 
                 
-//                if (_newmodel.likes.length>2) {
-//                    _zanImageV.center=CGPointMake(286, 66);
-//                    _zanlabel.frame=CGRectMake(286,BIGORIGIN+4 , 320-286-10, 11);
-//                    
-//                }
 
                 
                 
@@ -381,7 +370,7 @@
             [_newmodel NewMainViewModelSetdic:theDic];
             //标题
             
-            UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(12, 12, 320, 16)];
+            UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(12, 12, DEVICE_WIDTH, 16)];
             label.font=[UIFont systemFontOfSize:15];
             label.text=_newmodel.title;
             label.textAlignment=NSTextAlignmentLeft;
@@ -439,7 +428,7 @@
             
             //底部的线
             
-            UIView *viewLine=[[UIView alloc]initWithFrame:CGRectMake(12, 133.5+4, 320-24, 0.5)];
+            UIView *viewLine=[[UIView alloc]initWithFrame:CGRectMake(12, 133.5+4, DEVICE_WIDTH-24, 0.5)];
             viewLine.backgroundColor=RGBCOLOR(223, 223, 223);
             [self.contentView addSubview:viewLine];
             
@@ -465,7 +454,7 @@
                 
             }
             
-            UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(100, 12, 320, 16)];
+            UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(100, 12, DEVICE_WIDTH, 16)];
             label.font=[UIFont boldSystemFontOfSize:15];
             label.text=_newmodel.title;
             label.backgroundColor=[UIColor greenColor];
@@ -473,7 +462,7 @@
             [self.contentView addSubview:label];
             
             
-            UILabel *stitleLabel=[[UILabel alloc]initWithFrame:CGRectMake(100, 34, 320, 16)];
+            UILabel *stitleLabel=[[UILabel alloc]initWithFrame:CGRectMake(100, 34, DEVICE_WIDTH, 16)];
             stitleLabel.font=[UIFont systemFontOfSize:13];
             stitleLabel.text=_newmodel.stitle;
             stitleLabel.textColor=[UIColor lightGrayColor];

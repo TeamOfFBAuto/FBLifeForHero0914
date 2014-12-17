@@ -136,7 +136,7 @@
     //    [alert_ show];
     //
     //    if (!halfblackView) {
-    //        halfblackView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, iPhone5?568:480)];
+    //        halfblackView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, DEVICE_WIDTH, iPhone5?568:480)];
     //
     //        halfblackView.backgroundColor=[UIColor blackColor];
     //        halfblackView.userInteractionEnabled=NO;
@@ -486,7 +486,7 @@
     
     
     
-    self.view = [[UIView alloc]initWithFrame:CGRectMake(0.0,0, 320, self.view.frame.size.height)];
+    self.view = [[UIView alloc]initWithFrame:CGRectMake(0.0,0, DEVICE_WIDTH, self.view.frame.size.height)];
     self.array_searchresault = [[NSMutableArray alloc] init];
     _photos = [[NSMutableArray alloc] init];
     _Replys_photos = [[NSMutableArray alloc] init];
@@ -500,7 +500,7 @@
     pages=1;
     isshanglajiazai=NO;//刚开始没有加载
     
-    nomore=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, 320, 30)];
+    nomore=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, DEVICE_WIDTH, 30)];
     nomore.text=@"没有更多数据";
     nomore.textAlignment=NSTextAlignmentCenter;
     nomore.font=[UIFont systemFontOfSize:13];
@@ -524,66 +524,8 @@
     self.category_string=[[NSString alloc]initWithFormat:@"zuixin"];
     self.view.backgroundColor = [UIColor clearColor];
     
-//    UIView * topView = [[UIView alloc] initWithFrame:CGRectMake(0,0,200,44)];
-//    topView.backgroundColor = [UIColor clearColor];
-//    // [self.view addSubview:topView];
-//    
-//    UIImageView * logoImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"logo.png"]];
-//    logoImage.frame=CGRectMake(MY_MACRO_NAME?-54+5:-54+5,(44-16)/2 , 312/2, 32/2);
-//    logoImage.backgroundColor = [UIColor clearColor];
-//    [topView addSubview:logoImage];
-//    
-//    self.navigationItem.titleView=topView;
     
-    
-    
-    
-//    UIButton *rightview=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, 37, 37/2)];
-//    rightview.backgroundColor=[UIColor clearColor];
-//    [rightview addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventTouchUpInside];
-//    
-//    refreshButton = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [refreshButton setImage:[UIImage imageNamed:@"ios7_newssearch.png"] forState:UIControlStateNormal];
-//    refreshButton.frame = CGRectMake(MY_MACRO_NAME? 25:10, 0, 37/2, 37/2);
-//    //    refreshButton.center = CGPointMake(300,20);
-//    [rightview addSubview:refreshButton];
-//    [refreshButton addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventTouchUpInside];
-//    UIBarButtonItem *_rightitem=[[UIBarButtonItem alloc]initWithCustomView:rightview];
-//    self.navigationItem.rightBarButtonItem=_rightitem;
-//    
-//    //  [topView addSubview:refreshButton];
-//    
-//    self.navigationController.navigationBar.barStyle = UIBarStyleBlackOpaque;
-//    
-//    self.navigationController.navigationBarHidden=NO;
-//    
-//    self.navigationController.navigationBar.barStyle = UIBarStyleBlackOpaque;
-//    
-//    
-//    [self.navigationController.parentViewController.view.window makeKeyAndVisible];
-//    
-//    
-//    if([self.navigationController.navigationBar respondsToSelector:@selector(setBackgroundImage:forBarMetrics:)] )
-//    {
-//        //iOS 5 new UINavigationBar custom background
-//        
-//        //        if (IOS_VERSION>=7.0)
-//        //        {
-//        //            [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:IOS7DAOHANGLANBEIJING] forBarMetrics: UIBarMetricsDefault];
-//        //        }else
-//        //        {
-//        //            [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"pinglun_bg(2).png"] forBarMetrics: UIBarMetricsDefault];
-//        //        }
-//        
-//        [self.navigationController.navigationBar setBackgroundImage:MY_MACRO_NAME?[UIImage imageNamed:IOS7DAOHANGLANBEIJING]:[UIImage imageNamed:@"ios7eva320_44.png"] forBarMetrics: UIBarMetricsDefault];
-//        
-//        
-//    }
-    
-    
-//    self.navigationController.navigationBar.alpha=1;
-    
-    _titleView = [[UIScrollView alloc] initWithFrame:CGRectMake(0,0,320,37)];
+    _titleView = [[UIScrollView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,37)];
     _titleView.backgroundColor = RGBCOLOR(245, 245, 245);
     _titleView.contentSize = CGSizeMake(635,0);
     _titleView.showsHorizontalScrollIndicator = NO;
@@ -630,13 +572,13 @@
     //    [_titleView addSubview:_ImgvRight];
     
     
-    loadview=[[LoadingIndicatorView alloc]initWithFrame:CGRectMake(0, 900, 320, 37)];
+    loadview=[[LoadingIndicatorView alloc]initWithFrame:CGRectMake(0, 900, DEVICE_WIDTH, 37)];
     loadview.backgroundColor=[UIColor clearColor];
     
     
     
-    newsScrow=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 37, 320, iPhone5?568-20-40-40-49+3+49:480-19-40-40-49+3+49)];
-    newsScrow.contentSize=CGSizeMake(320*13, 0);
+    newsScrow=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 37, DEVICE_WIDTH, iPhone5?568-20-40-40-49+3+49:DEVICE_HEIGHT-19-40-40-49+3+49)];
+    newsScrow.contentSize=CGSizeMake(DEVICE_WIDTH*13, 0);
     newsScrow.pagingEnabled=YES;
     newsScrow.delegate=self;
     newsScrow.showsHorizontalScrollIndicator=NO;
@@ -648,7 +590,7 @@
     for (int i=0; i<13; i++) {
         
         
-        newsTableview *mytesttab=[[newsTableview alloc]initWithFrame:CGRectMake(320*i, 0, 320, iPhone5?568-20-40-40:480-19-40-40)];
+        newsTableview *mytesttab=[[newsTableview alloc]initWithFrame:CGRectMake(DEVICE_WIDTH*i, 0, DEVICE_WIDTH, iPhone5?568-20-40-40:DEVICE_HEIGHT-19-40-40)];
         mytesttab.tag=i+800;
         mytesttab.delegate=self;
         [newsScrow addSubview:mytesttab];
@@ -678,7 +620,7 @@
     }
     
     
-    tab_=[[UITableView alloc]initWithFrame:CGRectMake(0, 40, 320, iPhone5?568-20-40-40-49:480-19-40-40-49) style:UITableViewStylePlain];
+    tab_=[[UITableView alloc]initWithFrame:CGRectMake(0, 40, DEVICE_WIDTH, iPhone5?568-20-40-40-49:480-19-40-40-49) style:UITableViewStylePlain];
     //    [self.view addSubview:tab_];
     
     tab_.delegate=self;
@@ -711,13 +653,13 @@
 	[_refreshHeaderView refreshLastUpdatedDate];
     [tab_ addSubview:_refreshHeaderView];
     
-    _loadingview=[[loadingview alloc]initWithFrame:CGRectMake(0, 80, 320, iPhone5?568-20-40-40-49:480-20-40-40-49)];
+    _loadingview=[[loadingview alloc]initWithFrame:CGRectMake(0, 80, DEVICE_WIDTH, iPhone5?568-20-40-40-49:DEVICE_HEIGHT-20-40-40-49)];
     //[self.view addSubview:_loadingview];
     [self judgeversionandclean];
     
     
     
-    searchresaultview=[[UITableView alloc]initWithFrame:CGRectMake(0,IOS_VERSION>=7?108:88, 320, iPhone5?568-20-40-40-49-5:480-19-40-40-49-5)];
+    searchresaultview=[[UITableView alloc]initWithFrame:CGRectMake(0,IOS_VERSION>=7?108:88, DEVICE_WIDTH, iPhone5?568-20-40-40-49-5:DEVICE_HEIGHT-19-40-40-49-5)];
     searchresaultview.delegate=self;
     searchresaultview.dataSource=self;
     //searchresaultview.backgroundColor=[UIColor redColor];
@@ -727,7 +669,7 @@
     
     if (!searchloadingview)
     {
-        searchloadingview =[[LoadingIndicatorView alloc]initWithFrame:CGRectMake(0, 900, 320, 40)];
+        searchloadingview =[[LoadingIndicatorView alloc]initWithFrame:CGRectMake(0, 900, DEVICE_WIDTH, 40)];
         searchloadingview.backgroundColor=[UIColor clearColor];
         searchloadingview.normalLabel.text=@"上拉加载更多";
     }
@@ -758,7 +700,7 @@
     
     if([self.navigationController.navigationBar respondsToSelector:@selector(setBackgroundImage:forBarMetrics:)] ) {
         //iOS 5 new UINavigationBar custom background
-        [self.navigationController.navigationBar setBackgroundImage:MY_MACRO_NAME?[UIImage imageNamed:IOS7DAOHANGLANBEIJING]:[UIImage imageNamed:@"ios7eva320_44.png"] forBarMetrics: UIBarMetricsDefault];
+        [self.navigationController.navigationBar setBackgroundImage:MY_MACRO_NAME?[UIImage imageNamed:IOS7DAOHANGLANBEIJING]:[UIImage imageNamed:@"ios7evaDEVICE_WIDTH_44.png"] forBarMetrics: UIBarMetricsDefault];
         
     }
     
@@ -957,7 +899,7 @@
         NSLog(@"当前已经有数据，不需要刷新");
     }
     
-    newsScrow.contentOffset=CGPointMake(320*(sender.tag-1), 0);
+    newsScrow.contentOffset=CGPointMake(DEVICE_WIDTH*(sender.tag-1), 0);
     
 }
 
@@ -1392,7 +1334,7 @@
                     NSLog(@"到底有木有+%@",image_mutar);
                     //  tab_.separatorColor=[UIColor colorWithRed:225/255.f green:225/255.f blue:225/255.f alpha:1];
                     
-                    imagesc=[[newsimage_scro alloc]initWithFrame:CGRectMake(0, 0, 320, 163)];
+                    imagesc=[[newsimage_scro alloc]initWithFrame:CGRectMake(0, 0, DEVICE_WIDTH, 163)];
                     [imagesc setImage_array:(NSArray *)image_mutar];
                     imagesc.delegate=self;
                     [imagesc startanimation];
@@ -1415,13 +1357,13 @@
                     
                     //浅黑色边
                     UIColor *color_gray=[[UIColor blackColor] colorWithAlphaComponent:0.5];
-                    UIView *_duantiaoview=[[UIView alloc]initWithFrame:CGRectMake(0, 137, 320, 25)];
+                    UIView *_duantiaoview=[[UIView alloc]initWithFrame:CGRectMake(0, 137, DEVICE_WIDTH, 25)];
                     _duantiaoview.userInteractionEnabled = NO;
                     _duantiaoview.autoresizesSubviews=YES;
                     
                     _duantiaoview.backgroundColor=color_gray;
                     
-                    _pagecontrol = [[SMPageControl alloc]initWithFrame:CGRectMake(-4, 1,  320-255, 25)];
+                    _pagecontrol = [[SMPageControl alloc]initWithFrame:CGRectMake(-4, 1,  DEVICE_WIDTH-255, 25)];
                     
                     _pagecontrol.backgroundColor = [UIColor clearColor];
                     _pagecontrol.numberOfPages = image_mutar.count;
@@ -1458,7 +1400,7 @@
                 }
                 else{
                     
-                    imagesc=[[newsimage_scro alloc]initWithFrame:CGRectMake(0, 0, 320, 163)];
+                    imagesc=[[newsimage_scro alloc]initWithFrame:CGRectMake(0, 0, DEVICE_WIDTH, 163)];
                     
                     
                     [cell.contentView addSubview:imagesc];
@@ -1470,7 +1412,7 @@
                 if (orr_array_date.count>indexPath.row-1)
                 {
                     
-                    orcell=[[newscellview alloc]initWithFrame:CGRectMake(0, 0, 320, 77)];
+                    orcell=[[newscellview alloc]initWithFrame:CGRectMake(0, 0, DEVICE_WIDTH, 77)];
                     [orcell setImv_string:[orr_array_im objectAtIndex:indexPath.row-1]];
                     [orcell setTitle_string:[orr_array_title objectAtIndex:indexPath.row-1]];
                     [orcell setDate_string:[orr_array_date objectAtIndex:indexPath.row-1]];
@@ -1602,7 +1544,7 @@
     
     [UIView animateWithDuration:0.3 animations:^(void){
         //        if (imageView.center.x>300) {
-        //            _titleView.contentOffset=CGPointMake(320, 0);
+        //            _titleView.contentOffset=CGPointMake(DEVICE_WIDTH, 0);
         //        }else {
         //            _titleView.contentOffset=CGPointMake(0, 0);
         //        }
@@ -2132,12 +2074,12 @@
     
     if (!searchheaderview) {
         
-        searchheaderview=[[UIView alloc]initWithFrame:CGRectMake(0,IOS_VERSION>=7?0:0, 320,IOS_VERSION>=7?108: 88)];
+        searchheaderview=[[UIView alloc]initWithFrame:CGRectMake(0,IOS_VERSION>=7?0:0, DEVICE_WIDTH,IOS_VERSION>=7?108: 88)];
         searchheaderview.backgroundColor=RGBCOLOR(247, 247, 247);
         [self.view addSubview:searchheaderview];
         
         
-        ImgV_ofsearch=[[UIImageView alloc]initWithFrame:CGRectMake(6, MY_MACRO_NAME?20:0, 320-6, 44)];
+        ImgV_ofsearch=[[UIImageView alloc]initWithFrame:CGRectMake(6, MY_MACRO_NAME?20:0, DEVICE_WIDTH-6, 44)];
         ImgV_ofsearch.backgroundColor=RGBCOLOR(247, 247, 247);
         ImgV_ofsearch.userInteractionEnabled=YES;
         [searchheaderview addSubview:ImgV_ofsearch];
@@ -2161,7 +2103,7 @@
         
         
         
-        UIView *selectview=[[UIView alloc]initWithFrame:CGRectMake(0,IOS_VERSION>=7?64: 44, 320, 44)];
+        UIView *selectview=[[UIView alloc]initWithFrame:CGRectMake(0,IOS_VERSION>=7?64: 44, DEVICE_WIDTH, 44)];
         selectview.backgroundColor=RGBACOLOR(247, 247, 247, 1);
         [searchheaderview addSubview:selectview];
         mysegment=[[CustomSegmentView alloc]initWithFrame:CGRectMake(12, (44-28.5)/2, 296, 57/2)];
@@ -2171,7 +2113,7 @@
         [selectview addSubview:mysegment];
         mysegment.delegate=self;
         
-        UIImageView *imgvline=[[UIImageView alloc]initWithFrame:CGRectMake(0, MY_MACRO_NAME?64:44, 320, 1)];
+        UIImageView *imgvline=[[UIImageView alloc]initWithFrame:CGRectMake(0, MY_MACRO_NAME?64:44, DEVICE_WIDTH, 1)];
         imgvline.image=[UIImage imageNamed:@"line-2.png"];
         [searchheaderview addSubview:imgvline];
         
@@ -2188,14 +2130,14 @@
         searchresaultview.hidden=NO;
         
         if (!blackcolorview) {
-            blackcolorview=[[UIView alloc]initWithFrame:CGRectMake(0,IOS_VERSION>=7?108: 88, 320,1000)];
+            blackcolorview=[[UIView alloc]initWithFrame:CGRectMake(0,IOS_VERSION>=7?108: 88, DEVICE_WIDTH,1000)];
             blackcolorview.backgroundColor=[[UIColor blackColor]colorWithAlphaComponent:0.8f];
             [self.view addSubview:blackcolorview];
         }
         blackcolorview.hidden=NO;
         
         
-        cancelButton=[[UIButton alloc]initWithFrame:CGRectMake(517/2, 6, 320-517/2, 61/2)];
+        cancelButton=[[UIButton alloc]initWithFrame:CGRectMake(517/2, 6, DEVICE_WIDTH-517/2, 61/2)];
         cancelButton.backgroundColor = [UIColor clearColor];
         cancelButton.userInteractionEnabled=YES;
         //  [ cancelButton setBackgroundImage:[UIImage imageNamed:@"searchcancell.png"] forState:UIControlStateNormal];
@@ -2696,7 +2638,7 @@
         
     }else if (scrollView==imagesc)
     {
-        int pageNumber = (int)scrollView.contentOffset.x/320;
+        int pageNumber = (int)scrollView.contentOffset.x/DEVICE_WIDTH;
         
         // NSLog(@"------  %d ---  %f",pageNumber,scrollView.contentOffset.x);
         
@@ -2738,30 +2680,52 @@
 
         }else if(newsScrow.contentOffset.x>3870){
         
-            [self.mm_drawerController toggleDrawerSide:MMDrawerSideRight animated:YES completion:nil];
+//            [self.mm_drawerController toggleDrawerSide:MMDrawerSideRight animated:YES completion:nil];
 
         }
         
         
-        int   number=(int)newsScrow.contentOffset.x/320;
+        int   number=(int)newsScrow.contentOffset.x/DEVICE_WIDTH;
         //   NSLog(@"yes当前是%@===number==%d====%f",[array_lanmu objectAtIndex:number],number,newsScrow.contentOffset.x);
         UIImageView * imageView = (UIImageView *)[self.view viewWithTag:99];
-        //  imageView.frame=CGRectMake(35/2+48*newsScrow.contentOffset.x/320, 0, 71/2, 2);
-        imageView.center=CGPointMake(28+48*newsScrow.contentOffset.x/320, 0.5);
+        //  imageView.frame=CGRectMake(35/2+48*newsScrow.contentOffset.x/DEVICE_WIDTH, 0, 71/2, 2);
+        imageView.center=CGPointMake(28+48*newsScrow.contentOffset.x/DEVICE_WIDTH, 0.5);
         
-        if (number==6) {
-            _titleView.contentOffset=CGPointMake(285, 0);
-        }
-        if (number<6) {
-            _titleView.contentOffset=CGPointMake(0, 0);
-        }
-        if (number>6&&number<12) {
-            _titleView.contentOffset=CGPointMake(285, 0);
-        }
-        if (number==12) {
-            _titleView.contentOffset=CGPointMake(310, 0);
+        
+        if (DEVICE_WIDTH<=320) {
+            if (number==6) {
+                _titleView.contentOffset=CGPointMake(285, 0);
+            }
+            if (number<6) {
+                _titleView.contentOffset=CGPointMake(0, 0);
+            }
+            if (number>6&&number<12) {
+                _titleView.contentOffset=CGPointMake(285, 0);
+            }
+            if (number==12) {
+                _titleView.contentOffset=CGPointMake(310, 0);
+                
+            }
+
             
-        }
+        }//
+        else{
+            if (number==8) {
+                _titleView.contentOffset=CGPointMake(285, 0);
+            }
+            if (number<8) {
+                _titleView.contentOffset=CGPointMake(0, 0);
+            }
+            if (number>8&&number<12) {
+                _titleView.contentOffset=CGPointMake(285, 0);
+            }
+            if (number==12) {
+//                _titleView.contentOffset=CGPointMake(310, 0);
+                
+            }
+        
+        }//
+        
     }
     
 }
@@ -2811,7 +2775,7 @@
         
     }else if(scrollView ==newsScrow)
     {
-        int   number=scrollView.contentOffset.x/320;
+        int   number=scrollView.contentOffset.x/DEVICE_WIDTH;
         NSLog(@"/////yes当前是%@===number==%d====%f",[array_lanmu objectAtIndex:number],number,scrollView.contentOffset.x);
         
         
@@ -2829,7 +2793,7 @@
     
     
     
-    int   number=scrollView.contentOffset.x/320;
+    int   number=scrollView.contentOffset.x/DEVICE_WIDTH;
     NSLog(@"前是%@===number==%d====%f",[array_lanmu objectAtIndex:number],number,scrollView.contentOffset.x);
     newsTableview *mytab=(newsTableview*)[self.view viewWithTag:number+800];
     
@@ -2947,7 +2911,7 @@
     NSLog(@"self.diji===%@",self.str_dijige);
     int mm=[self.str_dijige intValue];
     
-    [newsScrow setContentOffset:CGPointMake(320*(mm-1), 0)];
+    [newsScrow setContentOffset:CGPointMake(DEVICE_WIDTH*(mm-1), 0)];
     
    [self refreshmydatawithtag:mm-1+800];
 

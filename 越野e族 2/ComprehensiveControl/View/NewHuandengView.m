@@ -96,11 +96,11 @@ static CGFloat SWITCH_FOCUS_PICTURE_INTERVAL = 6.0; //switch interval time
     greenlabel.font=[UIFont boldSystemFontOfSize:16];
     greenlabel.textAlignment=NSTextAlignmentLeft;
     greenlabel.textColor=RGBCOLOR(42, 42, 42);
-    greenlabel.backgroundColor=[UIColor redColor];
+    greenlabel.backgroundColor=[UIColor clearColor];
     
     NSArray *imageItems = objc_getAssociatedObject(self, (const void *)SG_FOCUS_ITEM_ASS_KEY);
     _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, DEVICE_WIDTH, 191*DEVICE_WIDTH/320)];
-    _scrollView.backgroundColor=[UIColor greenColor];
+    _scrollView.backgroundColor=[UIColor clearColor];
     _scrollView.scrollsToTop = NO;
     //pagecontrol
     _pagecontrol = [[SMPageControl alloc]initWithFrame:CGRectMake(-4, 1,  DEVICE_WIDTH-255, 25)];

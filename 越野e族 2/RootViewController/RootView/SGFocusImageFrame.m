@@ -9,7 +9,8 @@
 #import "SGFocusImageFrame.h"
 #import "SGFocusImageItem.h"
 #import <objc/runtime.h>
-#define ITEM_WIDTH 320.0
+
+#define ITEM_WIDTH DEVICE_WIDTH.0
 
 @interface SGFocusImageFrame () {
     UIScrollView *_scrollView;
@@ -89,7 +90,7 @@ static CGFloat SWITCH_FOCUS_PICTURE_INTERVAL = 6.0; //switch interval time
 #pragma mark - private methods
 - (void)setupViews
 {
-    greenlabel=[[UILabel alloc]initWithFrame:CGRectMake(0, self.frame.size.height -25+3, 320, 19)];
+    greenlabel=[[UILabel alloc]initWithFrame:CGRectMake(0, self.frame.size.height -25+3, DEVICE_WIDTH, 19)];
     greenlabel.font=[UIFont systemFontOfSize:14];
     greenlabel.textAlignment=UITextAlignmentCenter;
     greenlabel.textColor=[UIColor whiteColor];
@@ -98,22 +99,22 @@ static CGFloat SWITCH_FOCUS_PICTURE_INTERVAL = 6.0; //switch interval time
     _scrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
     _scrollView.scrollsToTop = NO;
     float space = 0;
-    CGSize size = CGSizeMake(320, 0);
+    CGSize size = CGSizeMake(DEVICE_WIDTH, 0);
     //pagecontrol
-    _pagecontrol = [[SMPageControl alloc]initWithFrame:CGRectMake(-4, 1,  320-255, 25)];
+    _pagecontrol = [[SMPageControl alloc]initWithFrame:CGRectMake(-4, 1,  DEVICE_WIDTH-255, 25)];
     
     _pagecontrol.backgroundColor = [UIColor clearColor];
     _pagecontrol.numberOfPages = 5;
     _pagecontrol.indicatorMargin=8.0f;
     [_pagecontrol setPageIndicatorImage:[UIImage imageNamed:@"roundgray.png"]];
     [_pagecontrol setCurrentPageIndicatorImage:[UIImage imageNamed:@"roundblue.png"]];
-    _pagecontrol.center=CGPointMake(160, 130);
+    _pagecontrol.center=CGPointMake(DEVICE_WIDTH/2, 130*DEVICE_WIDTH/320);
     
     _pagecontrol.currentPage = 0;
     
     //黑色小条
     
-    UIView *_duantiaoview=[[UIView alloc]initWithFrame:CGRectMake(0,MY_MACRO_NAME? self.frame.size.height-158/2+5:self.frame.size.height-158/2+5, 320, 150/2)];
+    UIView *_duantiaoview=[[UIView alloc]initWithFrame:CGRectMake(0,MY_MACRO_NAME? self.frame.size.height-158/2+5:self.frame.size.height-158/2+5, DEVICE_WIDTH, 150/2)];
             _duantiaoview.userInteractionEnabled = NO;
             _duantiaoview.autoresizesSubviews=YES;
 
@@ -164,7 +165,7 @@ static CGFloat SWITCH_FOCUS_PICTURE_INTERVAL = 6.0; //switch interval time
     [tapGestureRecognize release];
     if ([imageItems count]>1)
     {
-        [_scrollView setContentOffset:CGPointMake(ITEM_WIDTH, 0) animated:NO] ;
+        [_scrollView setContentOffset:CGPointMake(DEVICE_WIDTH, 0) animated:NO] ;
         if (_isAutoPlay)
         {
             [self performSelector:@selector(switchFocusImageItems) withObject:nil afterDelay:SWITCH_FOCUS_PICTURE_INTERVAL];
@@ -183,7 +184,7 @@ static CGFloat SWITCH_FOCUS_PICTURE_INTERVAL = 6.0; //switch interval time
     
     CGFloat targetX = _scrollView.contentOffset.x + _scrollView.frame.size.width;
     NSArray *imageItems = objc_getAssociatedObject(self, (const void *)SG_FOCUS_ITEM_ASS_KEY);
-    targetX = (int)(targetX/ITEM_WIDTH) * ITEM_WIDTH;
+    targetX = (int)(targetX/DEVICE_WIDTH) * DEVICE_WIDTH;
     [self moveToTargetPosition:targetX];
     
     if ([imageItems count]>1 && _isAutoPlay)
@@ -223,17 +224,17 @@ static CGFloat SWITCH_FOCUS_PICTURE_INTERVAL = 6.0; //switch interval time
     NSArray *imageItems = objc_getAssociatedObject(self, (const void *)SG_FOCUS_ITEM_ASS_KEY);
     if ([imageItems count]>=3)
     {
-        if (targetX >= ITEM_WIDTH * ([imageItems count] -1)) {
-            targetX = ITEM_WIDTH;
+        if (targetX >= DEVICE_WIDTH * ([imageItems count] -1)) {
+            targetX = DEVICE_WIDTH;
             [_scrollView setContentOffset:CGPointMake(targetX, 0) animated:NO];
         }
         else if(targetX <= 0)
         {
-            targetX = ITEM_WIDTH *([imageItems count]-2);
+            targetX = DEVICE_WIDTH *([imageItems count]-2);
             [_scrollView setContentOffset:CGPointMake(targetX, 0) animated:NO];
         }
     }
-    int page = (_scrollView.contentOffset.x+ITEM_WIDTH/2.0) / ITEM_WIDTH;
+    int page = (_scrollView.contentOffset.x+DEVICE_WIDTH/2.0) / DEVICE_WIDTH;
     //    NSLog(@"%f %d",_scrollView.contentOffset.x,page);
     if ([imageItems count] > 1)
     {
@@ -267,7 +268,7 @@ static CGFloat SWITCH_FOCUS_PICTURE_INTERVAL = 6.0; //switch interval time
     if (!decelerate)
     {
         CGFloat targetX = _scrollView.contentOffset.x + _scrollView.frame.size.width;
-        targetX = (int)(targetX/ITEM_WIDTH) * ITEM_WIDTH;
+        targetX = (int)(targetX/DEVICE_WIDTH) * DEVICE_WIDTH;
         [self moveToTargetPosition:targetX];
     }
 }
@@ -282,7 +283,7 @@ static CGFloat SWITCH_FOCUS_PICTURE_INTERVAL = 6.0; //switch interval time
         {
             aIndex = [imageItems count]-3;
         }
-        [self moveToTargetPosition:ITEM_WIDTH*(aIndex+1)];
+        [self moveToTargetPosition:DEVICE_WIDTH*(aIndex+1)];
     }else
     {
         [self moveToTargetPosition:0];
@@ -305,7 +306,7 @@ static CGFloat SWITCH_FOCUS_PICTURE_INTERVAL = 6.0; //switch interval time
 //-(void)dongqilai{
 //        [UIView beginAnimations:nil context:nil];
 //        [UIView setAnimationDuration:0.5];
-//        self.contentOffset=CGPointMake(320*iscount, 0);
+//        self.contentOffset=CGPointMake(DEVICE_WIDTH*iscount, 0);
 //        [UIView commitAnimations];
 //
 //

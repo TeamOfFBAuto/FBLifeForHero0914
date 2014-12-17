@@ -37,7 +37,7 @@
             select[i]=0;
         }
         
-        tab_=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, 320, self.frame.size.height) style:UITableViewStylePlain];
+        tab_=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, DEVICE_WIDTH, self.frame.size.height) style:UITableViewStylePlain];
         [self addSubview:tab_];
         
         tab_.delegate=self;
@@ -52,20 +52,20 @@
         
         if (_refreshHeaderView == nil)
         {
-            EGORefreshTableHeaderView *view = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0-tab_.bounds.size.height, 320, tab_.bounds.size.height)];
+            EGORefreshTableHeaderView *view = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0-tab_.bounds.size.height, DEVICE_WIDTH, tab_.bounds.size.height)];
             view.delegate = self;
             _refreshHeaderView = view;
         }
         [_refreshHeaderView refreshLastUpdatedDate];
         [tab_ addSubview:_refreshHeaderView];
         
-        nomore=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, 320, 30)];
+        nomore=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, DEVICE_WIDTH, 30)];
         nomore.text=@"没有更多数据";
         nomore.textAlignment=NSTextAlignmentCenter;
         nomore.font=[UIFont systemFontOfSize:13];
         nomore.textColor=[UIColor lightGrayColor];
         
-        loadview=[[LoadingIndicatorView alloc]initWithFrame:CGRectMake(0, 900, 320, 40)];
+        loadview=[[LoadingIndicatorView alloc]initWithFrame:CGRectMake(0, 900, DEVICE_WIDTH, 40)];
         loadview.backgroundColor=[UIColor clearColor];
         
         numberofpage=1;
@@ -282,7 +282,7 @@
                 SGFocusImageItem *item = [[SGFocusImageItem alloc] initWithDict:dict tag:length];
                 [itemArray addObject:item];
             }
-            SGFocusImageFrame *bannerView = [[SGFocusImageFrame alloc] initWithFrame:CGRectMake(0, 0, 320, 163) delegate:self imageItems:itemArray isAuto:NO];
+            SGFocusImageFrame *bannerView = [[SGFocusImageFrame alloc] initWithFrame:CGRectMake(0, 0, DEVICE_WIDTH, 163*DEVICE_WIDTH/320) delegate:self imageItems:itemArray isAuto:NO];
             [bannerView scrollToIndex:0];
             [cell.contentView addSubview:bannerView];
             
@@ -295,7 +295,7 @@
         
     }else{
         
-        orcell=[[newscellview alloc]initWithFrame:CGRectMake(0, 0, 320, 87)];
+        orcell=[[newscellview alloc]initWithFrame:CGRectMake(0, 0, DEVICE_WIDTH, 87)];
         [orcell setImv_string:(NSString *)[[self.normalarray objectAtIndex:indexPath.row-1] objectForKey:@"photo"]];
         [orcell setTitle_string:(NSString *)[[self.normalarray objectAtIndex:indexPath.row-1] objectForKey:@"stitle"]];
 
@@ -327,7 +327,7 @@
     CGFloat height;
     if (indexPath.row==0)
     {
-        height=163;
+        height=163*DEVICE_WIDTH/320;
     }else
     {
         height=77+10;
