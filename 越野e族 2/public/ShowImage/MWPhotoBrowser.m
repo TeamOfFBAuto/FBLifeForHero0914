@@ -263,13 +263,13 @@ navigationBarBackgroundImageLandscapePhone = _navigationBarBackgroundImageLandsc
             _pagingScrollView.transform = CGAffineTransformIdentity;
             //            self.progressHUD.transform = CGAffineTransformIdentity;
             
-            nav.frame = CGRectMake(0,0,320,44);
-            back_view.frame = CGRectMake(0,0,320,40);
+            nav.frame = CGRectMake(0,0,DEVICE_WIDTH,44);
+            back_view.frame = CGRectMake(0,0,DEVICE_WIDTH,40);
             
-            nav.center = CGPointMake(160,22);
-            back_view.center = CGPointMake(160,iPhone5?568-22:480-20);
+            nav.center = CGPointMake(DEVICE_WIDTH/2.f,22);
+            back_view.center = CGPointMake(DEVICE_WIDTH / 2.f,DEVICE_HEIGHT - 20);
             
-            right_button.frame = CGRectMake(290,10.25,right_button.frame.size.width,right_button.frame.size.height);
+            right_button.frame = CGRectMake(DEVICE_WIDTH - 30,10.25,right_button.frame.size.width,right_button.frame.size.height);
             
             
             
@@ -280,42 +280,42 @@ navigationBarBackgroundImageLandscapePhone = _navigationBarBackgroundImageLandsc
             nav.transform = CGAffineTransformIdentity;
             
             _pagingScrollView.transform = CGAffineTransformMakeRotation(-M_PI);
-            nav.frame = CGRectMake(0,0,320,44);
-            back_view.frame = CGRectMake(0,0,320,40);
+            nav.frame = CGRectMake(0,0,DEVICE_WIDTH,44);
+            back_view.frame = CGRectMake(0,0,DEVICE_WIDTH,40);
             nav.transform = CGAffineTransformMakeRotation(-M_PI);
             back_view.transform = CGAffineTransformMakeRotation(-M_PI);
             //            self.progressHUD.transform = CGAffineTransformMakeRotation(-M_PI);
-            nav.center = CGPointMake(160,iPhone5?568-22:480-22);
-            back_view.center = CGPointMake(160,20);
+            nav.center = CGPointMake(DEVICE_WIDTH / 2.f,DEVICE_HEIGHT - 20);
+            back_view.center = CGPointMake(DEVICE_WIDTH / 2.f,20);
             
-            right_button.frame = CGRectMake(290,10.25,right_button.frame.size.width,right_button.frame.size.height);
+            right_button.frame = CGRectMake(DEVICE_WIDTH - 30,10.25,right_button.frame.size.width,right_button.frame.size.height);
             
             NSLog(@"朝上2");
         }else if (orientation == 3)
         {
             _pagingScrollView.transform = CGAffineTransformMakeRotation(M_PI/2);
-            nav.frame = CGRectMake(0,0,iPhone5?568:480,32);
-            back_view.frame = CGRectMake(0,0,iPhone5?568:480,40);
+            nav.frame = CGRectMake(0,0,DEVICE_HEIGHT,32);
+            back_view.frame = CGRectMake(0,0,DEVICE_HEIGHT,40);
             nav.transform = CGAffineTransformMakeRotation(M_PI/2);
             back_view.transform = CGAffineTransformMakeRotation(M_PI/2);
             //            self.progressHUD.transform = CGAffineTransformMakeRotation(M_PI/2);
-            nav.center = CGPointMake(320-16,iPhone5?568/2:480/2);
-            back_view.center = CGPointMake(20,iPhone5?568/2:480/2);
+            nav.center = CGPointMake(DEVICE_WIDTH - 16,DEVICE_HEIGHT/2);
+            back_view.center = CGPointMake(20,DEVICE_HEIGHT/2);
             
-            right_button.frame = CGRectMake(iPhone5?568-30:480-30,10.25,right_button.frame.size.width,right_button.frame.size.height);
+            right_button.frame = CGRectMake(DEVICE_HEIGHT - 30,10.25,right_button.frame.size.width,right_button.frame.size.height);
             
             NSLog(@"朝右3");
         }else
         {
             _pagingScrollView.transform = CGAffineTransformMakeRotation(M_PI*1.5);
-            nav.frame = CGRectMake(0,0,iPhone5?568:480,32);
-            back_view.frame = CGRectMake(0,0,iPhone5?568:480,40);
+            nav.frame = CGRectMake(0,0,DEVICE_HEIGHT,32);
+            back_view.frame = CGRectMake(0,0,DEVICE_HEIGHT,40);
             nav.transform = CGAffineTransformMakeRotation(M_PI*1.5);
             back_view.transform = CGAffineTransformMakeRotation(M_PI*1.5);
             //            self.progressHUD.transform = CGAffineTransformMakeRotation(M_PI*1.5);
-            nav.center = CGPointMake(20,iPhone5?568/2:480/2);
-            back_view.center = CGPointMake(320-16,iPhone5?568/2:480/2);
-            right_button.frame = CGRectMake(iPhone5?568-30:480-30,10.25,right_button.frame.size.width,right_button.frame.size.height);
+            nav.center = CGPointMake(20,DEVICE_HEIGHT/2);
+            back_view.center = CGPointMake(DEVICE_WIDTH-16,DEVICE_HEIGHT/2);
+            right_button.frame = CGRectMake(DEVICE_HEIGHT-30,10.25,right_button.frame.size.width,right_button.frame.size.height);
             
             NSLog(@"朝左4");
         }
@@ -353,7 +353,7 @@ navigationBarBackgroundImageLandscapePhone = _navigationBarBackgroundImageLandsc
     self.view.backgroundColor = [UIColor blackColor];
     
 	// Setup paging scrolling view
-	_pagingScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0,0,320,iPhone5?568:480)];
+	_pagingScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,DEVICE_HEIGHT)];
     //	_pagingScrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 	_pagingScrollView.pagingEnabled = YES;
 	_pagingScrollView.delegate = self;
@@ -364,7 +364,7 @@ navigationBarBackgroundImageLandscapePhone = _navigationBarBackgroundImageLandsc
 	[self.view addSubview:_pagingScrollView];
 	
     // Toolbar
-    _toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0,iPhone5?568-44:480-44,320,44)];
+    _toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0,DEVICE_HEIGHT-44,DEVICE_WIDTH,44)];
     _toolbar.tintColor = nil;
     if ([[UIToolbar class] respondsToSelector:@selector(appearance)]) {
         [_toolbar setBackgroundImage:nil forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsDefault];
@@ -395,7 +395,7 @@ navigationBarBackgroundImageLandscapePhone = _navigationBarBackgroundImageLandsc
     
     
     
-    back_view = [[UIView alloc] initWithFrame:CGRectMake(0,[UIScreen mainScreen].bounds.size.height-40,320,40)];
+    back_view = [[UIView alloc] initWithFrame:CGRectMake(0,DEVICE_HEIGHT - 40,DEVICE_WIDTH,40)];
     back_view.autoresizesSubviews = NO;
     
     back_view.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.6];
@@ -421,7 +421,7 @@ navigationBarBackgroundImageLandscapePhone = _navigationBarBackgroundImageLandsc
     
     right_button = [UIButton buttonWithType:UIButtonTypeCustom];
     
-    right_button.frame = CGRectMake(290,10.25,30,20);
+    right_button.frame = CGRectMake(DEVICE_WIDTH - 30,10.25,30,20);
     
     right_button.backgroundColor = [UIColor clearColor];
     
@@ -777,7 +777,7 @@ navigationBarBackgroundImageLandscapePhone = _navigationBarBackgroundImageLandsc
 {
     
     if (toInterfaceOrientation == UIInterfaceOrientationPortrait || toInterfaceOrientation == UIInterfaceOrientationPortraitUpsideDown) {
-        _pagingScrollView.frame = CGRectMake(0,0,320,480);
+        _pagingScrollView.frame = CGRectMake(0,0,DEVICE_WIDTH,DEVICE_HEIGHT);
     }else
     {
         _pagingScrollView.frame = CGRectMake(0,0,480,320);
