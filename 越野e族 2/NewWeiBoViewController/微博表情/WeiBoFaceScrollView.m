@@ -23,10 +23,10 @@
         //        self.backgroundColor = [UIColor colorWithPatternImage:[personal getImageWithName:@""]];
         self.pagingEnabled=YES;
         self.bounces = YES;
-        self.contentSize=CGSizeMake(320*3, 0);
+        self.contentSize=CGSizeMake(DEVICE_WIDTH * 3, 0);
         for (int i = 0;i < 3;i++)
         {
-            NewFaceView *faceView = [[NewFaceView alloc] initWithFrame:CGRectMake(0+320*i,0,320,215)];
+            NewFaceView *faceView = [[NewFaceView alloc] initWithFrame:CGRectMake(0+DEVICE_WIDTH * i,0,DEVICE_WIDTH,215)];
             
             faceView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"WriteBlog_face_image.png"]];
             
