@@ -455,7 +455,7 @@
     loadview.backgroundColor=[UIColor clearColor];
     
     
-    mainTabView=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, 320, iPhone5?568-64:480-64)];
+    mainTabView=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, DEVICE_WIDTH, DEVICE_HEIGHT-64)];
     mainTabView.delegate=self;
     mainTabView.dataSource=self;
     mainTabView.backgroundColor=[UIColor whiteColor];
@@ -1341,14 +1341,14 @@
             SGFocusImageItem *item = [[SGFocusImageItem alloc] initWithDict:dict tag:length];
             [itemArray addObject:item];
         }
-        bannerView = [[NewHuandengView alloc] initWithFrame:CGRectMake(0, 64, 320, 191+13) delegate:self imageItems:itemArray isAuto:YES];
+        bannerView = [[NewHuandengView alloc] initWithFrame:CGRectMake(0, 64, DEVICE_WIDTH, (191+13)*DEVICE_WIDTH/320) delegate:self imageItems:itemArray isAuto:YES];
         [bannerView scrollToIndex:0];
         
  
         
     }
     
-    UIView *HeaderView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 191+13+64)];
+    UIView *HeaderView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, (191+13)*DEVICE_WIDTH/320+64)];
     HeaderView.backgroundColor=[UIColor whiteColor];
     [HeaderView addSubview:bannerView];
     
