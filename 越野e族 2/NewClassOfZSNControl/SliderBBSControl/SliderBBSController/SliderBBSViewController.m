@@ -975,7 +975,9 @@
             [cell.contentView addSubview:second_name_label];
             
             
-            UIView * line_view = [[UIView alloc] initWithFrame:CGRectMake(270,5,0.5,34)];
+//            UIView * line_view = [[UIView alloc] initWithFrame:CGRectMake(270,5,0.5,34)];
+            
+            UIView * line_view = [[UIView alloc] initWithFrame:CGRectMake(DEVICE_WIDTH - 50,5,0.5,34)];
             
             line_view.backgroundColor = RGBCOLOR(228,228,228);
             
@@ -985,7 +987,9 @@
             //收藏按钮
             ZSNButton * collection_button = [ZSNButton buttonWithType:UIButtonTypeCustom];
             
-            collection_button.frame = CGRectMake(271,0,49,44);
+//            collection_button.frame = CGRectMake(271,0,49,44);
+            
+            collection_button.frame = CGRectMake(DEVICE_WIDTH - 49,0,49,44);
             
             collection_button.myDictionary = [NSDictionary dictionaryWithObject:second_model.forum_fid forKey:@"tid"];
             
@@ -1007,7 +1011,9 @@
             {
                 ZSNButton * accessory_button = [ZSNButton buttonWithType:UIButtonTypeCustom];
                 
-                accessory_button.frame = CGRectMake(225,0,40,44);
+//                accessory_button.frame = CGRectMake(225,0,40,44);
+                
+                accessory_button.frame = CGRectMake(DEVICE_WIDTH - 95,0,40,44);
                 
                 [accessory_button setImage:[UIImage imageNamed:@"bbs_forum_jiantou"] forState:UIControlStateNormal];
                 
