@@ -780,7 +780,7 @@ navigationBarBackgroundImageLandscapePhone = _navigationBarBackgroundImageLandsc
         _pagingScrollView.frame = CGRectMake(0,0,DEVICE_WIDTH,DEVICE_HEIGHT);
     }else
     {
-        _pagingScrollView.frame = CGRectMake(0,0,480,320);
+        _pagingScrollView.frame = CGRectMake(0,0,DEVICE_HEIGHT,DEVICE_WIDTH);
     }
     
     

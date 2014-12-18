@@ -352,7 +352,7 @@
 //计算laebl最后一个字符的位置
 +(CGPoint)LinesWidth:(NSString *)string Label:(UILabel *)label font:(UIFont *)thefont
 {
-    CGSize titleSize = [string sizeWithFont:[UIFont systemFontOfSize:13] constrainedToSize:CGSizeMake(label.frame.size.width, MAXFLOAT) lineBreakMode:NSLineBreakByCharWrapping];
+    CGSize titleSize = [string sizeWithFont:thefont constrainedToSize:CGSizeMake(label.frame.size.width, MAXFLOAT) lineBreakMode:NSLineBreakByCharWrapping];
     CGPoint lastPoint;
     
     CGSize sz = [string sizeWithFont:thefont constrainedToSize:CGSizeMake(MAXFLOAT,40)];

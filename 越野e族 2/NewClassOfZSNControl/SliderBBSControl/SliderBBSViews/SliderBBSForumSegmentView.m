@@ -32,46 +32,37 @@
 {
     forumViewBlock = theBlock;
     
+    image_array = [NSMutableArray arrayWithArray:imageArray];
     for (int i = 0;i < 4;i++)
     {
+        UIView * aView = [[UIView alloc] initWithFrame:CGRectMake(((DEVICE_WIDTH-6)/4 + 2)*i,0,(DEVICE_WIDTH-6)/4,56)];
+        aView.backgroundColor = [UIColor whiteColor];
+        [self addSubview:aView];
+        
         UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
-        
-        button.frame = CGRectMake(80.5*i,0,78.5,61);
-        
+        button.frame = CGRectMake(((DEVICE_WIDTH-6)/4 + 2)*i,0,(DEVICE_WIDTH-6)/4,61);
+        button.center = CGPointMake(aView.width/2,button.center.y);
         button.tag = i + 100;
-        
         button.titleLabel.font = [UIFont systemFontOfSize:12.5];
-        
         [button setBackgroundColor:[UIColor clearColor]];
-        
-        [button setTitle:[textArray objectAtIndex:i] forState:UIControlStateNormal];
-        
+        button.imageView.contentMode = UIViewContentModeScaleAspectFit;
+        button.imageView.clipsToBounds = YES;
         [button setImage:[UIImage imageNamed:[imageArray objectAtIndex:i]] forState:UIControlStateNormal];
-        
         [button setImage:[UIImage imageNamed:[imageArray objectAtIndex:4+i]] forState:UIControlStateSelected];
-        
         history_page = 0;
         
         if (i == 0)
         {
             [button setTitleColor:SELECTED_COLOR forState:UIControlStateNormal];
-            
             button.selected = YES;
-            
-            [button setImageEdgeInsets:UIEdgeInsetsZero];
         }else
         {
             [button setTitleColor:UN_SELECTED_COLOR forState:UIControlStateNormal];
             
-            [button setImageEdgeInsets:UIEdgeInsetsMake(0,0,5,0)];
         }
         
-        [button setTitleEdgeInsets:UIEdgeInsetsMake(30,0,0,0)];
-        
         [button addTarget:self action:@selector(buttonTap:) forControlEvents:UIControlEventTouchUpInside];
-        
-        [self addSubview:button];
-        
+        [aView addSubview:button];
     }
 }
 
@@ -88,13 +79,9 @@
     
     history_button.selected = NO;
     
-    [history_button setImageEdgeInsets:UIEdgeInsetsMake(0,0,5,0)];
-    
     [history_button setTitleColor:UN_SELECTED_COLOR forState:UIControlStateNormal];
     
-    
     sender.selected = YES;
-    [sender setImageEdgeInsets:UIEdgeInsetsZero];
     [sender setTitleColor:SELECTED_COLOR forState:UIControlStateNormal];
     
     forumViewBlock(sender.tag-100);

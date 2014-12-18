@@ -484,24 +484,16 @@
                 
                 
                 UIView * view = [[UIView alloc] initWithFrame:CGRectMake(0,imageView.frame.size.height - 43/2,imageView.frame.size.width,43/2)];
-                
                 view.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.7];
-                
                 [imageView addSubview:view];
                 
                 
                 UILabel * shangjia_title_label = [[UILabel alloc] initWithFrame:view.bounds];
-                
                 shangjia_title_label.text = info.title;
-                
                 shangjia_title_label.backgroundColor = [UIColor clearColor];
-                
                 shangjia_title_label.textAlignment = NSTextAlignmentCenter;
-                
                 shangjia_title_label.textColor = [UIColor whiteColor];
-                
                 shangjia_title_label.font = [UIFont systemFontOfSize:13];
-                
                 [view addSubview:shangjia_title_label];
             }
         }
@@ -551,7 +543,7 @@
         jianjie_label.font = [UIFont systemFontOfSize:15];
         
         
-        jianjie_label.text = [NSString stringWithFormat:@"%@... [更多]",_per_info.service_simpcontent];
+        jianjie_label.text = [NSString stringWithFormat:@"%@...[更多]",_per_info.service_simpcontent];
         
         CGSize optimumSize = [jianjie_label optimumSize];
         

@@ -15,6 +15,8 @@ typedef void(^SliderBBSForumSegmentViewBlock)(int index);
     SliderBBSForumSegmentViewBlock forumViewBlock;
     
     int history_page;//保存上次选择的版块
+    
+    NSMutableArray * image_array;
 }
 
 

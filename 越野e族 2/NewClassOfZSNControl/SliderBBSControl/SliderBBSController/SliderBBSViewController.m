@@ -179,7 +179,7 @@
     
     [_seg_view MyButtonStateWithIndex:_seg_current_page];
     
-    [self.myScrollView setContentOffset:CGPointMake(340*_seg_current_page,0) animated:YES];
+    [self.myScrollView setContentOffset:CGPointMake((DEVICE_WIDTH+20)*_seg_current_page,0) animated:YES];
     
 //    [self.myTableView2 reloadData];
 }
@@ -258,21 +258,13 @@
     [self loadLuntanJingXuanData];
     
     _myScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH+20,DEVICE_HEIGHT-64)];
-    
     _myScrollView.delegate = self;
-    
     _myScrollView.bounces = YES;
-        
     _myScrollView.showsHorizontalScrollIndicator = NO;
-    
     _myScrollView.showsVerticalScrollIndicator = NO;
-    
     _myScrollView.pagingEnabled = YES;
-    
     [self.view addSubview:_myScrollView];
-    
     _myScrollView.contentSize = CGSizeMake((DEVICE_WIDTH+20)*2,0);
-    
     
     [_seg_view MyButtonStateWithIndex:_seg_current_page];
     
@@ -280,13 +272,9 @@
     
     
     _myTableView1 = [[UITableView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,_myScrollView.frame.size.height)];
-    
     _myTableView1.delegate = self;
-    
     _myTableView1.dataSource = self;
-    
     _myTableView1.separatorStyle = UITableViewCellSeparatorStyleNone;
-    
     [_myScrollView addSubview:_myTableView1];
     
     
@@ -312,13 +300,9 @@
     
     
     _myTableView2 = [[UITableView alloc] initWithFrame:CGRectMake(DEVICE_WIDTH+20,63,DEVICE_WIDTH,_myScrollView.frame.size.height-63)];
-    
     _myTableView2.delegate = self;
-    
     _myTableView2.dataSource = self;
-    
     _myTableView2.separatorStyle = UITableViewCellSeparatorStyleNone;
-    
     [_myScrollView addSubview:_myTableView2];
     
     
@@ -1134,7 +1118,7 @@
         [view addSubview:name_label];
         
         
-        UIView * line_view = [[UIView alloc] initWithFrame:CGRectMake(270,5,0.5,34)];
+        UIView * line_view = [[UIView alloc] initWithFrame:CGRectMake(DEVICE_WIDTH-50,5,0.5,34)];
 
         line_view.backgroundColor = RGBCOLOR(228,228,228);
         
@@ -1166,7 +1150,7 @@
             
             fenlei_button.userInteractionEnabled = NO;
             
-            fenlei_button.frame = CGRectMake(271,0,49,44);
+            fenlei_button.frame = CGRectMake(DEVICE_WIDTH-49,0,49,44);
             
             [fenlei_button setImage:[UIImage imageNamed:@"bbs_forum_fenlei"] forState:UIControlStateNormal];
             
@@ -1278,8 +1262,8 @@
             if (i*2 + j < count)
             {
                 SliderBBSForumModel * model = [second_model.forum_sub objectAtIndex:i*2+j];
-                
-                UIView * back_view = [[UIView alloc] initWithFrame:CGRectMake(17 + 146*j,11+43*i,139,36)];
+                float view_height = (DEVICE_WIDTH-34-8)/2;
+                UIView * back_view = [[UIView alloc] initWithFrame:CGRectMake(17 + (view_height+8)*j,11+43*i,view_height,36)];
                 
                 back_view.tag = [model.forum_fid intValue] + 1000000;
                 
@@ -1294,14 +1278,14 @@
                 [view addSubview:back_view];
                 
                 
-                UIView * line_view = [[UIView alloc] initWithFrame:CGRectMake(100,3,0.5,30)];
+                UIView * line_view = [[UIView alloc] initWithFrame:CGRectMake(view_height-40,3,0.5,30)];
                 
                 line_view.backgroundColor = RGBCOLOR(209,209,209);
                 
                 [back_view addSubview:line_view];
                 
                 
-                UILabel * name_label = [[UILabel alloc] initWithFrame:CGRectMake(10,0,80,36)];
+                UILabel * name_label = [[UILabel alloc] initWithFrame:CGRectMake(10,0,view_height-60,36)];
                 
                 name_label.text = model.forum_name;
                 
@@ -1318,7 +1302,7 @@
                 
                 ZSNButton * collect_button = [ZSNButton buttonWithType:UIButtonTypeCustom];//收藏按钮
                 
-                collect_button.frame = CGRectMake(105,3,30,30);
+                collect_button.frame = CGRectMake(view_height-34,3,30,30);
                 
                 [collect_button setImage:[UIImage imageNamed:@"bbs_forum_collect1"] forState:UIControlStateNormal];
                 
