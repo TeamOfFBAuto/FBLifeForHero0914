@@ -28,7 +28,8 @@
         {
             NewFaceView *faceView = [[NewFaceView alloc] initWithFrame:CGRectMake(0+DEVICE_WIDTH * i,0,DEVICE_WIDTH,215)];
             
-            faceView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"WriteBlog_face_image.png"]];
+//            faceView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"WriteBlog_face_image.png"]];
+            faceView.backgroundColor = RGBCOLOR(237,237,237);
             
             faceView.deletage = target;
             

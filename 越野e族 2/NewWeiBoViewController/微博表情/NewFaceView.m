@@ -15,7 +15,23 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        // Initialization code
+        
+        for (int i = 0;i < 4;i++)
+        {
+            ///横线
+            UIView * v_line_view = [[UIView alloc] initWithFrame:CGRectMake(0,169/4.0*(i+1),DEVICE_WIDTH,0.5)];
+            v_line_view.backgroundColor = RGBCOLOR(225,224,224);
+            [self addSubview:v_line_view];
+        }
+        
+        for (int i = 0;i < 6;i++)
+        {
+            ///竖线
+            UIView * h_line_view = [[UIView alloc] initWithFrame:CGRectMake((DEVICE_WIDTH/7.0)*(i+1),0,0.5,169)];
+            h_line_view.backgroundColor = RGBCOLOR(225,224,224);
+            [self addSubview:h_line_view];
+        }
+        
     }
     return self;
 }
@@ -32,16 +48,18 @@
             [button addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
             button.frame = CGRectMake(0,0,25,28);
             
-            if (j==0)
-            {
-                button.center = CGPointMake(23,20.75+i*42);
-            }else if (j==6)
-            {
-                button.center = CGPointMake(296.5,20.75+i*42);
-            }else
-            {
-                button.center = CGPointMake(69+45.5*(j-1),20.75+i*42);
-            }
+            button.center = CGPointMake(DEVICE_WIDTH/7.0/2+(j*DEVICE_WIDTH/7.0),169/4.0f/2 + 169/4.0f*i);
+            
+//            if (j==0)
+//            {
+//                button.center = CGPointMake(23,20.75+i*42);
+//            }else if (j==6)
+//            {
+//                button.center = CGPointMake(296.5,20.75+i*42);
+//            }else
+//            {
+//                button.center = CGPointMake(69+45.5*(j-1),20.75+i*42);
+//            }
             
             
             
