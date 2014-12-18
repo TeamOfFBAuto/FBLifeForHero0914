@@ -695,8 +695,12 @@
                 [_contenttextview resignFirstResponder];
                 [subjectTextfield resignFirstResponder];
 //                [_keytop WhenfaceviewFram];
-                [_keytop FaceAndKeyBoard:2];
-                [self faceviewshow];
+                [_keytop FaceAndKeyBoard:2];//变换图片
+                [self faceviewshow];//显示表情面板
+                
+                //更新 工具条frame
+                
+                _keytop.top = faceScrollView.top - _keytop.height;
                 
             }else{
                 [self faceviewhide];
@@ -771,6 +775,9 @@
     //        return;
     //    }
     
+    //更新工具条 frame
+    
+    _keytop.top = morePicView.top - _keytop.height;
     
 }
 

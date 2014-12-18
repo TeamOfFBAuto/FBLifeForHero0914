@@ -102,7 +102,7 @@
         self.imageSize = CGSizeMake(75, 75);
         
         // Table View
-        UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0,0,320,iPhone5?568-20-72:480-20-72) style:UITableViewStylePlain];
+        UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,DEVICE_HEIGHT - 20-72) style:UITableViewStylePlain];
         tableView.dataSource = self;
         tableView.delegate = self;
         tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -122,15 +122,19 @@
         
         UIImageView * imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"640_146.png"]];
         
+        imageView.width = DEVICE_WIDTH;
+        
         imageView.userInteractionEnabled = YES;
         
-        imageView.center = CGPointMake(160,iPhone5?548-73/2 - 44:460-73/2 - 44);
+        imageView.center = CGPointMake(DEVICE_WIDTH / 2.f,DEVICE_HEIGHT - 20 -73/2 - 44);
         
         [self.view addSubview:imageView];
         
         tishi_button = [UIButton buttonWithType:UIButtonTypeCustom];
-        
-        tishi_button.frame = CGRectMake(270,17,40,39);
+
+//        tishi_button.frame = CGRectMake(270,17,40,39);
+
+        tishi_button.frame = CGRectMake(DEVICE_WIDTH - 50,17,40,39);
         [tishi_button setImage:[UIImage imageNamed:@"choosepictureOk.png"] forState:UIControlStateNormal];
         
         [tishi_button addTarget:self action:@selector(done) forControlEvents:UIControlEventTouchUpInside];
@@ -155,7 +159,10 @@
         
         
         
-        scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0,0,250,73)];
+//        scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0,0,250,73)];
+        
+        scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH - 70,73)];
+
         
         scrollView.backgroundColor = [UIColor clearColor];
         
@@ -535,10 +542,12 @@
 
 -(void)updateScrollView
 {
+    int num = DEVICE_WIDTH / 70;
+    
     [UIView animateWithDuration:0.1 animations:^{
-        if (self.selectedAssets.count>4)
+        if (self.selectedAssets.count>num)
         {
-            CGFloat offsetY=10+(self.selectedAssets.count-4)*60;
+            CGFloat offsetY=10+(self.selectedAssets.count-num)*60;
             [scrollView setContentOffset:CGPointMake(offsetY,0) animated:YES];
         }else{
             [scrollView setContentOffset:CGPointMake(0, 0) animated:YES];
