@@ -24,11 +24,11 @@
 @property(nonatomic,strong)UIImage *image_;
 @property(assign,nonatomic)int changeimage;
 @property(assign,nonatomic)id<KeyboardviewDelegate>delegate;
--(void)bottoming;
--(void)uping;
--(void)chinesekeyuping;
--(void)jiugonggechineseuping;
--(void)jiugonggepinyinuping;
+//-(void)bottoming;
+//-(void)uping;
+//-(void)chinesekeyuping;
+//-(void)jiugonggechineseuping;
+//-(void)jiugonggepinyinuping;
 -(void)FaceAndKeyBoard:(int)isface;
--(void)WhenfaceviewFram;
+//-(void)WhenfaceviewFram;
 @end

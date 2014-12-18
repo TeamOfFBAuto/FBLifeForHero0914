@@ -10,6 +10,8 @@
 	<string>越野e族</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
+		<key>AFC30D9C92EB5037A657C2865172878BA69A39B9</key>
+		<string>https://github.com/TeamOfFBAuto/TheFinalFblife.git</string>
 		<key>E626A131908AB6F412B4104C41DB70E385353F32</key>
 		<string>https://github.com/TeamOfFBAuto/FBLifeForHero0914.git</string>
 	</dict>
@@ -17,6 +19,8 @@
 	<string>越野e族 2/越野e族.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
+		<key>AFC30D9C92EB5037A657C2865172878BA69A39B9</key>
+		<string>../../..</string>
 		<key>E626A131908AB6F412B4104C41DB70E385353F32</key>
 		<string>../..</string>
 	</dict>
@@ -28,6 +32,14 @@
 	<string>E626A131908AB6F412B4104C41DB70E385353F32</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>AFC30D9C92EB5037A657C2865172878BA69A39B9</string>
+			<key>IDESourceControlWCCName</key>
+			<string></string>
+		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>

@@ -244,7 +244,7 @@
     
     pageControl.currentPage = 0;
     
-    [self.view addSubview:pageControl];
+//    [self.view addSubview:pageControl];//lcw
     
     
     
@@ -694,7 +694,7 @@
             if (isup==YES) {
                 [_contenttextview resignFirstResponder];
                 [subjectTextfield resignFirstResponder];
-                [_keytop WhenfaceviewFram];
+//                [_keytop WhenfaceviewFram];
                 [_keytop FaceAndKeyBoard:2];
                 [self faceviewshow];
                 
@@ -706,7 +706,7 @@
                 }else{
                     [_contenttextview becomeFirstResponder];
                 }
-                [_keytop uping];
+//                [_keytop uping];
             }
             
             break;
@@ -759,7 +759,7 @@
     
     morePicView.hidden = NO;
     
-    [_keytop uping];
+//    [_keytop uping];
     
     [_contenttextview resignFirstResponder];
     [subjectTextfield resignFirstResponder];
@@ -1113,69 +1113,79 @@
 
 #pragma mark - 键盘状态监测
 
+
 - (void) keyboardWillShow:(NSNotification *)notification {
     
     NSDictionary * info = [notification userInfo];
-    CGSize kbSize = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
+    CGRect kbRect = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
     //
     //    [UIView beginAnimations:nil context:nil];
     //    [UIView setAnimationDuration:0.1];
     
-    if (kbSize.height == 252) {
-        ischinese=0;
-        [_keytop chinesekeyuping];
-        
-        
-    }else {
-        ischinese=1;
-        
-        [_keytop uping];
-    }
+    NSLog(@"----- %f",kbRect.size.height);
+    
+    NSLog(@"----- y : %f",kbRect.origin.y);
+    
+    CGFloat keyboad_y = kbRect.origin.y;
+    
+    _keytop.top = keyboad_y - _keytop.height;
     
     
     
-    int heightofkeyboard=(int)kbSize.height;
-    switch (heightofkeyboard) {
-        case 252:
-        {
-            ischinese=0;
-            [_keytop chinesekeyuping];
-            
-            
-        }
-            break;
-            
-            
-        case 216:
-        {
-            ischinese=1;
-            
-            [_keytop uping];
-            
-        }
-            break;
-        case 251:
-        {
-            ischinese=2;
-            [_keytop jiugonggechineseuping];
-            
-            
-        }
-            break;
-        case 184:
-        {
-            ischinese=3;
-            [_keytop jiugonggepinyinuping];
-            
-            
-        }
-            break;
-            
-            
-            
-        default:
-            break;
-    }
+//    if (kbSize.height == 252) {
+//        ischinese=0;
+//        [_keytop chinesekeyuping];
+//        
+//        
+//    }else {
+//        ischinese=1;
+//        
+//        [_keytop uping];
+//    }
+//    
+//    
+//    int heightofkeyboard=(int)kbSize.height;
+//    switch (heightofkeyboard) {
+//        case 252:
+//        {
+//            ischinese=0;
+//            [_keytop chinesekeyuping];
+//            
+//            
+//        }
+//            break;
+//            
+//            
+//        case 216:
+//        {
+//            ischinese=1;
+//            
+//            [_keytop uping];
+//            
+//        }
+//            break;
+//        case 251:
+//        {
+//            ischinese=2;
+//            [_keytop jiugonggechineseuping];
+//            
+//            
+//        }
+//            break;
+//        case 184:
+//        {
+//            ischinese=3;
+//            [_keytop jiugonggepinyinuping];
+//            
+//            
+//        }
+//            break;
+//            
+//            
+//            
+//        default:
+//            break;
+//    }
     
     
     
@@ -1183,6 +1193,80 @@
     
     //    [UIView commitAnimations];
 }
+
+
+//- (void) keyboardWillShow:(NSNotification *)notification {
+//    
+//    NSDictionary * info = [notification userInfo];
+//    CGSize kbSize = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
+//    //
+//    //    [UIView beginAnimations:nil context:nil];
+//    //    [UIView setAnimationDuration:0.1];
+//    
+//    NSLog(@"----- %f",kbSize.height);
+//    
+//    if (kbSize.height == 252) {
+//        ischinese=0;
+//        [_keytop chinesekeyuping];
+//        
+//        
+//    }else {
+//        ischinese=1;
+//        
+//        [_keytop uping];
+//    }
+//    
+//    
+//    
+//    int heightofkeyboard=(int)kbSize.height;
+//    switch (heightofkeyboard) {
+//        case 252:
+//        {
+//            ischinese=0;
+//            [_keytop chinesekeyuping];
+//            
+//            
+//        }
+//            break;
+//            
+//            
+//        case 216:
+//        {
+//            ischinese=1;
+//            
+//            [_keytop uping];
+//            
+//        }
+//            break;
+//        case 251:
+//        {
+//            ischinese=2;
+//            [_keytop jiugonggechineseuping];
+//            
+//            
+//        }
+//            break;
+//        case 184:
+//        {
+//            ischinese=3;
+//            [_keytop jiugonggepinyinuping];
+//            
+//            
+//        }
+//            break;
+//            
+//            
+//            
+//        default:
+//            break;
+//    }
+//    
+//    
+//    
+//    
+//    
+//    //    [UIView commitAnimations];
+//}
 - (void)keyboardWillHide:(NSNotification *)note
 {
     
@@ -1190,20 +1274,20 @@
 }
 -(void)faceviewshow{
     if (IOS_VERSION>=7) {
-        faceScrollView.frame = CGRectMake(0, iPhone5?568-140-44+3+20-55:480-140-44+3+20-55, self.view.frame.size.width, 215) ;
-        pageControl.frame=CGRectMake(0, iPhone5?568-44+3:480-44+3, 320, 25);
+        faceScrollView.frame = CGRectMake(0, DEVICE_HEIGHT - 140-44+3+20-55, DEVICE_WIDTH, 215) ;
+        pageControl.frame=CGRectMake(0, DEVICE_HEIGHT - 44+3, 320, 25);
         
     }else{
-        faceScrollView.frame = CGRectMake(0, iPhone5?568-140-44+3-55:480-140-44+3-55, self.view.frame.size.width, 215) ;
-        pageControl.frame=CGRectMake(0, iPhone5?568-44+3-20:480-44+3-20, 320, 25);
+        faceScrollView.frame = CGRectMake(0, DEVICE_HEIGHT - 140-44+3-55, DEVICE_WIDTH, 215) ;
+        pageControl.frame=CGRectMake(0, DEVICE_HEIGHT - 44+3-20, 320, 25);
         
     }
     
     [_contenttextview resignFirstResponder];
 }
 -(void)faceviewhide{
-    faceScrollView.frame= CGRectMake(0, 900, self.view.frame.size.width, 215) ;
-    pageControl.frame=CGRectMake(0, 900, 320, 25);
+    faceScrollView.frame= CGRectMake(0, 900, DEVICE_WIDTH, 215) ;
+    pageControl.frame=CGRectMake(0, 900, DEVICE_WIDTH, 25);
     [_contenttextview resignFirstResponder];
     
 }
@@ -1243,34 +1327,34 @@
     //    }else{
     //        [_keytop uping];
     //    }
-    switch (ischinese) {
-        case 0:
-        {
-            [_keytop chinesekeyuping];
-        }
-            break;
-        case 1:
-        {
-            [_keytop uping];
-            
-        }
-            break;
-        case 2:
-        {
-            [_keytop jiugonggechineseuping];
-            
-        }
-            break;
-        case 3:
-        {
-            [_keytop jiugonggepinyinuping];
-            
-        }
-            break;
-            
-        default:
-            break;
-    }
+//    switch (ischinese) {
+//        case 0:
+//        {
+//            [_keytop chinesekeyuping];
+//        }
+//            break;
+//        case 1:
+//        {
+//            [_keytop uping];
+//            
+//        }
+//            break;
+//        case 2:
+//        {
+//            [_keytop jiugonggechineseuping];
+//            
+//        }
+//            break;
+//        case 3:
+//        {
+//            [_keytop jiugonggepinyinuping];
+//            
+//        }
+//            break;
+//            
+//        default:
+//            break;
+//    }
     [subjectTextfield resignFirstResponder];
 }
 -(void)textFieldDidBeginEditing:(UITextField *)textField{
@@ -1279,34 +1363,34 @@
     isbiaoti=1;
     isup=NO;
     [_keytop FaceAndKeyBoard:1];
-    switch (ischinese) {
-        case 0:
-        {
-            [_keytop chinesekeyuping];
-        }
-            break;
-        case 1:
-        {
-            [_keytop uping];
-            
-        }
-            break;
-        case 2:
-        {
-            [_keytop jiugonggechineseuping];
-            
-        }
-            break;
-        case 3:
-        {
-            [_keytop jiugonggepinyinuping];
-            
-        }
-            break;
-            
-        default:
-            break;
-    }
+//    switch (ischinese) {
+//        case 0:
+//        {
+//            [_keytop chinesekeyuping];
+//        }
+//            break;
+//        case 1:
+//        {
+//            [_keytop uping];
+//            
+//        }
+//            break;
+//        case 2:
+//        {
+//            [_keytop jiugonggechineseuping];
+//            
+//        }
+//            break;
+//        case 3:
+//        {
+//            [_keytop jiugonggepinyinuping];
+//            
+//        }
+//            break;
+//            
+//        default:
+//            break;
+//    }
     
 }
 
