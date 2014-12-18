@@ -2730,9 +2730,7 @@
     
 }
 
-
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
-    
     
     
     if (scrollView==_titleView) {
