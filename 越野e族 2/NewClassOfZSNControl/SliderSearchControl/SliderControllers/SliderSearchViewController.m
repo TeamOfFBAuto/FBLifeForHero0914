@@ -113,23 +113,24 @@
 
     
         
-    searchheaderview=[[UIView alloc]initWithFrame:CGRectMake(0,IOS_VERSION>=7?0:0, 320,IOS_VERSION>=7?108: 88)];
+    searchheaderview=[[UIView alloc]initWithFrame:CGRectMake(0,IOS_VERSION>=7?0:0, DEVICE_WIDTH,IOS_VERSION>=7?108: 88)];
     searchheaderview.backgroundColor=RGBCOLOR(247, 247, 247);
     [self.view addSubview:searchheaderview];
     
     
-    ImgV_ofsearch=[[UIImageView alloc]initWithFrame:CGRectMake(6, MY_MACRO_NAME?20:0, 320-6, 44)];
+    ImgV_ofsearch=[[UIImageView alloc]initWithFrame:CGRectMake(6, MY_MACRO_NAME?20:0, DEVICE_WIDTH-6, 44)];
     ImgV_ofsearch.backgroundColor=RGBCOLOR(247, 247, 247);
     ImgV_ofsearch.userInteractionEnabled=YES;
     [searchheaderview addSubview:ImgV_ofsearch];
     
     
     
-    UIImageView *imgbc=[[UIImageView alloc]initWithFrame:CGRectMake(6, 6, 517/2, 56/2)];
+    UIImageView *imgbc=[[UIImageView alloc]initWithFrame:CGRectMake(6, 6, 517.00/320*DEVICE_WIDTH/2, 56/2)];
     imgbc.image=[UIImage imageNamed:@"ios7_newssearchbar.png"];
     [ImgV_ofsearch addSubview:imgbc];
     
-    _searchbar=[[UITextField alloc]initWithFrame:CGRectMake(30+6,MY_MACRO_NAME? 6:12,206-5,58/2)];
+    _searchbar=[[UITextField alloc]initWithFrame:CGRectMake(30+6,MY_MACRO_NAME? 6:12,(206-5)/320.00*DEVICE_WIDTH,58/2)];
+    
     //[[_searchbar.subviews objectAtIndex:0]removeFromSuperview];
     _searchbar.delegate=self;
     [_searchbar becomeFirstResponder];
@@ -142,23 +143,27 @@
     
     
     
-    UIView *selectview=[[UIView alloc]initWithFrame:CGRectMake(0,IOS_VERSION>=7?64: 44, 320, 44)];
+    UIView *selectview=[[UIView alloc]initWithFrame:CGRectMake(0,IOS_VERSION>=7?64: 44, DEVICE_WIDTH, 44)];
     selectview.backgroundColor=RGBACOLOR(247, 247, 247, 1);
     [searchheaderview addSubview:selectview];
-    mysegment=[[CustomSegmentView alloc]initWithFrame:CGRectMake(12, (44-28.5)/2, 296, 57/2)];
+    mysegment=[[CustomSegmentView alloc]initWithFrame:CGRectMake(12, (44-28.5)/2/320.00*DEVICE_WIDTH, 296/320.00*DEVICE_WIDTH, 57/2)];
     [mysegment setAllViewWithArray:[NSArray arrayWithObjects:@"ios7_newsunselect.png",@"ios7_bbsunselect.png",@"ios7_fbunselect.png",@"ios7_userunselect.png", @"ios7_newsselected.png",@"ios7_bbsselected.png",@"ios7_fbselected.png",@"userselected.png",nil]];
     [mysegment settitleWitharray:[NSArray arrayWithObjects:@"资讯",@"论坛",@"微博",@"用户", nil]];
     // mysegment.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"segbackground.png"]];
     [selectview addSubview:mysegment];
     mysegment.delegate=self;
     
-    UIImageView *imgvline=[[UIImageView alloc]initWithFrame:CGRectMake(0, MY_MACRO_NAME?64:44, 320, 1)];
+    UIImageView *imgvline=[[UIImageView alloc]initWithFrame:CGRectMake(0, MY_MACRO_NAME?64:44, DEVICE_WIDTH, 1)];
     imgvline.image=[UIImage imageNamed:@"line-2.png"];
     [searchheaderview addSubview:imgvline];
     
     
     
-    cancelButton=[[UIButton alloc]initWithFrame:CGRectMake(517/2, 6, 320-517/2, 61/2)];
+    cancelButton=[[UIButton alloc]initWithFrame:CGRectMake(517/2/320.00*DEVICE_WIDTH, 6, DEVICE_WIDTH-517/2, 61/2)];
+    if (DEVICE_WIDTH > 320) {
+        [cancelButton setFrame:CGRectMake(517/2/320.00*DEVICE_WIDTH, 6, 66, 61/2)];
+        
+    }
     cancelButton.backgroundColor = [UIColor clearColor];
     cancelButton.userInteractionEnabled=YES;
     //  [ cancelButton setBackgroundImage:[UIImage imageNamed:@"searchcancell.png"] forState:UIControlStateNormal];
@@ -172,7 +177,7 @@
     
     
     
-    _myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0,IOS_VERSION>=7?108: 88,320,(iPhone5?568:480)-(IOS_VERSION>=7?108:88)) style:UITableViewStylePlain];
+    _myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0,IOS_VERSION>=7?108: 88,DEVICE_WIDTH,(iPhone5?568:480)-(IOS_VERSION>=7?108:88)) style:UITableViewStylePlain];
     
     _myTableView.delegate = self;
     
@@ -181,7 +186,7 @@
     [self.view addSubview:_myTableView];
     
     
-    searchloadingview =[[LoadingIndicatorView alloc]initWithFrame:CGRectMake(0, 900, 320, 40)];
+    searchloadingview =[[LoadingIndicatorView alloc]initWithFrame:CGRectMake(0, 900, DEVICE_WIDTH, 40)];
     searchloadingview.backgroundColor=[UIColor clearColor];
     searchloadingview.normalLabel.text=@"上拉加载更多";
     
