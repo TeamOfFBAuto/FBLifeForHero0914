@@ -52,21 +52,21 @@
     [super viewWillAppear:YES];
     self.navigationController.navigationBarHidden = YES;
     
-
-    self.navigationController.navigationBarHidden = YES;
-//
-
-//    self.wantsFullScreenLayout = YES;
-//    
-//    if (MY_MACRO_NAME) {
-//        self.edgesForExtendedLayout = UIRectEdgeNone;
-//        
-//        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
-//        
-//    }
-
     
-//    [self setup];
+    self.navigationController.navigationBarHidden = YES;
+    //
+    
+    //    self.wantsFullScreenLayout = YES;
+    //
+    //    if (MY_MACRO_NAME) {
+    //        self.edgesForExtendedLayout = UIRectEdgeNone;
+    //
+    //        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+    //
+    //    }
+    
+    
+    //    [self setup];
 }
 
 
@@ -76,12 +76,12 @@
     
     self.view.backgroundColor = RGBCOLOR(237,238,243);
     
-//    if (MY_MACRO_NAME) {
-//        self.edgesForExtendedLayout = UIRectEdgeNone;
-//        
-//        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-//        
-//    }
+    //    if (MY_MACRO_NAME) {
+    //        self.edgesForExtendedLayout = UIRectEdgeNone;
+    //
+    //        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    //
+    //    }
     
     myDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
@@ -89,7 +89,7 @@
     
     timer = [NSTimer scheduledTimerWithTimeInterval:20 target:self selector:@selector(checkallmynotification) userInfo:nil repeats:YES];
     
-//    [self setup];
+    //    [self setup];
     
     
     
@@ -109,7 +109,7 @@
     
     BOOL islogin = [userDefaults boolForKey:USER_IN];
     
-
+    
     
     
     _rootScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0,0,SLIDER_RIGHT_WIDTH,DEVICE_HEIGHT)];
@@ -124,7 +124,7 @@
     
     _rootScrollView.backgroundColor = [UIColor clearColor];
     
- //   [self.view addSubview:_rootScrollView];
+    //   [self.view addSubview:_rootScrollView];
     
     
     
@@ -187,7 +187,7 @@
         for (int j = 0;j < 3;j++)
         {
             float scale_ = SLIDER_RIGHT_WIDTH/372;
-    
+            
             float ver_scale = DEVICE_HEIGHT/736;
             
             UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -304,7 +304,7 @@
     
     
     
-//    [self receivemyimage_head];
+    //    [self receivemyimage_head];
     
     headerImageView = [[AsyncImageView alloc] initWithFrame:CGRectMake(103,46,82,82)];
     
@@ -353,7 +353,7 @@
         for (int j = 0;j < 3;j++)
         {
             float scale_ = SLIDER_RIGHT_WIDTH/372;
-
+            
             UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
             button.frame = CGRectMake(50*scale_ + (44+67*scale_)*j,(iPhone5?230:210)+(60+30*scale_)*i,44,60);
             [button setTitle:[arrary1 objectAtIndex:j+i*3] forState:UIControlStateNormal];
@@ -364,8 +364,8 @@
             button.backgroundColor = [UIColor clearColor];
             [button addTarget:self action:@selector(buttonTap:) forControlEvents:UIControlEventTouchUpInside];
             [_rootScrollView addSubview:button];
-        
-        
+            
+            
             UIImage * image = [UIImage imageNamed:[arrary objectAtIndex:j+i*3]];
             NSLog(@"image ----   %@",NSStringFromCGSize(image.size));
             UIImageView * imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,image.size.width,image.size.height)];
@@ -389,7 +389,7 @@
         }
     }
     
-
+    
     UILabel * version_label = [[UILabel alloc] initWithFrame:CGRectMake(40,_rootScrollView.frame.size.height-(iPhone5?50:40),100,30)];
     
     version_label.text = [NSString stringWithFormat:@"v %@",NOW_VERSION];
@@ -484,7 +484,7 @@
                 NSString * userName = [NSString stringWithFormat:@"%@",[dictionary objectForKey:@"nickname"]];
                 
                 NSString * userFace = [NSString stringWithFormat:@"%@",[dictionary objectForKey:@"face_original"]];
-                                
+                
                 NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
                 
                 [defaults setObject:string_uid forKey:USER_UID];
@@ -499,7 +499,7 @@
                 
                 LogIn_label.text = userName;
                 
-//                [headerImageView loadImageFromURL:userFace withPlaceholdImage:[UIImage imageNamed:@"SliderRightLogin.png"]];
+                //                [headerImageView loadImageFromURL:userFace withPlaceholdImage:[UIImage imageNamed:@"SliderRightLogin.png"]];
                 
                 [headerImageView loadUserHeaderImageFromUrl:userFace withPlaceholdImage:[UIImage imageNamed:@"touxiang"]];
                 
@@ -550,16 +550,16 @@
     }
     
     
-        
+    
     switch (sender.tag - 1000) {
         case 0:
         {
             NSLog(@"帖子");
             MyWriteAndCommentViewController * shoucangVC = [[MyWriteAndCommentViewController alloc] init];
-                        
+            
             [myDelegate.root_nav pushViewController:shoucangVC animated:YES];
-
-  
+            
+            
             
         }
             break;
@@ -596,11 +596,11 @@
         {
             MessageViewController * message = [[MessageViewController alloc] init];
             
-//            [myDelegate.pushViewController.navigationController pushViewController:message animated:YES];
-//            
-//            [myDelegate.pushViewController setNavigationHiddenWith:NO WithBlock:^{
-//                
-//            }];
+            //            [myDelegate.pushViewController.navigationController pushViewController:message animated:YES];
+            //
+            //            [myDelegate.pushViewController setNavigationHiddenWith:NO WithBlock:^{
+            //
+            //            }];
             
             [myDelegate.root_nav pushViewController:message animated:YES];
             
@@ -634,7 +634,7 @@
             DetailViewController *_qrcode=[[DetailViewController alloc]init];
             
             [myDelegate.root_nav pushViewController:_qrcode animated:YES];
-        
+            
         }
             break;
         case 8://搜索
@@ -665,9 +665,9 @@
     {
         LogInViewController * login = [LogInViewController sharedManager];
         
-//        [[self getAppDelegate].pushViewController presentViewController:login animated:YES completion:^{
-//            
-//        }];
+        //        [[self getAppDelegate].pushViewController presentViewController:login animated:YES completion:^{
+        //
+        //        }];
         
         [self presentViewController:login animated:YES completion:^{
             
@@ -681,7 +681,7 @@
 #pragma mark - 跳转到设置界面
 
 -(void)settingButtonTap:(UIButton *)sender
-{    
+{
     SliderRightSettingViewController * settingVC = [[SliderRightSettingViewController alloc] init];
     
     [myDelegate.root_nav pushViewController:settingVC animated:YES];
@@ -758,7 +758,7 @@
             
             NSDictionary * alertnum_dic = [dic objectForKey:@"alertnum"];
             
-           // NSLog(@"未读消息 ------  %@",alertnum_dic);
+            // NSLog(@"未读消息 ------  %@",alertnum_dic);
             
             for (int i = 0;i <= 16;i++)
             {
