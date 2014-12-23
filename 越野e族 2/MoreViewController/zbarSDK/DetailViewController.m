@@ -168,6 +168,10 @@
     
     float height = iPhone5?0:-60;
     
+    if (DEVICE_WIDTH >320 ) {
+        height = 80;
+    }
+    
     //半透明的浮层
     UIImageView *backImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,DEVICE_HEIGHT-64)];
     backImageView.image = [UIImage imageNamed:@"saoyisao_bg_640_996.png"];
@@ -205,7 +209,11 @@
     num =0;
     
     //上下滚动的条
-    _line = [[UIImageView alloc] initWithFrame:CGRectMake(50,90+height,220,num)];
+    _line = [[UIImageView alloc] initWithFrame:CGRectMake((DEVICE_WIDTH-220)*0.5,90+height,220,num)];
+    
+    
+    NSLog(@"%@",NSStringFromCGRect(_line.frame));
+    
     _line.image = [UIImage imageNamed:@"11.png"];
     [myReaderView addSubview:_line];
     
@@ -406,7 +414,7 @@
         num ++;
         
         _line.image = [UIImage imageNamed:@"saoyisao_line33.png"];
-        _line.frame = CGRectMake(50,_line.frame.origin.y, 220, num);
+        _line.frame = CGRectMake((DEVICE_WIDTH-220)*0.5,_line.frame.origin.y, 220, num);
         _line.alpha = num/220.0f;
         if (num == 220) {
             upOrdown = YES;
@@ -417,7 +425,7 @@
         num ++;
         
         _line.image = [UIImage imageNamed:@"saoyisao_line33.png"];
-        _line.frame = CGRectMake(50,_line.frame.origin.y, 220, num);
+        _line.frame = CGRectMake((DEVICE_WIDTH-220)*0.5,_line.frame.origin.y, 220, num);
         if (num == 220) {
             upOrdown = NO;
             _line.alpha = num/220.0f;
