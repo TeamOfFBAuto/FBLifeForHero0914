@@ -219,7 +219,7 @@
     {
         NSString * path = [NSHomeDirectory() stringByAppendingPathComponent:@"tmp/data"];
         
-        lineView.center = CGPointMake(160,0.25);
+        lineView.center = CGPointMake(DEVICE_WIDTH/2,0.25);
         
         UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake(DEVICE_WIDTH-112,0,100,54)];
         
@@ -238,14 +238,14 @@
         
     }else if (indexPath.row == 2)
     {
-        lineView.center = CGPointMake(174,0.25);
+        lineView.center = CGPointMake(DEVICE_WIDTH/2+14,0.25);
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }else if (indexPath.row == 3)
     {
-        lineView.center = CGPointMake(174,0.25);
+        lineView.center = CGPointMake(DEVICE_WIDTH/2+14,0.25);
     }else if (indexPath.row == 4)
     {
-        lineView.center = CGPointMake(174,0.25);
+        lineView.center = CGPointMake(DEVICE_WIDTH/2+14,0.25);
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     

@@ -80,7 +80,7 @@
     [webView loadHTMLString:_info.content  baseURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]]];
     
     myScrollView.contentSize = webView.scrollView.contentSize;
-    webView.frame = CGRectMake(0,64,320,myScrollView.contentSize.height);
+    webView.frame = CGRectMake(0,64,DEVICE_WIDTH,myScrollView.contentSize.height);
     
     [headView loadImageFromURL:obj.face_original withPlaceholdImage:[personal getImageWithName:@"touxiang"]];
     

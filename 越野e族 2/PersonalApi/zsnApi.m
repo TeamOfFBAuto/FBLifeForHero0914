@@ -910,11 +910,6 @@
             }
             
             obj.rcontent = intro;
-            
-            
-            
-            
-                        
         }
         
         
@@ -922,6 +917,8 @@
         {
             obj.content = [obj.content stringByReplacingOccurrencesOfString:@"&nbsp;" withString:@""];
         }
+        
+        obj.content = [zsnApi dddddecodeSpecialCharactersStringWith:obj.content];
         
         
         
@@ -1340,6 +1337,32 @@
 }
 
 
+//#pragma mark - 解码特殊字符
+//+(NSString *)decodeSpecialCharactersString:(NSString *)input
+//{
+//    input = [input stringByReplacingOccurrencesOfString:@"&amp;" withString:@"&"];
+//    input = [input stringByReplacingOccurrencesOfString:@"quot;" withString:@"\""];
+//    input = [input stringByReplacingOccurrencesOfString:@"&#039;" withString:@"'"];
+//    input = [input stringByReplacingOccurrencesOfString:@"&lt;" withString:@"&lt"];
+//    input = [input stringByReplacingOccurrencesOfString:@"&gt;" withString:@"&gt"];
+//    
+//    input = [input stringByReplacingOccurrencesOfString:@"<" withString:@"&lt"];
+//    input = [input stringByReplacingOccurrencesOfString:@">" withString:@"&gt"];
+//    return input;
+//}
+
+#pragma mark - 返回适配后的宽度
++(float)returnAutoWidthWith:(float)aWith
+{
+    return aWith*DEVICE_WIDTH/320;
+}
+#pragma mark - 返回适配后的高度
++(float)returnAutoHeightWith:(float)aHeight WithWidth:(float)aWidth
+{
+    return aHeight*(aWidth*DEVICE_WIDTH/320)/aWidth;
+}
+
+
 #pragma mark - 解码特殊字符
 +(NSString *)decodeSpecialCharactersString:(NSString *)input
 {
@@ -1354,16 +1377,41 @@
     return input;
 }
 
-#pragma mark - 返回适配后的宽度
-+(float)returnAutoWidthWith:(float)aWith
+#pragma mark - 特殊字符编码
++(NSString *)encodeSpecialCharactersString:(NSString *)input
 {
-    return aWith*DEVICE_WIDTH/320;
+    input = [input stringByReplacingOccurrencesOfString:@"&" withString:@"&amp;"];
+    input = [input stringByReplacingOccurrencesOfString:@"\"" withString:@"quot;"];
+    input = [input stringByReplacingOccurrencesOfString:@"'" withString:@"&#039;"];
+    input = [input stringByReplacingOccurrencesOfString:@"<" withString:@"&lt"];
+    input = [input stringByReplacingOccurrencesOfString:@">" withString:@"&gt"];
+    input = [input stringByReplacingOccurrencesOfString:@"•" withString:@"&#8226;"];
+    return input;
 }
-#pragma mark - 返回适配后的高度
-+(float)returnAutoHeightWith:(float)aHeight WithWidth:(float)aWidth
+#pragma mark - 特殊字符编码转换成特殊字符
++(NSString *)ddecodeSpecialCharactersStringWith:(NSString *)input
 {
-    return aHeight*(aWidth*DEVICE_WIDTH/320)/aWidth;
+    input = [input stringByReplacingOccurrencesOfString:@"&amp;" withString:@"&"];
+    input = [input stringByReplacingOccurrencesOfString:@"&quot;" withString:@"\""];
+    input = [input stringByReplacingOccurrencesOfString:@"&#039;" withString:@"'"];
+    input = [input stringByReplacingOccurrencesOfString:@"&lt;" withString:@"<"];
+    input = [input stringByReplacingOccurrencesOfString:@"&gt;" withString:@">"];
+    input = [input stringByReplacingOccurrencesOfString:@"&#8226;" withString:@"•"];
+    return input;
 }
+
+#pragma mark - 无奈的编码，只在这里显示用的特殊字符编码转换成特殊字符
++(NSString *)dddddecodeSpecialCharactersStringWith:(NSString *)input
+{
+    input = [input stringByReplacingOccurrencesOfString:@"amp;" withString:@"&"];
+    input = [input stringByReplacingOccurrencesOfString:@"quot;" withString:@"\""];
+    input = [input stringByReplacingOccurrencesOfString:@"#039;" withString:@"'"];
+    input = [input stringByReplacingOccurrencesOfString:@"lt;" withString:@"<"];
+    input = [input stringByReplacingOccurrencesOfString:@"gt;" withString:@">"];
+    input = [input stringByReplacingOccurrencesOfString:@"&#8226;" withString:@"•"];
+    return input;
+}
+
 
 @end
 

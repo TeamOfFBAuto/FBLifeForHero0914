@@ -117,7 +117,7 @@
         
         loading_view = [[UIView alloc] initWithFrame:CGRectMake(0,0,160,100)];
         
-        loading_view.center = CGPointMake(160,(iPhone5?568:480)/2-20);
+        loading_view.center = CGPointMake(DEVICE_WIDTH/2,DEVICE_HEIGHT/2-20);
         
         loading_view.userInteractionEnabled = NO;
         
@@ -153,9 +153,7 @@
         
         
         UIImageView * place_imageview = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"atlas_logo"]];
-        
         place_imageview.center = CGPointMake(80,80);
-        
         [loading_view addSubview:place_imageview];
         
         

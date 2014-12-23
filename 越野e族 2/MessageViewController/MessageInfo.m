@@ -36,7 +36,7 @@
     {
         self.date_now = [NSString stringWithFormat:@"%@",[dic objectForKey:@"date_now"]];
         
-        self.from_message = [NSString stringWithFormat:@"%@",[dic objectForKey:@"from_message"]];
+        self.from_message = [zsnApi dddddecodeSpecialCharactersStringWith:[NSString stringWithFormat:@"%@",[dic objectForKey:@"from_message"]]];
         
         self.from_uid = [NSString stringWithFormat:@"%@",[dic objectForKey:@"from_uid"]];
         
@@ -48,7 +48,7 @@
         
         self.is_del = [NSString stringWithFormat:@"%@",[dic objectForKey:@"is_del"]];
         
-        self.to_message = [NSString stringWithFormat:@"%@",[dic objectForKey:@"to_message"]];
+        self.to_message = [zsnApi dddddecodeSpecialCharactersStringWith:[NSString stringWithFormat:@"%@",[dic objectForKey:@"to_message"]]];
         
         self.to_uid = [NSString stringWithFormat:@"%@",[dic objectForKey:@"to_uid"]];
         

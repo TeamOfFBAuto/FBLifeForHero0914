@@ -558,10 +558,10 @@
     label_time.textColor=RGBCOLOR(178, 178, 178);
     [cell.contentView addSubview:label_time];
     
+    UIImageView * imgxian_ = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH-20,0.5)];
+    imgxian_.image = [UIImage imageNamed:@"ios7_line594_1.png"];
     
-    UIImageView *imgxian_=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"ios7_line594_1.png"]];
-    
-    imgxian_.center=CGPointMake(tab_.editing?80:160, 5+heightOfLabel_Content+31);
+    imgxian_.center=CGPointMake(tab_.editing?(DEVICE_WIDTH/2-80):(DEVICE_WIDTH/2), 5+heightOfLabel_Content+31);
     [cell.contentView addSubview:imgxian_];
 
     //    DraftBoxView *_drafts=[[DraftBoxView alloc]initWithFrame:CGRectMake(0, 0, 320, 44) contentstring:[NSString stringWithFormat:@"%@",base_.content] datestring:[NSString stringWithFormat:@"%@",base_.date] type:base_.type tag:indexPath.row];

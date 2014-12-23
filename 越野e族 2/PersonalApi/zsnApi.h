@@ -93,6 +93,16 @@
 +(float)returnAutoWidthWith:(float)aWith;
 ///根据原高度返回适配后的高度
 +(float)returnAutoHeightWith:(float)aHeight WithWidth:(float)aWidth;
+
+
+///解码特殊字符
++(NSString *)decodeSpecialCharactersString:(NSString *)input;
+///特殊字符编码
++(NSString *)encodeSpecialCharactersString:(NSString *)input;
+///特殊字符解码（例：&lt;转化成<）
++(NSString *)ddecodeSpecialCharactersStringWith:(NSString *)input;
++(NSString *)dddddecodeSpecialCharactersStringWith:(NSString *)input;
+
 @end
 
 

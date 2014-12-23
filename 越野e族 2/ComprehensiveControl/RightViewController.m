@@ -128,7 +128,7 @@
     
     
     
-    UIView * user_Info_BackView = [[UIView alloc] initWithFrame:CGRectMake(0,0,SLIDER_RIGHT_WIDTH,191)];
+    UIView * user_Info_BackView = [[UIView alloc] initWithFrame:CGRectMake(0,0,SLIDER_RIGHT_WIDTH,247*(DEVICE_HEIGHT/736))];
     user_Info_BackView.backgroundColor = RGBCOLOR(248,248,248);
     user_Info_BackView.layer.masksToBounds = NO;
     user_Info_BackView.layer.shadowColor = [UIColor blackColor].CGColor;//RGBCOLOR(216,216,216).CGColor;
@@ -141,7 +141,7 @@
     
     //    [self receivemyimage_head];
     
-    headerImageView = [[AsyncImageView alloc] initWithFrame:CGRectMake(SLIDER_RIGHT_WIDTH/2-41,46,82,82)];
+    headerImageView = [[AsyncImageView alloc] initWithFrame:CGRectMake(SLIDER_RIGHT_WIDTH/2-107*(DEVICE_HEIGHT/736)/2.0,56*(DEVICE_HEIGHT/736),107*(DEVICE_HEIGHT/736),107*(DEVICE_HEIGHT/736))];
     
     if (islogin)
     {
@@ -159,7 +159,7 @@
     }
     
     headerImageView.layer.masksToBounds = YES;
-    headerImageView.layer.cornerRadius = 41;
+    headerImageView.layer.cornerRadius = 107*(DEVICE_HEIGHT/736)/2.0;
     headerImageView.userInteractionEnabled = YES;
     headerImageView.layer.borderColor = RGBCOLOR(121,121,121).CGColor;
     headerImageView.layer.borderWidth = 1;
@@ -169,7 +169,7 @@
     [headerImageView addGestureRecognizer:tap];
     
     
-    LogIn_label = [[UILabel alloc] initWithFrame:CGRectMake(0,145,SLIDER_RIGHT_WIDTH,25)];
+    LogIn_label = [[UILabel alloc] initWithFrame:CGRectMake(0,190*(DEVICE_HEIGHT/736),SLIDER_RIGHT_WIDTH,25)];
     LogIn_label.text = islogin?[userDefaults objectForKey:USER_NAME]:@"点击立即登录";
     LogIn_label.font = [UIFont systemFontOfSize:15];
     LogIn_label.textAlignment = NSTextAlignmentCenter;
@@ -186,9 +186,12 @@
     for (int i = 0;i < 3;i++) {
         for (int j = 0;j < 3;j++)
         {
+            float scale_ = SLIDER_RIGHT_WIDTH/372;
+    
+            float ver_scale = DEVICE_HEIGHT/736;
             
             UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
-            button.frame = CGRectMake(30 + ((SLIDER_RIGHT_WIDTH-60-44*3)/2+44)*j,230+((DEVICE_HEIGHT-230-60-60*3)/2+60)*i,44,60);
+            button.frame = CGRectMake(50*scale_ + (44*scale_+67*scale_)*j,290*(DEVICE_HEIGHT/736)+(100*ver_scale+30*(DEVICE_HEIGHT/736))*i,44*scale_,100*ver_scale);
             [button setTitle:[arrary1 objectAtIndex:j+i*3] forState:UIControlStateNormal];
             [button setTitleColor:RGBCOLOR(145,145,145) forState:UIControlStateNormal];
             button.titleLabel.font = [UIFont systemFontOfSize:12];
@@ -228,8 +231,6 @@
     version_label.font = [UIFont systemFontOfSize:14];
     version_label.backgroundColor = [UIColor clearColor];
     [self.view addSubview:version_label];
-    
-    
     
     UIButton * setting_button = [UIButton buttonWithType:UIButtonTypeCustom];
     setting_button.frame = CGRectMake(SLIDER_RIGHT_WIDTH-81,_rootScrollView.frame.size.height-(iPhone5?48:38),60,30);
@@ -351,36 +352,25 @@
     for (int i = 0;i < 3;i++) {
         for (int j = 0;j < 3;j++)
         {
+            float scale_ = SLIDER_RIGHT_WIDTH/372;
 
             UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
-            
-            button.frame = CGRectMake(30 + 90*j,(iPhone5?230:210)+(iPhone5?90:75)*i,44,60);
-            
+            button.frame = CGRectMake(50*scale_ + (44+67*scale_)*j,(iPhone5?230:210)+(60+30*scale_)*i,44,60);
             [button setTitle:[arrary1 objectAtIndex:j+i*3] forState:UIControlStateNormal];
-            
             [button setTitleColor:RGBCOLOR(145,145,145) forState:UIControlStateNormal];
-            
             button.titleLabel.font = [UIFont systemFontOfSize:12];
-            
             [button setTitleEdgeInsets:UIEdgeInsetsMake(60,-5,0,-5)];
-            
             button.tag = 1000 + i*3+j;
-            
             button.backgroundColor = [UIColor clearColor];
-            
             [button addTarget:self action:@selector(buttonTap:) forControlEvents:UIControlEventTouchUpInside];
-            
             [_rootScrollView addSubview:button];
         
         
             UIImage * image = [UIImage imageNamed:[arrary objectAtIndex:j+i*3]];
-            
+            NSLog(@"image ----   %@",NSStringFromCGSize(image.size));
             UIImageView * imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,image.size.width,image.size.height)];
-        
             imageView.image = image;
-        
             imageView.center = CGPointMake(22,23);
-            
             [button addSubview:imageView];
             
             
@@ -389,15 +379,10 @@
                 if (!notification_view)
                 {
                     notification_view = [[UIView alloc] initWithFrame:CGRectMake(35,50,8,8)];
-                    
                     notification_view.backgroundColor = RGBCOLOR(255,0,60);
-                    
                     notification_view.hidden = !NewsMessageNumber;
-                    
                     notification_view.layer.cornerRadius = 4;
-                    
                     notification_view.layer.masksToBounds = NO;
-                    
                     [button addSubview:notification_view];
                 }
             }
