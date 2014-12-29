@@ -92,7 +92,6 @@
     //  self.navigationItem.leftBarButtonItem=back_item;
     
     
-    
     UIButton *button_back=[[UIButton alloc]initWithFrame: CGRectMake(MY_MACRO_NAME?5:15, (44-43/2)/2, 24, 43/2)];
     
     [button_back addTarget:self action:@selector(backto) forControlEvents:UIControlEventTouchUpInside];

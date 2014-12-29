@@ -80,8 +80,11 @@
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection{
     
     @try {
-        [self.delegate downloadtool:self didfinishdownloadwithdata:_mutabledata];
+        if (self.delegate)
+        {
+            [self.delegate downloadtool:self didfinishdownloadwithdata:_mutabledata];
 
+        }
     }
     @catch (NSException *exception) {
         

@@ -380,7 +380,6 @@
     [self panduanIsNewVersion];
   NSLog(@"shizhongkun转化成MD5加密后的字符串为=%@",[self md5:@"shizhongkun"])  ;
     
-
     
     isloadsuccess = YES;
     
@@ -445,13 +444,13 @@
 
 
 -(void)layoutSubViewsOfload{
-    nomore=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, 320, 30)];
+    nomore=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, DEVICE_WIDTH, 30)];
     nomore.text=@"没有更多数据";
     nomore.textAlignment=NSTextAlignmentCenter;
     nomore.font=[UIFont systemFontOfSize:13];
     nomore.textColor=[UIColor lightGrayColor];
     
-    loadview=[[LoadingIndicatorView alloc]initWithFrame:CGRectMake(0, 900, 320, 40)];
+    loadview=[[LoadingIndicatorView alloc]initWithFrame:CGRectMake(0, 900, DEVICE_WIDTH, 40)];
     loadview.backgroundColor=[UIColor clearColor];
     
     
@@ -479,7 +478,7 @@
     
     if (_refreshHeaderView == nil)
     {
-        EGORefreshTableHeaderView *view = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0-mainTabView.bounds.size.height, 320, mainTabView.bounds.size.height)];
+        EGORefreshTableHeaderView *view = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0-mainTabView.bounds.size.height, DEVICE_WIDTH, mainTabView.bounds.size.height)];
         view.delegate = self;
         _refreshHeaderView = view;
     }
@@ -944,7 +943,7 @@
 //        
 //               [[UINavigationBar appearance] setShadowImage:[UIImage imageWithColor:[UIColor clearColor] size:CGSizeMake(320, 3)]];
         
-        [[UINavigationBar appearance]setShadowImage:[self imageWithColor:[UIColor clearColor] size:CGSizeMake(320, 10)]];
+        [[UINavigationBar appearance]setShadowImage:[self imageWithColor:[UIColor clearColor] size:CGSizeMake(DEVICE_WIDTH, 10)]];
         
     }
     
@@ -992,48 +991,7 @@
 -(void)loadView{
     [super loadView];
     
-//    nomore=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, 320, 30)];
-//    nomore.text=@"没有更多数据";
-//    nomore.textAlignment=NSTextAlignmentCenter;
-//    nomore.font=[UIFont systemFontOfSize:13];
-//    nomore.textColor=[UIColor lightGrayColor];
-//    
-//    loadview=[[LoadingIndicatorView alloc]initWithFrame:CGRectMake(0, 900, 320, 40)];
-//    loadview.backgroundColor=[UIColor clearColor];
-//
-//    
-//    mainTabView=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, 320, iPhone5?568-64:480-64)];
-//    mainTabView.delegate=self;
-//    mainTabView.dataSource=self;
-//    mainTabView.backgroundColor=[UIColor whiteColor];
-//    mainTabView.separatorColor=[UIColor clearColor];
-//    [self.view addSubview:mainTabView];
-//    
-//    
-//    UIView *placeview=[[UIView alloc]initWithFrame:mainTabView.frame];
-//    placeview.tag=234;
-//    //   placeview.backgroundColor=RGBCOLOR(222, 222, 222);
-//    UIImageView *imgcenterlogo=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"ios7_newsbeijing.png"]];
-//    imgcenterlogo.center=CGPointMake(mainTabView.frame.size.width/2, mainTabView.frame.size.height/2-20);
-//    [placeview addSubview:imgcenterlogo];
-//    placeview.hidden=NO;
-//    [mainTabView addSubview:placeview];
-//    
-//    
-//
-//    
-//    
-//    
-//    if (_refreshHeaderView == nil)
-//    {
-//        EGORefreshTableHeaderView *view = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0-mainTabView.bounds.size.height, 320, mainTabView.bounds.size.height)];
-//        view.delegate = self;
-//        _refreshHeaderView = view;
-//    }
-//    [_refreshHeaderView refreshLastUpdatedDate];
-//    [mainTabView addSubview:_refreshHeaderView];
-//    
-    
+
 
 
 
@@ -1348,7 +1306,7 @@
         
     }
     
-    UIView *HeaderView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, (191+13)*DEVICE_WIDTH/320+64)];
+    UIView *HeaderView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, DEVICE_WIDTH, (191+13)*DEVICE_WIDTH/320+64)];
     HeaderView.backgroundColor=[UIColor whiteColor];
     [HeaderView addSubview:bannerView];
     
