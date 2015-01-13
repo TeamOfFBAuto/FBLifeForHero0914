@@ -388,10 +388,10 @@
         [orcell setDiscribe_string:[newsofdiscriptionarray objectAtIndex:indexPath.row]];
         [cell.contentView addSubview:orcell];
         
-        UIImageView *img=[[UIImageView alloc]initWithFrame:CGRectMake(0, 77, DEVICE_WIDTH, 1)];
-        img.contentMode =  UIViewContentModeScaleToFill;
-        img.image=[UIImage imageNamed:@"line-2.png"];
-        [cell.contentView addSubview:img];
+//        UIImageView *img=[[UIImageView alloc]initWithFrame:CGRectMake(0, 77, DEVICE_WIDTH, 1)];
+//        img.contentMode =  UIViewContentModeScaleToFill;
+//        img.image=[UIImage imageNamed:@"line-2.png"];
+//        [cell.contentView addSubview:img];
         UIView *selectback=[[UIView alloc]initWithFrame:cell.frame];
         selectback.backgroundColor=RGBCOLOR(242, 242, 242);
         cell.selectedBackgroundView=selectback;

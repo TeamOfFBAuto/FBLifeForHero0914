@@ -27,6 +27,8 @@
     BOOL image_quality;
     UINavigationBar *nav;
     
+    CGFloat _keyboard_y;//记录键盘y
+    
     
 }
 
@@ -383,7 +385,7 @@
         for (int j = 0;j < 5;j++)
         {
             UIButton * imageV = [UIButton buttonWithType:UIButtonTypeCustom];
-            imageV.frame = CGRectMake(5 + 62.75*j,7+62.75*i,59,59);
+            imageV.frame = CGRectMake(5 + ((DEVICE_WIDTH-10-59*5)/4+59)*j,7+62.75*i,59,59);
             imageV.imageView.clipsToBounds = YES;
             imageV.imageView.contentMode = UIViewContentModeScaleAspectFill;
             if (i == 0 && j == 0)
@@ -684,10 +686,12 @@
 
 #pragma mark-keyviewdelegate
 -(void)clickbutton:(UIButton *)sender{
+    
+    morePicView.hidden = YES;
     switch (sender.tag) {
         case 301:
             
-            morePicView.hidden = YES;
+//            morePicView.hidden = YES;
             
             isup=!isup;
             //刚开始的时候是NO，然后点击之后是yes,faceview show!
@@ -722,6 +726,8 @@
             
         case 303:
             NSLog(@"点击的是相册");
+            
+            [self faceviewhide];
             [self localPhoto];
             break;
             
@@ -1137,7 +1143,7 @@
     
     _keytop.top = keyboad_y - _keytop.height;
     
-    
+    _keyboard_y = keyboad_y;
     
 //    if (kbSize.height == 252) {
 //        ischinese=0;
@@ -1319,90 +1325,45 @@
     //    subjectTextfield.text=
     //text_write.text=[NSString stringWithFormat:@"%@%@",text_write.text,name];
 }
--(void)textFieldDidEndEditing:(UITextField *)textField{
-    isbiaoti=1;
+#pragma mark UITextFieldDelegate
+
+-(void)textFieldDiEditing:(UITextField *)textField{
+    
+    //    isbiaoti = 1;//是标题
 }
--(void)textViewDidEndEditing:(UITextView *)textView{
-    isbiaoti=0;
-}
--(void)textViewDidBeginEditing:(UITextView *)textView{
-    isbiaoti=0;
-    isup=NO;
-    [_keytop FaceAndKeyBoard:1];
-    //    if (ischinese==0) {
-    //        [_keytop chinesekeyuping];
-    //    }else{
-    //        [_keytop uping];
-    //    }
-//    switch (ischinese) {
-//        case 0:
-//        {
-//            [_keytop chinesekeyuping];
-//        }
-//            break;
-//        case 1:
-//        {
-//            [_keytop uping];
-//            
-//        }
-//            break;
-//        case 2:
-//        {
-//            [_keytop jiugonggechineseuping];
-//            
-//        }
-//            break;
-//        case 3:
-//        {
-//            [_keytop jiugonggepinyinuping];
-//            
-//        }
-//            break;
-//            
-//        default:
-//            break;
-//    }
-    [subjectTextfield resignFirstResponder];
-}
+
 -(void)textFieldDidBeginEditing:(UITextField *)textField{
+    
     [_contenttextview resignFirstResponder];
     
-    isbiaoti=1;
-    isup=NO;
-    [_keytop FaceAndKeyBoard:1];
-//    switch (ischinese) {
-//        case 0:
-//        {
-//            [_keytop chinesekeyuping];
-//        }
-//            break;
-//        case 1:
-//        {
-//            [_keytop uping];
-//            
-//        }
-//            break;
-//        case 2:
-//        {
-//            [_keytop jiugonggechineseuping];
-//            
-//        }
-//            break;
-//        case 3:
-//        {
-//            [_keytop jiugonggepinyinuping];
-//            
-//        }
-//            break;
-//            
-//        default:
-//            break;
-//    }
+    [_keytop bottoming];//隐藏
     
+    isbiaoti=1;
+    isup = NO;
+    
+    [_keytop FaceAndKeyBoard:1];
 }
 
+#pragma mark UITextViewDelegate
 
-
+-(void)textViewDidEndEditing:(UITextView *)textView{
+    //    isbiaoti = 0;
+    
+}
+-(void)textViewDidBeginEditing:(UITextView *)textView{
+    
+    
+    if (isbiaoti) {
+        
+        [subjectTextfield resignFirstResponder];
+        isbiaoti = 0;
+    }
+    isup = NO;
+    [_keytop FaceAndKeyBoard:1];
+    
+    _keytop.top = _keyboard_y - _keytop.height;//显示
+    
+}
 
 
 #pragma mark - QBImagePickerControllerDelegate

@@ -24,7 +24,7 @@
 @property(nonatomic,strong)UIImage *image_;
 @property(assign,nonatomic)int changeimage;
 @property(assign,nonatomic)id<KeyboardviewDelegate>delegate;
-//-(void)bottoming;
+-(void)bottoming;
 //-(void)uping;
 //-(void)chinesekeyuping;
 //-(void)jiugonggechineseuping;
