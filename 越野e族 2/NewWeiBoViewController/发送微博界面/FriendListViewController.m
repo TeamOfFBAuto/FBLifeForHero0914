@@ -310,7 +310,6 @@
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    
     [MobClick endEvent:@"FriendListViewController"];
 }
 
@@ -448,7 +447,7 @@
     [search_view addSubview:search_tf];
     
     
-    cancelButton=[[UIButton alloc]initWithFrame:CGRectMake(DEVICE_WIDTH,6,DEVICE_WIDTH-517/2,61/2)];
+    cancelButton=[[UIButton alloc]initWithFrame:CGRectMake(DEVICE_WIDTH,6,50,61/2)];
     cancelButton.backgroundColor = [UIColor clearColor];
     cancelButton.userInteractionEnabled=YES;
     [cancelButton setTitle:@"取消"  forState:UIControlStateNormal];//文字
@@ -535,7 +534,7 @@
         
         imgbc.frame = CGRectMake(10,6,DEVICE_WIDTH-61,56/2);
         
-        cancelButton.frame = CGRectMake(DEVICE_WIDTH-80,6,DEVICE_WIDTH-517/2,61/2);
+        cancelButton.frame = CGRectMake(DEVICE_WIDTH-cancelButton.width,6,cancelButton.width,61/2);
         
     } completion:^(BOOL finished) {
         
@@ -569,7 +568,7 @@
          
          imgbc.frame = CGRectMake(10,6,DEVICE_WIDTH-20,56/2);
          
-         cancelButton.frame = CGRectMake(DEVICE_WIDTH,6,DEVICE_WIDTH-517/2,61/2);
+         cancelButton.frame = CGRectMake(DEVICE_WIDTH,6,cancelButton.width,61/2);
          
      } completion:^(BOOL finished)
      {
@@ -885,38 +884,42 @@
     
     _isloadingIv = nil;
     
-    [self dismissViewControllerAnimated:YES completion:NULL];
+//    [self dismissViewControllerAnimated:YES completion:NULL];
     
-    PersonInfo * info = [[PersonInfo alloc] init];
-    
-    if (self.tempArray.count > 0)
-    {
-        info = [self.tempArray objectAtIndex:indexPath.row];
-    }else
-    {
-        if (self.RecentContact_array.count && indexPath.section == 0)
+    [self dismissViewControllerAnimated:YES completion:^{
+        PersonInfo * info = [[PersonInfo alloc] init];
+        
+        if (self.tempArray.count > 0)
         {
-            info = [self.RecentContact_array objectAtIndex:indexPath.row];
-            
+            info = [self.tempArray objectAtIndex:indexPath.row];
         }else
         {
-            info = [[_listContent objectAtIndex:self.RecentContact_array.count?indexPath.section-1:indexPath.section] objectAtIndex:indexPath.row];
+            if (self.RecentContact_array.count && indexPath.section == 0)
+            {
+                info = [self.RecentContact_array objectAtIndex:indexPath.row];
+                
+            }else
+            {
+                info = [[_listContent objectAtIndex:self.RecentContact_array.count?indexPath.section-1:indexPath.section] objectAtIndex:indexPath.row];
+            }
         }
-    }
+        
+        if ([self.title_name_string isEqualToString:@"联系人"]||[self.title_name_string isEqualToString:@"mine"])
+        {
+            if (delegate && [delegate respondsToSelector:@selector(returnUserName:Uid:)])
+            {
+                [delegate returnUserName:info.username Uid:info.uid];
+            }
+        }else
+        {
+            if (delegate && [delegate respondsToSelector:@selector(atSomeBodys:)])
+            {
+                [delegate atSomeBodys:info.username];
+            }
+        }
+
+    }];
     
-    if ([self.title_name_string isEqualToString:@"联系人"]||[self.title_name_string isEqualToString:@"mine"])
-    {
-        if (delegate && [delegate respondsToSelector:@selector(returnUserName:Uid:)])
-        {
-            [delegate returnUserName:info.username Uid:info.uid];
-        }
-    }else
-    {
-        if (delegate && [delegate respondsToSelector:@selector(atSomeBodys:)])
-        {
-            [delegate atSomeBodys:info.username];
-        }
-    }
 }
 
 
@@ -939,7 +942,7 @@
          
          imgbc.frame = CGRectMake(10,6,DEVICE_WIDTH-20,56/2);
          
-         cancelButton.frame = CGRectMake(DEVICE_WIDTH,6,DEVICE_WIDTH-517/2,61/2);
+         cancelButton.frame = CGRectMake(DEVICE_WIDTH,6,cancelButton.width,61/2);
          
      } completion:^(BOOL finished)
      {

@@ -168,7 +168,7 @@
         
         _contentLabel1.text = [self eidtMessageContent:info.from_message];
         
-        
+        NSLog(@"什么呀 ---  %@ --- --    %@",info.from_message,_contentLabel1.text);
         NSString * user = [[NSUserDefaults standardUserDefaults] objectForKey:USER_UID];
         
         NSString * userName;

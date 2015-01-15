@@ -51,9 +51,7 @@
     
     [super viewWillAppear:YES];
     self.navigationController.navigationBarHidden = YES;
-    
-    
-    self.navigationController.navigationBarHidden = YES;
+    myDelegate.root_nav.navigationBarHidden = YES;
     //
     
     //    self.wantsFullScreenLayout = YES;
@@ -716,10 +714,8 @@
 -(void)returnUserName:(NSString *)username Uid:(NSString *)uid
 {
     NewMineViewController * mine = [[NewMineViewController alloc] init];
-    
     mine.uid = uid;
-    
-    [[self getAppDelegate].root_nav pushViewController:mine animated:YES];
+    [myDelegate.root_nav pushViewController:mine animated:YES];
 }
 
 

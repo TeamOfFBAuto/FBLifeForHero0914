@@ -660,7 +660,7 @@
             
             NSDictionary * alertnum_dic = [dic objectForKey:@"alertnum"];
             
-              NSLog(@"未读消息 ------  %@",alertnum_dic);
+//              NSLog(@"未读消息 ------  %@",alertnum_dic);
             
             for (int i = 0;i <= 16;i++)
             {
@@ -677,18 +677,6 @@
                     NewsMessageNumber += [[alertnum_dic objectForKey:[NSString stringWithFormat:@"%d",i]] intValue];
                 }
             }
-            
-            
-            
-//            //   NewsMessageNumber=8;
-//            if (NewsMessageNumber != 0)
-//            {
-//                //                self.leveyTabBarController.tabBar.tixing_label.hidden = NO;
-//                isnewfbnotification=YES;
-//                
-//                numberoftixing=NewsMessageNumber;
-//                [self.myTableView reloadData];
-//            }
         }
     }
     @catch (NSException *exception) {

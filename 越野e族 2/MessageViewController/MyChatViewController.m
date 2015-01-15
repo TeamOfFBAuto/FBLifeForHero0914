@@ -436,6 +436,7 @@
 }
 -(void)sendPressed:(UIButton *)button
 {
+    [_inputToolBarView.textView resignFirstResponder];
     [self.timesArray addObject:[personal mycurrenttime]];
     
     ChatInfo * info = [[ChatInfo alloc] init];

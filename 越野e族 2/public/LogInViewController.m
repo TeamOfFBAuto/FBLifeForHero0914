@@ -352,8 +352,6 @@
 
 -(void)downloadtool:(downloadtool *)tool didfinishdownloadwithdata:(NSData *)data
 {
-    
-    [hud hide:YES];
     @try
     {
         if (tool.tag==101)
@@ -368,6 +366,7 @@
                 
             }else
             {
+                [hud hide:YES];
                 [[NSUserDefaults standardUserDefaults] setBool:NO forKey:USER_IN];
                 [[NSUserDefaults standardUserDefaults] synchronize];
                 UIAlertView *alert_=[[UIAlertView alloc]initWithTitle:@"提示" message:@"用户名或密码不正确" delegate:nil cancelButtonTitle:@"知道了" otherButtonTitles:nil, nil];
@@ -396,7 +395,7 @@
                 
                 [self.delegate successToLogIn];
                 pwNameField.text = @"";
-                
+                [hud hide:YES];
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"LogIn" object:nil];
                 
                 [self loadDown];
@@ -412,6 +411,7 @@
             
         }else
         {
+            [hud hide:YES];
             NSLog(@"正在开通");
             
             NSDictionary * dic = [data objectFromJSONData];
@@ -419,6 +419,7 @@
             NSLog(@"开通微博数据 -----  %@ ----  %@",[dic objectForKey:@"errcode"],[dic objectForKey:@"data"]);
             if ([[dic objectForKey:@"errcode"] intValue] == 1)
             {
+                
                 NSLog(@"开通成功");
                 
                 //登陆成功保存用户信息

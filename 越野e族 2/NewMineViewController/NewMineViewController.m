@@ -958,6 +958,7 @@
             
             qrcode.nameString = _per_info.username;
             
+            
             [self.navigationController pushViewController:qrcode animated:YES];
         }
             break;

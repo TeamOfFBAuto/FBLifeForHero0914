@@ -11,6 +11,10 @@
 #import "WriteBlogViewController.h"
 #import "LogInViewController.h"
 @interface QrcodeViewController ()
+{
+    MBProgressHUD *loading;
+    UIBarButtonItem *comment_item;
+}
 
 @end
 
@@ -44,31 +48,31 @@
     
     NSUserDefaults * user = [NSUserDefaults standardUserDefaults];
     
-    self.uid = [user objectForKey:USER_UID];
+    if (self.uid.length == 0) {
+        self.uid = [user objectForKey:USER_UID];
+        self.nameString = [user objectForKey:USER_NAME];
+        self.imageString = [user objectForKey:USER_FACE];
+    }
     
-    self.nameString = [user objectForKey:USER_NAME];
-    
-    self.imageString = [user objectForKey:USER_FACE];
     
     
     self.view.backgroundColor=RGBCOLOR(247, 247, 247);
-//    UILabel *labelbiaoti=[[UILabel alloc]initWithFrame:CGRectMake(35,0,120,44)];
-//    labelbiaoti.text=@"二维码";
-//    labelbiaoti.textColor=[UIColor blackColor];
-//    labelbiaoti.font= [UIFont fontWithName:@"Helvetica" size:20];
-//    //[view_daohang addSubview:labelbiaoti];
-//    labelbiaoti.backgroundColor=[UIColor clearColor];
-//    
-//    UIView *biaotiV=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 220,44)];
-//    biaotiV.backgroundColor=[UIColor clearColor];
-//    [biaotiV addSubview:labelbiaoti];
+    //    UILabel *labelbiaoti=[[UILabel alloc]initWithFrame:CGRectMake(35,0,120,44)];
+    //    labelbiaoti.text=@"二维码";
+    //    labelbiaoti.textColor=[UIColor blackColor];
+    //    labelbiaoti.font= [UIFont fontWithName:@"Helvetica" size:20];
+    //    //[view_daohang addSubview:labelbiaoti];
+    //    labelbiaoti.backgroundColor=[UIColor clearColor];
+    //
+    //    UIView *biaotiV=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 220,44)];
+    //    biaotiV.backgroundColor=[UIColor clearColor];
+    //    [biaotiV addSubview:labelbiaoti];
     //
     UIButton *  button_comment=[[UIButton alloc]initWithFrame:CGRectMake(MY_MACRO_NAME?35: 23, (44-37/2)/2, 43/2, 38/2)];
     
     
     button_comment.tag=26;
     
-    //[button_comment setTitle:@"评论" forState:UIControlStateNormal];
     button_comment.titleLabel.font=[UIFont systemFontOfSize:14];
     [button_comment addTarget:self action:@selector(simPleshare) forControlEvents:UIControlEventTouchUpInside];
     [button_comment setImage:[UIImage imageNamed:@"zhuanfa_image.png"] forState:UIControlStateNormal];
@@ -79,17 +83,7 @@
     [rightView addSubview:button_comment];
     rightView.backgroundColor=[UIColor clearColor];
     
-    
-    UIBarButtonItem *comment_item=[[UIBarButtonItem alloc]initWithCustomView:rightView];
-    
-    self.navigationItem.rightBarButtonItem=comment_item;
-
-    if([self.navigationController.navigationBar respondsToSelector:@selector(setBackgroundImage:forBarMetrics:)] ) {
-        //iOS 5 new UINavigationBar custom background
-        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:MY_MACRO_NAME?IOS7DAOHANGLANBEIJING:IOS6DAOHANGLANBEIJING] forBarMetrics: UIBarMetricsDefault];
-        
-    }
-    
+    comment_item=[[UIBarButtonItem alloc]initWithCustomView:rightView];
     
     UIBarButtonItem * space = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
     space.width = MY_MACRO_NAME?-10:5;
@@ -104,33 +98,23 @@
     
     
     NSString *string_myuid=[[NSUserDefaults standardUserDefaults]objectForKey:USER_UID];
-    if ([string_myuid isEqualToString:self.uid]) {
-        self.navigationItem.rightBarButtonItem=comment_item;
-
-    }
+    //    if ([string_myuid isEqualToString:self.uid]) {
+    //        self.navigationItem.rightBarButtonItem=comment_item;
+    //    }
     
     
     
-    
-    self.navigationItem.title = @"二维码";
-    
-    UIColor * cc = [UIColor blackColor];
-    
-    NSDictionary * dict = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:cc,[UIFont systemFontOfSize:20],[UIColor clearColor],nil] forKeys:[NSArray arrayWithObjects:UITextAttributeTextColor,UITextAttributeFont,UITextAttributeTextShadowColor,nil]];
-    
-    self.navigationController.navigationBar.titleTextAttributes = dict;
-    
-    
+    self.navigationItem.title = @"我的名片";
     
     UIImageView *centerimgkuang=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"ios7_erweima533_700.png"]];
-    centerimgkuang.center=CGPointMake(DEVICE_WIDTH/2, (DEVICE_HEIGHT-64)/2);
+    centerimgkuang.center=CGPointMake(DEVICE_WIDTH / 2.f, (DEVICE_HEIGHT - 64)/2);
     [self.view addSubview:centerimgkuang];
     
     
     qrimageview=[[AsyncImageView alloc]initWithImage:[UIImage imageNamed:@""]];
     qrimageview.tag=199;
     qrimageview.frame=CGRectMake(15, 15 ,464/2, 464/2);
-   // qrimageview.backgroundColor=[UIColor orangeColor];
+    // qrimageview.backgroundColor=[UIColor orangeColor];
     [centerimgkuang addSubview:qrimageview];
     
     
@@ -140,90 +124,97 @@
     
     [centerimgkuang addSubview:headimageview];
     
-    if ([string_myuid isEqualToString:self.uid]) {
-        UILabel *namelabel=[[UILabel alloc]initWithFrame:CGRectMake(70, 564/2, 200, 20)];
-        namelabel.text=[[NSUserDefaults standardUserDefaults]objectForKey:USER_NAME];
-        namelabel.font=[UIFont boldSystemFontOfSize:18];
-        namelabel.backgroundColor=[UIColor clearColor];
-        [centerimgkuang addSubview:namelabel];
-        UILabel *discribelabel=[[UILabel alloc]initWithFrame:CGRectMake(70, 564/2+26, 200, 20)];
-        discribelabel.text=@"扫一扫二维码,关注我的主页";
-        discribelabel.font=[UIFont systemFontOfSize:14];
-        discribelabel.textColor=RGBCOLOR(125, 125, 125);
-        [centerimgkuang addSubview:discribelabel];
-        discribelabel.backgroundColor=[UIColor clearColor];
-
-    }else{
-        
-        UILabel *discribelabel=[[UILabel alloc]initWithFrame:CGRectMake(70, 564/2+10, 200, 20)];
-        discribelabel.text=@"扫一扫关注我的主页";
-        discribelabel.font=[UIFont systemFontOfSize:14];
-        discribelabel.textColor=[UIColor blackColor];
-        [centerimgkuang addSubview:discribelabel];
-        discribelabel.backgroundColor=[UIColor clearColor];
-
-
-        
-    }
-
-
-
-
+    //    if ([string_myuid isEqualToString:self.uid]) {
+    UILabel *namelabel=[[UILabel alloc]initWithFrame:CGRectMake(70, 564/2, 200, 20)];
+    namelabel.text=self.nameString;
+    namelabel.font=[UIFont boldSystemFontOfSize:18];
+    namelabel.backgroundColor=[UIColor clearColor];
+    [centerimgkuang addSubview:namelabel];
+    UILabel *discribelabel=[[UILabel alloc]initWithFrame:CGRectMake(70, 564/2+26, 200, 20)];
+    discribelabel.text=@"扫一扫二维码,关注我的主页";
+    discribelabel.font=[UIFont systemFontOfSize:14];
+    discribelabel.textColor=RGBCOLOR(125, 125, 125);
+    [centerimgkuang addSubview:discribelabel];
+    discribelabel.backgroundColor=[UIColor clearColor];
     
+    //    }else{
+    //
+    //        UILabel *discribelabel=[[UILabel alloc]initWithFrame:CGRectMake(70, 564/2+10, 200, 20)];
+    //        discribelabel.text=@"扫一扫关注我的主页";
+    //        discribelabel.font=[UIFont systemFontOfSize:14];
+    //        discribelabel.textColor=[UIColor blackColor];
+    //        [centerimgkuang addSubview:discribelabel];
+    //        discribelabel.backgroundColor=[UIColor clearColor];
+    //
+    //
+    //
+    //    }
+    
+    
+    loading = [zsnApi showMBProgressWithText:@"加载中..." addToView:self.view];
+    loading.mode = MBProgressHUDModeIndeterminate;
     
     [self receivemyqrcode];
-
-    
-
     
     
     
-	// Do any additional setup after loading the view.
+    // Do any additional setup after loading the view.
 }
 
 
 -(void)receivemyqrcode{
     
-  
+    
+    [loading show:YES];
+    
+    NSString * fullURL= [NSString stringWithFormat:@"http://ucache.fblife.com/ucode/api.php?uid=%@",self.uid];
+    NSLog(@"1请求的url = %@",fullURL);
+    ASIHTTPRequest * request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:fullURL]];
+    
+    __block ASIHTTPRequest * _requset = request;
+    
+    _requset.delegate = self;
+    
+    [_requset setCompletionBlock:^{
         
-        NSString * fullURL= [NSString stringWithFormat:@"http://ucache.fblife.com/ucode/api.php?uid=%@",self.uid];
-        NSLog(@"1请求的url = %@",fullURL);
-        ASIHTTPRequest * request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:fullURL]];
-        
-        __block ASIHTTPRequest * _requset = request;
-        
-        _requset.delegate = self;
-        
-        [_requset setCompletionBlock:^{
+        @try {
+            NSDictionary * dic = [request.responseData objectFromJSONData];
+            NSLog(@"个人信息 -=-=  %@",dic);
             
-            @try {
-                NSDictionary * dic = [request.responseData objectFromJSONData];
-                NSLog(@"个人信息 -=-=  %@",dic);
-                
-                if ([[dic objectForKey:@"errcode"] intValue] ==0)
-                {
-                    NSString *strurl=[NSString stringWithFormat:@"%@",[dic objectForKey:@"codesrc"]];
+            if ([[dic objectForKey:@"errcode"] intValue] ==0)
+            {
+                NSString *strurl=[NSString stringWithFormat:@"%@",[dic objectForKey:@"codesrc"]];
                 //    [self receiveimgdatawithurlstring:strurl];
-                   [qrimageview loadImageFromURL:strurl withPlaceholdImage:nil];
-                                   }
-            }
-            @catch (NSException *exception) {
+                [qrimageview loadImageFromURL:strurl withPlaceholdImage:nil];
                 
-            }
-            @finally {
+                [loading hide:YES];
                 
+                NSString *string_myuid=[[NSUserDefaults standardUserDefaults]objectForKey:USER_UID];
+                if ([string_myuid isEqualToString:self.uid]) {
+                    self.navigationItem.rightBarButtonItem=comment_item;
+                }
             }
-     
-        }];
-        
-        
-        [_requset setFailedBlock:^{
+        }
+        @catch (NSException *exception) {
             
-            [request cancel];  
+        }
+        @finally {
             
-        }];
+        }
         
-        [_requset startAsynchronous];
+    }];
+    
+    
+    [_requset setFailedBlock:^{
+        
+        [request cancel];
+        
+        [loading hide:YES];
+        
+        [zsnApi showAutoHiddenMBProgressWithText:@"加载失败" addToView:self.view];
+    }];
+    
+    [_requset startAsynchronous];
     
 }
 
@@ -259,8 +250,8 @@
         LogInViewController *login=[LogInViewController sharedManager];
         [self presentViewController:login animated:YES completion:nil];
     }
-
-
+    
+    
 }
 -(void)ShareMore{
     
@@ -371,7 +362,7 @@
         UIAlertView *alert_=[[UIAlertView alloc]initWithTitle:@"温馨提示" message:@"分享成功！" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
         [alert_ show];
     }
-
+    
     
     
     
