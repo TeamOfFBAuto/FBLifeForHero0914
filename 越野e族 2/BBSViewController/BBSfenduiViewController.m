@@ -244,7 +244,7 @@
     
 #pragma mark-----这里还要考虑打电话的情况
     
-    xialaView.center = CGPointMake(160,MY_MACRO_NAME? image.size.height/2+54:image.size.height/2+34);
+    xialaView.center = CGPointMake(DEVICE_WIDTH/2,MY_MACRO_NAME? image.size.height/2+54:image.size.height/2+34);
     
     
     
@@ -432,7 +432,7 @@
             
             [tool_101 setUrl_string:[NSString stringWithFormat:@"http://bbs.fblife.com/bbsapinew/getforumthread.php?fid=%@&page=%d&orderby=2&areaid=%d&typeid=0&formattype=json&authcode=%@",self.string_id,currentpage,numberlocation,[[NSUserDefaults standardUserDefaults]objectForKey:USER_AUTHOD]]];
             
-            NSLog(@"xxxx===%@",[NSString stringWithFormat:@"http://bbs.fblife.com/bbsapinew/getforumthread.php?fid=%@&page=%d&orderby=2&areaid=%d&typeid=0&formattype=json&authcode=%@",self.string_id,currentpage,numberlocation,[[NSUserDefaults standardUserDefaults]objectForKey:USER_AUTHOD]]);
+            NSLog(@"xxxx==最后回复=%@",[NSString stringWithFormat:@"http://bbs.fblife.com/bbsapinew/getforumthread.php?fid=%@&page=%d&orderby=2&areaid=%d&typeid=0&formattype=json&authcode=%@",self.string_id,currentpage,numberlocation,[[NSUserDefaults standardUserDefaults]objectForKey:USER_AUTHOD]]);
             
             
             break;
@@ -441,7 +441,7 @@
             
             [tool_101 setUrl_string:[NSString stringWithFormat:@"http://bbs.fblife.com/bbsapinew/getforumthread.php?fid=%@&page=%d&orderby=2&areaid=%d&typeid=%d&formattype=json&authcode=%@",self.string_id,currentpage,numberlocation,saleID,[[NSUserDefaults standardUserDefaults]objectForKey:USER_AUTHOD]]];
             
-            NSLog(@"xxxx1===%@",[NSString stringWithFormat:@"http://bbs.fblife.com/bbsapinew/getforumthread.php?fid=%@&page=%d&orderby=2&areaid=%d&typeid=%d&formattype=json&authcode=%@",self.string_id,currentpage,numberlocation,saleID,[[NSUserDefaults standardUserDefaults]objectForKey:USER_AUTHOD]]);
+            NSLog(@"xxxx最新发帖===%@",[NSString stringWithFormat:@"http://bbs.fblife.com/bbsapinew/getforumthread.php?fid=%@&page=%d&orderby=2&areaid=%d&typeid=%d&formattype=json&authcode=%@",self.string_id,currentpage,numberlocation,saleID,[[NSUserDefaults standardUserDefaults]objectForKey:USER_AUTHOD]]);
             
             
             break;
@@ -449,7 +449,7 @@
             
             
             [tool_101 setUrl_string:[NSString stringWithFormat:@"http://bbs.fblife.com/bbsapinew/getforumthread.php?fid=%@&page=%d&orderby=2&areaid=%d&typeid=%d&formattype=json&authcode=%@",self.string_id,currentpage,numberlocation,buyID,[[NSUserDefaults standardUserDefaults]objectForKey:USER_AUTHOD]]];
-            NSLog(@"xxxx2===%@",[NSString stringWithFormat:@"http://bbs.fblife.com/bbsapinew/getforumthread.php?fid=%@&page=%d&orderby=2&areaid=%d&typeid=%d&formattype=json&authcode=%@",self.string_id,currentpage,numberlocation,buyID,[[NSUserDefaults standardUserDefaults]objectForKey:USER_AUTHOD]]);
+            NSLog(@"xxxx2获取楼主===%@",[NSString stringWithFormat:@"http://bbs.fblife.com/bbsapinew/getforumthread.php?fid=%@&page=%d&orderby=2&areaid=%d&typeid=%d&formattype=json&authcode=%@",self.string_id,currentpage,numberlocation,buyID,[[NSUserDefaults standardUserDefaults]objectForKey:USER_AUTHOD]]);
             
             
             break;
@@ -483,12 +483,21 @@
         currentpage++;
         switch (numbersale) {
             case 0:
+                
+                
+                
                 [tool_101 setUrl_string:[NSString stringWithFormat:@"http://bbs.fblife.com/bbsapinew/getforumthread.php?fid=%@&page=%d&orderby=2&areaid=%d&typeid=0&formattype=json&authcode=%@",self.string_id,currentpage,numberlocation,[[NSUserDefaults standardUserDefaults]objectForKey:USER_AUTHOD]]];
                 break;
             case 1:
+                
+                
+                
                 [tool_101 setUrl_string:[NSString stringWithFormat:@"http://bbs.fblife.com/bbsapinew/getforumthread.php?fid=%@&page=%d&orderby=2&areaid=%d&typeid=%d&formattype=json&authcode=%@",self.string_id,currentpage,numberlocation,saleID,[[NSUserDefaults standardUserDefaults]objectForKey:USER_AUTHOD]]];
                 break;
             case 2:
+                
+                
+                
                 [tool_101 setUrl_string:[NSString stringWithFormat:@"http://bbs.fblife.com/bbsapinew/getforumthread.php?fid=%@&page=%d&orderby=2&areaid=%d&typeid=%d&formattype=json&authcode=%@",self.string_id,currentpage,numberlocation,buyID,[[NSUserDefaults standardUserDefaults]objectForKey:USER_AUTHOD]]];
                 break;
             default:
@@ -660,9 +669,15 @@
             
             break;
         case 2:
+            
+            
+            
             [tool_101 setUrl_string:[NSString stringWithFormat:@"http://bbs.fblife.com/bbsapinew/getforumthread.php?fid=%@&page=%d&orderby=1&formattype=json&authcode=%@",self.string_id,currentpage,[[NSUserDefaults standardUserDefaults]objectForKey:USER_AUTHOD]]];
             break;
         case 3:
+            
+            
+            
             [tool_101 setUrl_string:[NSString stringWithFormat:@"http://bbs.fblife.com/bbsapinew/getforumdigest.php?fid=%@&page=%d&formattype=json&authcode=%@",self.string_id,currentpage,[[NSUserDefaults standardUserDefaults]objectForKey:USER_AUTHOD]]];
             
             break;
@@ -693,12 +708,23 @@
         currentpage++;
         switch (selecttionofxialaview) {
             case 1:
+                
+                
+                
+                
                 [tool_101 setUrl_string:[NSString stringWithFormat:@"http://bbs.fblife.com/bbsapinew/getforumthread.php?fid=%@&page=%d&orderby=2&formattype=json",self.string_id,currentpage]];
                 break;
             case 2:
+                
+                
+                
                 [tool_101 setUrl_string:[NSString stringWithFormat:@"http://bbs.fblife.com/bbsapinew/getforumthread.php?fid=%@&page=%d&orderby=1&formattype=json&",self.string_id,currentpage]];
                 break;
             case 3:
+                
+                
+                
+                
                 [tool_101 setUrl_string:[NSString stringWithFormat:@"http://bbs.fblife.com/bbsapinew/getforumdigest.php?fid=%@&page=%d&formattype=json",self.string_id,currentpage]];
                 
                 break;
@@ -837,7 +863,18 @@
                     break;
                 case 102://加载
                 {
+                    
+                    
                     NSLog(@"加载的dic==%@",dic);
+                    
+                    if (_array_info.count<10) {
+//                        isLoadsuccess=NO;
+
+                        [loadview stopLoading:2];
+
+                        return;
+                    }
+                    
                     
                     if ([[dic objectForKey:@"errcode"] integerValue]==0&&[[[dic objectForKey:@"bbsinfo"]objectForKey:@"forumthread"]count]!=0) {
                         NSLog(@"走了这个方法");
@@ -1200,10 +1237,8 @@
         [self showPopoverView:nil];
     }
     
-    //    if (detail) {
-    //        detail=nil;
-    //    }
-    selecttionofxialaview=1;
+ 
+   //////为什么放开这个了 selecttionofxialaview=1;
     bbsdetailViewController *   tempdetail=[[bbsdetailViewController alloc]init];
     
     //    [self setHidesBottomBarWhenPushed:YES];
