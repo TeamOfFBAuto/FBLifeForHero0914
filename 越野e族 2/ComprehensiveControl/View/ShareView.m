@@ -15,7 +15,7 @@
     if (self) {
         
         self.backgroundColor=[UIColor whiteColor];
-        self.array_icon=[NSArray arrayWithObjects:@"shareziliudi.png",@"sharefriendquan.png",@"shareweixin.png",@"shareweibo.png",@"sharemail.png", nil];
+        self.array_icon=[NSArray arrayWithObjects:@"shareziliudi.png",@"shareweixin.png",@"sharefriendquan.png",@"shareweibo.png",@"sharemail.png", nil];
         
         self.arrray_title=[NSArray arrayWithObjects:@"自留地",@"微信好友",@"微信朋友圈",@"新浪微博",@"邮箱", nil];
         

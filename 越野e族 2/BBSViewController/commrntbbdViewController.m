@@ -1141,72 +1141,18 @@
     
     CGFloat keyboad_y = kbRect.origin.y;
     
-    _keytop.top = keyboad_y - _keytop.height;
-    
     _keyboard_y = keyboad_y;
     
-//    if (kbSize.height == 252) {
-//        ischinese=0;
-//        [_keytop chinesekeyuping];
-//        
-//        
-//    }else {
-//        ischinese=1;
-//        
-//        [_keytop uping];
-//    }
-//    
-//    
-//    int heightofkeyboard=(int)kbSize.height;
-//    switch (heightofkeyboard) {
-//        case 252:
-//        {
-//            ischinese=0;
-//            [_keytop chinesekeyuping];
-//            
-//            
-//        }
-//            break;
-//            
-//            
-//        case 216:
-//        {
-//            ischinese=1;
-//            
-//            [_keytop uping];
-//            
-//        }
-//            break;
-//        case 251:
-//        {
-//            ischinese=2;
-//            [_keytop jiugonggechineseuping];
-//            
-//            
-//        }
-//            break;
-//        case 184:
-//        {
-//            ischinese=3;
-//            [_keytop jiugonggepinyinuping];
-//            
-//            
-//        }
-//            break;
-//            
-//            
-//            
-//        default:
-//            break;
-//    }
+    if (isbiaoti) {
+        
+        [_keytop bottoming];
+    }else
+    {
+        _keytop.top = keyboad_y - _keytop.height;
+        
+    }
     
-    
-    
-    
-    
-    //    [UIView commitAnimations];
 }
-
 
 //- (void) keyboardWillShow:(NSNotification *)notification {
 //    

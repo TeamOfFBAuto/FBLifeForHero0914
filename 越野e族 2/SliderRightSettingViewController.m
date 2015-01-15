@@ -421,25 +421,49 @@
 
 -(void)checkVersionUpdate
 {
-    NSURL * fullUrl = [NSURL URLWithString:[NSString stringWithFormat:@"http://bbs.fblife.com/bbsapinew/version.php?appversion=%@",NOW_VERSION]];
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     
-    ASIHTTPRequest * request = [ASIHTTPRequest requestWithURL:fullUrl];
+    NSString *url = [NSString stringWithFormat:@"http://itunes.apple.com/lookup?id=%@",@"605673005"];
     
-    __block ASIHTTPRequest * _request = request;
+    NSString *newStr = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
+    NSLog(@"requestUrl %@",newStr);
+    NSURL *urlS = [NSURL URLWithString:newStr];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:urlS cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:30];
     
-    request.delegate = self;
-    
-    [_request setCompletionBlock:^{
+    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         
-        @try {
-            NSDictionary * dic = [request.responseData objectFromJSONData];
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+        
+        if (data.length > 0) {
             
-            NSString * bbsInfo = [NSString stringWithFormat:@"%@",[dic objectForKey:@"bbsinfo"]];
-            NSLog(@"dic===%@",dic);
-            if (![bbsInfo isEqualToString:NOW_VERSION])
-            {
-                NSString * new = [NSString stringWithFormat:@"我们的%@版本已经上线了,赶快去更新吧!",bbsInfo];
+            NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:Nil];
+            
+            NSArray *results = [dic objectForKey:@"results"];
+            
+            if (results.count == 0) {
+                
+                UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"检测失败,请检查您当前网络是否正常" delegate:self cancelButtonTitle:@"确认" otherButtonTitles:nil,nil];
+                [alert show];
+                return ;
+            }
+            
+            //appStore 版本
+            NSString *newVersion = [[results objectAtIndex:0]objectForKey:@"version"];
+                        
+            NSString *updateContent = [[results objectAtIndex:0]objectForKey:@"releaseNotes"];
+            //本地版本
+            NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+            NSString *currentVersion = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
+            
+            BOOL isNew = NO;
+            if (newVersion && ([newVersion compare:currentVersion] == 1)) {
+                isNew = YES;
+            }
+            
+            if (isNew) {
+                
+                NSString * new = [NSString stringWithFormat:@"我们的%@版本已经上线了,赶快去更新吧!",newVersion];
                 
                 UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"发现新版本" message:new delegate:self cancelButtonTitle:@"立即升级" otherButtonTitles:@"稍后提示",nil];
                 
@@ -449,34 +473,46 @@
                 
                 [alert show];
                 
-                
             }else
             {
-                UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"版本更新检查" message:@"您目前使用的是最新版本" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil,nil];
+                
+                UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"版本检查" message:@"当前已是最新版本！" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil,nil];
+                
+                alert.delegate = self;
+                
                 [alert show];
             }
-        }
-        @catch (NSException *exception) {
+            
+        }else
+        {
+            [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+            
+            NSLog(@"data 为空 connectionError %@",connectionError);
+            
+            UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"检测失败,请检查您当前网络是否正常" delegate:self cancelButtonTitle:@"确认" otherButtonTitles:nil,nil];
+            [alert show];
             
         }
-        @finally {
-            
-        }
-        
-        
         
     }];
     
-    
-    [_request setFailedBlock:^{
-        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"检测失败,请检查您当前网络是否正常" delegate:self cancelButtonTitle:@"确认" otherButtonTitles:nil,nil];
-        [alert show];
-    }];
-    
-    [request startAsynchronous];
 }
 
 
+#pragma mark-UIAlertViewDelegate
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 0 && alertView.tag == 10000)
+    {
+        
+        NSString *appUrl = [NSString stringWithFormat:@"itms-apps://itunes.apple.com/us/app/id%@?mt=8",@"605673005"];
+        
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:appUrl]];
+        
+//        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://itunes.apple.com/cn/app/yue-ye-yi-zu/id605673005?mt=8"]];
+    }
+}
 
 - (void)didReceiveMemoryWarning
 {
