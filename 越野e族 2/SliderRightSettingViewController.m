@@ -21,6 +21,8 @@
     NSArray * arrayofjingpinyingyong;
     
     UIButton * logOut_button;//退出/登陆按钮
+    
+    MBProgressHUD *loading;
 }
 
 @end
@@ -71,6 +73,7 @@
     [self.view addSubview:self.myTableView];
     
     
+    loading = [self MBProgressWithText:@"加载中..." addToView:self.view];
     
 //    _mTableView = [[UMUFPTableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain appkey:@"5153e5e456240b79e20006b9" slotId:nil currentViewController:self];
 //    _mTableView.delegate = self;
@@ -90,6 +93,18 @@
     [[NSNotificationCenter defaultCenter]
      addObserver:self selector:@selector(successLogIn) name:@"LogIn" object:nil];//登陆成功通知
     
+}
+
+- (MBProgressHUD *)MBProgressWithText:(NSString *)text addToView:(UIView *)aView
+{
+    MBProgressHUD *hud = [[MBProgressHUD alloc]initWithView:aView];
+    //    hud.mode = MBProgressHUDModeText;
+    hud.labelText = text;
+    //    hud.margin = 15.f;
+    //    hud.yOffset = 0.0f;
+    [aView addSubview:hud];
+    hud.removeFromSuperViewOnHide = YES;
+    return hud;
 }
 
 -(void)leftButtonTap:(UIButton *)sender
@@ -423,6 +438,8 @@
 {
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     
+    [loading show:YES];
+    
     NSString *url = [NSString stringWithFormat:@"http://itunes.apple.com/lookup?id=%@",@"605673005"];
     
     NSString *newStr = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
@@ -434,6 +451,8 @@
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+        
+        [loading hide:YES];
         
         if (data.length > 0) {
             
@@ -450,7 +469,7 @@
             
             //appStore 版本
             NSString *newVersion = [[results objectAtIndex:0]objectForKey:@"version"];
-                        
+            
             NSString *updateContent = [[results objectAtIndex:0]objectForKey:@"releaseNotes"];
             //本地版本
             NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];

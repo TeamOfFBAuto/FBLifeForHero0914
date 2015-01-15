@@ -73,18 +73,18 @@
     newsScrow.delegate=self;
     newsScrow.showsHorizontalScrollIndicator=NO;
     newsScrow.showsVerticalScrollIndicator=NO;
-    newsScrow.backgroundColor=[UIColor whiteColor];
+    newsScrow.backgroundColor=[UIColor redColor];
     newsScrow.scrollEnabled = NO;
     
     [self.view addSubview:newsScrow];
     
     for (int i=0; i<2; i++) {
         
-        FinalshoucangView *mytesttab=[[FinalshoucangView alloc]initWithFrame:CGRectMake(DEVICE_WIDTH*i, 0, DEVICE_WIDTH, DEVICE_WIDTH-64) Type:i+4];
+        FinalshoucangView *mytesttab=[[FinalshoucangView alloc]initWithFrame:CGRectMake(DEVICE_WIDTH*i, 0, DEVICE_WIDTH, DEVICE_HEIGHT-64) Type:i+4];
         mytesttab.tag=i+800;
         mytesttab.delegate=self;
         [newsScrow addSubview:mytesttab];
-        mytesttab.backgroundColor=[UIColor redColor];
+        mytesttab.backgroundColor=[UIColor whiteColor];
     }
     
     
