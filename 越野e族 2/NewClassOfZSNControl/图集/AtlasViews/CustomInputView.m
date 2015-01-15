@@ -339,12 +339,11 @@
 -(void)submitPingLunTap:(UIButton *)sender
 {
     sendPingLun_block(text_input_view.text,isForward);
-    
     [text_input_view resignFirstResponder];
-    
     text_input_view.text = @"";
-    
     commit_label.text = @"";
+    send_button.enabled = NO;
+    send_button.backgroundColor = RGBCOLOR(221,221,221);
 }
 
 

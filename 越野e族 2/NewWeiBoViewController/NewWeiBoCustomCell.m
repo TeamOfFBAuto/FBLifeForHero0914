@@ -83,7 +83,7 @@
         
         if (!_DateLine_Label)
         {
-            _DateLine_Label = [[UILabel alloc] initWithFrame:CGRectMake(DEVICE_WIDTH-70,10,60,20)];
+            _DateLine_Label = [[UILabel alloc] initWithFrame:CGRectMake(DEVICE_WIDTH-110,10,100,20)];
             _DateLine_Label.backgroundColor = [UIColor clearColor];
             _DateLine_Label.font = [UIFont systemFontOfSize:12];
             _DateLine_Label.textColor = RGBCOLOR(142,142,142);

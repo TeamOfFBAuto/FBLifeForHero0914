@@ -1428,24 +1428,16 @@
         
         
         name_label = [[UILabel alloc] initWithFrame:CGRectMake(45/2,0,_silder_view.frame.size.width-45/2,53/2)];
-        
         name_label.backgroundColor = [UIColor clearColor];
-        
         name_label.textAlignment = NSTextAlignmentLeft;
-        
         name_label.textColor = [UIColor blackColor];
-        
         name_label.backgroundColor = [UIColor clearColor];
-        
         name_label.font = [UIFont systemFontOfSize:14];
-        
         [_silder_view addSubview:name_label];
-        
         
         UIView * line_view = [[UIView alloc] initWithFrame:CGRectMake(45/2,53/2,_silder_view.frame.size.width-45/2-23/2,2)];
         line_view.backgroundColor = RGBCOLOR(227,227,227);
         [_silder_view addSubview:line_view];
-        
     }
 }
 

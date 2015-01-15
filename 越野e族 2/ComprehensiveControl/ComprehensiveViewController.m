@@ -569,7 +569,7 @@
         awesomeMenu.nearRadius = 90.0f;
         awesomeMenu.animationDuration = 0.4f;
         awesomeMenu.rotateAddButton = NO;
-        awesomeMenu.startPoint = CGPointMake(160,iPhone5?520.0:432.0);
+        awesomeMenu.startPoint = CGPointMake(DEVICE_WIDTH,DEVICE_HEIGHT-48);
         [self.navigationController.view addSubview:awesomeMenu];
         
     }

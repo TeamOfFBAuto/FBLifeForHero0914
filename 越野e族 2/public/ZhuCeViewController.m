@@ -77,7 +77,13 @@
     userName_tf.font = [UIFont systemFontOfSize:15];
     userName_tf.placeholder = @"最多可输入7个中文,注册后用户名不可更改";
     [self.view addSubview:userName_tf];
-    
+    userName_tf.layer.borderColor = RGBCOLOR(226,226,226).CGColor;
+    userName_tf.layer.borderWidth = 0.5;
+    UIView *userNameview = [[UIView alloc] initWithFrame:CGRectMake(0, 0,8,8)];
+    userNameview.userInteractionEnabled = NO;
+    userName_tf.leftView = userNameview;
+    userName_tf.leftViewMode = UITextFieldViewModeAlways;
+
     
     UILabel * mima_label = [[UILabel alloc] initWithFrame:CGRectMake(23/2,90,200,20)];
     mima_label.textColor = RGBCOLOR(120,121,122);
@@ -93,10 +99,15 @@
     mima_tf.contentVerticalAlignment=UIControlContentVerticalAlignmentCenter;//垂直居中
     mima_tf.secureTextEntry = YES;                              //密码输入时
     mima_tf.backgroundColor = [UIColor whiteColor];
-    mima_tf.layer.borderColor = RGBCOLOR(31,31,31).CGColor;
     mima_tf.font = [UIFont systemFontOfSize:15];
-    mima_tf.layer.borderWidth = 0.5;
     [self.view addSubview:mima_tf];
+    mima_tf.layer.borderColor = RGBCOLOR(226,226,226).CGColor;
+    mima_tf.layer.borderWidth = 0.5;
+    UIView *mimaview = [[UIView alloc] initWithFrame:CGRectMake(0, 0,8,8)];
+    mimaview.userInteractionEnabled = NO;
+    mima_tf.leftView = mimaview;
+    mima_tf.leftViewMode = UITextFieldViewModeAlways;
+
     
     
     UILabel * youxiang_label = [[UILabel alloc] initWithFrame:CGRectMake(23/2,175,200,20)];
@@ -113,6 +124,13 @@
     youxiang_tf.delegate = self;
     youxiang_tf.font = [UIFont systemFontOfSize:15];
     [self.view addSubview:youxiang_tf];
+    youxiang_tf.layer.borderColor = RGBCOLOR(226,226,226).CGColor;
+    youxiang_tf.layer.borderWidth = 0.5;
+    UIView *youxiangview = [[UIView alloc] initWithFrame:CGRectMake(0, 0,8,8)];
+    youxiangview.userInteractionEnabled = NO;
+    youxiang_tf.leftView = youxiangview;
+    youxiang_tf.leftViewMode = UITextFieldViewModeAlways;
+
     
     
     UIButton * complete_button = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -271,7 +289,7 @@
 #pragma mark-UITextFieldDelegate
 -(BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
-    if (textField.frame.origin.y+textField.frame.size.height + 260 > DEVICE_HEIGHT)
+    if (textField.frame.origin.y+textField.frame.size.height + 280 > DEVICE_HEIGHT-64)
     {
         CGRect frame = self.view.frame;
         frame.origin.y = DEVICE_HEIGHT - (textField.frame.origin.y+textField.frame.size.height + 300);

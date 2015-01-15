@@ -426,7 +426,7 @@
     
     [myAlertView setType:FBQuanAlertViewTypeNoJuhua thetext:@"保存图片成功"];
     
-    myAlertView.center = CGPointMake(160,(iPhone5?568:480)/2-20);
+    myAlertView.center = CGPointMake(DEVICE_WIDTH/2,DEVICE_HEIGHT/2-20);
     
     [self.view addSubview:myAlertView];
 
@@ -991,6 +991,12 @@
 -(void)submitPingLunTap:(NSString *)sender
 {
     [text_input_view resignFirstResponder];
+    
+    if (text_input_view.text.length == 0) {
+        [zsnApi showAutoHiddenMBProgressWithText:@"评论内容不能为空" addToView:self.view];
+        return;
+    }
+    
     
     NSString * fullUrl = [NSString stringWithFormat:ATLAS_COMMENT_URL,atlasModel.atlas_id,sender,atlasModel.atlas_name,AUTHKEY];
     
