@@ -179,10 +179,7 @@ static CGFloat SWITCH_FOCUS_PICTURE_INTERVAL = 6.0; //switch interval time
         {
             [self performSelector:@selector(switchFocusImageItems) withObject:nil afterDelay:SWITCH_FOCUS_PICTURE_INTERVAL];
         }
-        
     }
-    
-    
     //objc_setAssociatedObject(self, (const void *)SG_FOCUS_ITEM_ASS_KEY, nil, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
@@ -218,11 +215,6 @@ static CGFloat SWITCH_FOCUS_PICTURE_INTERVAL = 6.0; //switch interval time
     
     
 }
-
-
-
-
-
 
 - (void)moveToTargetPosition:(CGFloat)targetX
 {
