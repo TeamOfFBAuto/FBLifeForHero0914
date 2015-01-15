@@ -298,6 +298,7 @@
     [userNameField resignFirstResponder];
     [pwNameField resignFirstResponder];
     
+    [self loadDown];
     
     tool1=[[downloadtool alloc]init];
     [tool1 setUrl_string:[NSString stringWithFormat:LOGIN_URL,[userNameField.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],[pwNameField.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],[[NSUserDefaults standardUserDefaults]objectForKey:DEVICETOKEN]]];
@@ -398,8 +399,6 @@
                 [hud hide:YES];
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"LogIn" object:nil];
                 
-                [self loadDown];
-                
                 [self dismissViewControllerAnimated:YES completion:NULL];
                 
             }else
@@ -438,8 +437,6 @@
                 pwNameField.text = @"";
                 
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"LogIn" object:nil];
-                
-                [self loadDown];
                 
                 [self dismissViewControllerAnimated:YES completion:NULL];
             }else
@@ -560,6 +557,13 @@
     }
     
     return YES;
+}
+
+-(void)dealloc
+{
+    
+    
+    
 }
 
 - (void)didReceiveMemoryWarning
