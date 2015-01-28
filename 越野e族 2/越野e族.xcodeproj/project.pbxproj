@@ -584,6 +584,9 @@
 		5639C1F919CBD3130021339C /* AwesomeMenu_ditu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5639C1F519CBD3130021339C /* AwesomeMenu_ditu@2x.png */; };
 		5639C1FA19CBD3130021339C /* AwesomeMenu_addbutton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5639C1F619CBD3130021339C /* AwesomeMenu_addbutton@2x.png */; };
 		5639C1FB19CBD3130021339C /* AwesomeMenu_zhinan@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5639C1F719CBD3130021339C /* AwesomeMenu_zhinan@2x.png */; };
+		563E8CE81A78B99000455ED3 /* zhuce.css in Resources */ = {isa = PBXBuildFile; fileRef = 563E8CE51A78B99000455ED3 /* zhuce.css */; };
+		563E8CE91A78B99000455ED3 /* 服务条款.html in Resources */ = {isa = PBXBuildFile; fileRef = 563E8CE61A78B99000455ED3 /* 服务条款.html */; };
+		563E8CEA1A78B99000455ED3 /* 隐私条款.html in Resources */ = {isa = PBXBuildFile; fileRef = 563E8CE71A78B99000455ED3 /* 隐私条款.html */; };
 		564387761963EB1F00152B2D /* SliderRightLogin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 564387751963EB1F00152B2D /* SliderRightLogin@2x.png */; };
 		564387771963EB1F00152B2D /* SliderRightLogin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 564387751963EB1F00152B2D /* SliderRightLogin@2x.png */; };
 		564387811963F65200152B2D /* SliderRightcaogaoxiangRes61_69@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 564387781963F65200152B2D /* SliderRightcaogaoxiangRes61_69@2x.png */; };
@@ -2046,6 +2049,9 @@
 		5639C1F519CBD3130021339C /* AwesomeMenu_ditu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AwesomeMenu_ditu@2x.png"; sourceTree = "<group>"; };
 		5639C1F619CBD3130021339C /* AwesomeMenu_addbutton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AwesomeMenu_addbutton@2x.png"; sourceTree = "<group>"; };
 		5639C1F719CBD3130021339C /* AwesomeMenu_zhinan@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AwesomeMenu_zhinan@2x.png"; sourceTree = "<group>"; };
+		563E8CE51A78B99000455ED3 /* zhuce.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = zhuce.css; sourceTree = "<group>"; };
+		563E8CE61A78B99000455ED3 /* 服务条款.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "服务条款.html"; sourceTree = "<group>"; };
+		563E8CE71A78B99000455ED3 /* 隐私条款.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "隐私条款.html"; sourceTree = "<group>"; };
 		564387751963EB1F00152B2D /* SliderRightLogin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SliderRightLogin@2x.png"; sourceTree = "<group>"; };
 		564387781963F65200152B2D /* SliderRightcaogaoxiangRes61_69@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SliderRightcaogaoxiangRes61_69@2x.png"; sourceTree = "<group>"; };
 		564387791963F65200152B2D /* SliderRightfbgray73_67@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SliderRightfbgray73_67@2x.png"; sourceTree = "<group>"; };
@@ -3295,6 +3301,7 @@
 		19CF4124186C526C00AA51A9 /* 注册找回密码 */ = {
 			isa = PBXGroup;
 			children = (
+				563E8CE41A78B99000455ED3 /* htmlsource */,
 				19CF4125186C526C00AA51A9 /* MyPhoneNumViewController.h */,
 				19CF4126186C526C00AA51A9 /* MyPhoneNumViewController.m */,
 				19CF4127186C526C00AA51A9 /* VerificationViewController.h */,
@@ -4121,6 +4128,16 @@
 				5639C1F719CBD3130021339C /* AwesomeMenu_zhinan@2x.png */,
 			);
 			path = awesomeImages;
+			sourceTree = "<group>";
+		};
+		563E8CE41A78B99000455ED3 /* htmlsource */ = {
+			isa = PBXGroup;
+			children = (
+				563E8CE51A78B99000455ED3 /* zhuce.css */,
+				563E8CE61A78B99000455ED3 /* 服务条款.html */,
+				563E8CE71A78B99000455ED3 /* 隐私条款.html */,
+			);
+			path = htmlsource;
 			sourceTree = "<group>";
 		};
 		5643876F1963EAF800152B2D /* NewClassOfZSNControl */ = {
@@ -6285,6 +6302,7 @@
 				566E7905185EE75D00BB88C5 /* face24.png in Resources */,
 				566E7C67185EE8F100BB88C5 /* 1-128-98.png in Resources */,
 				563365E81862E7590069F838 /* icon23_19.png in Resources */,
+				563E8CEA1A78B99000455ED3 /* 隐私条款.html in Resources */,
 				566E790A185EE75D00BB88C5 /* face26_1.png in Resources */,
 				563365CA1862E7590069F838 /* jcp640X90l.png in Resources */,
 				566E7C6F185EE8F100BB88C5 /* 5-128-98.png in Resources */,
@@ -6583,6 +6601,7 @@
 				5650CCED19780CF8001EA523 /* sliderBBSNavigationBarImage@2x.png in Resources */,
 				19ECDAB5186EDCE2002B2281 /* selectbbsright297_57@2x.png in Resources */,
 				566E78FD185EE75D00BB88C5 /* face20.png in Resources */,
+				563E8CE91A78B99000455ED3 /* 服务条款.html in Resources */,
 				56C95550185EED9A00763E69 /* weiboDetail_more_sel.png in Resources */,
 				566075E8188F5D2E00C25ACE /* qrcode_flash.png in Resources */,
 				5634D4A618605A21003868D7 /* write_blog_add_more@2x.png in Resources */,
@@ -6882,6 +6901,7 @@
 				566E7A21185EE7D000BB88C5 /* menu_news.png in Resources */,
 				5650CCD21977AFCD001EA523 /* bbs_forum_collect2@2x.png in Resources */,
 				19B811B819615C770083EEE3 /* zixunred47_42@2x.png in Resources */,
+				563E8CE81A78B99000455ED3 /* zhuce.css in Resources */,
 				19EA0415196295690080C03E /* white@2x.png in Resources */,
 				5634CB52185FF7B4003868D7 /* Icon@2x.png in Resources */,
 				563365FE1862E7590069F838 /* segbackground@2x.png in Resources */,

@@ -28,8 +28,8 @@
     [self setMyViewControllerLeftButtonType:MyViewControllerLeftbuttonTypeOther WithRightButtonType:MyViewControllerRightbuttonTypeNull];
     
     
-//    NSString * path = [[NSBundle mainBundle] pathForResource:@"PrivacyPolicyList" ofType:@"plist"];
-//    NSMutableDictionary * data = [NSMutableDictionary dictionaryWithContentsOfFile:path];
+    //    NSString * path = [[NSBundle mainBundle] pathForResource:@"PrivacyPolicyList" ofType:@"plist"];
+    //    NSMutableDictionary * data = [NSMutableDictionary dictionaryWithContentsOfFile:path];
     
     UISegmentedControl * segmentC = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"隐私条款",@"服务条款",nil]];
     segmentC.backgroundColor = [UIColor whiteColor];
@@ -84,13 +84,13 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end
