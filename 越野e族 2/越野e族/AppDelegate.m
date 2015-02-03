@@ -1188,7 +1188,7 @@ static int numberof = 0;
 
 -(void)NewShowMainVC{
     
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(NightMode:) name:@"NightMode" object:nil];
     
     //    [guanggao_image cancelDownload];
     //    guanggao_image.delegate=nil;
@@ -1256,6 +1256,36 @@ static int numberof = 0;
     //  [self.window.rootViewController.view addSubview:pushNav.view];
     
 }
+
+-(void)NightMode:(NSNotification *)notification
+{
+    NSLog(@"notification  ---   %@",notification.object);
+    
+    if (!night_view)
+    {
+        night_view = [[UIView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,DEVICE_HEIGHT)];
+        night_view.backgroundColor = [UIColor blackColor];
+        night_view.alpha = 0;
+        night_view.window.windowLevel = UIWindowLevelAlert;
+        [self.window bringSubviewToFront:night_view];
+        night_view.userInteractionEnabled = NO;
+        [self.window addSubview:night_view];
+    }
+    
+    
+    NSString * object = notification.object;
+    
+    if ([object intValue] == 1)///夜间模式
+    {
+        NSLog(@"夜间模式");
+        night_view.alpha = 0.3f;
+    }else
+    {
+        night_view.alpha = 0.0f;
+        NSLog(@"非夜间模式");
+    }
+}
+
 
 
 #pragma mark RESideMenu Delegate

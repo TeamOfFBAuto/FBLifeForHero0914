@@ -487,7 +487,10 @@
                 
                 [defaults setObject:string_uid forKey:USER_UID];
                 
-                [defaults setObject:userName forKey:USER_NAME];
+                if(userName.length > 0)
+                {
+                    [defaults setObject:userName forKey:USER_NAME];
+                }
                 
                 [defaults setObject:userFace forKey:USER_FACE];
                 
@@ -495,7 +498,7 @@
                 [[NSNotificationCenter defaultCenter]postNotificationName:@"successgetuid" object:Nil];
                 
                 
-                LogIn_label.text = userName;
+                LogIn_label.text = [defaults objectForKey:USER_NAME];
                 
                 //                [headerImageView loadImageFromURL:userFace withPlaceholdImage:[UIImage imageNamed:@"SliderRightLogin.png"]];
                 

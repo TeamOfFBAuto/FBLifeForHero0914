@@ -1245,6 +1245,10 @@
 		5675DE29196D3C6B001926E1 /* RankingListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5675DE27196D3C6B001926E1 /* RankingListModel.m */; };
 		5675DE2C196D4CDD001926E1 /* RankingListCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5675DE2B196D4CDD001926E1 /* RankingListCustomCell.m */; };
 		5675DE2D196D4CDD001926E1 /* RankingListCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5675DE2B196D4CDD001926E1 /* RankingListCustomCell.m */; };
+		5686D7331A80A65200CC252D /* about_logo_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5686D7311A80A65200CC252D /* about_logo_image@2x.png */; };
+		5686D7341A80A65200CC252D /* about_mountain_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5686D7321A80A65200CC252D /* about_mountain_image@2x.png */; };
+		5686D7381A80A6A600CC252D /* NewAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5686D7361A80A6A600CC252D /* NewAboutViewController.m */; };
+		5686D7391A80A6A600CC252D /* NewAboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5686D7371A80A6A600CC252D /* NewAboutViewController.xib */; };
 		5697221C1A3FD2E8004B6641 /* PrivacyPolicyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5697221B1A3FD2E8004B6641 /* PrivacyPolicyViewController.m */; };
 		56A425BE19C58A3A00DBCFA3 /* TheScheduleList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 56A425BD19C58A3A00DBCFA3 /* TheScheduleList.plist */; };
 		56A425C419C5ABB600DBCFA3 /* AwesomeMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A425C119C5ABB600DBCFA3 /* AwesomeMenu.m */; };
@@ -2835,6 +2839,11 @@
 		5675DE27196D3C6B001926E1 /* RankingListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RankingListModel.m; sourceTree = "<group>"; };
 		5675DE2A196D4CDD001926E1 /* RankingListCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RankingListCustomCell.h; sourceTree = "<group>"; };
 		5675DE2B196D4CDD001926E1 /* RankingListCustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RankingListCustomCell.m; sourceTree = "<group>"; };
+		5686D7311A80A65200CC252D /* about_logo_image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "about_logo_image@2x.png"; sourceTree = "<group>"; };
+		5686D7321A80A65200CC252D /* about_mountain_image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "about_mountain_image@2x.png"; sourceTree = "<group>"; };
+		5686D7351A80A6A600CC252D /* NewAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewAboutViewController.h; sourceTree = "<group>"; };
+		5686D7361A80A6A600CC252D /* NewAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewAboutViewController.m; sourceTree = "<group>"; };
+		5686D7371A80A6A600CC252D /* NewAboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewAboutViewController.xib; sourceTree = "<group>"; };
 		5697221A1A3FD2E8004B6641 /* PrivacyPolicyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrivacyPolicyViewController.h; sourceTree = "<group>"; };
 		5697221B1A3FD2E8004B6641 /* PrivacyPolicyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrivacyPolicyViewController.m; sourceTree = "<group>"; };
 		56A425BD19C58A3A00DBCFA3 /* TheScheduleList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TheScheduleList.plist; sourceTree = "<group>"; };
@@ -3830,6 +3839,9 @@
 				563364FF1862E7500069F838 /* testimgViewController.m */,
 				19ECDAAD186ECADB002B2281 /* FollowAndFansView.h */,
 				19ECDAAE186ECADB002B2281 /* FollowAndFansView.m */,
+				5686D7351A80A6A600CC252D /* NewAboutViewController.h */,
+				5686D7361A80A6A600CC252D /* NewAboutViewController.m */,
+				5686D7371A80A6A600CC252D /* NewAboutViewController.xib */,
 			);
 			path = MoreViewController;
 			sourceTree = "<group>";
@@ -4719,6 +4731,8 @@
 		566E74ED185EE6E800BB88C5 /* ios7Images */ = {
 			isa = PBXGroup;
 			children = (
+				5686D7311A80A65200CC252D /* about_logo_image@2x.png */,
+				5686D7321A80A65200CC252D /* about_mountain_image@2x.png */,
 				56199FCA198A4C3C006353AB /* default_write_pen_image@2x.png */,
 				56A834D419860250005EE42F /* New_ios7_fanhui-1@2x.png */,
 				1959712C18BB30FA00D17284 /* ios_7carportpicselect608_57@2x.png */,
@@ -6280,6 +6294,7 @@
 				566E7941185EE75D00BB88C5 /* face51.png in Resources */,
 				56C95622185EEEB700763E69 /* yuanquanimage@2x.png in Resources */,
 				563365D41862E7590069F838 /* 20130502_pinglun@2x.png in Resources */,
+				5686D7331A80A65200CC252D /* about_logo_image@2x.png in Resources */,
 				563365BC1862E7590069F838 /* blackArrow@2x.png in Resources */,
 				566E7952185EE75D00BB88C5 /* face59_1.png in Resources */,
 				5633643B1862E7490069F838 /* bgcell.png in Resources */,
@@ -6364,6 +6379,7 @@
 				566E7C0E185EE88400BB88C5 /* send1@2x.png in Resources */,
 				563365E01862E7590069F838 /* left1523@2x.png in Resources */,
 				563365CB1862E7590069F838 /* write_face80 64@2x.png in Resources */,
+				5686D7341A80A65200CC252D /* about_mountain_image@2x.png in Resources */,
 				56C955F7185EEEB700763E69 /* beijingtupianimage@2x.png in Resources */,
 				566E7937185EE75D00BB88C5 /* face47.png in Resources */,
 				566E796D185EE75D00BB88C5 /* QBImagePickerController.bundle in Resources */,
@@ -6498,6 +6514,7 @@
 				19B11864186871B600CA4C07 /* logIn_close@2x.png in Resources */,
 				563365BA1862E7590069F838 /* bc@2x.png in Resources */,
 				56262CC919D26E9F007D9809 /* AwesomeMenu_weibo@2x.png in Resources */,
+				5686D7391A80A6A600CC252D /* NewAboutViewController.xib in Resources */,
 				566E78EF185EE75D00BB88C5 /* face14.png in Resources */,
 				566E7A62185EE81500BB88C5 /* denglu@2x.png in Resources */,
 				563365121862E7510069F838 /* item_ok_selected@2x.png in Resources */,
@@ -7322,6 +7339,7 @@
 				564B91CA197E95A50081D103 /* CustomInputView.m in Sources */,
 				563365281862E7510069F838 /* DraftBoxViewController.m in Sources */,
 				563365271862E7510069F838 /* DraftBoxView.m in Sources */,
+				5686D7381A80A6A600CC252D /* NewAboutViewController.m in Sources */,
 				563365231862E7510069F838 /* UMFeedbackTableViewCellLeft.m in Sources */,
 				56C955C1185EEEA900763E69 /* guanzhuCell.m in Sources */,
 				566E797C185EE75D00BB88C5 /* MWTapDetectingImageView.m in Sources */,
@@ -7698,7 +7716,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/越野e族/社会化分享/UMSocial_";
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "0c0fcf41-02c9-4bbc-b06a-e103275d3718";
+				PROVISIONING_PROFILE = "62774b15-cf37-4fc8-953c-6464d6d11d7d";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -7733,7 +7751,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/越野e族/社会化分享/UMSocial_";
-				PROVISIONING_PROFILE = "0c0fcf41-02c9-4bbc-b06a-e103275d3718";
+				PROVISIONING_PROFILE = "62774b15-cf37-4fc8-953c-6464d6d11d7d";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -7746,8 +7764,8 @@
 				ARCHS = armv7;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Bing Jin (KMZ2AD5LZY)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Bing Jin (KMZ2AD5LZY)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
@@ -7773,7 +7791,7 @@
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0c0fcf41-02c9-4bbc-b06a-e103275d3718";
+				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 				VALID_ARCHS = "armv7s armv7 arm64";
 				WRAPPER_EXTENSION = app;
@@ -7787,8 +7805,8 @@
 				ARCHS = armv7;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Bing Jin (KMZ2AD5LZY)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Bing Jin (KMZ2AD5LZY)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
@@ -7814,7 +7832,7 @@
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0c0fcf41-02c9-4bbc-b06a-e103275d3718";
+				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 				VALID_ARCHS = "armv7s armv7 arm64";
 				WRAPPER_EXTENSION = app;

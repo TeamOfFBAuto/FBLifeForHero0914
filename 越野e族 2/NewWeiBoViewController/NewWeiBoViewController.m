@@ -410,7 +410,6 @@
     }
     [XTSideMenuManager resetSideMenuRecognizerEnable:YES];
 
-    
     [self.leveyTabBarController hidesTabBar:NO animated:YES];
     
     [MobClick beginEvent:@"NewWeiBoViewController"];

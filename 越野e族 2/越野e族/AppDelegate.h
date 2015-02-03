@@ -75,6 +75,9 @@
     
     ///是否接收到本地通知
     BOOL isHaveLocalNotification;
+    
+    ///夜间模式
+    UIView * night_view;
 }
 
 @property (strong, nonatomic) UIWindow *window;

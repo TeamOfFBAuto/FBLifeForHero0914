@@ -105,9 +105,9 @@
    [super viewDidLoad];
     _firstVC=[[ComprehensiveViewController alloc]init];
     
-    titles = @[@"综合",@"论坛",@"资讯", @"自留地", @"车库", @"图集"];
+    titles = @[@"综合",@"论坛",@"资讯", @"自留地", @"车库", @"图集",@"夜间模式"];
     
-    imageArr=@[@"zonghegray50_48.png",@"luntangray48_41.png",@"zixungray47_42.png",@"ziliudigray44_4.png",@"chekugray54_35.png",@"tujigray.png",@"zonghered50_48.png",@"luntanred48_41.png",@"zixunred47_42.png",@"ziliudired44_40.png",@"chekured54_35.png",@"tujired.png"];
+    imageArr=@[@"zonghegray50_48.png",@"luntangray48_41.png",@"zixungray47_42.png",@"ziliudigray44_4.png",@"chekugray54_35.png",@"tujigray.png",@"zonghered50_48.png",@"",@"luntanred48_41.png",@"zixunred47_42.png",@"ziliudired44_40.png",@"chekured54_35.png",@"tujired.png",@""];
     
 //    UIImage *background   =[UIImage imageNamed:IS_IPHONE_5?@"Mallbackgurand.png":@"Mallbackgurand.png"];
     
@@ -134,7 +134,7 @@
     //默认第一个
     currentSelectButtonIndex=0;
     
-    for (int i=0; i<6; i++) {
+    for (int i=0; i<titles.count; i++) {
         
         
         UIButton *tabbutton=[[UIButton alloc] initWithFrame:CGRectMake(0,iPhone5? 64+i*70:64+i*60, 300, 50)];
@@ -185,7 +185,7 @@
     [preButton setBackgroundImage:nil forState:UIControlStateNormal];
 
     [preButton setImage:[UIImage imageNamed:imageArr[currentSelectButtonIndex]] forState:UIControlStateNormal];
-
+    sender.selected = !sender.selected;
     currentSelectButtonIndex=sender.tag-100;
     [sender setImage:[UIImage imageNamed:imageArr[sender.tag-100+6]] forState:UIControlStateNormal];
     
@@ -260,6 +260,11 @@
             
 
 
+        }
+            break;
+        case 106:///夜间模式
+        {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"NightMode" object:[NSString stringWithFormat:@"%d",sender.selected] userInfo:nil];
         }
             break;
 

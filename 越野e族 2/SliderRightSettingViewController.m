@@ -12,6 +12,7 @@
 #import "FullyLoaded.h"
 #import "UMFeedbackViewController.h"
 #import "AboutViewController.h"
+#import "NewAboutViewController.h"
 #import "UMTableViewController.h"
 
 @interface SliderRightSettingViewController ()
@@ -283,7 +284,7 @@
         [self checkVersionUpdate];
     }else if (indexPath.row == 4)//关于
     {
-        AboutViewController * aboutVC = [[AboutViewController alloc] init];
+        NewAboutViewController * aboutVC = [[NewAboutViewController alloc] init];
         [self.navigationController pushViewController:aboutVC animated:YES];
     }
 }

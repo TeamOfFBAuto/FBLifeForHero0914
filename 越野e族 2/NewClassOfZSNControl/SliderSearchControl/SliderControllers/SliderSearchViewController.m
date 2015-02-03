@@ -177,7 +177,7 @@
     
     
     
-    _myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0,IOS_VERSION>=7?108: 88,DEVICE_WIDTH,(iPhone5?568:480)-(IOS_VERSION>=7?108:88)) style:UITableViewStylePlain];
+    _myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0,IOS_VERSION>=7?108: 88,DEVICE_WIDTH,DEVICE_HEIGHT-(IOS_VERSION>=7?108:88)) style:UITableViewStylePlain];
     
     _myTableView.delegate = self;
     

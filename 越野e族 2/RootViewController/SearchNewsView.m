@@ -33,35 +33,35 @@
  */
 -(void)layoutSubviewsWithDicNewsinfo:(NSDictionary*)dicinfo{
     //标题
-    UILabel * labeltitle=[[UILabel alloc]initWithFrame:CGRectMake(12.5, 5, 320-25, 20)];
+    UILabel * labeltitle=[[UILabel alloc]initWithFrame:CGRectMake(12.5, 5, DEVICE_WIDTH-25, 20)];
     labeltitle.text=[NSString stringWithFormat:@"%@",[dicinfo objectForKey:@"title"]];
     labeltitle.font=[UIFont systemFontOfSize:16];
     labeltitle.backgroundColor=[UIColor clearColor];
     labeltitle.textColor=[UIColor blackColor];
-    labeltitle.textAlignment=UITextAlignmentLeft;
+    labeltitle.textAlignment=NSTextAlignmentLeft;
     [self addSubview:labeltitle];
     //内容
     UILabel * labelcontent=[[UILabel alloc]init];
     labelcontent.text=[NSString stringWithFormat:@"%@",[dicinfo objectForKey:@"content"]];
     labelcontent.font=[UIFont systemFontOfSize:12];
 
-    CGSize constraintSize = CGSizeMake(310, MAXFLOAT);
-    CGSize labelSize = [labelcontent.text sizeWithFont:labelcontent.font constrainedToSize:constraintSize lineBreakMode:UILineBreakModeWordWrap];
-    labelcontent.Frame=CGRectMake(12.5, 30, 320-25, labelSize.height);
+    CGSize constraintSize = CGSizeMake(DEVICE_WIDTH-25, MAXFLOAT);
+    CGSize labelSize = [labelcontent.text sizeWithFont:labelcontent.font constrainedToSize:constraintSize lineBreakMode:NSLineBreakByCharWrapping];
+    labelcontent.Frame=CGRectMake(12.5, 30, DEVICE_WIDTH-25, labelSize.height);
     
     labelcontent.backgroundColor=[UIColor clearColor];
     labelcontent.textColor=[UIColor grayColor];
     labelcontent.numberOfLines=0;
     labelcontent.lineBreakMode=NSLineBreakByCharWrapping;
-    labelcontent.textAlignment=UITextAlignmentLeft;
+    labelcontent.textAlignment=NSTextAlignmentLeft;
     [self addSubview:labelcontent];
     //时间
-    UILabel * labeltime=[[UILabel alloc]initWithFrame:CGRectMake(195, 30+labelSize.height+5, 110, 20)];
+    UILabel * labeltime=[[UILabel alloc]initWithFrame:CGRectMake(DEVICE_WIDTH-120, 30+labelSize.height+5, 110, 20)];
     labeltime.text=[personal timchange:[NSString stringWithFormat:@"%@",[dicinfo objectForKey:@"dateline"]]] ;
     labeltime.font=[UIFont systemFontOfSize:12];
     labeltime.backgroundColor=[UIColor clearColor];
     labeltime.textColor=[UIColor grayColor];
-    labeltime.textAlignment=UITextAlignmentRight;
+    labeltime.textAlignment=NSTextAlignmentRight;
     [self addSubview:labeltime];
 
 }

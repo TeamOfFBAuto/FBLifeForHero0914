@@ -148,7 +148,7 @@
                 
                 UIImageView * image_view = (UIImageView *)[tableHeaderView viewWithTag:417];
                 
-                image_view.image = [UIImage imageNamed:@"weibo_detail_line-1.png"];
+                image_view.image = [[UIImage imageNamed:@"weibo_detail_line-1.png"] stretchableImageWithLeftCapWidth:50 topCapHeight:3.5f];
                 
                 
                 NSArray *keys;
@@ -238,7 +238,6 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
     [MobClick beginEvent:@"NewWeiBoDetailViewController"];
 }
 
@@ -337,7 +336,7 @@
     
     line_imageView.tag = 417;
     
-    line_imageView.image = [UIImage imageNamed:@"weibo_detai_line.png"];
+    line_imageView.image = [[UIImage imageNamed:@"weibo_detai_line.png"] stretchableImageWithLeftCapWidth:50 topCapHeight:3.5];
     
     [tableHeaderView addSubview:line_imageView];
     
@@ -371,37 +370,23 @@
     
     
     UILabel * wu_label = [[UILabel alloc] initWithFrame:CGRectMake(0,114+12,DEVICE_WIDTH,20)];
-    
     wu_label.backgroundColor = [UIColor clearColor];
-    
     wu_label.text = @"还没有人评论";
-    
     wu_label.textAlignment = NSTextAlignmentCenter;
-    
     wu_label.textColor = RGBCOLOR(193,193,193);
-    
     wu_label.font = [UIFont systemFontOfSize:14];
-    
     [tishi_view addSubview:wu_label];
     
     
     
     DetailBottomView * bottom_view = [[DetailBottomView alloc] initWithFrame:CGRectMake(0,DEVICE_HEIGHT-64-44,DEVICE_WIDTH,44)];
-    
     bottom_view.delegate = self;
-    
     bottom_view.backgroundColor = [UIColor whiteColor];
-    
     [self.view addSubview:bottom_view];
     
-    
-    
     myAlertView = [[loadingimview alloc] initWithFrame:CGRectMake(0,0,150,100) labelString:@"正在加载"];
-    
     myAlertView.center = CGPointMake(DEVICE_WIDTH/2,DEVICE_HEIGHT/2-64);
-    
     myAlertView.hidden = YES;
-
     [self.view addSubview:myAlertView];
 }
 
