@@ -11,6 +11,8 @@
 #import "FriendListViewController.h"
 #import "rtLabel.h"
 
+#import "CWNavigationController.h"
+
 @class RTLabelComponent;
 @class RTLabelExtractedComponent;
 
@@ -433,7 +435,7 @@
     //@某人
     FriendListViewController * list = [[FriendListViewController alloc] init];
     list.delegate = self;
-    UINavigationController * list_nav = [[UINavigationController alloc] initWithRootViewController:list];
+    CWNavigationController * list_nav = [[CWNavigationController alloc] initWithRootViewController:list];
 
 
     [self presentViewController:list_nav animated:YES completion:NULL];

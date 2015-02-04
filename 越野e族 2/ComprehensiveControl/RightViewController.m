@@ -25,6 +25,7 @@
 #import "GscanfViewController.h"
 #import "SliderSearchViewController.h"
 
+#import "CWNavigationController.h"
 
 @interface RightViewController ()
 {
@@ -579,7 +580,7 @@
             
             friend.delegate = self;
             
-            UINavigationController * nav = [[UINavigationController alloc] initWithRootViewController:friend];
+            CWNavigationController * nav = [[CWNavigationController alloc] initWithRootViewController:friend];
             
             [self presentViewController:nav animated:YES completion:NULL];
             
@@ -639,7 +640,7 @@
         {
             SliderSearchViewController * search =[[SliderSearchViewController alloc]init];
             
-            UINavigationController * search_nav = [[UINavigationController alloc] initWithRootViewController:search];
+            CWNavigationController * search_nav = [[CWNavigationController alloc] initWithRootViewController:search];
             
             [self presentViewController:search_nav animated:YES completion:NULL];
             

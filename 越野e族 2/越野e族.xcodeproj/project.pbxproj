@@ -171,6 +171,8 @@
 		19F93651197F9BAE00288E6C /* ZkingAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F93650197F9BAE00288E6C /* ZkingAlert.m */; };
 		19F93653197FB84B00288E6C /* zkingalert@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 19F93652197FB84B00288E6C /* zkingalert@2x.png */; };
 		19F93655197FDA6500288E6C /* bigandlittle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 19F93654197FDA6500288E6C /* bigandlittle@2x.png */; };
+		19FFB9B91A80C448008FB03A /* CWNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19FFB9B81A80C448008FB03A /* CWNavigationController.m */; };
+		19FFB9BA1A80C448008FB03A /* CWNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19FFB9B81A80C448008FB03A /* CWNavigationController.m */; };
 		560AD6EB197A6DAA003CEBF7 /* saoyisao_440_440@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 560AD6EA197A6DAA003CEBF7 /* saoyisao_440_440@2x.png */; };
 		560AD6EC197A6DAA003CEBF7 /* saoyisao_440_440@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 560AD6EA197A6DAA003CEBF7 /* saoyisao_440_440@2x.png */; };
 		560AD6EE197A6DF2003CEBF7 /* saoyisao_line33@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 560AD6ED197A6DF2003CEBF7 /* saoyisao_line33@2x.png */; };
@@ -1612,6 +1614,8 @@
 		19F93650197F9BAE00288E6C /* ZkingAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZkingAlert.m; sourceTree = "<group>"; };
 		19F93652197FB84B00288E6C /* zkingalert@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zkingalert@2x.png"; sourceTree = "<group>"; };
 		19F93654197FDA6500288E6C /* bigandlittle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bigandlittle@2x.png"; sourceTree = "<group>"; };
+		19FFB9B71A80C448008FB03A /* CWNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWNavigationController.h; sourceTree = "<group>"; };
+		19FFB9B81A80C448008FB03A /* CWNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWNavigationController.m; sourceTree = "<group>"; };
 		560AD6EA197A6DAA003CEBF7 /* saoyisao_440_440@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "saoyisao_440_440@2x.png"; sourceTree = "<group>"; };
 		560AD6ED197A6DF2003CEBF7 /* saoyisao_line33@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "saoyisao_line33@2x.png"; sourceTree = "<group>"; };
 		560AD6F0197A71CB003CEBF7 /* saoyisao_kacha@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "saoyisao_kacha@2x.png"; sourceTree = "<group>"; };
@@ -4663,6 +4667,8 @@
 				566E7C3E185EE8F100BB88C5 /* tabbar */,
 				566E74CD185EE62300BB88C5 /* AppDelegate.h */,
 				566E74CE185EE62300BB88C5 /* AppDelegate.m */,
+				19FFB9B71A80C448008FB03A /* CWNavigationController.h */,
+				19FFB9B81A80C448008FB03A /* CWNavigationController.m */,
 				566E74D0185EE62300BB88C5 /* Images.xcassets */,
 				566E74C5185EE62300BB88C5 /* Supporting Files */,
 				56CC07281A304E520014F285 /* Launch Screen.xib */,
@@ -7344,6 +7350,7 @@
 				566E7A4F185EE80100BB88C5 /* FaceScrollView.m in Sources */,
 				566E79E7185EE7B000BB88C5 /* testbase.m in Sources */,
 				19B8118019613A3B0083EEE3 /* ComprehensiveViewController.m in Sources */,
+				19FFB9B91A80C448008FB03A /* CWNavigationController.m in Sources */,
 				19D21866196BC15200621C04 /* NewHuandengView.m in Sources */,
 				566E78D5185EE75D00BB88C5 /* ASIFormDataRequest.m in Sources */,
 				566E78D6185EE75D00BB88C5 /* ASIHTTPRequest.m in Sources */,
@@ -7564,6 +7571,7 @@
 				56607565188F5D1200C25ACE /* UMTableViewCell.m in Sources */,
 				5675DE29196D3C6B001926E1 /* RankingListModel.m in Sources */,
 				563022A5197913EF00F85B11 /* PraiseAndCollectedModel.m in Sources */,
+				19FFB9BA1A80C448008FB03A /* CWNavigationController.m in Sources */,
 				566075DF188F5D2E00C25ACE /* qrinput.c in Sources */,
 				56AE78E61998E37000FE869E /* SliderSearchViewController.m in Sources */,
 				561B65B61964F5AE00572350 /* SliderBBSTitleView.m in Sources */,
@@ -7678,7 +7686,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/越野e族/社会化分享/UMSocial_";
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "0c0fcf41-02c9-4bbc-b06a-e103275d3718";
+				PROVISIONING_PROFILE = "3a5a1603-9d1e-4ee9-952f-2765405c4b6b";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -7713,7 +7721,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/越野e族/社会化分享/UMSocial_";
-				PROVISIONING_PROFILE = "0c0fcf41-02c9-4bbc-b06a-e103275d3718";
+				PROVISIONING_PROFILE = "3a5a1603-9d1e-4ee9-952f-2765405c4b6b";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -7753,7 +7761,7 @@
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0c0fcf41-02c9-4bbc-b06a-e103275d3718";
+				PROVISIONING_PROFILE = "3a5a1603-9d1e-4ee9-952f-2765405c4b6b";
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 				VALID_ARCHS = "armv7s armv7 arm64";
 				WRAPPER_EXTENSION = app;
@@ -7794,7 +7802,7 @@
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0c0fcf41-02c9-4bbc-b06a-e103275d3718";
+				PROVISIONING_PROFILE = "3a5a1603-9d1e-4ee9-952f-2765405c4b6b";
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 				VALID_ARCHS = "armv7s armv7 arm64";
 				WRAPPER_EXTENSION = app;

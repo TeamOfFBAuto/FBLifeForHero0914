@@ -7,6 +7,8 @@
 //
 
 #import "LogInViewController.h"
+
+#import "CWNavigationController.h"
 @interface LogInViewController ()
 {
     downloadtool *tool1;
@@ -239,7 +241,7 @@
 -(void)zhuceButton:(UIButton *)sender
 {
     MyPhoneNumViewController * zhuce = [[MyPhoneNumViewController alloc] init];
-    UINavigationController * naVC = [[UINavigationController alloc] initWithRootViewController:zhuce];
+    CWNavigationController * naVC = [[CWNavigationController alloc] initWithRootViewController:zhuce];
     [self presentViewController:naVC animated:YES completion:NULL];
 }
 

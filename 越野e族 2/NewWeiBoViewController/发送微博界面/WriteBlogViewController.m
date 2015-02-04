@@ -15,6 +15,8 @@
 #import "QBImagePickerController.h"
 #import "DraftDatabase.h"
 
+#import "CWNavigationController.h"
+
 @interface WriteBlogViewController ()
 {
     WeiBoFaceScrollView * scrollView;
@@ -479,7 +481,7 @@
     
     imagePickerController.assters = allAssesters;
     
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:imagePickerController];
+    CWNavigationController *navigationController = [[CWNavigationController alloc] initWithRootViewController:imagePickerController];
     
     
     navigationController.navigationController.navigationBar.barStyle = UIBarStyleBlackOpaque;
@@ -629,7 +631,7 @@
             //@某人
             FriendListViewController * list = [[FriendListViewController alloc] init];
             list.delegate = self;
-            UINavigationController * list_nav = [[UINavigationController alloc] initWithRootViewController:list];
+            CWNavigationController * list_nav = [[CWNavigationController alloc] initWithRootViewController:list];
             [self presentViewController:list_nav animated:YES completion:NULL];
         }
             break;

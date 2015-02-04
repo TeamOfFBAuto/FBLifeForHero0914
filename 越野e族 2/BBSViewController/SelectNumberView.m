@@ -22,13 +22,13 @@
 
 -(void)ShowPick{
     
-    _ToolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+    _ToolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, DEVICE_WIDTH, 44)];
     //[_ToolBar setBackgroundImage:[UIImage imageNamed:@"selectbbs.png"] forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsDefault ];
    // _ToolBar.barStyle = UIBarStyleBlackOpaque;
     _ToolBar.backgroundColor=RGBCOLOR(244, 244, 246);
     [_ToolBar sizeToFit];
     
-    UIView *lineview=[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 0.5)];
+    UIView *lineview=[[UIView alloc] initWithFrame:CGRectMake(0, 0, DEVICE_WIDTH, 0.5)];
     lineview.backgroundColor=RGBCOLOR(179, 179, 181);
     [_ToolBar addSubview:lineview];
 
@@ -45,7 +45,7 @@
     
     
     
-    UIButton *DoneButton=[[UIButton alloc]initWithFrame:CGRectMake(260, 8, 50, 28)];
+    UIButton *DoneButton=[[UIButton alloc]initWithFrame:CGRectMake(DEVICE_WIDTH-60, 8, 50, 28)];
    // [DoneButton setBackgroundImage:[UIImage imageNamed:@"turn5028.png"] forState:UIControlStateNormal];
 
     [DoneButton setTitle:@"确定" forState:UIControlStateNormal];
@@ -57,7 +57,7 @@
 //    [DoneButton.layer setCornerRadius:5.0]; //设置矩形四个圆角半径
 //    [DoneButton.layer setBorderWidth:0.1]; //边框宽度
     
-    text_label=[[UITextField alloc]initWithFrame:CGRectMake(135, 10, 60, 24)];
+    text_label=[[UITextField alloc]initWithFrame:CGRectMake(DEVICE_WIDTH/2-30, 10, 60, 24)];
     text_label.backgroundColor=[UIColor clearColor];
     text_label.text=@"1";
     text_label.textAlignment=NSTextAlignmentCenter;
@@ -74,7 +74,7 @@
     
     [self addSubview:_ToolBar];
     
-    _Pick=[[UIPickerView alloc]initWithFrame:CGRectMake(0, 44, 320, 160)];
+    _Pick=[[UIPickerView alloc]initWithFrame:CGRectMake(0, 44, DEVICE_WIDTH, 160)];
     _Pick.backgroundColor=[UIColor whiteColor];
     _Pick.delegate=self;
     _Pick.dataSource=self;

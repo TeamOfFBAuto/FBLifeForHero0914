@@ -16,6 +16,8 @@
 #import "UMSocialSnsService.h"
 #import "MessageViewController.h"
 #import "PersonalmoreViewController.h"
+
+#import "CWNavigationController.h"
 /**
  *  tes
  */
@@ -474,24 +476,24 @@
     if (!rootVC || !bbsVC || !weiboVC || !mineVC || !moreVC || !_leveyTabBarController)
     {
         rootVC = [[RootViewController alloc] init];
-        UINavigationController * naVC1 = [[UINavigationController alloc] initWithRootViewController:rootVC];
+        CWNavigationController * naVC1 = [[CWNavigationController alloc] initWithRootViewController:rootVC];
         
         
         bbsVC = [[BBSViewController alloc] init];
-        UINavigationController * naVC2 = [[UINavigationController alloc] initWithRootViewController:bbsVC];
+        CWNavigationController * naVC2 = [[CWNavigationController alloc] initWithRootViewController:bbsVC];
         
         
         
         weiboVC = [[NewWeiBoViewController alloc] init];
-        UINavigationController * naVC3 = [[UINavigationController alloc] initWithRootViewController:weiboVC];
+        CWNavigationController * naVC3 = [[CWNavigationController alloc] initWithRootViewController:weiboVC];
         
         
         mineVC = [[CarPortViewController alloc] init];
-        UINavigationController * naVC4 = [[UINavigationController alloc] initWithRootViewController:mineVC];
+        CWNavigationController * naVC4 = [[CWNavigationController alloc] initWithRootViewController:mineVC];
         
         
         moreVC = [[PersonalmoreViewController alloc] init];
-        UINavigationController * naVC5 = [[UINavigationController alloc] initWithRootViewController:moreVC];
+        CWNavigationController * naVC5 = [[CWNavigationController alloc] initWithRootViewController:moreVC];
         
         naVC1.delegate = (id)self;
         naVC2.delegate = (id)self;
@@ -1205,13 +1207,10 @@ static int numberof = 0;
     
     
     
-    _navigationController = [[UINavigationController alloc] initWithRootViewController:[[ComprehensiveViewController alloc] init]];
+    _navigationController = [[CWNavigationController alloc] initWithRootViewController:[[ComprehensiveViewController alloc] init]];
     
     
     _navigationController.navigationBarHidden=YES;
-    //    UINavigationController *ritht = [[UINavigationController alloc] initWithRootViewController:[[RightViewController alloc] init]];
-    
-    //
     
     RightViewController * rightVC = [[RightViewController alloc] init];
     
@@ -1232,7 +1231,7 @@ static int numberof = 0;
     _RootVC.showsShadow = YES;
     
     
-    _root_nav = [[UINavigationController alloc] initWithRootViewController:_RootVC];
+    _root_nav = [[CWNavigationController alloc] initWithRootViewController:_RootVC];
     
     
     
@@ -1245,7 +1244,7 @@ static int numberof = 0;
     
     _pushViewController = [[FansViewController alloc] init];
     
-    UINavigationController * pushNav = [[UINavigationController alloc] initWithRootViewController:_pushViewController];
+    CWNavigationController * pushNav = [[CWNavigationController alloc] initWithRootViewController:_pushViewController];
     
     pushNav.view.frame = CGRectMake(320,0,320,iPhone5?568:480);
     

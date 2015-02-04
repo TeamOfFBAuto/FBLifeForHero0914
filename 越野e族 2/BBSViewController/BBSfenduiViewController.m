@@ -855,9 +855,7 @@
                         [[UIApplication sharedApplication].keyWindow
                          addSubview:_replaceAlertView];
                         
-                        
                     }
-                    
                     
                 }
                     break;

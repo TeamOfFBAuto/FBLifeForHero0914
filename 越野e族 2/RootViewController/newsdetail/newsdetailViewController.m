@@ -333,7 +333,7 @@
                 [array_shu addObject:[NSString stringWithFormat:@"%d",i+1]];
             }
             if (!_SelectPick) {
-                _SelectPick=[[SelectNumberView alloc]initWithFrame:CGRectMake(0,iPhone5? 260:171, DEVICE_WIDTH, 200) receiveArray:array_shu];
+                _SelectPick=[[SelectNumberView alloc]initWithFrame:CGRectMake(0,DEVICE_HEIGHT-300, DEVICE_WIDTH, 200) receiveArray:array_shu];
                 
             }
             _SelectPick.delegate=self;

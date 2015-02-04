@@ -29,6 +29,8 @@
 
 #import "ComprehensiveViewController.h"
 
+#import "CWNavigationController.h"
+
 //https://itunes.apple.com/us/app/meng-yi-tian-qi/id847338649?ls=1&mt=8
 @interface LeftViewController (){
     UIImage *bgbuttonImage;
@@ -71,29 +73,28 @@
 {
 //   ComprehensiveViewController  *NewMainRootVC=[[ComprehensiveViewController alloc]init];
 //    sRootVC.isMain=YES;
-//    _rootNav=[[UINavigationController alloc]initWithRootViewController:sRootVC];
-//    
+//
     
     
     
     RootViewController *sRootVC=[[RootViewController alloc]init];
     sRootVC.isMain=YES;
-    _rootNav=[[UINavigationController alloc]initWithRootViewController:sRootVC];
+    _rootNav=[[CWNavigationController alloc]initWithRootViewController:sRootVC];
     
     SliderBBSViewController *ssbbs=[[SliderBBSViewController alloc]init];
     ssbbs.isMain=YES;
     
     
-    _bbsNav=[[UINavigationController alloc]initWithRootViewController:ssbbs];
+    _bbsNav=[[CWNavigationController alloc]initWithRootViewController:ssbbs];
 
-    _newNav=[[UINavigationController alloc]initWithRootViewController:[[NewWeiBoViewController alloc]init]];
+    _newNav=[[CWNavigationController alloc]initWithRootViewController:[[NewWeiBoViewController alloc]init]];
 
-    _carNav=[[UINavigationController alloc]initWithRootViewController:[[CarPortViewController alloc]init]];
+    _carNav=[[CWNavigationController alloc]initWithRootViewController:[[CarPortViewController alloc]init]];
     
     
     PicShowViewController *showPic=[[PicShowViewController alloc]init];
     showPic.isMain=YES;
-    _picNav=[[UINavigationController alloc]initWithRootViewController:showPic];
+    _picNav=[[CWNavigationController alloc]initWithRootViewController:showPic];
 
 
     

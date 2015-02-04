@@ -9,6 +9,8 @@
 #import "DraftBoxViewController.h"
 #import "QBImagePickerController.h"
 
+#import "CWNavigationController.h"
+
 
 
 @interface commrntbbdViewController (){
@@ -811,7 +813,7 @@
     
     imagePickerController.assters = allAssesters;
     
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:imagePickerController];
+    CWNavigationController *navigationController = [[CWNavigationController alloc] initWithRootViewController:imagePickerController];
     
     
     navigationController.navigationController.navigationBar.barStyle = UIBarStyleBlackOpaque;

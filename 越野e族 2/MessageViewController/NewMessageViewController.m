@@ -13,6 +13,8 @@
 #import "NewMessageViewController.h"
 #import "NSString+JSMessagesView.h"
 
+#import "CWNavigationController.h"
+
 
 #define INPUT_HEIGHT 40.0f
 
@@ -473,7 +475,7 @@
     
     list.title_name_string = @"联系人";
     
-    UINavigationController * nav = [[UINavigationController alloc] initWithRootViewController:list];
+    CWNavigationController * nav = [[CWNavigationController alloc] initWithRootViewController:list];
     
     [self presentViewController:nav animated:YES completion:NULL];
 }
