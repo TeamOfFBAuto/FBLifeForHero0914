@@ -28,6 +28,7 @@
 #import "PicShowViewController.h"
 
 #import "ComprehensiveViewController.h"
+#import "SliderSearchViewController.h"
 
 #import "CWNavigationController.h"
 
@@ -135,7 +136,7 @@
     //默认第一个
     currentSelectButtonIndex=0;
     
-    for (int i=0; i<6; i++) {
+    for (int i=0; i<titles.count; i++) {
         
         
         UIButton *tabbutton=[[UIButton alloc] initWithFrame:CGRectMake(0,iPhone5? 64+i*70:64+i*60, 300, 50)];
@@ -178,6 +179,40 @@
     }
     
    // [self.view addSubview:self.tableView];
+
+    
+    for (NSInteger i = 0;i < 2;i++)
+    {
+        UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
+        button.frame = CGRectMake(40+(60+30)*i,DEVICE_HEIGHT-50,60,40);
+        button.tag = 1000 + i;
+        [button addTarget:self action:@selector(buttonTap:) forControlEvents:UIControlEventTouchUpInside];
+        [button setTitleColor:RGBCOLOR(131, 134, 139) forState:UIControlStateNormal];
+        button.titleLabel.font = [UIFont systemFontOfSize:11];
+        
+        if (i == 0)//夜间模式
+        {
+            [button setImage:[UIImage imageNamed:@"left_night_image"] forState:UIControlStateNormal];
+            [button setImage:[UIImage imageNamed:@"left_day_image"] forState:UIControlStateSelected];
+            
+            [button setTitle:@"夜间" forState:UIControlStateNormal];
+            [button setTitle:@"日间" forState:UIControlStateSelected];
+            
+        }else if (i == 1)//搜索
+        {
+            [button setImage:[UIImage imageNamed:@"left_search_image"] forState:UIControlStateNormal];
+            [button setTitle:@"搜索" forState:UIControlStateNormal];
+        }
+        
+        [button setImageEdgeInsets:UIEdgeInsetsMake(0,0,0,20)];
+        [button setTitleEdgeInsets:UIEdgeInsetsMake(0,-1,0,0)];
+        
+        [self.view addSubview:button];
+    }
+    
+    
+    
+    
 }
 
 
@@ -186,7 +221,7 @@
     [preButton setBackgroundImage:nil forState:UIControlStateNormal];
 
     [preButton setImage:[UIImage imageNamed:imageArr[currentSelectButtonIndex]] forState:UIControlStateNormal];
-
+    sender.selected = !sender.selected;
     currentSelectButtonIndex=sender.tag-100;
     [sender setImage:[UIImage imageNamed:imageArr[sender.tag-100+6]] forState:UIControlStateNormal];
     
@@ -263,13 +298,35 @@
 
         }
             break;
-
             
         default:
             break;
     }
 
 
+}
+-(void)buttonTap:(UIButton *)sender
+{
+    sender.selected = !sender.selected;
+    switch (sender.tag) {
+        case 1000:///夜间模式
+        {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"NightMode" object:[NSString stringWithFormat:@"%d",sender.selected] userInfo:nil];
+        }
+            break;
+        case 1001:///搜索
+        {
+            SliderSearchViewController * search =[[SliderSearchViewController alloc]init];
+            
+            UINavigationController * search_nav = [[UINavigationController alloc] initWithRootViewController:search];
+            
+            [self presentViewController:search_nav animated:YES completion:NULL];
+        }
+            break;
+
+        default:
+            break;
+    }
 }
 
 -(AppDelegate *)appDelegate{

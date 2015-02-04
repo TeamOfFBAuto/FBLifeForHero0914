@@ -325,6 +325,7 @@
     tab_.tableHeaderView = _refreshHeaderView;
     
     [[UIApplication sharedApplication].keyWindow addSubview:xialaView];
+    
     _replaceAlertView=[[AlertRePlaceView alloc]initWithFrame:CGRectMake(100, 200, 150, 100) labelString:@"您的网络不给力哦，请检查网络"];
     _replaceAlertView.delegate=self;
     _replaceAlertView.hidden=YES;

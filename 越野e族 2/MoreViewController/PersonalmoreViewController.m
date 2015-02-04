@@ -20,7 +20,7 @@
 #import "DetailViewController.h"
 #import "UMTableViewController.h"
 //#import "ScanningViewController.h"
-
+#import "NewAboutViewController.h"
 
 @interface PersonalmoreViewController (){
     LogInViewController * logIn ;
@@ -821,7 +821,7 @@
             
             break;
         case 10:{
-            AboutViewController * aboutVC = [[AboutViewController alloc] init];
+            NewAboutViewController * aboutVC = [[NewAboutViewController alloc] init];
             [self setHidesBottomBarWhenPushed:YES];
             [self.leveyTabBarController hidesTabBar:YES animated:YES];
             [self.navigationController pushViewController:aboutVC animated:YES];
