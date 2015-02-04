@@ -184,6 +184,10 @@
     for (int i = 0;i < 3;i++) {
         for (int j = 0;j < 3;j++)
         {
+            if (i*3+j == 8)
+            {
+                continue;
+            }
             float scale_ = SLIDER_RIGHT_WIDTH/372;
             
             float ver_scale = DEVICE_HEIGHT/736;

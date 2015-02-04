@@ -990,16 +990,19 @@
 
 -(void)submitPingLunTap:(NSString *)sender
 {
-    [text_input_view resignFirstResponder];
+    [input_view.text_input_view resignFirstResponder];
     
-    if (text_input_view.text.length == 0) {
+    if (sender.length == 0) {
         [zsnApi showAutoHiddenMBProgressWithText:@"评论内容不能为空" addToView:self.view];
         return;
     }
     
     
-    NSString * fullUrl = [NSString stringWithFormat:ATLAS_COMMENT_URL,atlasModel.atlas_id,sender,atlasModel.atlas_name,AUTHKEY];
+//    NSString * fullUrl = [NSString stringWithFormat:ATLAS_COMMENT_URL,atlasModel.atlas_id,sender,atlasModel.atlas_name,AUTHKEY];
     
+    
+//    NSString *string_102=[[NSString alloc]initWithFormat:@"http://fb.fblife.com/openapi/index.php?mod=comment&code=commentadd&sort=%@&sortid=%d&content=%@&title=%@&fromtype=b5eeec0b&authkey=%@",self.sortString,[self.string_ID integerValue],[content stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],[self.string_title stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],[[NSUserDefaults standardUserDefaults]objectForKey:USER_AUTHOD]];
+    NSString * fullUrl = [NSString stringWithFormat:@"http://fb.fblife.com/openapi/index.php?mod=comment&code=commentadd&sort=%@&sortid=%d&content=%@&title=%@&fromtype=b5eeec0b&authkey=%@",@"15",[self.id_atlas integerValue],sender,atlasModel.atlas_name,AUTHKEY];
     
 //    NSString * fullUrl = [NSString stringWithFormat:ATLAS_COMMENT_URL2,atlasModel.atlas_id,sender,atlasModel.atlas_name,atlasModel.atlas_content,atlasModel.atlas_photo,AUTHKEY];
     
@@ -1019,7 +1022,8 @@
         if ([[allDic objectForKey:@"errcode"] intValue] == 0)
         {
             [_thezkingAlertV zkingalertShowWithString:@"评论成功"];
-            
+            text_input_view.text = @"";
+            input_view.text_input_view.text = @"";
             [self performSelector:@selector(ShowAndHiddenAlertView:) withObject:NO afterDelay:0.8];
             
         }else

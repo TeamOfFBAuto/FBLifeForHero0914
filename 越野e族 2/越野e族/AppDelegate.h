@@ -78,6 +78,8 @@
     
     ///夜间模式
     UIView * night_view;
+    
+    UIWindow *window1;
 }
 
 @property (strong, nonatomic) UIWindow *window;

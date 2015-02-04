@@ -61,6 +61,14 @@
     isHaveLocalNotification = NO;
     //友盟分享平台
     
+    
+    window1 = [[UIWindow alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,DEVICE_HEIGHT)];
+    window1.backgroundColor = [UIColor blackColor];
+    window1.userInteractionEnabled = NO;
+    window1.alpha = 0;
+    window1.windowLevel = UIWindowLevelAlert-1;
+    [window1 makeKeyAndVisible];
+    
     if (launchOptions) {
         
         
@@ -1245,15 +1253,18 @@ static int numberof = 0;
     
     _pushViewController = [[FansViewController alloc] init];
     
-    UINavigationController * pushNav = [[UINavigationController alloc] initWithRootViewController:_pushViewController];
-    
-    pushNav.view.frame = CGRectMake(320,0,320,iPhone5?568:480);
-    
+//    UINavigationController * pushNav = [[UINavigationController alloc] initWithRootViewController:_pushViewController];
+//    pushNav.view.frame = CGRectMake(0,0,DEVICE_WIDTH,DEVICE_HEIGHT);
+    _pushViewController.view.backgroundColor = [UIColor blackColor];
+    _pushViewController.view.alpha = 0;
+    _pushViewController.view.userInteractionEnabled = NO;
+    [self.window.rootViewController.view addSubview:_pushViewController.view];
+    [self.window.rootViewController.view bringSubviewToFront:_pushViewController.view];
     
     [[NSNotificationCenter defaultCenter]
      postNotificationName:@"testpush" object:dic_push];
 
-    //  [self.window.rootViewController.view addSubview:pushNav.view];
+    
     
 }
 
@@ -1261,16 +1272,20 @@ static int numberof = 0;
 {
     NSLog(@"notification  ---   %@",notification.object);
     
-    if (!night_view)
-    {
-        night_view = [[UIView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,DEVICE_HEIGHT)];
-        night_view.backgroundColor = [UIColor blackColor];
-        night_view.alpha = 0;
-        night_view.window.windowLevel = UIWindowLevelAlert;
-        [self.window bringSubviewToFront:night_view];
-        night_view.userInteractionEnabled = NO;
-        [self.window addSubview:night_view];
-    }
+//    if (!night_view)
+//    {
+//        
+//        
+//        night_view = [[UIView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,DEVICE_HEIGHT)];
+//        night_view.backgroundColor = [UIColor blackColor];
+//        night_view.alpha = 0;
+//        night_view.window.windowLevel = UIWindowLevelAlert+1;
+//        [self.window bringSubviewToFront:night_view];
+//        night_view.userInteractionEnabled = NO;
+//        [self.window.rootViewController.view addSubview:night_view];
+//    }
+    
+   
     
     
     NSString * object = notification.object;
@@ -1278,10 +1293,10 @@ static int numberof = 0;
     if ([object intValue] == 1)///夜间模式
     {
         NSLog(@"夜间模式");
-        night_view.alpha = 0.3f;
+        window1.alpha = 0.8f;
     }else
     {
-        night_view.alpha = 0.0f;
+        window1.alpha = 0.0f;
         NSLog(@"非夜间模式");
     }
 }
