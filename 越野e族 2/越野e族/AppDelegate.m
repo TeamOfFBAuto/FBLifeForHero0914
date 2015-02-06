@@ -1299,7 +1299,7 @@ static int numberof = 0;
     if ([object intValue] == 1)///夜间模式
     {
         NSLog(@"夜间模式");
-        window1.alpha = 0.8f;
+        window1.alpha = 0.5f;
     }else
     {
         window1.alpha = 0.0f;

@@ -702,13 +702,7 @@
         {
             NSLog(@"跳到评论");
             
-            commentViewController * comment_=[[commentViewController alloc]init];
-            comment_.sortString=@"15";//这个是判断图集或者新闻的，图集是15
-            comment_.string_ID=self.id_atlas;//这个是图集的id
-            comment_.string_title = atlasModel.atlas_name;//@"越野e族";
-            //        comment_.string_author = @"越野e族";
-            comment_.string_date=@"越野e族";
-            [self.navigationController pushViewController:comment_ animated:YES];
+            [bself pushToComments];
         }else
         {
             NSLog(@"分类按钮");
@@ -889,6 +883,12 @@
         [self loadImageInformationWith:model];
         
         [self loadCurrentImageWithUrl:model.atlas_photo];
+    }
+    
+    NSLog(@".............  %f ...........  %f",scrollView.contentOffset.x,DEVICE_WIDTH*self.allImagesUrlArray.count);
+    if (scrollView.contentOffset.x > DEVICE_WIDTH*self.allImagesUrlArray.count + 40)
+    {
+        [self pushToComments];
     }
 }
 
@@ -1538,6 +1538,18 @@
     [alert show];
     
     
+}
+
+#pragma mark - 跳转到评论界面
+-(void)pushToComments
+{
+    commentViewController * comment_=[[commentViewController alloc]init];
+    comment_.sortString=@"15";//这个是判断图集或者新闻的，图集是15
+    comment_.string_ID=self.id_atlas;//这个是图集的id
+    comment_.string_title = atlasModel.atlas_name;//@"越野e族";
+    //        comment_.string_author = @"越野e族";
+    comment_.string_date=@"越野e族";
+    [self.navigationController pushViewController:comment_ animated:YES];
 }
 
 
