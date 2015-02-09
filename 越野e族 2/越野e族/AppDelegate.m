@@ -1242,10 +1242,7 @@ static int numberof = 0;
     _root_nav = [[CWNavigationController alloc] initWithRootViewController:_RootVC];
     
     
-    
-    
-    
-    
+
     _root_nav.navigationBarHidden = YES;
     self.window.rootViewController = _root_nav;//sideMenuViewController;
     
@@ -1271,7 +1268,6 @@ static int numberof = 0;
      postNotificationName:@"testpush" object:dic_push];
 
     
-    
 }
 
 -(void)NightMode:(NSNotification *)notification
@@ -1293,7 +1289,6 @@ static int numberof = 0;
     
    
     
-    
     NSString * object = notification.object;
     
     if ([object intValue] == 1)///夜间模式
@@ -1306,7 +1301,6 @@ static int numberof = 0;
         NSLog(@"非夜间模式");
     }
 }
-
 
 
 #pragma mark RESideMenu Delegate
