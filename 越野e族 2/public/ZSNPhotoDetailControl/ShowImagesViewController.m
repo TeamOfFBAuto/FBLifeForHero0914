@@ -885,7 +885,6 @@
         [self loadCurrentImageWithUrl:model.atlas_photo];
     }
     
-    NSLog(@".............  %f ...........  %f",scrollView.contentOffset.x,DEVICE_WIDTH*self.allImagesUrlArray.count);
     if (scrollView.contentOffset.x > DEVICE_WIDTH*self.allImagesUrlArray.count + 40)
     {
         [self pushToComments];

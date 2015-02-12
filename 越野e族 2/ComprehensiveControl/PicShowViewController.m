@@ -46,11 +46,8 @@
     [self prepairNavigationBar];
     [self loadNomalData];
     
-
-
-    
-    // Do any additional setup after loading the view.
 }
+
 
 
 #pragma mark-准备uinavigationbar
@@ -379,6 +376,16 @@
             numberofpage++;
             isloadsuccess=!isloadsuccess;
             [self loadNomalData];
+        }
+        
+        
+        if (scrollView.contentOffset.x<-40)
+        {
+            [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
+            
+        }else if(scrollView.contentOffset.x>40)
+        {
+            [self.mm_drawerController toggleDrawerSide:MMDrawerSideRight animated:YES completion:nil];
         }
         
     }

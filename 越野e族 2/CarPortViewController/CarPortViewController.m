@@ -621,9 +621,6 @@
     _replaceAlertView1.hidden=YES;
     [[UIApplication sharedApplication].keyWindow
      addSubview:_replaceAlertView1];
-    
-    
-    
 }
 
 
