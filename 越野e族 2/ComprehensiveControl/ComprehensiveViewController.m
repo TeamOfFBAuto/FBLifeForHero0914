@@ -68,6 +68,9 @@
     NSTimer * timer;
     
     BOOL isShowGuangGao;
+    
+    bool isBegan;
+    CGPoint start_point;
 }
 
 @end
@@ -436,11 +439,46 @@
     }
     
     
+    ////添加左右滑动到侧边栏手势
+    /*create the Pan Gesture Recognizer*/
+    UIPanGestureRecognizer * panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanGestures:)];
+    panGestureRecognizer.minimumNumberOfTouches = 1;
+    panGestureRecognizer.maximumNumberOfTouches = 1;
+    [self.view addGestureRecognizer:panGestureRecognizer];
+    
     
     //外部来了推送之后，会走这里
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(showOutput:) name:@"testpush" object:nil];
 }
+
+-(void)handlePanGestures:(UIPanGestureRecognizer *)paramSender{
+    
+    CGPoint current_point = [paramSender locationInView:self.view.superview];
+    
+    if (!isBegan && current_point.x >0)
+    {
+        start_point = current_point;
+        isBegan = YES;
+    }
+    
+    if (paramSender.state == UIGestureRecognizerStateChanged && start_point.x != 0) {
+        if (start_point.x - current_point.x > 50) {
+            [self.mm_drawerController toggleDrawerSide:MMDrawerSideRight animated:YES completion:nil];
+        }
+        
+        if (start_point.x - current_point.x < -50) {
+            [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
+        }
+    }
+    
+    if (paramSender.state == UIGestureRecognizerStateEnded) {
+        isBegan = NO;
+        start_point = CGPointZero;
+    }
+    
+}
+
 
 
 -(void)layoutSubViewsOfload{

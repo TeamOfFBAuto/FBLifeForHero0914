@@ -20,6 +20,10 @@
 
 
 @interface PicShowViewController ()
+{
+    bool isBegan;
+    CGPoint start_point;
+}
 
 @end
 
@@ -110,9 +114,12 @@
         self.navigationItem.rightBarButtonItem=comment_item;
         
     }
+    
+    
   
     
 }
+
 
 -(void)rightDrawerButtonPress{
     [[UIApplication sharedApplication]setStatusBarStyle:UIStatusBarStyleDefault animated:NO];
@@ -137,7 +144,9 @@
     
     mainTabView=[[UITableView alloc]initWithFrame:CGRectMake(0, 0,DEVICE_WIDTH, DEVICE_HEIGHT-64)];
     mainTabView.delegate=self;
+    mainTabView.userInteractionEnabled = YES;
     mainTabView.dataSource=self;
+    
     mainTabView.backgroundColor=[UIColor whiteColor];
     mainTabView.separatorColor=[UIColor clearColor];
     [self.view addSubview:mainTabView];
@@ -152,8 +161,40 @@
     [mainTabView addSubview:_refreshHeaderView];
     
     
+    /*create the Pan Gesture Recognizer*/
+    UIPanGestureRecognizer * panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanGestures:)];
+    panGestureRecognizer.minimumNumberOfTouches = 1;
+    panGestureRecognizer.maximumNumberOfTouches = 1;
+    [self.view addGestureRecognizer:panGestureRecognizer];
+
+}
+-(void)handlePanGestures:(UIPanGestureRecognizer *)paramSender{
+    
+    CGPoint current_point = [paramSender locationInView:self.view.superview];
+    
+    if (!isBegan && current_point.x >0)
+    {
+        start_point = current_point;
+        isBegan = YES;
+    }
+    
+    if (paramSender.state == UIGestureRecognizerStateChanged && start_point.x != 0) {
+        if (start_point.x - current_point.x > 50) {
+            [self.mm_drawerController toggleDrawerSide:MMDrawerSideRight animated:YES completion:nil];
+        }
+        
+        if (start_point.x - current_point.x < -50) {
+            [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
+        }
+    }
+    
+    if (paramSender.state == UIGestureRecognizerStateEnded) {
+        isBegan = NO;
+        start_point = CGPointZero;
+    }
     
 }
+
 
 #pragma mark-准备下面的数据
 
@@ -407,15 +448,6 @@
 - (NSDate*)egoRefreshTableHeaderDataSourceLastUpdated:(EGORefreshTableHeaderView*)view{
     
 	return [NSDate date]; // should return date data source was last changed
-}
-
-
-
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 /*
