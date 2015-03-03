@@ -874,17 +874,15 @@
                         return;
                     }
                     
-                    
                     if ([[dic objectForKey:@"errcode"] integerValue]==0&&[[[dic objectForKey:@"bbsinfo"]objectForKey:@"forumthread"]count]!=0) {
                         NSLog(@"走了这个方法");
-                        isLoadsuccess=YES;
+isLoadsuccess=YES;
                         
                         NSArray *array_danci=[[NSArray alloc]init];
                         array_danci=[[[dic objectForKey:@"bbsinfo"]objectForKey:@"forumthread"] objectForKey:@"item"];
                         for (int i=0; i<array_danci.count; i++) {
                             NSDictionary *dicinfo=[array_danci objectAtIndex:i];
                             [_array_info addObject:dicinfo];
-                            
                         }
                         [loadview stopLoading:1];
                         [tab_ reloadData];
