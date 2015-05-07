@@ -32,7 +32,10 @@
 
 #import "CWNavigationController.h"
 
-//https://itunes.apple.com/us/app/meng-yi-tian-qi/id847338649?ls=1&mt=8
+#import "VideoOfNewViewController.h"
+
+#import "LeftViewController.h"
+
 @interface LeftViewController (){
     UIImage *bgbuttonImage;
     
@@ -45,6 +48,8 @@
     UINavigationController *_carNav;
     
     UINavigationController *_picNav;
+    
+    UINavigationController *_videoNav;
     
     
 
@@ -87,6 +92,8 @@
     
     
     _bbsNav=[[CWNavigationController alloc]initWithRootViewController:ssbbs];
+    
+    _videoNav=[[CWNavigationController alloc]initWithRootViewController:[[VideoOfNewViewController alloc]init]];
 
     _newNav=[[CWNavigationController alloc]initWithRootViewController:[[NewWeiBoViewController alloc]init]];
 
@@ -107,9 +114,9 @@
    [super viewDidLoad];
     _firstVC=[[ComprehensiveViewController alloc]init];
     
-    titles = @[@"综合",@"论坛",@"资讯", @"自留地", @"车库", @"图集"];
+    titles = @[@"综合",@"论坛",@"资讯", @"自留地", @"车库", @"图集",@"视频"];
     
-    imageArr=@[@"zonghegray50_48.png",@"luntangray48_41.png",@"zixungray47_42.png",@"ziliudigray44_4.png",@"chekugray54_35.png",@"tujigray.png",@"zonghered50_48.png",@"luntanred48_41.png",@"zixunred47_42.png",@"ziliudired44_40.png",@"chekured54_35.png",@"tujired.png"];
+    imageArr=@[@"zonghegray50_48.png",@"luntangray48_41.png",@"zixungray47_42.png",@"ziliudigray44_4.png",@"chekugray54_35.png",@"tujigray.png",@"videoofnewsgray.png",@"zonghered50_48.png",@"luntanred48_41.png",@"zixunred47_42.png",@"ziliudired44_40.png",@"chekured54_35.png",@"tujired.png",@"videoofnews.png"];
     
 //    UIImage *background   =[UIImage imageNamed:IS_IPHONE_5?@"Mallbackgurand.png":@"Mallbackgurand.png"];
     
@@ -143,7 +150,7 @@
        // [tabbutton setSelected:YES];
         tabbutton.tag=i+100;
         if (i==0) {
-            [tabbutton setImage:[UIImage imageNamed:imageArr[6]] forState:UIControlStateNormal];
+            [tabbutton setImage:[UIImage imageNamed:imageArr[7]] forState:UIControlStateNormal];
            // tabbutton.backgroundColor=RGBCOLOR(226, 230, 233);
             
             [tabbutton setBackgroundImage:bgbuttonImage forState:UIControlStateNormal];
@@ -223,7 +230,7 @@
     [preButton setImage:[UIImage imageNamed:imageArr[currentSelectButtonIndex]] forState:UIControlStateNormal];
     sender.selected = !sender.selected;
     currentSelectButtonIndex=sender.tag-100;
-    [sender setImage:[UIImage imageNamed:imageArr[sender.tag-100+6]] forState:UIControlStateNormal];
+    [sender setImage:[UIImage imageNamed:imageArr[sender.tag-100+7]] forState:UIControlStateNormal];
     
     [sender setBackgroundImage:bgbuttonImage forState:UIControlStateNormal];
 
@@ -296,6 +303,18 @@
             
 
 
+        }
+            break;
+            
+        case 106:
+        {
+            NSLog(@"选择的第%d个button",sender.tag-100);
+            [self.mm_drawerController
+             setCenterViewController:_videoNav    withCloseAnimation:YES
+             completion:nil];
+            
+            
+            
         }
             break;
             

@@ -1220,98 +1220,91 @@
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
     
-    NSLog(@"request.URL.relativeString====%@",request.URL.relativeString);
-    NSLog(@"request.URL.absoluteString====%@",request.URL.absoluteString);
-    NSString *str_test=[request.URL.absoluteString substringToIndex:2];
-    NSLog(@"str_test=%@",str_test);
-    
-    
-    if ([request.URL.absoluteString isEqualToString:@"file:///more"]) {
-        [self commentyemian];
-        
-        return NO;
-    }
-    
-    if ([str_test isEqualToString:@"js"]) {
-        NSString *string_realnumber=[request.URL.absoluteString substringFromIndex:3];
-        NSLog(@"number=%@",string_realnumber);
-        Selectatindexofphotonumber=[string_realnumber integerValue];
-        [self ShowbigImage];
-        
-        return NO;
-    }
-    if ([str_test isEqualToString:@"ht"]) {//外链
-        return YES;
-        
-        NSLog(@"request.URL.relativeString====%@",request.URL.relativeString);
-        NSLog(@"request.URL.absoluteString====%@",request.URL.absoluteString);
-        
-        if ([request.URL.relativeString rangeOfString:@"player"].length) {
-            
-            return NO;
-        }else {
-            
-            fbWebViewController *_web=[[fbWebViewController alloc]init];
-            _web.urlstring=request.URL.absoluteString;
-            [self.navigationController pushViewController:_web animated:YES];
-            return NO;
-        }
-        
-    }
-    
-    if ([str_test isEqualToString:@"tx"]) {//跳到个人页面
-        
-        if ([[NSUserDefaults standardUserDefaults] boolForKey:USER_IN])
-        {
-            NSString *string_realnumber=[request.URL.absoluteString substringFromIndex:8];
-            NSLog(@"number=%@",string_realnumber);
-            Selectatindexofphotonumber=[string_realnumber integerValue];
-            // [self ShowbigImage];
-            _people =[[NewMineViewController alloc]init];
-            _people.uid=[NSString stringWithFormat:@"%@",[array_peopleid objectAtIndex:Selectatindexofphotonumber]];
-            [self.navigationController pushViewController:_people animated:YES];
-        }
-        else{
-            //没有激活fb，弹出激活提示
-            LogInViewController *login=[LogInViewController sharedManager];
-            [self presentViewController:login animated:YES completion:nil];
-        }
-        return NO;
-        
-    }
-    if ([str_test isEqualToString:@"bb"]) {//跳到论坛
-        
-        bbsdetailViewController *detail=[[bbsdetailViewController alloc]init];
-        detail.bbsdetail_tid=[request.URL.absoluteString substringFromIndex:7];
-        NSLog(@"tid=%@",detail.bbsdetail_tid);
-        [self.navigationController pushViewController:detail animated:YES];
-        return NO;
-        
-    }
-    if ([str_test isEqualToString:@"id"]) {//跳到新闻
-        currentpage=1;
-        NSLog(@"xinwenid==%@",[request.URL.absoluteString substringFromIndex:3]);
-        self.string_Id=[request.URL.absoluteString substringFromIndex:3];
-        [self Mytool];
-        return NO;
-        
-    }
-    
-    //    if ( [request.mainDocumentURL.relativePath isEqualToString:@"/click/false"] ) {
-    //        NSLog( @"not clicked" );
-    //        return false;
-    //    }
-    //
-    //    if ( [request.mainDocumentURL.relativePath isEqualToString:@"/click/true"] ) {        //the image is clicked, variable click is true
-    //        NSLog( @"image clicked" );
-    //
-    //        UIAlertView* alert=[[UIAlertView alloc]initWithTitle:@"JavaScript called"
-    //                                                     message:@"You've called iPhone provided control from javascript!!" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
-    //        [alert show];
-    //        return false;
-    //    }
-    //
-    
+//    NSLog(@"request.URL.relativeString====%@",request.URL.relativeString);
+//     NSLog(@"request.URL.absoluteString====%@",request.URL.absoluteString);
+//     NSString *str_test=[request.URL.absoluteString substringToIndex:2];
+//     NSLog(@"str_test=%@",str_test);
+//     
+//     
+//     if ([request.URL.absoluteString isEqualToString:@"file:///more"]) {
+//     [self commentyemian];
+//     
+//     return NO;
+//     }
+//     
+//     if ([str_test isEqualToString:@"js"]) {
+//     NSString *string_realnumber=[request.URL.absoluteString substringFromIndex:3];
+//     NSLog(@"number=%@",string_realnumber);
+//     Selectatindexofphotonumber=[string_realnumber integerValue];
+//     [self ShowbigImage];
+//     
+//     return NO;
+//     }
+//     if ([str_test isEqualToString:@"ht"]) {//外链
+//     return YES;
+//     
+//     NSLog(@"request.URL.relativeString====%@",request.URL.relativeString);
+//     NSLog(@"request.URL.absoluteString====%@",request.URL.absoluteString);
+//     
+//     if ([request.URL.relativeString rangeOfString:@"player"].length) {
+//     
+//     
+//     
+//     
+//     return YES;
+//     
+//     
+//     
+//     }
+//     else {
+//     
+//     fbWebViewController *_web=[[fbWebViewController alloc]init];
+//     _web.urlstring=request.URL.absoluteString;
+//     [self.navigationController pushViewController:_web animated:YES];
+//     return NO;
+//     }
+//     
+//     }
+//     
+//     if ([str_test isEqualToString:@"tx"]) {//跳到个人页面
+//     
+//     if ([[NSUserDefaults standardUserDefaults] boolForKey:USER_IN])
+//     {
+//     NSString *string_realnumber=[request.URL.absoluteString substringFromIndex:8];
+//     NSLog(@"number=%@",string_realnumber);
+//     Selectatindexofphotonumber=[string_realnumber integerValue];
+//     // [self ShowbigImage];
+//     _people =[[NewMineViewController alloc]init];
+//     _people.uid=[NSString stringWithFormat:@"%@",[array_peopleid objectAtIndex:Selectatindexofphotonumber]];
+//     [self.navigationController pushViewController:_people animated:YES];
+//     }
+//     else{
+//     //没有激活fb，弹出激活提示
+//     LogInViewController *login=[LogInViewController sharedManager];
+//     [self presentViewController:login animated:YES completion:nil];
+//     }
+//     return NO;
+//     
+//     }
+//     if ([str_test isEqualToString:@"bb"]) {//跳到论坛
+//     
+//     bbsdetailViewController *detail=[[bbsdetailViewController alloc]init];
+//     detail.bbsdetail_tid=[request.URL.absoluteString substringFromIndex:7];
+//     NSLog(@"tid=%@",detail.bbsdetail_tid);
+//     [self.navigationController pushViewController:detail animated:YES];
+//     return NO;
+//     
+//     }
+//     if ([str_test isEqualToString:@"id"]) {//跳到新闻
+//     currentpage=1;
+//     NSLog(@"xinwenid==%@",[request.URL.absoluteString substringFromIndex:3]);
+//     self.string_Id=[request.URL.absoluteString substringFromIndex:3];
+//     [self Mytool];
+//     return NO;
+//     
+//     }
+//     
+
     
     return YES;
 }
@@ -1334,10 +1327,14 @@
 -(void)Mytool{
 
     if (!isHaveNetWork) {
-        if (!_isloadingIv) {
+        
+        if (!_isloadingIv)
+            
+        {
             _isloadingIv=[[loadingimview alloc]initWithFrame:CGRectMake(100, 200, 150, 100) labelString:@"正在加载"];
             
         }
+        
         button_comment.userInteractionEnabled=NO;
         rightView.userInteractionEnabled=NO;
         
@@ -1346,7 +1343,7 @@
          addSubview:_isloadingIv];
         _isloadingIv.hidden=NO;
         newstool=[[downloadtool alloc]init];
-        NSString *string_url=[NSString stringWithFormat:@"http://cmsweb.fblife.com/ajax.php?c=newstwo&a=newsinfo&id=%@&type=json&page=%d&showvideo=1",self.string_Id,currentpage];
+        NSString *string_url=[NSString stringWithFormat:@"http://cmsweb.fblife.com/ajax.php?c=newstwonew&a=newsinfo&id=%@&type=json&page=%d&showvideo=0",self.string_Id,currentpage];
         //  NSString *string_test=@"http://cmstest.fblife.com/ajax.php?c=newstwo&a=newsinfo&type=json&id=3457&page=3&pagesize=1";
         NSLog(@"请求的url为%@",string_url);
         [newstool setUrl_string:string_url];
@@ -1371,6 +1368,9 @@
 }
 -(void)downloadtool:(downloadtool *)tool didfinishdownloadwithdata:(NSData *)data
 {
+    
+    
+    
     @try {
         button_comment.userInteractionEnabled=YES;
         rightView.userInteractionEnabled=YES;
@@ -1385,6 +1385,10 @@
         if (dic.count>0) {
             if ([[dic objectForKey:@"errdesc"] isEqualToString:@"页面不存在"])
             {
+                
+                
+                
+                
                 _alertnodata.hidden=NO;
                 [_alertnodata hide];
                 
@@ -1415,6 +1419,8 @@
                 str_dateofnews=[NSString stringWithFormat:@"%@",[dic objectForKey:@"publishtime"]];
                 str_dateofnews=[personal timechange:str_dateofnews];
                 str_author=[NSString stringWithFormat:@"%@",[dic objectForKey:@"author"]];
+                
+                
                 if (str_author.length==0||[str_author isEqualToString:@"(null)"]) {
                     str_author=@"";
                 }
@@ -1422,18 +1428,54 @@
                 
                 if ([stringhtml isEqualToString:@"(null)"]||stringhtml.length==0) {
                     
+                    
+                    
+                    
+                    
+                    
                 }else{
                     array_photo=[[NSArray alloc]initWithArray:(NSArray *)[dic objectForKey:@"newsimg"]];
                     array_peopleid=(NSMutableArray *)[dic objectForKey:@"uid"];
-                    allpages=[[dic objectForKey:@"pages"] integerValue];
+                    
+                    NSString *str_pagesofNews=[NSString stringWithFormat:@"%@",[dic objectForKey:@"pages"]];
+                                               
+                    if([str_pagesofNews isEqualToString:@"<null>"]){
+                                               
+                        allpages=1;
+                    }else{
+                        allpages=[str_pagesofNews integerValue];
+
+                    }
+                    
+                    
+                    
+                    
+                    
                     [barview.button_show setTitle:[NSString stringWithFormat:@"%d/%d",currentpage,allpages] forState:UIControlStateNormal];
                     _loadingview.hidden=YES;
                     [ stringhtml insertString:@"<style  type=text/css>img {max-width:290px;}  </style>" atIndex:0];
                     stringhtml= (NSMutableString*)[stringhtml stringByReplacingOccurrencesOfString:@"background-color:#efedea;" withString:@""];
+                    
+//                    
+//                 NSString *  stringhtmlvideo=[NSString stringWithFormat:@"%@",[dic objectForKey:@"video"]];
+//                    
+//                    
+//                    while ([stringhtmlvideo rangeOfString:@"'\'"].length)
+//                    {
+//                        stringhtmlvideo= (NSMutableString*)[stringhtml stringByReplacingOccurrencesOfString:@"'\'" withString:@""];
+//
+//                    }
+//                    [stringhtml insertString:[NSString stringWithFormat:@"%@",stringhtmlvideo] atIndex:stringhtml.length];
+
+                    
+                 //  stringhtml=[NSMutableString stringWithFormat:@"%@",@"<iframe height=500 width=690 src=\"http://player.youku.com/embed/XNzIxMDcyNzE2\" frameborder=0 allowfullscreen></iframe>"];
+                    
+                    
+                    
                     if (dangqianwebview==1) {
-                        [_webView loadHTMLString:stringhtml  baseURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]]];
+                        [_webView loadHTMLString:stringhtml  baseURL:nil];
                     }else{
-                        [secondWebView loadHTMLString:stringhtml  baseURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]]];
+                        [secondWebView loadHTMLString:stringhtml  baseURL:nil];
                         
                     }
                     string_email=[[NSMutableString alloc]initWithString:(NSString *)stringhtml];

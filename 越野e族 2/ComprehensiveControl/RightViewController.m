@@ -27,6 +27,9 @@
 
 #import "CWNavigationController.h"
 
+
+
+
 @interface RightViewController ()
 {
     AppDelegate * myDelegate;
@@ -702,7 +705,6 @@
 {
     if (buttonIndex == 0 && alertView.tag == 10000)
     {
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://itunes.apple.com/cn/app/yue-ye-yi-zu/id605673005?mt=8"]];
     }
 }
 

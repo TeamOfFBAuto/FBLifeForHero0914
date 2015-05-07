@@ -552,7 +552,6 @@
     //
     
     
-    
     if (!isHidden)
     {
         [self showPopoverView:nil];
@@ -568,6 +567,7 @@
         [Collect_Tool setUrl_string:[NSString stringWithFormat:@"http://bbs.fblife.com/bbsapinew/favoritesforums.php?fid=%@&action=add&formattype=json&authcode=%@",str_fid,[[NSUserDefaults standardUserDefaults]objectForKey:USER_AUTHOD]]];
         Collect_Tool.tag=202;
         Collect_Tool.delegate=self;
+        
         [Collect_Tool start];
         
         //已经激活过FB 加载个人信息
@@ -745,12 +745,49 @@
 
 -(void)downloadtool:(downloadtool *)tool didfinishdownloadwithdata:(NSData *)data
 {
+    
+    
+    
+    
+    
+    
     @try {
         _isloadingIv.hidden=YES;
         
         NSDictionary *dic=[data objectFromJSONData];
+        
+        
+        NSError *error = nil;
+        
+        id jsonObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error];
+        
+        
+        
+        
+        if ([jsonObject isKindOfClass:[NSDictionary class]]){
+            
+            NSDictionary *dictionary = (NSDictionary *)data;
+            
+            NSLog(@"Dersialized JSON Dictionary = %@", dictionary);
+            
+        }else if ([jsonObject isKindOfClass:[NSArray class]]){
+            
+            NSArray *nsArray = (NSArray *)jsonObject;
+            
+            NSLog(@"Dersialized JSON Array = %@", nsArray);
+            
+        } else {
+            
+            NSLog(@"An error happened while deserializing the JSON data.");
+            
+        }
+        
+
+        
+        
+        
+        
         if (tool==tool_guanggao) {
-            NSLog(@"再不行就晕了");
             NSDictionary *dic;
             NSArray *array=[data objectFromJSONData];
             if (array.count>0) {
@@ -899,9 +936,16 @@ isLoadsuccess=YES;
                 case 202://收藏
                 {
                     
+                    
+                    
                     NSString * tishi=[NSString stringWithFormat:@"%@",[dic objectForKey:@"errcode"]] ;
                     
                     if ([tishi integerValue]==11) {
+                        
+                        
+                        
+                        
+                        
                         
                         [self Deletebankuai];
                     }else{
@@ -923,6 +967,10 @@ isLoadsuccess=YES;
                     break;
                 case 203://查看收藏
                 {
+                    
+                    
+                    
+                    
                     NSLog(@"%sdasfkalklic203==%@",__FUNCTION__,dic);
                     
                     [button_collect setBackgroundImage:[UIImage imageNamed:@"ios7_collect44_42.png"] forState:UIControlStateNormal];

@@ -168,12 +168,7 @@
                
                
                
-               UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"发现新版本" message:stringInfo delegate:self cancelButtonTitle:@"立即升级" otherButtonTitles:@"下次提示",nil];
-               
-               alert.delegate = self;
-               
-               alert.tag = 10000;
-               [alert show];
+
                
                
            }
@@ -203,7 +198,7 @@
 {
     if (buttonIndex == 0 && alertView.tag == 10000)
     {
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://itunes.apple.com/cn/app/yue-ye-yi-zu/id605673005?mt=8"]];
+        //[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://itunes.apple.com/cn/app/yue-ye-yi-zu/id605673005?mt=8"]];
     }
 }
 
@@ -380,7 +375,7 @@
     //判断新版本
     
     
-    [self panduanIsNewVersion];
+  //  [self panduanIsNewVersion];苹果最新审核规定，不让用了
   NSLog(@"shizhongkun转化成MD5加密后的字符串为=%@",[self md5:@"shizhongkun"])  ;
     
     
@@ -1160,7 +1155,7 @@
     
     SzkLoadData *loaddata=[[SzkLoadData alloc]init];
     
-    NSString *str_search=[NSString stringWithFormat:@"http://cmsweb.fblife.com/ajax.php?c=newstwo&a=getappindex&page=%d&type=json&pagesize=10",numberofpage];
+    NSString *str_search=[NSString stringWithFormat:@"http://cmsweb.fblife.com/ajax.php?c=newstwonew&a=getappindex&page=%d&type=json&pagesize=10",numberofpage];
     
     [loaddata SeturlStr:str_search mytest:^(NSDictionary *dicinfo, int errcode) {
         

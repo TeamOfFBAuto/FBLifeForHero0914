@@ -331,7 +331,7 @@ alpha:(a)]
 #define URL_BBS_TIEZIDETAIL_LOUZHU @"http://bbs.fblife.com/bbsapi/getthreadauthor.php?tid=%@&page=%i"
 //获取咨询列表
 #define URL_NES @"http://xcms.fblife.com/ajax.php?c=news&a=newslist&classname=%@&iscommend=%@&page=%i&pagesize=%@&type=json"
-#define URL_NESTEST @"http://cmsweb.fblife.com/ajax.php?c=newstwo&a=newslist&classname=%@&iscommend=%@&page=%i&pagesize=%@&type=json"
+#define URL_NESTEST @"http://cmsweb.fblife.com/ajax.php?c=newstwonew&a=newslist&classname=%@&iscommend=%@&page=%i&pagesize=%@&type=json"
 
 
 #define Search_weiBo @"http://fb.fblife.com/openapi/index.php?mod=search&code=content&topic=%@&fromtype=b5eeec0b&page=%d&fbtype=json"

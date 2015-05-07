@@ -24,7 +24,10 @@
     
     
     
-    NSString * fullURL= [NSString stringWithFormat:@"http://cmsweb.fblife.com/ajax.php?c=newstwo&a=newsslide&classname=%@&type=json",self.type];
+//    NSString * fullURL= [NSString stringWithFormat:@"http://cmsweb.fblife.com/ajax.php?c=newstwonew&a=newsslide&classname=%@&type=json",_type];
+    
+    NSString * fullURL= [NSString stringWithFormat:@"http://cmsweb.fblife.com/ajax.php?c=newstwonew&a=newsslide&classname=%@&type=json",_type];
+
     NSLog(@"newmodel数据级请求的推荐新闻url = %@",fullURL);
     requestcomment = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:fullURL]];
     
@@ -33,8 +36,17 @@
     _requset.delegate = self;
     
     [_requset setCompletionBlock:^{
+        
+        
+        
+        
+        
         dic_comment = [requestcomment.responseData objectFromJSONData];
         NSLog(@"推荐的？？？？？？？===dic====%@",dic_comment);
+        
+        
+        
+        
 
         @try {
             if ([[dic_comment objectForKey:@"errno"] intValue] ==0)

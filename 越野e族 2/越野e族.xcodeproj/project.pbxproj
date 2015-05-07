@@ -48,6 +48,8 @@
 		1947FB28196FCCB200257EB4 /* FinalshoucangView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1947FB27196FCCB200257EB4 /* FinalshoucangView.m */; };
 		1959712D18BB30FA00D17284 /* ios_7carportpicselect608_57@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1959712C18BB30FA00D17284 /* ios_7carportpicselect608_57@2x.png */; };
 		195F6B45196E85DD00BBC334 /* NewshoucangTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 195F6B44196E85DD00BBC334 /* NewshoucangTableViewCell.m */; };
+		19733F801AB6D5E1007BAD74 /* videoofnews@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 19733F7E1AB6D5E1007BAD74 /* videoofnews@2x.png */; };
+		19733F811AB6D5E1007BAD74 /* videoofnewsgray@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 19733F7F1AB6D5E1007BAD74 /* videoofnewsgray@2x.png */; };
 		19A4E58E1863094F005F4848 /* ios7eva320_44@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 19A4E58D1863094F005F4848 /* ios7eva320_44@2x.png */; };
 		19A4E58F1863094F005F4848 /* ios7eva320_44@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 19A4E58D1863094F005F4848 /* ios7eva320_44@2x.png */; };
 		19A4E5921863339E005F4848 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19A4E5911863339E005F4848 /* AVFoundation.framework */; };
@@ -116,6 +118,7 @@
 		19C556E01883EE3E00CD11B6 /* weibo_implace@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 19C556DF1883EE3E00CD11B6 /* weibo_implace@2x.png */; };
 		19C556E31886674200CD11B6 /* ios7_newicon_56_33@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 19C556E11886674200CD11B6 /* ios7_newicon_56_33@2x.png */; };
 		19C556E41886674200CD11B6 /* ios7_unread13_13@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 19C556E21886674200CD11B6 /* ios7_unread13_13@2x.png */; };
+		19C558D01AAC538D0078404B /* VideoOfNewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C558CF1AAC538D0078404B /* VideoOfNewViewController.m */; };
 		19C74617186C3EC400EA05BA /* ios7_implace@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 19C74616186C3EC400EA05BA /* ios7_implace@2x.png */; };
 		19C74619186C421500EA05BA /* ios7_newsbeijing@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 19C74618186C421500EA05BA /* ios7_newsbeijing@2x.png */; };
 		19CDB653199917B000844B99 /* ios7_refresh4139@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 19CDB652199917B000844B99 /* ios7_refresh4139@2x.png */; };
@@ -1494,6 +1497,8 @@
 		1959712C18BB30FA00D17284 /* ios_7carportpicselect608_57@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios_7carportpicselect608_57@2x.png"; sourceTree = "<group>"; };
 		195F6B43196E85DD00BBC334 /* NewshoucangTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewshoucangTableViewCell.h; sourceTree = "<group>"; };
 		195F6B44196E85DD00BBC334 /* NewshoucangTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewshoucangTableViewCell.m; sourceTree = "<group>"; };
+		19733F7E1AB6D5E1007BAD74 /* videoofnews@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "videoofnews@2x.png"; sourceTree = "<group>"; };
+		19733F7F1AB6D5E1007BAD74 /* videoofnewsgray@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "videoofnewsgray@2x.png"; sourceTree = "<group>"; };
 		19A4E58D1863094F005F4848 /* ios7eva320_44@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7eva320_44@2x.png"; sourceTree = "<group>"; };
 		19A4E5911863339E005F4848 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		19A4E593186333AE005F4848 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
@@ -1561,6 +1566,8 @@
 		19C556DF1883EE3E00CD11B6 /* weibo_implace@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "weibo_implace@2x.png"; sourceTree = "<group>"; };
 		19C556E11886674200CD11B6 /* ios7_newicon_56_33@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7_newicon_56_33@2x.png"; sourceTree = "<group>"; };
 		19C556E21886674200CD11B6 /* ios7_unread13_13@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7_unread13_13@2x.png"; sourceTree = "<group>"; };
+		19C558CE1AAC538D0078404B /* VideoOfNewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoOfNewViewController.h; sourceTree = "<group>"; };
+		19C558CF1AAC538D0078404B /* VideoOfNewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoOfNewViewController.m; sourceTree = "<group>"; };
 		19C74616186C3EC400EA05BA /* ios7_implace@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7_implace@2x.png"; sourceTree = "<group>"; };
 		19C74618186C421500EA05BA /* ios7_newsbeijing@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7_newsbeijing@2x.png"; sourceTree = "<group>"; };
 		19CDB652199917B000844B99 /* ios7_refresh4139@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ios7_refresh4139@2x.png"; path = "ios7Images/ios7bbsimg/ios7_refresh4139@2x.png"; sourceTree = SOURCE_ROOT; };
@@ -3287,6 +3294,8 @@
 				19F93648197E6BBD00288E6C /* newsuncollect44_43@2x.png */,
 				19F93643197E44E100288E6C /* blackheart42_37@2x.png */,
 				19F93644197E44E100288E6C /* redheart42_37@2x.png */,
+				19733F7E1AB6D5E1007BAD74 /* videoofnews@2x.png */,
+				19733F7F1AB6D5E1007BAD74 /* videoofnewsgray@2x.png */,
 				190F034C1977EF1700EC6C47 /* tujigray@2x.png */,
 				190F034D1977EF1700EC6C47 /* tujired@2x.png */,
 				190F02FD1975175100EC6C47 /* likes21_19@2x.png */,
@@ -4702,6 +4711,8 @@
 				566E7C3E185EE8F100BB88C5 /* tabbar */,
 				566E74CD185EE62300BB88C5 /* AppDelegate.h */,
 				566E74CE185EE62300BB88C5 /* AppDelegate.m */,
+				19C558CE1AAC538D0078404B /* VideoOfNewViewController.h */,
+				19C558CF1AAC538D0078404B /* VideoOfNewViewController.m */,
 				19FFB9B71A80C448008FB03A /* CWNavigationController.h */,
 				19FFB9B81A80C448008FB03A /* CWNavigationController.m */,
 				566E74D0185EE62300BB88C5 /* Images.xcassets */,
@@ -6260,6 +6271,7 @@
 				566E7C66185EE8F100BB88C5 /* 1-1-128-98.png in Resources */,
 				566E7562185EE6E800BB88C5 /* talk2@2x.png in Resources */,
 				563022871978C9BE00F85B11 /* bbs_rankinglist_chexing@2x.png in Resources */,
+				19733F811AB6D5E1007BAD74 /* videoofnewsgray@2x.png in Resources */,
 				56C95609185EEEB700763E69 /* jiaguanzhu@2x.png in Resources */,
 				566E7913185EE75D00BB88C5 /* face30.png in Resources */,
 				563364641862E7490069F838 /* 2.png in Resources */,
@@ -6568,6 +6580,7 @@
 				563364541862E7490069F838 /* top1_34-34.png in Resources */,
 				5686D73E1A80C41C00CC252D /* left_night_image@2x.png in Resources */,
 				192AC1C91872CB1300319A7B /* weibo_detail_talk@2x.png in Resources */,
+				19733F801AB6D5E1007BAD74 /* videoofnews@2x.png in Resources */,
 				19ECDAAA186EA94E002B2281 /* ios7_tabbarchose@2x.png in Resources */,
 				563365FF1862E7590069F838 /* segcenter@2x.png in Resources */,
 				56624DFD187564C70043A367 /*  icon7.png in Resources */,
@@ -7580,6 +7593,7 @@
 				566E7CDD185EEA4800BB88C5 /* WeiBoCustomSegmentView.m in Sources */,
 				566E7963185EE75D00BB88C5 /* FMDatabaseAdditions.m in Sources */,
 				190F034519765A6400EC6C47 /* PicShowViewController.m in Sources */,
+				19C558D01AAC538D0078404B /* VideoOfNewViewController.m in Sources */,
 				563365E71862E7590069F838 /* fbWebViewController.m in Sources */,
 				5633649D1862E7490069F838 /* subsectionview.m in Sources */,
 				566E74CB185EE62300BB88C5 /* main.m in Sources */,
@@ -7716,8 +7730,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Bing Jin (KMZ2AD5LZY)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Bing Jin (KMZ2AD5LZY)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: FBLIFE (Beijing) Media & Technology Co., Ltd. (96PFYKQ596)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: FBLIFE (Beijing) Media & Technology Co., Ltd. (96PFYKQ596)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -7758,8 +7772,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Bing Jin (KMZ2AD5LZY)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Bing Jin (KMZ2AD5LZY)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: FBLIFE (Beijing) Media & Technology Co., Ltd. (96PFYKQ596)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: FBLIFE (Beijing) Media & Technology Co., Ltd. (96PFYKQ596)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -7784,8 +7798,8 @@
 				ARCHS = armv7;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: FBLIFE (Beijing) Media & Technology Co., Ltd. (96PFYKQ596)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: FBLIFE (Beijing) Media & Technology Co., Ltd. (96PFYKQ596)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
@@ -7825,8 +7839,8 @@
 				ARCHS = armv7;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: FBLIFE (Beijing) Media & Technology Co., Ltd. (96PFYKQ596)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: FBLIFE (Beijing) Media & Technology Co., Ltd. (96PFYKQ596)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",

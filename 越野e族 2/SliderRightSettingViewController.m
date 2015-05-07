@@ -52,7 +52,7 @@
     
     self.title = @"设置";
     
-    title_array = [NSArray arrayWithObjects:@"",@"清除缓存",@"意见反馈",@"版本更新",@"关于",@"",nil];
+    title_array = [NSArray arrayWithObjects:@"",@"清除缓存",@"意见反馈",@"关于",@"",nil];
     
     
     self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,DEVICE_HEIGHT-20 - 44) style:UITableViewStylePlain];
@@ -161,7 +161,7 @@
 {
     if (indexPath.row == 0) {
         return 23;
-    }else if(indexPath.row == 5)
+    }else if(indexPath.row == 4)
     {
         return 90;
     }else
@@ -205,7 +205,7 @@
         lineView.center = CGPointMake(DEVICE_WIDTH/2,0.25);
         lineView.hidden = YES;
         cell.backgroundColor = RGBCOLOR(248,248,248);
-    }else if (indexPath.row == 5)
+    }else if (indexPath.row == 4)
     {
         cell.backgroundColor = RGBCOLOR(248,248,248);
         
@@ -260,10 +260,12 @@
     }else if (indexPath.row == 3)
     {
         lineView.center = CGPointMake(DEVICE_WIDTH/2+14,0.25);
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+
     }else if (indexPath.row == 4)
     {
         lineView.center = CGPointMake(DEVICE_WIDTH/2+14,0.25);
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+//        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     
     return cell;
@@ -279,10 +281,13 @@
     {
         UMFeedbackViewController *feedb=[[UMFeedbackViewController alloc]init];
         [self.navigationController pushViewController:feedb animated:YES];
-    }else if (indexPath.row == 3)//版本更新
-    {
-        [self checkVersionUpdate];
-    }else if (indexPath.row == 4)//关于
+    }
+//    else if (indexPath.row == 3)//版本更新
+//    {
+//        [self checkVersionUpdate];
+//    }
+    
+    else if (indexPath.row == 3)//关于
     {
         NewAboutViewController * aboutVC = [[NewAboutViewController alloc] init];
         [self.navigationController pushViewController:aboutVC animated:YES];
@@ -527,11 +532,6 @@
     if (buttonIndex == 0 && alertView.tag == 10000)
     {
         
-        NSString *appUrl = [NSString stringWithFormat:@"itms-apps://itunes.apple.com/us/app/id%@?mt=8",@"605673005"];
-        
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:appUrl]];
-        
-//        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://itunes.apple.com/cn/app/yue-ye-yi-zu/id605673005?mt=8"]];
     }
 }
 

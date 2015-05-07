@@ -134,8 +134,6 @@
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"content"];
     
     
-    
-    
     [MobClick startWithAppkey:@"5153e5e456240b79e20006b9" reportPolicy:BATCH channelId:nil];
     
     [MobClick setLogEnabled:YES];
@@ -721,10 +719,7 @@
             }
             @finally {
                 
-                
             }
-            
-            
             
         }];
         
@@ -739,15 +734,10 @@
         
     }
     
-    
-    
     NSLog(@"__");
     
     
-    
-    
     // Required
-    
     
 }
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {

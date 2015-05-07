@@ -15,7 +15,10 @@
 +(BOOL)islastpage:(int)total pagenumber:(int)willshangchuanpage;
 +(BOOL)isiphone5;
 +(UIFont*)commentcount:(NSString *)string_count;
-+(NSString *)place:(NSString *)category_string;
++(NSString *)place:(NSString *)category_string;//老版的频道转换，将中文转换成英文
+
++(NSString *)ChineseStr:(NSString *)theChinese;
+
 +(NSString *)timchange:(NSString *)placetime;
 +(NSString *)timechange:(NSString *)placetime;
 +(UIImage *)getImageWithName:(NSString *)imageName;

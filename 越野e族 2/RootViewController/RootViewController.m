@@ -104,7 +104,7 @@
     NSTimeInterval a=[dat timeIntervalSince1970];
     NSString *timeString = [NSString stringWithFormat:@"%f", a];
     
-    [[NSUserDefaults standardUserDefaults] setObject:timeString forKey:[NSString stringWithFormat:@"%@timechange",[personal place: self.category_string ]]];
+    [[NSUserDefaults standardUserDefaults] setObject:timeString forKey:[NSString stringWithFormat:@"%@timechange",[personal ChineseStr: self.category_string ]]];
     
     
     
@@ -215,7 +215,7 @@
     
     NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
     
-    NSString *stringoldtime=[NSString stringWithFormat:@"%@",[user objectForKey:[NSString stringWithFormat:@"%@timechange",[personal place: self.category_string ]]]];
+    NSString *stringoldtime=[NSString stringWithFormat:@"%@",[user objectForKey:[NSString stringWithFormat:@"%@timechange",[personal ChineseStr: self.category_string ]]]];
     
     
     NSDate* dat = [NSDate dateWithTimeIntervalSinceNow:0];
@@ -545,7 +545,7 @@
     
     
     
-    array_lanmu = [NSArray arrayWithObjects:@"最新",@"新闻",@"品车",@"改装",@"导购",@"摄影",@"赛事",@"房车",@"铁骑",@"旅行",@"活动",@"户外",@"公益",nil];
+    array_lanmu = [NSArray arrayWithObjects:@"新车",@"导购",@"试驾",@"降价",@"文化",@"改装",@"旅行",@"行业",@"房车",@"铁骑",@"活动",nil];
     
     for (int i = 0;i < [array_lanmu count];i++)
     {
@@ -595,28 +595,7 @@
         mytesttab.delegate=self;
         [newsScrow addSubview:mytesttab];
         
-        //        if (i==0) {
-        //
-        //
-        //
-        //            [UIView animateWithDuration:0.5 animations:^{
-        //                [mytesttab.tab setContentOffset:CGPointMake(0, -80)];
-        //
-        //
-        //
-        //
-        //                //动画内容
-        //
-        //            }completion:^(BOOL finished)
-        //
-        //             {
-        //
-        //
-        //
-        //             }];
-        //
-        //
-        //        }
+
     }
     
     
@@ -678,7 +657,7 @@
     
     if ([self.str_dijige intValue ]==0) {
         rootnewsModel *model=[[rootnewsModel alloc]init];
-        [model startloadcommentsdatawithtag:800 thetype:[personal place:[array_lanmu objectAtIndex:0]]];
+        [model startloadcommentsdatawithtag:800 thetype:[personal ChineseStr:[array_lanmu objectAtIndex:0]]];
         model.delegate=self;
         
     }else{
@@ -836,7 +815,6 @@
 {
     if (buttonIndex == 0 && alertView.tag == 10000)
     {
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://itunes.apple.com/cn/app/yue-ye-yi-zu/id605673005?mt=8"]];
     }
 }
 
@@ -893,7 +871,7 @@
          }];
         
         rootnewsModel *model=[[rootnewsModel alloc]init];
-        [model startloadcommentsdatawithtag:sender.tag-1+800 thetype:[personal place:[array_lanmu objectAtIndex:sender.tag-1]]];
+        [model startloadcommentsdatawithtag:sender.tag-1+800 thetype:[personal ChineseStr:[array_lanmu objectAtIndex:sender.tag-1]]];
         model.delegate=self;
     }else{
         NSLog(@"当前已经有数据，不需要刷新");
@@ -923,7 +901,7 @@
         isloadingoriginal=NO;
         // pagecount=1;在这似乎没有必要
         pages=0;
-        NSString *  fullurl = [NSString stringWithFormat:@"http://cmsweb.fblife.com/ajax.php?c=newstwo&a=newsslide&classname=%@&type=json",[personal place:self.category_string]];
+        NSString *  fullurl = [NSString stringWithFormat:@"http://cmsweb.fblife.com/ajax.php?c=newstwo&a=newsslide&classname=%@&type=json",[personal ChineseStr:self.category_string]];
         
         NSURL *url101 =[NSURL URLWithString:fullurl];
         ASIHTTPRequest *request101= [ASIHTTPRequest requestWithURL:url101];
@@ -982,7 +960,7 @@
     }
     
     
-    NSString *  normalstring = [NSString stringWithFormat:URL_NESTEST,[personal place:self.category_string], @"0",1,@"10"];
+    NSString *  normalstring = [NSString stringWithFormat:URL_NESTEST,[personal ChineseStr:self.category_string], @"0",1,@"10"];
     NSLog(@"刷新普通新闻的url=%@",normalstring);
     NSURL *url102=[NSURL URLWithString:normalstring];
     ASIHTTPRequest *request102=[ASIHTTPRequest requestWithURL:url102];
@@ -999,7 +977,7 @@
     dic=[[NSDictionary alloc]init];
     image_mutar=[[NSMutableArray alloc]init];
     
-    NSString *string_imagename=[NSString stringWithFormat:@"%@img",[personal place:self.category_string]];
+    NSString *string_imagename=[NSString stringWithFormat:@"%@img",[personal ChineseStr:self.category_string]];
     
     dic = [[NSUserDefaults standardUserDefaults]objectForKey:string_imagename];
     
@@ -1102,7 +1080,7 @@
             pagecount++;
             isshanglajiazai=YES;
             
-            NSString *  normalstring = [NSString stringWithFormat:URL_NESTEST,[personal place:self.category_string], @"0",pagecount,@"10"];
+            NSString *  normalstring = [NSString stringWithFormat:URL_NESTEST,[personal ChineseStr:self.category_string], @"0",pagecount,@"10"];
             NSURL *url104=[NSURL URLWithString:normalstring];
             
             NSLog(@"加载的%@",normalstring);
@@ -1127,7 +1105,7 @@
             
             dic = [data objectFromJSONData];
             NSLog(@"新版本的幻灯新闻dic=%@",dic);
-            NSString *string_imagename=[NSString stringWithFormat:@"%@",[personal place:self.category_string]];
+            NSString *string_imagename=[NSString stringWithFormat:@"%@",[personal ChineseStr:self.category_string]];
             [personal bycategoryname:string_imagename myimage_dic:dic];
             
             [image_mutar removeAllObjects];
@@ -2812,7 +2790,7 @@
          }];
         
         rootnewsModel *model=[[rootnewsModel alloc]init];
-        [model startloadcommentsdatawithtag:number+800 thetype:[personal place:[array_lanmu objectAtIndex:number]]];
+        [model startloadcommentsdatawithtag:number+800 thetype:[personal ChineseStr:[array_lanmu objectAtIndex:number]]];
         model.delegate=self;
         
         
@@ -2925,7 +2903,7 @@
     
     
     rootnewsModel *model=[[rootnewsModel alloc]init];
-    [model loadmorewithtag:_tag thetype:[personal place:[array_lanmu objectAtIndex:_tag-800]] page:_page];
+    [model loadmorewithtag:_tag thetype:[personal ChineseStr:[array_lanmu objectAtIndex:_tag-800]] page:_page];
     model.delegate=self;
     NSLog(@"11111111111111111111tag===%d",_tag);
     
@@ -2935,7 +2913,7 @@
     
     
     rootnewsModel *model=[[rootnewsModel alloc]init];
-    [model startloadcommentsdatawithtag:tag thetype:[personal place:[array_lanmu objectAtIndex:tag-800]]];
+    [model startloadcommentsdatawithtag:tag thetype:[personal ChineseStr:[array_lanmu objectAtIndex:tag-800]]];
     model.delegate=self;
 }
 

@@ -225,8 +225,22 @@
     for (UIView *aview in cell.contentView.subviews) {
         [aview removeFromSuperview];
     }
+    
+    
     if (indexPath.row==0) {
+        
+        
+        
+        
+        
+        
+        
         if (self.commentarray.count>0) {
+            
+            
+            
+            
+            
             NSMutableArray *imgarray=[NSMutableArray array];
             
             for ( int i=0; i<[self.commentarray count]; i++) {
@@ -253,7 +267,7 @@
                 
                 
             }
-             int length = 5;
+             int length = self.commentarray.count;
             NSMutableArray *tempArray = [NSMutableArray array];
             for (int i = 0 ; i < length; i++)
             {

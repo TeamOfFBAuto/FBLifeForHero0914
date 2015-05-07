@@ -201,6 +201,24 @@
     
 }
 
++(NSString *)ChineseStr:(NSString *)theChinese{
+
+    NSString *placecategorey=theChinese;
+    NSArray *array_chinese=[NSArray arrayWithObjects:@"新车",@"导购",@"试驾",@"降价",@"文化",@"改装",@"旅行",@"行业",@"房车",@"铁骑",@"活动",nil];
+    NSArray *array_pinyin=[NSArray
+                                arrayWithObjects:@"newcar",@"guide",@"drive",@"depreciate",@"culture",@"restyle",@"tour",@"news",@"rv",@"tieqi",@"event",nil];
+    
+    for (int i=0; i<array_chinese.count; i++) {
+        if ([placecategorey isEqualToString:[array_chinese objectAtIndex:i]]) {
+            placecategorey=[NSString stringWithFormat:@"%@",[array_pinyin objectAtIndex:i]];
+        }
+    }
+    
+    return placecategorey;
+
+}
+
+
 +(BOOL)islastpage:(int)total pagenumber:(int)willshangchuanpage{
     BOOL islastpage;
     if (total%20==0)

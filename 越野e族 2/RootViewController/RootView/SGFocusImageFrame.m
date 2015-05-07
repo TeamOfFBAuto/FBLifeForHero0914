@@ -17,6 +17,8 @@
     //    GPSimplePageView *_pageControl;
     SMPageControl *_pagecontrol;
     UILabel *greenlabel;
+    
+    int thecount;
 }
 
 - (void)setupViews;
@@ -62,9 +64,25 @@ static CGFloat SWITCH_FOCUS_PICTURE_INTERVAL = 6.0; //switch interval time
     self = [super initWithFrame:frame];
     if (self)
     {
+        
         NSMutableArray *imageItems = [NSMutableArray arrayWithArray:items];
         objc_setAssociatedObject(self, (const void *)SG_FOCUS_ITEM_ASS_KEY, imageItems, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         _isAutoPlay = YES;
+        
+        if (items.count>2) {
+            thecount=imageItems.count-2;
+
+        }else{
+            thecount=imageItems.count;
+
+        }
+        
+        
+        
+        
+        
+        
+        
         [self setupViews];
         
         [self setDelegate:delegate];
@@ -92,7 +110,7 @@ static CGFloat SWITCH_FOCUS_PICTURE_INTERVAL = 6.0; //switch interval time
 {
     greenlabel=[[UILabel alloc]initWithFrame:CGRectMake(0, self.frame.size.height -25+3, DEVICE_WIDTH, 19)];
     greenlabel.font=[UIFont systemFontOfSize:14];
-    greenlabel.textAlignment=UITextAlignmentCenter;
+    greenlabel.textAlignment=NSTextAlignmentCenter;
     greenlabel.textColor=[UIColor whiteColor];
     greenlabel.backgroundColor=[UIColor clearColor];
     NSArray *imageItems = objc_getAssociatedObject(self, (const void *)SG_FOCUS_ITEM_ASS_KEY);
@@ -104,7 +122,13 @@ static CGFloat SWITCH_FOCUS_PICTURE_INTERVAL = 6.0; //switch interval time
     _pagecontrol = [[SMPageControl alloc]initWithFrame:CGRectMake(-4, 1,  DEVICE_WIDTH-255, 25)];
     
     _pagecontrol.backgroundColor = [UIColor clearColor];
-    _pagecontrol.numberOfPages = 5;
+    _pagecontrol.numberOfPages = thecount;
+    
+    
+    
+    
+    
+    
     _pagecontrol.indicatorMargin=8.0f;
     [_pagecontrol setPageIndicatorImage:[UIImage imageNamed:@"roundgray.png"]];
     [_pagecontrol setCurrentPageIndicatorImage:[UIImage imageNamed:@"roundblue.png"]];
@@ -115,6 +139,7 @@ static CGFloat SWITCH_FOCUS_PICTURE_INTERVAL = 6.0; //switch interval time
     //黑色小条
     
     UIView *_duantiaoview=[[UIView alloc]initWithFrame:CGRectMake(0,MY_MACRO_NAME? self.frame.size.height-158/2+5:self.frame.size.height-158/2+5, DEVICE_WIDTH, 150/2)];
+    
             _duantiaoview.userInteractionEnabled = NO;
             _duantiaoview.autoresizesSubviews=YES;
 
